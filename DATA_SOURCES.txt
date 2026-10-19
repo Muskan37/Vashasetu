@@ -1,0 +1,20 @@
+Vashasetu - data sources and credits
+====================================
+The dictionary and corpus in database/ were built (tools/gen.py) from these open datasets.
+Please keep this credit when you share the project, and check each dataset's licence on its page.
+
+- Vashantor (Johora et al., 2024) via the "Unified Bangla" corpus (github.com/tasfiaisrat/Unified-Bangla) - DOI 10.17632/bj5jgk878b.2 (CC BY 4.0)
+- ONUBAD: Sultana, Yasmin, Mallik, Uddin (2024) - DOI 10.17632/6ft99kf89b.2 (CC BY 4.0)
+- Bangla Regional Dialect-to-Standard Bangla Parallel Corpus for Dialect Bias Evaluation (CC BY 4.0) - data.mendeley.com/datasets/42gvc83xkg
+- Kothon: Large-Scale Dataset for MT of Chittagonian and Sylheti into Standard Bangla - data.mendeley.com/datasets/2fv6vf9v2z
+- Dwadash: Multi-Dialectal Translation Across Twelve Bengali Variations - data.mendeley.com/datasets/v9cf66fk2t
+- ChatgaiyyaAlap: Chittagonian to Standard Bangla - data.mendeley.com/datasets/wtms9xbkkw
+- A Dataset for Translating Local Bangla (Sylheti) Dialects into Standard Bangla - data.mendeley.com/datasets/5rmskrvh6g
+- Bangla to Chittagonian (Safin & Ara), MIT - github.com/sihabsafin/bangla-chittagonian-translation
+
+BD-Dialect: A Multiregional Bangla Language Dataset (v2, 2026)
+  Rahman, Hasan Muna, Prity - Stamford University Bangladesh. CC BY 4.0.
+  doi:10.17632/k769s4vk5z.2. Used: 950 word + 950 clause pairs for Rajshahi, Noakhali,
+  Sylheti, Chittagong, Mymensingh (now the sixth app dialect).
+BanglaDial: only its 885 Rajshahi sentences, as detection vocabulary (60k labelled sentences, no Standard
+  Bangla pair - not translation data) and MONOVAB (emotion-labelled comments).

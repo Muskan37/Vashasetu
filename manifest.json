@@ -1,0 +1,32 @@
+{
+  "name": "Vashasetu — Regional Dialect Translator",
+  "short_name": "Vashasetu",
+  "description": "Turn any regional Bangla dialect into Standard Bangla — by voice, instantly.",
+  "start_url": "./index.php",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EDE7DB",
+  "theme_color": "#0F5C56",
+  "lang": "bn-BD",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
