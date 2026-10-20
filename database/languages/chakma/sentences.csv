@@ -1,0 +1,9 @@
+pair_hash,language,source_text,source_key,standard_bangla,standard_key,source_dataset,review_status,eligible_exact,split,script,source_count
+c7106a64921f154425778a678a096a20efa94e944b83d0532623d2d1a4e5afc1,chakma,ত নাঙান হি,ত নাঙান হি,তোমার নাম কি,তোমার নাম কি,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+bc80122876ab4d36ca72ca800ed3ee3d0afd0583d07656e122736cb6c66543d4,chakma,তুই ভাত হিয়স,তুই ভাত হিয়স,তুমি ভাত খেয়েছ,তুমি ভাত খেয়েছ,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+bfd74ec5f0a3ddab4ddb51aa894be81f9a52fd400fa6209a19e77a6de3fd7ee1,chakma,তুই হুদু থাছ,তুই হুদু থাছ,তুমি কোথায় থাকো,তুমি কোথায় থাকো,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+47caf3066777a510a9b851da1ac42bca77120ed985f974c5314140ea15407a9a,chakma,তুই হেজান আগজ,তুই হেজান আগজ,তুমি কেমন আছো,তুমি কেমন আছো,MELD (research repository excerpt),research_corpus_not_reaudited,1,validation,Bengali transliteration,1
+404181c2ae25327eae1dee5c158836af650144874bdac394d43c977c0c12178e,chakma,মুই ইজ্ঞু ছাত্র,মুই ইজ্ঞু ছাত্র,আমি একজন ছাত্র,আমি একজন ছাত্র,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+109ab3a35fac3f3b4646f8df924632b6e271fd9d64aaa46ea65e2e9c1225f52d,chakma,মুই গম আগং,মুই গম আগং,আমি ভালো আছি,আমি ভালো আছি,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+9698eaa9d54cd9d166402c823de229cb77ee8c4d570c007d52b6af5c267c1d98,chakma,মুই তোরে হোস পাঙ,মুই তোরে হোস পাঙ,আমি তোমায় ভালোবাসি,আমি তোমায় ভালোবাসি,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+a405f1f2c1a96c0722eb6d0231507a1da976d6d67e5c7627cfa19d0ab5b2e520,chakma,মুই দুঃখিত,মুই দুঃখিত,আমি দুঃখিত,আমি দুঃখিত,MELD (research repository excerpt),research_corpus_not_reaudited,1,validation,Bengali transliteration,1

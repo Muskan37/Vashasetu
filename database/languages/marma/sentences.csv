@@ -1,0 +1,8 @@
+pair_hash,language,source_text,source_key,standard_bangla,standard_key,source_dataset,review_status,eligible_exact,split,script,source_count
+11aaec0d7c7cd1a938dbda1f8d1bd8c0b475043b8361e800c00089b0bb4740d4,marma,আকং হিঃরিল,আকং হিঃরিল,আপনি কেমন আছেন,আপনি কেমন আছেন,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+e180fd0626f3ec837c9a2648d0f5dac25db39caa8fff1d3471ee8f6fe977e58a,marma,ঙা আকং হিরি,ঙা আকং হিরি,আমি ভালো আছি,আমি ভালো আছি,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+5afc6f7462ffbac410fdef9cd456b9ea66fbd9a6d23823b5158f311ca236d490,marma,ঙা গো ক্রিহো পি,ঙা গো ক্রিহো পি,আমাকে দেখতে দাও,আমাকে দেখতে দাও,MELD (research repository excerpt),research_corpus_not_reaudited,1,validation,Bengali transliteration,1
+45abc7205443c417883eb6c91c61d6531648f91e37702fcc302cb301d8a59499,marma,ঙা গো খোয়ং হ্রুওয়ে,ঙা গো খোয়ং হ্রুওয়ে,আমি দুঃখিত,আমি দুঃখিত,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+8fddfaa519474459a95b07c60aa75dcc87c9071dde809cd92707890a673865dc,marma,ঙা ত্য চা ফেসা,ঙা ত্য চা ফেসা,আমি একজন ছাত্র,আমি একজন ছাত্র,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+9d53e5b24cdc3dc7108dd91563c1ae5abc065517cdfb2fe9caea20539b8dccdc,marma,ঙা নাক্ কো ক্রতে,ঙা নাক্ কো ক্রতে,আমি তোমায় ভালোবাসি,আমি তোমায় ভালোবাসি,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+f8498346959684eac98d54d5db1b50ab31411070d93c5a8da9c4de348fe2daef,marma,নাং চা ব্যা ল,নাং চা ব্যা ল,তুমি কি খেয়েছ,তুমি কি খেয়েছ,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1

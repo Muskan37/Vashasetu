@@ -1,0 +1,6 @@
+pair_hash,language,source_text,source_key,standard_bangla,standard_key,source_dataset,review_status,eligible_exact,split,script,source_count
+5423211daf80d96faa5e1155df992c876bd533d966b02fd0e4d70d8ce5a27478,garo,আঙখ নিনা হন,আঙখ নিনা হন,আমাকে দেখতে দাও,আমাকে দেখতে দাও,MELD (research repository excerpt),research_corpus_not_reaudited,1,validation,Bengali transliteration,1
+2adc1ccc1681007e183f7a303972cb96fda8374bd2829c5bd7ff02391fd57621,garo,আঙা নাঙখ নামি নিকঙা,আঙা নাঙখ নামি নিকঙা,আমি তোমায় ভালোবাসি,আমি তোমায় ভালোবাসি,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+5c8de08b26fdb805589e1c088374e9b64914bdceab8c0ecf529c6a82400c2968,garo,আঙা নাম্মা,আঙা নাম্মা,আমি ভালো আছি,আমি ভালো আছি,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+a975166b3242dd9b1db91a3ce383c3451a5cfef69ee98d35d748410edd393e51,garo,চাজক মা না্আ,চাজক মা না্আ,তুমি কি খেয়েছ,তুমি কি খেয়েছ,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
+9708371c39cffecb2aa8759a3996f6d15a8b818fb19472c75ac0723315adbbb1,garo,নামি দঙয়া মা,নামি দঙয়া মা,আপনি কেমন আছেন,আপনি কেমন আছেন,MELD (research repository excerpt),research_corpus_not_reaudited,1,train,Bengali transliteration,1
