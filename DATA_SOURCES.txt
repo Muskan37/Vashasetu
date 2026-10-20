@@ -18,3 +18,12 @@ BD-Dialect: A Multiregional Bangla Language Dataset (v2, 2026)
   Sylheti, Chittagong, Mymensingh (now the sixth app dialect).
 BanglaDial: only its 885 Rajshahi sentences, as detection vocabulary (60k labelled sentences, no Standard
   Bangla pair - not translation data) and MONOVAB (emotion-labelled comments).
+
+VashaSetu v2 additions (2026-10-17):
+MELD Chakma/Marma/Garo research sample phrases (Bengali-script transliteration):
+Mahi et al., MELD, Mendeley Data V4 (2025), DOI 10.17632/dy5dyfygbp.4, CC BY 4.0
+https://data.mendeley.com/datasets/dy5dyfygbp/4
+https://github.com/AnzirRahman/MELD
+BD-Dialect candidate exact pairs are extracted from the original user-supplied corpus's BD-Dialect subset;
+source dataset: https://data.mendeley.com/datasets/k769s4vk5z/2
+See README_V2_DATA_AND_LEARNING.md for provenance, caution and deployment instructions.

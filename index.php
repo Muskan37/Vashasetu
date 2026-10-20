@@ -108,6 +108,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
       <div class="splash-stack">
         <button class="btn btn-gold btn-block" data-go="login">Log In</button>
         <button class="btn btn-ghost btn-block" data-go="translate">Continue without Login</button>
+        <a class="btn btn-ghost btn-block" href="learn.php" style="display:flex;align-items:center;justify-content:center;text-decoration:none">📚 Learn a dialect or language</a>
         <button class="link" style="color:#BFE3D4" data-go="register">New here? Create an account</button>
       </div>
       <div class="waves" aria-hidden="true">
@@ -205,6 +206,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
           </div>
         </div>
 
+        <label class="vs-approx-control"><input type="checkbox" id="allow-approximate"> <span>Show approximate translations when no exact sentence is found <small>(May be incorrect · off by default)</small></span></label>
         <button class="btn btn-gold btn-block translate-go" id="translate-btn" data-act="doTranslate">Translate &amp; save <svg class="ic"><use href="#i-arrow"/></svg></button>
         <div class="live-hint">Translates as you type · Banglish is understood</div>
 
@@ -232,6 +234,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
           <svg class="ic" style="color:#B8893A"><use href="#i-arrow"/></svg>
         </button>
         <div class="centered"><button class="link" data-go="home">Explore dialects on the map</button></div>
+        <div class="centered"><a class="link" href="learn.php">📚 Choose a language to learn →</a></div>
       </div>
     </div>
   </section>

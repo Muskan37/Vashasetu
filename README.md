@@ -1,3 +1,7 @@
+# V4 update: any source language → any target language
+
+See [README_V4_ANY_LANGUAGE_LEARNING.md](README_V4_ANY_LANGUAGE_LEARNING.md) for installation, new course features, verified material import, and limitations.
+
 # Vashasetu (ভাষাসেতু) — Regional Bangla Dialect Translator
 
 Runs on your own computer with **XAMPP** (PHP + MySQL). No hosting needed.

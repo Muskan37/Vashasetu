@@ -3,6 +3,7 @@
 // (old clients may still send dialect_type; it is treated as "from that dialect to Standard")
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/matching_engine.php';
+require_once __DIR__ . '/word_evidence.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -18,6 +19,7 @@ if ($source === '' && isset($input['dialect_type'])) { $source = trim($input['di
 if ($source === '') $source = 'auto';
 if ($target === '') $target = 'standard';
 $log = !empty($input['log']);
+$allowApproximate = !empty($input['allow_approximate']);
 
 if ($text === '') {
     http_response_code(400);
@@ -28,9 +30,9 @@ if (mb_strlen($text) > 500) $text = mb_substr($text, 0, 500);
 
 $pdo = get_db();
 try {
-    $result = translate_full($pdo, $text, $source, $target);
+    $result = vs_translate_with_evidence($pdo, $text, $source, $target, $allowApproximate);
 
-    if ($log) {
+    if ($log && $result['translated_text'] !== '') {
         $userId = current_user_id();
         $sessionId = session_id() ?: substr(md5(uniqid('', true)), 0, 20);
         $label = (VARIETY_LABEL[$result['source']] ?? $result['source']) . ' → ' . (VARIETY_LABEL[$result['target']] ?? $result['target']);

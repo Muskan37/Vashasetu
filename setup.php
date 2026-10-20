@@ -14,6 +14,12 @@ require_once __DIR__ . '/api/lib/text.php';
 header('Content-Type: text/html; charset=utf-8');
 $cli = PHP_SAPI === 'cli';
 $reset = $cli ? in_array('--reset', $argv ?? [], true) : isset($_GET['reset']);
+$refreshIndigenous = $cli ? in_array('--refresh-indigenous', $argv ?? [], true) : isset($_GET['refresh_indigenous']);
+$refreshLocalizations = $cli ? in_array('--refresh-localizations', $argv ?? [], true) : isset($_GET['refresh_localizations']);
+$refreshParallel = $cli ? in_array('--refresh-parallel', $argv ?? [], true) : isset($_GET['refresh_parallel']);
+$refreshWords = $cli ? in_array('--refresh-words', $argv ?? [], true) : isset($_GET['refresh_words']);
+$refreshParallel = $refreshParallel || $refreshIndigenous;
+$refreshWords = $refreshWords || $refreshIndigenous;
 
 function say(string $m, bool $ok = true): void {
     global $cli;
@@ -49,6 +55,28 @@ function csv_rows(string $file): Generator {
     while (($r = fgetcsv($fh)) !== false) if (count($r) >= count($head)) yield array_combine($head, array_slice($r, 0, count($head)));
     fclose($fh);
 }
+// Every language is physically partitioned in database/languages/<language>/.
+// Validate manifest paths against the fixed language directory; never trust a request path.
+function language_csv_rows(string $file): Generator {
+    $manifest = __DIR__ . '/database/languages/manifest.csv';
+    $requested = $file === 'sentences' ? 'parallel_sentences' : 'word_meanings';
+    if (!is_file($manifest)) throw new RuntimeException('Missing language manifest');
+    $fh = fopen($manifest, 'r'); $head = fgetcsv($fh);
+    $count = 0;
+    while (($line = fgetcsv($fh)) !== false) {
+        if (count($line) !== count($head)) continue;
+        $row = array_combine($head, $line);
+        if ($row['dataset'] !== $requested) continue;
+        $path = $row['path'];
+        if (!preg_match('#^languages/[a-z0-9_-]+/(sentences|words)\.csv$#D', $path)) throw new RuntimeException('Invalid dataset path');
+        foreach (csv_rows($path) as $data) {
+            if ($data['language'] !== $row['language']) throw new RuntimeException('Language contamination in ' . $path);
+            $count++; yield $data;
+        }
+    }
+    fclose($fh);
+}
+
 function bulk(PDO $db, string $table, array $cols, iterable $rows, int $batch = 400): int {
     $n = 0; $buf = [];
     $flush = function () use (&$buf, $db, $table, $cols, &$n) {
@@ -66,7 +94,9 @@ function bulk(PDO $db, string $table, array $cols, iterable $rows, int $batch = 
 }
 function load(PDO $db, string $table, callable $make, bool $reset): void {
     global $root;
-    if ($reset) $db->exec("TRUNCATE TABLE `$table`");
+    // Learning items are referenced by learner progress; never truncate them on reset.
+    // Existing lesson content remains in place when setup is re-run.
+    if ($reset && !in_array($table, ['learning_units','learning_items'], true)) $db->exec("TRUNCATE TABLE `$table`");
     $have = (int) $db->query("SELECT COUNT(*) FROM `$table`")->fetchColumn();
     if ($have > 0) { say("$table: already has " . number_format($have) . " rows (skipped)."); return; }
     $t = microtime(true);
@@ -122,6 +152,38 @@ load($root, 'bigrams', fn() => [['w1','w2','cnt'], (function () use ($varieties)
     }
     foreach ($c as $k => $n) { [$a, $b] = explode("\t", $k); yield [$a, $b, $n]; }
 })()], $reset);
+
+// New learning tables can be installed on an existing installation by re-opening setup.php.
+// --reset / ?reset=1 reloads content but never truncates user learning progress.
+load($root, 'language_catalog', fn() => [['language_id','display_name','language_type','existing_app_key','scripts','app_status','geography_nonexclusive','notes'], (function () {
+    foreach (csv_rows('language_registry.csv') as $r) yield [$r['language_id'], $r['display_name'], $r['type'], $r['existing_app_key'], $r['scripts'], $r['app_status'], $r['geography_nonexclusive'], $r['notes']];
+})()], $reset);
+load($root, 'regional_exact_pairs', fn() => [['variety','source_text','standard_bangla','source_dataset','review_status'], (function () {
+    foreach (csv_rows('regional_exact_pairs.csv') as $r) yield [$r['variety'], implode(' ', bn_tokens($r['source_text'])), implode(' ', bn_tokens($r['standard_bangla'])), $r['dataset'], $r['review_status']];
+})()], $reset);
+load($root, 'indigenous_pairs', fn() => [['language_id','source_text','standard_bangla','english','script','source_dataset','review_status','source_url'], (function () {
+    foreach (csv_rows('indigenous_pairs.csv') as $r) yield [$r['language_id'], $r['source_text'], $r['standard_bangla'], $r['english'], $r['script'], $r['source_dataset'], $r['review_status'], $r['source_url']];
+})()], ($reset || $refreshIndigenous));
+load($root, 'learning_units', fn() => [['unit_key','sort_order','stage','title_en','title_bn','description_en'], (function () {
+    foreach (csv_rows('learning_units.csv') as $r) yield array_values($r);
+})()], $reset);
+load($root, 'learning_items', fn() => [['unit_key','item_order','exercise_type','prompt','display_bn','ipa','romanization','options_json','correct_answer','gloss_en','speech_bn','review_status'], (function () {
+    foreach (csv_rows('learning_items.csv') as $r) yield array_values($r);
+})()], $reset);
+load($root, 'learning_localizations', fn() => [['language_id','unit_key','item_order','prompt_native','hint_native','script','audio_path','review_status','reviewer'], (function () {
+    foreach (csv_rows('learning_localizations.csv') as $r) yield array_values($r);
+})()], ($reset || $refreshLocalizations));
+
+
+
+// V3 datasets. Each dataset lives in database/languages/<language>/ and is isolated at load time.
+// Run ?refresh_parallel=1 or ?refresh_words=1 to update ONLY the new evidence tables.
+load($root, 'parallel_sentences', fn() => [['pair_hash','language','source_text','source_key','standard_bangla','standard_key','source_dataset','review_status','eligible_exact','split_name','script','source_count'], (function () {
+    foreach (language_csv_rows('sentences') as $r) yield [$r['pair_hash'],$r['language'],$r['source_text'],$r['source_key'],$r['standard_bangla'],$r['standard_key'],$r['source_dataset'],$r['review_status'],$r['eligible_exact'],$r['split'],$r['script'],$r['source_count']];
+})()], ($reset || $refreshParallel));
+load($root, 'word_meanings', fn() => [['pair_hash','language','source_word','standard_word','meaning_status','source_dataset','evidence_count'], (function () {
+    foreach (language_csv_rows('words') as $r) yield [$r['hash'],$r['language'],$r['source_word'],$r['standard_word'],$r['meaning_status'],$r['source_dataset'],$r['evidence_count']];
+})()], ($reset || $refreshWords));
 
 try {
     $bp = (int) $root->query("SHOW VARIABLES LIKE 'innodb_buffer_pool_size'")->fetch(PDO::FETCH_NUM)[1];

@@ -9,16 +9,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     exit;
 }
 
-$dialect = trim($_GET['dialect'] ?? 'any');
+$dialect = trim($_GET['dialect'] ?? 'Chattogram');
+if (!in_array($dialect,['Barishal','Chattogram','Mymensingh','Noakhali','Rajshahi','Sylheti'],true)) {http_response_code(400);echo json_encode(['error'=>'Select a supported dialect for quizzes']);exit;}
 $exclude = array_values(array_filter(array_map('intval', explode(',', $_GET['exclude'] ?? ''))));
 
 $pdo = get_db();
 try {
-    $base = "SELECT id, dialect_word, standard_word AS standard_meaning, dialect AS dialect_type FROM lexicon
-             WHERE dialect_word <> standard_word AND p_std >= 0.8 AND cnt >= 4 AND CHAR_LENGTH(dialect_word) >= 2";
-    $any = ($dialect === '' || strtolower($dialect) === 'any');
-    if ($any) { $all = $pdo->query($base)->fetchAll(); }
-    else { $st = $pdo->prepare("$base AND dialect = ?"); $st->execute([$dialect]); $all = $st->fetchAll(); }
+    // Quizzes are scoped to one selected dialect and use independently attested
+    // one-word evidence, never mixed lexicon candidate alignments.
+    $st=$pdo->prepare("SELECT id,source_word AS dialect_word,standard_word AS standard_meaning,language AS dialect_type FROM word_meanings
+             WHERE language=? AND source_word<>standard_word
+             AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified')");
+    $st->execute([$dialect]); $all=$st->fetchAll();
 
     $questions = array_values(array_filter($all, fn($r) => !in_array((int) $r['id'], $exclude, true)));
     if (!$questions) $questions = $all;

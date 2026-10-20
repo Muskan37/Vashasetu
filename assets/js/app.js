@@ -36,6 +36,9 @@ const LANGS = [
   { id: 'Barishal',   name: 'Barishal',    bn: 'বরিশাল',     from: true, to: true, c: '#8B5CF6' },
   { id: 'Mymensingh', name: 'Mymensingh',  bn: 'ময়মনসিংহ',  from: true, to: true, c: '#0E9F8E' },
   { id: 'Rajshahi',   name: 'Rajshahi',    bn: 'রাজশাহী',    from: true, to: true, c: '#C2410C' },
+  { id: 'chakma',     name: 'Chakma',     bn: 'চাকমা',     sub: 'Research phrase matches only · Bengali transliteration', from: true, to: true, c:'#488A7B' },
+  { id: 'marma',      name: 'Marma',      bn: 'মারমা',      sub: 'Research phrase matches only · Bengali transliteration', from: true, to: true, c:'#A56C42' },
+  { id: 'garo',       name: 'Garo / A.chik', bn: 'গারো',    sub: 'Research phrase matches only · Bengali transliteration', from: true, to: true, c:'#8067B1' },
   { id: 'banglish',   name: 'Banglish',    sub: 'Bangla typed in English letters', from: true },
   { id: 'english',    name: 'English',     sub: 'Word-by-word from a dictionary', from: true, to: true },
 ];
@@ -204,7 +207,8 @@ async function loadSample(k) {
 
 async function loadWod(randomExcludeId) {
   try {
-    const q = randomExcludeId ? `mode=random&exclude_id=${randomExcludeId}` : 'mode=daily';
+    const lang = ['auto','english','standard','banglish'].includes(S.from) ? toApiName(S.dialect) : S.from;
+    const q = (randomExcludeId ? `mode=random&exclude_id=${randomExcludeId}` : 'mode=daily') + '&dialect=' + encodeURIComponent(lang);
     const data = await api(`word.php?${q}`);
     S.wod = data.word || null;
   } catch (e) { S.wod = null; }
@@ -219,7 +223,7 @@ function renderWod() {
   }
   card.innerHTML = `<span class="chip"><span class="dot" style="--c:${colorOf(w.dialect_type)}"></span>${esc(w.dialect_type)}</span>
     <div class="wod-word">${esc(w.dialect_word)}</div>
-    <div class="wod-mean">${icon('arrow', 20)} ${esc(w.standard_meaning)}</div>
+    <div class="wod-mean">${icon('arrow', 20)} ${esc(w.standard_meaning)}<small style="display:block;font-size:11px;opacity:.7">Research candidate · speaker review needed</small></div>
     <div class="wod-actions"><button class="btn btn-teal btn-sm" data-act="tryWod">Try it</button><button class="btn btn-line btn-sm" data-act="nextWod">Another ↻</button></div>`;
   mini.textContent = `${w.dialect_word} → ${w.standard_meaning}`;
 }
@@ -274,7 +278,7 @@ function pickLang(side) {
 function chooseLang(side, id) {
   if (side === 'from') S.from = id; else S.to = id;
   { const dd = side === 'to' ? id : id; if (dd !== 'standard' && dd !== 'english' && dd !== 'auto' && dd !== 'banglish') S.dialect = fromApiName(dd); }
-  S.last = null;
+  S.last = null; S.wod = null;
   closeSheet(); renderLangBar(); renderDetect(null);
   if ($('#dialect-input').value.trim()) doTranslate({ live: true });
   vib(8);
@@ -338,12 +342,13 @@ async function doTranslate(opts = {}) {
   if (!live) { btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Crossing the bridge…'; }
   try {
     const doLog = !live && text !== lastLogged;
-    const ckey = S.from + '|' + S.to + '|' + text;
+    const approx = !!$('#allow-approximate')?.checked;
+    const ckey = S.from + '|' + S.to + '|' + (approx ? 'approx|' : 'strict|') + text;
     let data = !doLog && txCache.get(ckey);
     if (!data) {
       if (liveCtl) { try { liveCtl.abort(); } catch (e) { /* ignore */ } }
       liveCtl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
-      data = await post('translate.php', { text, source: S.from, target: S.to, log: doLog }, liveCtl ? { signal: liveCtl.signal } : null);
+      data = await post('translate.php', { text, source: S.from, target: S.to, log: doLog, allow_approximate: approx }, liveCtl ? { signal: liveCtl.signal } : null);
       if (data && !data.error && data.translated_text !== undefined) { txCache.set(ckey, data); if (txCache.size > 60) txCache.delete(txCache.keys().next().value); }
     }
     if (seq !== txSeq) return;                       // a newer request replaced this one
@@ -370,41 +375,57 @@ function scheduleLive() {
 }
 function logCurrent() {                              // save to history when the person finishes typing (leaves the box)
   const text = $('#dialect-input').value.trim();
-  if (text && text !== lastLogged && S.result) { lastLogged = text; post('translate.php', { text, source: S.from, target: S.to, log: true }).catch(() => {}); }
+  if (text && text !== lastLogged && S.result) { lastLogged = text; post('translate.php', { text, source: S.from, target: S.to, log: true, allow_approximate: !!$('#allow-approximate')?.checked }).catch(() => {}); }
 }
 
-function pairShown(b) { return S.to === 'standard' ? b.std : (b.tgt != null ? b.tgt : b.std); }
+/* One chip per source token. Sentence translations NEVER imply positional word alignment. */
 function renderResult(data) {
   const card = $('#result-card');
-  $('#result-text').textContent = data.translated_text;
+  $('#result-text').textContent = data.translated_text || 'Translation not available for this sentence.';
   $('#result-roman').textContent = data.romanization && data.target !== 'english' ? data.romanization : '';
-  $('#result-pairs').innerHTML = S.breakdown.map((b, i) => {
-    const shown = pairShown(b);
-    if (b.kind === 'unknown' || (b.matched === false && b.kind === 'english')) {
-      return `<div class="pair miss" style="--i:${i}" data-act="teachWord" data-w="${esc(b.src)}"><small>not known yet</small><b>${esc(b.src)}</b></div>`;
-    }
-    const via = (S.to !== 'standard' && b.std !== b.src && b.std !== shown) ? `<span class="via">${esc(b.std)}</span>` : '';
-    return `<div class="pair" style="--i:${i}" data-act="lookup" data-w="${esc(b.src)}"><small>${esc(b.src)}</small><b>${esc(shown)}</b>${via}</div>`;
+  const words = data.word_meanings || [];
+  $('#result-pairs').innerHTML = words.map((w, i) => {
+    const meaning = data.target !== 'standard' && data.source === 'standard' ? w.target_word : w.standard_meaning;
+    const has = meaning != null && meaning !== '';
+    const label = has ? esc(meaning) : 'Meaning not verified';
+    const status = w.status || 'not_verified';
+    const suffix = (w.english_hint && data.target !== 'english') ? `<span class="via">${esc(w.english_hint)}</span>` : '';
+    const tip = (w.dataset || 'No independently validated word-level evidence');
+    return `<div class="pair ${has ? '' : 'miss'}" style="--i:${i}" data-act="wordEvidence" data-idx="${i}" role="button" tabindex="0" title="${esc(tip)}">
+      <small>${esc(w.word)}</small><b>${label}</b>${suffix}
+      <span class="vs-evidence-status">${status === 'standard_bangla_identity' ? 'Standard Bangla' : status === 'not_verified' ? 'Not verified' : status === 'dictionary_reference' ? 'Dictionary' : 'Source attested · review needed'}</span>
+    </div>`;
   }).join('');
-  const unknown = S.breakdown.filter((b) => b.kind === 'unknown').length;
+  const unknown = words.filter((w) => !w.known).length;
   const note = $('#no-match-note');
-  note.textContent = 'Some words aren’t in the dictionary yet. Tap a dashed word to teach it to Vashasetu.';
+  note.textContent = `${unknown} individual word${unknown===1?'':'s'} have no independently established meaning. The sentence can still have a full translation; we do not guess word meanings from word order.`;
   note.classList.toggle('show', unknown > 0);
-  $('#result-notes').innerHTML = (data.notes || []).map((n) => `<p>ⓘ ${esc(n)}</p>`).join('');
-  card.classList.remove('show');
-  void card.offsetWidth;      // restart the pop-in animation
-  card.classList.add('show');
+  const quality = data.translation_quality === 'research_sentence_candidate_not_reaudited' || data.translation_quality === 'research_candidate_not_reaudited'
+    ? 'Exact sentence match from a research dataset; not independently checked for this app.'
+    : ['unavailable','unavailable_without_approximation'].includes(data.translation_quality) ? 'No source-supported sentence translation is available. The original text is not returned as a translation.'
+    : 'Word-level translation may be unreliable; verify with a fluent speaker.';
+  $('#result-notes').innerHTML = `<p>ⓘ Selected datasets: ${esc((data.datasets_used || []).join(' → ') || data.dataset_scope || 'not available')}</p><p>ⓘ ${esc(quality)}</p>` + (data.notes || []).map((n) => `<p>ⓘ ${esc(n)}</p>`).join('');
+  card.classList.remove('show'); void card.offsetWidth; card.classList.add('show');
+}
+function showWordEvidence(index) {
+  const w = S.last && S.last.word_meanings && S.last.word_meanings[index];
+  if (!w) return;
+  const meaning = w.standard_meaning ? `<div class="wc-row"><span>Standard Bangla meaning</span><b>${esc(w.standard_meaning)}</b></div>` : `<p>Individual word meaning has not been reliably established.</p>${w.candidate_meaning?`<p><b>Unreviewed candidate only:</b> ${esc(w.candidate_meaning)} (do not rely on this until checked with a speaker)</p>`:''}`;
+  openSheet(`<h3>${esc(w.word)}</h3>${meaning}${w.english_hint?`<div class="wc-row"><span>English hint</span><b>${esc(w.english_hint)}</b></div>`:''}
+    <p style="color:var(--ink-soft)"><b>Evidence:</b> ${esc(w.status.replace(/_/g,' '))}</p><p style="color:var(--ink-soft)"><b>Source:</b> ${esc(w.dataset || 'No reviewed source')}</p>
+    <p style="color:var(--ink-soft)">Words in a translated sentence can move, change form, combine or be omitted. This definition is never guessed from word position.</p>`);
 }
 
 /* ---------- word card ---------- */
 async function lookupWord(w) {
   openSheet('<div class="empty"><b>Looking up…</b></div>');
   try {
-    const d = await api('lookup.php?word=' + encodeURIComponent(w));
+    const lang = (S.from !== 'standard' && S.from !== 'auto' && S.from !== 'english' && S.from !== 'banglish') ? S.from : (S.to !== 'standard' && S.to !== 'english' ? S.to : D.dialect);
+    const d = await api('lookup.php?language=' + encodeURIComponent(lang) + '&word=' + encodeURIComponent(w));
     if (!d.found) { openSheet(`<h3>${esc(w)}</h3><p style="color:var(--ink-soft)">Not in the dictionary yet.</p><button class="btn btn-gold btn-block" data-act="teachWord" data-w="${esc(w)}">Teach it to Vashasetu</button>`); return; }
-    const means = (d.means || []).map((m) => `<div class="wc-row"><span class="dot" style="--c:${colorOf(m.dialect)}"></span><span><small>${esc(m.dialect)} word</small><br>means</span><span class="r"><b>${esc(m.standard)}</b>${m.verified ? '<br><small>✓ verified</small>' : ''}</span></div>`).join('');
-    const ins = (d.in_dialects || []).map((m) => `<div class="wc-row"><span class="dot" style="--c:${colorOf(m.dialect)}"></span><span><small>In ${esc(m.dialect)}</small></span><span class="r"><b>${esc(m.word)}</b><br><small>${esc(m.roman)}</small></span></div>`).join('');
-    const ex = (d.examples || []).map((x) => `<div class="wc-ex"><small>${esc(x.label)}</small><div>${esc(x.text)}</div>${x.variety !== 'standard' ? `<i>= ${esc(x.standard)}</i>` : ''}</div>`).join('');
+    const means = (d.means || []).map((m) => `<div class="wc-row"><span class="dot" style="--c:${colorOf(m.dialect)}"></span><span><small>${esc(m.dialect)} word</small><br>means</span><span class="r"><b>${esc(m.standard)}</b>${m.verified ? '<br><small>✓ community verified</small>' : `<br><small>${esc((m.status || 'needs_review').replace(/_/g,' '))}</small>`}</span></div>`).join('');
+    const ins = (d.in_dialects || []).map((m) => `<div class="wc-row"><span class="dot" style="--c:${colorOf(m.dialect)}"></span><span><small>In ${esc(m.dialect)}</small></span><span class="r"><b>${esc(m.word)}</b><br><small>${esc(m.roman)}</small><br><small>${esc((m.status||'needs_review').replace(/_/g,' '))}</small></span></div>`).join('');
+    const ex = (d.examples || []).map((x) => `<div class="wc-ex"><small>${esc(x.label)}</small><div>${esc(x.text)}</div>${x.variety !== 'standard' ? `<i>= ${esc(x.standard)}</i><small> · ${esc(x.status||'source candidate')}</small>` : ''}</div>`).join('');
     openSheet(`<div class="wc-top"><div><div class="wc-word">${esc(d.word)}</div><div class="wc-roman">${esc(d.roman)}</div></div>
         <button class="round-btn speaker-btn" data-act="speakText" data-t="${esc(d.word)}" aria-label="Listen"><svg class="ic" style="width:19px;height:19px"><use href="#i-speaker"/></svg></button></div>
       <div class="wc-chips">${d.english ? `<span class="chip">English: ${esc(d.english)}</span>` : ''}${d.typed && d.typed !== d.word ? `<span class="chip" style="background:var(--blue-100);color:#1B3F86">you typed “${esc(d.typed)}”</span>` : ''}</div>
@@ -418,7 +439,9 @@ async function lookupWord(w) {
 /* ---------- dictionary browser ---------- */
 const D = { dialect: 'Chattogram', q: '', page: 1, pages: 1, busy: false, t: null };
 function onDict() {
-  $('#dict-chips').innerHTML = LANGS.filter((l) => l.to && l.id !== 'standard' && l.id !== 'english').map((l) =>
+  const selected = ['auto','standard','english','banglish'].includes(S.from) ? toApiName(S.dialect) : S.from;
+  if (['Barishal','Chattogram','Mymensingh','Noakhali','Rajshahi','Sylheti'].includes(selected)) D.dialect = selected;
+  $('#dict-chips').innerHTML = LANGS.filter((l) => l.to && !['standard','english','chakma','marma','garo'].includes(l.id)).map((l) =>
     `<button class="dchip ${l.id === D.dialect ? 'on' : ''}" data-act="dictDialect" data-id="${l.id}"><span class="dot" style="--c:${l.c}"></span>${l.name}</button>`).join('');
   loadDict(true);
 }
@@ -430,9 +453,9 @@ async function loadDict(reset) {
     const d = await api(`dictionary.php?dialect=${encodeURIComponent(D.dialect)}&q=${encodeURIComponent(D.q)}&page=${D.page}`);
     D.pages = d.pages;
     const total = Object.values(d.dialect_totals || {}).reduce((a, b) => a + b, 0);
-    $('#dict-sub').textContent = `${total.toLocaleString()} dialect words · search in Bangla, Banglish or English`;
+    $('#dict-sub').textContent = `${total.toLocaleString()} attested dialect words · not all independently verified · search in Bangla`;
     $('#dict-count').textContent = d.total ? `${d.total.toLocaleString()} ${D.q ? 'matches' : 'words'} in ${D.dialect}` : '';
-    const rows = d.rows.map((r) => `<button class="drow ${r.verified ? 'v' : ''}" data-act="lookup" data-w="${esc(r.dialect_word)}">
+    const rows = d.rows.map((r) => `<button class="drow ${r.verified ? 'v' : ''}" data-act="lookup" data-w="${esc(r.dialect_word)}" title="${esc(r.review_status || 'Needs review')} · ${esc(r.source_dataset || '')}">
       <span class="a">${esc(r.dialect_word)}<small>${esc(r.roman)}</small></span><svg class="ic arrow" style="width:18px;height:18px"><use href="#i-arrow"/></svg><span class="b">${esc(r.standard_word)}</span></button>`).join('');
     if (!d.rows.length && D.page === 1) $('#dict-list').innerHTML = `<div class="card empty"><b>Nothing found</b>Try another spelling, or search in English.</div>`;
     else $('#dict-list').insertAdjacentHTML('beforeend', rows);
@@ -883,7 +906,8 @@ async function nextQuestion() {
   box.innerHTML = '<div class="card qcard"><div class="qlabel">Finding a word…</div></div>';
   let q = null;
   try {
-    const data = await api(`quiz.php?dialect=any&exclude=${Q.asked.join(',')}`);
+    const lang = ['auto','standard','banglish','english'].includes(S.from) ? toApiName(S.dialect) : S.from;
+    const data = await api(`quiz.php?dialect=${encodeURIComponent(lang)}&exclude=${Q.asked.join(',')}`);
     q = data.question;
   } catch (e) { q = null; }
   if (!q) {
@@ -970,6 +994,7 @@ const ACTIONS = {
       renderLangBar(); renderDetect(r); renderResult(r);
     } catch (e) { toast('Could not reach the server'); }
   },
+  wordEvidence(el) { showWordEvidence(Number(el.dataset.idx)); },
   chooseLang(el) { chooseLang(el.dataset.side, el.dataset.id); },
   swapLang,
   closeSheet,
@@ -1013,6 +1038,7 @@ document.addEventListener('keydown', (e) => {
 });
 document.addEventListener('change', async (e) => {
   if (e.target.id === 'image-input') handleImage(e.target);
+  if (e.target.id === 'allow-approximate') { lastLogged = ''; scheduleLive(); }
   if (e.target.id === 'profile-dialect' && S.user) {
     const d = e.target.value;
     try {

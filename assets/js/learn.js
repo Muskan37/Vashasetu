@@ -1,0 +1,101 @@
+(() => {
+'use strict';
+const $=id=>document.getElementById(id);
+const K='vashasetu-v4-courses';
+const state={languages:[],src:'',tgt:'',units:[],items:[],current:null,step:0,answered:false,guestDone:{},guest:true,previews:[],previewIndex:0};
+try {state.guestDone=JSON.parse(localStorage.getItem(K)||'{}')||{};}catch(e){state.guestDone={};}
+const ICONS={sounds:'🔊',letters:'অ',phonetics:'🔤',words:'📖',sentences:'💬',conversations:'👥'};
+const safeId=x=>typeof x==='string'&&/^[a-z0-9-]{1,60}$/.test(x)?x:'';
+const name=id=>state.languages.find(x=>x.language_id===id)?.display_name||id;
+const el=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n;};
+const pairKey=()=>state.src+'__'+state.tgt;
+const getDone=u=>state.guest?(state.guestDone[pairKey()]?.[u.unit_key]||[]).length:Number(u.mastered)||0;
+const setDone=(u,item)=>{const key=pairKey();state.guestDone[key]??={};let values=new Set(state.guestDone[key][u.unit_key]||[]);values.add(item.item_kind+':'+item.id);state.guestDone[key][u.unit_key]=[...values];try{localStorage.setItem(K,JSON.stringify(state.guestDone))}catch(e){}};
+async function api(data={},post=false){const url='api/learn.php'+(post?'':'?'+new URLSearchParams(data));const r=await fetch(url,post?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}:{cache:'no-store'});const b=await r.json();if(!r.ok||!b.success)throw new Error(b.error||'Request failed');return b;}
+const params=(more={})=>({source:state.src,target:state.tgt,...more});
+function showOnly(which){for(const id of ['unitsView','exerciseView','previewView'])$(id).hidden=id!==which;}
+function selectionValid(){return !!(state.src&&state.tgt&&state.src!==state.tgt);}
+async function init(){try{
+ const data=await api({action:'languages'});state.languages=data.languages;
+ let savedSrc='',savedTgt='';try{savedSrc=safeId(localStorage.getItem('vashasetu-v4-source')||'');savedTgt=safeId(localStorage.getItem('vashasetu-v4-target')||'');}catch(e){}
+ for(const id of ['sourceLang','targetLang']){const s=$(id);s.replaceChildren();for(const l of state.languages){let opt=el('option','',l.display_name+' · '+l.language_type.replaceAll('_',' '));opt.value=l.language_id;s.add(opt);}}
+ state.src=state.languages.some(x=>x.language_id===savedSrc)?savedSrc:'noakhali-bn';
+ state.tgt=state.languages.some(x=>x.language_id===savedTgt)?savedTgt:'standard';
+ if(state.src===state.tgt)state.tgt=state.src==='standard'?'noakhali-bn':'standard';
+ $('sourceLang').value=state.src;$('targetLang').value=state.tgt;
+ $('sourceLang').onchange=async()=>{state.src=$('sourceLang').value;await selectionChanged()};
+ $('targetLang').onchange=async()=>{state.tgt=$('targetLang').value;await selectionChanged()};
+ $('swapLang').onclick=async()=>{[state.src,state.tgt]=[state.tgt,state.src];$('sourceLang').value=state.src;$('targetLang').value=state.tgt;await selectionChanged()};
+ await selectionChanged();
+ }catch(e){$('unitList').textContent='Could not load languages: '+e.message+'. Run setup.php.';}}
+async function selectionChanged(){showOnly('unitsView');state.current=null;
+ if(!selectionValid()){$('unitList').textContent='Choose two different languages to build your learning path.';$('courseNotice').textContent='Source and target languages must be different.';$('chosenCourse').textContent='';return;}
+ try{localStorage.setItem('vashasetu-v4-source',state.src);localStorage.setItem('vashasetu-v4-target',state.tgt);}catch(e){}
+ $('chosenCourse').textContent=name(state.src)+' → '+name(state.tgt);
+ $('unitList').textContent='Loading this language pair…';
+ try{const d=await api(params({action:'course_units'}));state.units=d.units;state.guest=d.guest;
+ $('courseNotice').textContent=d.course_status==='starter_core'
+ ?'Standard Bangla starter lessons are available. Some prompts remain in English until your chosen teaching language has reviewed translations; the starter lessons themselves still need educator review.'
+ :d.course_status==='some_verified_lessons'
+ ?'Community-verified lessons are available where marked. Other stages have research previews or await authentic recordings and educator review.'
+ :'This pair has no community-verified graded course yet. Where research samples exist, browse ungraded word and sentence flashcards while translations, scripts and recordings are reviewed.';
+ renderUnits();
+ }catch(e){$('unitList').textContent='Could not load course: '+e.message+'. Run setup.php to add the V4 course tables.';}}
+function renderUnits(){const root=$('unitList');root.replaceChildren();if(!state.units.length){root.textContent='No learning stages found.';return;}
+ state.units.forEach((u,idx)=>{const total=Number(u.total_items)||0;const done=getDone(u);
+ const prev=state.units[idx-1];const sequential=state.tgt==='standard';const locked=sequential&&idx>0&&getDone(prev)<Number(prev.total_items);
+ const card=el('div','unit stageCard');const bubble=el('span','bubble',locked?'🔒':(ICONS[u.stage]||'★'));card.append(bubble);
+ const title=el('span','stageDetail');title.append(el('strong','',u.title_en),el('small','',u.title_bn+' · '+u.description_en));card.append(title);
+ const actions=el('div','stageActions');
+ if(total>0){const btn=el('button','stageBtn',locked?'Locked':done===total?'Review ✓':`Start · ${done}/${total}`);btn.type='button';btn.disabled=locked;btn.onclick=()=>openUnit(u);actions.append(btn);}
+ else actions.append(el('span','stagePending','Awaiting verified lessons'));
+ if(u.preview_available&&state.tgt!=='standard'){
+ const btn=el('button','previewBtn','Research flashcards');btn.type='button';btn.onclick=()=>openPreview(u);actions.append(btn);
+ }
+ card.append(actions);root.append(card);
+ });}
+function supportsAudio(){return 'speechSynthesis' in window;}
+function speakBangla(text){if(!supportsAudio()){alert('Speech synthesis is not available here.');return;}
+ const synth=window.speechSynthesis;const voice=synth.getVoices().find(v=>/^bn([-_]|$)/i.test(v.lang));
+ if(!voice){alert('No Bangla voice is installed on this device. The written exercises remain available.');return;}
+ synth.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='bn-BD';u.voice=voice;u.rate=.8;synth.speak(u);
+}
+async function openUnit(u){state.current=u;state.step=0;try{const d=await api(params({action:'course_items',unit:u.unit_key}));state.items=d.items;if(!state.items.length)throw Error('No reviewed exercise items for this pair');showOnly('exerciseView');renderQuestion();window.scrollTo({top:0,behavior:'smooth'});}catch(e){alert(e.message);}}
+function renderQuestion(){const q=state.items[state.step];if(!q){finish();return;}state.answered=false;
+ $('exerciseTitle').textContent=state.current.title_en+' · '+name(state.tgt);$('counter').textContent=(state.step+1)+' / '+state.items.length;
+ $('progressBar').style.width=(state.step*100/state.items.length)+'%';$('prompt').textContent=q.prompt_native||q.prompt;
+ $('soundIpa').textContent=[q.ipa,q.romanization].filter(Boolean).join(' · ');$('symbol').textContent='';
+ const audio=$('listenBtn');audio.hidden=true;audio.onclick=null;
+ if(q.audio_path&&!q.audio_path.includes('..')&&/^assets\/audio\/[a-zA-Z0-9_\/.\-]+\.(mp3|ogg|wav)$/i.test(q.audio_path)){
+  audio.hidden=false;audio.textContent='🔊 Listen to native recording';audio.onclick=()=>new Audio(q.audio_path).play().catch(()=>alert('Recording unavailable'));
+ }else if(state.tgt==='standard'&&q.speech_text&&supportsAudio()){
+  audio.hidden=false;audio.textContent='🔊 Listen to Bangla';audio.onclick=()=>speakBangla(q.speech_text);
+ }
+ $('sound').style.display='block';$('feedback').textContent='';$('nextBtn').hidden=true;
+ const options=[...q.options];for(let i=options.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[options[i],options[j]]=[options[j],options[i]];}
+ const ans=$('answers');ans.replaceChildren();for(const choice of options){const b=el('button','answer',choice);b.type='button';b.onclick=()=>choose(q,b,choice);ans.append(b);}
+}
+async function choose(q,btn,value){if(state.answered)return;state.answered=true;
+ let r;try{r=await api(params({action:'course_answer',item_kind:q.item_kind,item_id:q.id,answer:value}),true);}catch(e){state.answered=false;$('feedback').textContent='Could not check: '+e.message;return;}
+ for(const b of $('answers').children){b.disabled=true;if(b.textContent===r.correct_answer)b.classList.add('correct');if(!r.correct&&b===btn)b.classList.add('wrong');}
+ $('symbol').textContent=r.display_text||'';$('feedback').textContent=(r.correct?'Correct! ':'Try again. Correct answer: '+r.correct_answer+'. ')+(r.gloss_en||'');
+ $('feedback').style.color=r.correct?'#21734e':'#b44932';if(r.correct&&!r.saved)setDone(state.current,q);
+ const next=$('nextBtn');next.hidden=false;next.textContent=r.correct?(state.step+1===state.items.length?'Finish ✓':'Continue →'):'Retry ↻';next.onclick=()=>{if(r.correct)state.step++;renderQuestion()};
+}
+async function finish(){showOnly('unitsView');if(!state.guest){try{const d=await api(params({action:'course_units'}));state.units=d.units;}catch(e){}}renderUnits();$('unitsView').scrollIntoView({behavior:'smooth'});}
+async function openPreview(u){state.current=u;state.previews=[];state.previewIndex=0;showOnly('previewView');$('previewTitle').textContent='Research flashcards: '+u.title_en;$('previewWarning').textContent='Loading…';$('previewCards').textContent='Loading examples…';
+ try{const d=await api(params({action:'course_preview',stage:u.stage}));state.previews=d.samples;$('previewWarning').textContent=d.warning;renderPreview();window.scrollTo({top:0,behavior:'smooth'});}catch(e){$('previewCards').textContent='Preview unavailable: '+e.message;}}
+function renderPreview(){const root=$('previewCards');root.replaceChildren();const rows=state.previews;
+ if(!rows.length){root.append(el('p','emptyState','There are no research samples for this target language yet. Authentic material is needed before we can teach this stage.'));$('previewCount').textContent='0 / 0';return;}
+ const i=state.previewIndex,row=rows[i];$('previewCount').textContent=(i+1)+' / '+rows.length;
+ const card=el('article','card flashcard');card.append(el('small','flashlabel','TARGET · '+name(state.tgt)));
+ card.append(el('h3','targetWord',row.target_text));card.append(el('small','referenceLabel',row.source_text?'TEACHING LANGUAGE · '+name(state.src):'STANDARD BANGLA REFERENCE · NOT IN '+name(state.src)));
+ card.append(el('p','nativeMeaning',row.source_text||row.standard_bangla));
+ if(row.source_text&&row.source_text!==row.standard_bangla)card.append(el('p','minor','Standard Bangla reference: '+row.standard_bangla));
+ card.append(el('p','minor','Source: '+row.source_dataset+' · '+row.review_status+' · '+(row.source_fallback?'No matching source-language expression available':'Aligned on a shared Standard Bangla gloss; not independently verified')));
+ const nav=el('div','previewNav');const back=el('button','stageBtn','← Previous');back.disabled=i===0;back.onclick=()=>{state.previewIndex--;renderPreview()};
+ const next=el('button','stageBtn','Next →');next.disabled=i===rows.length-1;next.onclick=()=>{state.previewIndex++;renderPreview()};nav.append(back,next);card.append(nav);root.append(card);
+}
+$('goBack').onclick=finish;$('previewBack').onclick=()=>showOnly('unitsView');
+init();
+})();

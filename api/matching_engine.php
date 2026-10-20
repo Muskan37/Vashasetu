@@ -694,7 +694,13 @@ function translate_core(PDO $pdo, string $text, string $src = 'auto', string $tg
             foreach ($tokens as $t) $breakdown[] = ['src' => $t, 'std' => $t, 'matched' => false, 'kind' => 'standard'];
         } else {
             $hit = false;
-            if (USE_SENTENCE_MEMORY) {
+            // Prefer language-specific exact expressions from publication-reviewed material.
+            // NEVER combine meanings across regions when auto-detection is uncertain.
+            $st = $pdo->prepare('SELECT DISTINCT standard_bangla FROM regional_exact_pairs WHERE variety=? AND source_text=? LIMIT 2');
+            $st->execute([$srcVar, $norm]);
+            $exact = $st->fetchAll(PDO::FETCH_COLUMN);
+            if (count($exact) === 1) $hit = $exact[0];
+            if ($hit === false && USE_SENTENCE_MEMORY) {
                 $st = $pdo->prepare('SELECT standard_text FROM sentences WHERE variety = ? AND text = ? LIMIT 1');
                 $st->execute([$srcVar, $norm]);
                 $hit = $st->fetchColumn();
@@ -703,13 +709,12 @@ function translate_core(PDO $pdo, string $text, string $src = 'auto', string $tg
                 $stdText = $hit; $memory = true;
                 $a = $tokens; $b = bn_tokens($hit);
                 foreach ($a as $i => $t) $breakdown[] = ['src' => $t, 'std' => (count($a) === count($b) ? $b[$i] : $t), 'matched' => true, 'kind' => 'sentence'];
-                $notes[] = 'This exact sentence is in the dialect corpus.';
+                $notes[] = 'Exact variety-specific phrase match (BD-Dialect candidate; source review is not a guarantee of correctness).';
             } else {
+                // Dialect auto-detection is uncertain for short text. Cross-dialect pooling removed.
                 $post = null;
                 if (($src === 'auto' || $src === 'banglish') && $srcVar !== 'standard' && ($det['confidence'] < 0.9 || count($tokens) <= 4)) {
-                    $post = [];
-                    foreach ($det['scores'] ?? [] as $sc) $post[$sc['variety']] = (float) $sc['p'];
-                    $notes[] = 'The dialect was not certain, so words were matched across all dialects.';
+                    $notes[] = 'Dialect uncertain. Choose the source variety manually to avoid an incorrect regional meaning.';
                 }
                 $rows = dialect_to_standard($pdo, $srcVar, $tokens, $post);
                 foreach ($rows as $r) $breakdown[] = ['src' => $r['src'], 'std' => $r['std'], 'matched' => $r['matched'], 'kind' => $r['kind'], 'conf' => $r['conf']];
