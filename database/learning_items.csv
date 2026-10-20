@@ -1,0 +1,59 @@
+unit_key,item_order,exercise_type,prompt,display_bn,ipa,romanization,options_json,correct_answer,gloss_en,speech_bn,review_status
+sounds-1,1,listen_choose,Listen and select the vowel sound,আ,/a/,a,"[""আ"", ""ই"", ""উ"", ""ও""]",আ,Open vowel sound,আ,starter_content_needs_educator_review
+sounds-1,2,listen_choose,Listen and select the vowel sound,ই,/i/,i,"[""ই"", ""আ"", ""ও"", ""উ""]",ই,High front vowel sound,ই,starter_content_needs_educator_review
+sounds-1,3,listen_choose,Listen and select the vowel sound,উ,/u/,u,"[""উ"", ""ই"", ""আ"", ""এ""]",উ,High rounded vowel sound,উ,starter_content_needs_educator_review
+sounds-1,4,listen_choose,Listen and select the vowel sound,এ,/e/,e,"[""এ"", ""আ"", ""উ"", ""ও""]",এ,Mid front vowel sound,এ,starter_content_needs_educator_review
+sounds-1,5,listen_choose,Listen and select the vowel sound,ও,/o/,o,"[""ও"", ""ই"", ""আ"", ""এ""]",ও,Mid rounded vowel sound,ও,starter_content_needs_educator_review
+sounds-1,6,listen_choose,Listen and select the vowel sound,অ,/ɔ/,ô,"[""অ"", ""আ"", ""ই"", ""উ""]",অ,Open-mid vowel sound (pronunciation varies),অ,starter_content_needs_educator_review
+sounds-2,1,listen_choose,Listen and select the consonant,ক,/k/,,"[""ক"", ""ম"", ""ত"", ""প""]",ক,Bangla consonant quality varies by context and speaker.,ক,starter_content_needs_educator_review
+sounds-2,2,listen_choose,Listen and select the consonant,ম,/m/,,"[""ম"", ""ক"", ""ন"", ""স""]",ম,Bangla consonant quality varies by context and speaker.,ম,starter_content_needs_educator_review
+sounds-2,3,listen_choose,Listen and select the consonant,ন,/n/,,"[""ন"", ""ম"", ""প"", ""ল""]",ন,Bangla consonant quality varies by context and speaker.,ন,starter_content_needs_educator_review
+sounds-2,4,listen_choose,Listen and select the consonant,প,/p/,,"[""প"", ""ত"", ""ক"", ""ম""]",প,Bangla consonant quality varies by context and speaker.,প,starter_content_needs_educator_review
+sounds-2,5,listen_choose,Listen and select the consonant,স,/ʃ/ or /s/,,"[""স"", ""ম"", ""ন"", ""প""]",স,Bangla consonant quality varies by context and speaker.,স,starter_content_needs_educator_review
+sounds-2,6,listen_choose,Listen and select the consonant,ত,/t̪/,,"[""ত"", ""প"", ""ক"", ""ম""]",ত,Bangla consonant quality varies by context and speaker.,ত,starter_content_needs_educator_review
+letters-1,1,letter_choice,Which letter matches the highlighted sound?,অ,/ɔ/,ô,"[""অ"", ""ই"", ""উ"", ""এ""]",অ,Independent vowel,অ,starter_content_needs_educator_review
+letters-1,2,letter_choice,Which letter matches the highlighted sound?,আ,/a/,a,"[""আ"", ""উ"", ""এ"", ""ও""]",আ,Independent vowel,আ,starter_content_needs_educator_review
+letters-1,3,letter_choice,Which letter matches the highlighted sound?,ই,/i/,i,"[""ই"", ""এ"", ""ও"", ""অ""]",ই,Independent vowel,ই,starter_content_needs_educator_review
+letters-1,4,letter_choice,Which letter matches the highlighted sound?,উ,/u/,u,"[""উ"", ""ও"", ""অ"", ""আ""]",উ,Independent vowel,উ,starter_content_needs_educator_review
+letters-1,5,letter_choice,Which letter matches the highlighted sound?,এ,/e/,e,"[""এ"", ""অ"", ""আ"", ""ই""]",এ,Independent vowel,এ,starter_content_needs_educator_review
+letters-1,6,letter_choice,Which letter matches the highlighted sound?,ও,/o/,o,"[""ও"", ""আ"", ""ই"", ""উ""]",ও,Independent vowel,ও,starter_content_needs_educator_review
+letters-2,1,letter_choice,Which letter matches the highlighted sound?,ক,/k/,k,"[""ক"", ""গ"", ""ম"", ""ন""]",ক,Consonant letter,ক,starter_content_needs_educator_review
+letters-2,2,letter_choice,Which letter matches the highlighted sound?,খ,/kʰ/,kh,"[""খ"", ""ম"", ""ন"", ""প""]",খ,Consonant letter,খ,starter_content_needs_educator_review
+letters-2,3,letter_choice,Which letter matches the highlighted sound?,গ,/ɡ/,g,"[""গ"", ""ন"", ""প"", ""ক""]",গ,Consonant letter,গ,starter_content_needs_educator_review
+letters-2,4,letter_choice,Which letter matches the highlighted sound?,ম,/m/,m,"[""ম"", ""প"", ""ক"", ""খ""]",ম,Consonant letter,ম,starter_content_needs_educator_review
+letters-2,5,letter_choice,Which letter matches the highlighted sound?,ন,/n/,n,"[""ন"", ""ক"", ""খ"", ""গ""]",ন,Consonant letter,ন,starter_content_needs_educator_review
+letters-2,6,letter_choice,Which letter matches the highlighted sound?,প,/p/,p,"[""প"", ""খ"", ""গ"", ""ম""]",প,Consonant letter,প,starter_content_needs_educator_review
+phonetics-1,1,phonetics_choice,Choose the written syllable for the sound,কা,/ka/,ka,"[""কা"", ""কি"", ""কু"", ""কে""]",কা,ক + া = কা,কা,starter_content_needs_educator_review
+phonetics-1,2,phonetics_choice,Choose the written syllable for the sound,কি,/ki/,ki,"[""কি"", ""কা"", ""কু"", ""কো""]",কি,ক + ি = কি,কি,starter_content_needs_educator_review
+phonetics-1,3,phonetics_choice,Choose the written syllable for the sound,কু,/ku/,ku,"[""কু"", ""কি"", ""কা"", ""কে""]",কু,ক + ু = কু,কু,starter_content_needs_educator_review
+phonetics-1,4,phonetics_choice,Choose the written syllable for the sound,কে,/ke/,ke,"[""কে"", ""কি"", ""কু"", ""কা""]",কে,ক + ে = কে,কে,starter_content_needs_educator_review
+phonetics-1,5,phonetics_choice,Choose the written syllable for the sound,মা,/ma/,ma,"[""মা"", ""মি"", ""মু"", ""মে""]",মা,ম + া = মা,মা,starter_content_needs_educator_review
+phonetics-1,6,phonetics_choice,Choose the written syllable for the sound,মি,/mi/,mi,"[""মি"", ""মা"", ""মু"", ""মে""]",মি,ম + ি = মি,মি,starter_content_needs_educator_review
+phonetics-2,1,phonetics_choice,Build the syllable you hear,না,/na/,na,"[""না"", ""নি"", ""নু"", ""নে""]",না,ন + া,না,starter_content_needs_educator_review
+phonetics-2,2,phonetics_choice,Build the syllable you hear,নি,/ni/,ni,"[""নি"", ""না"", ""নু"", ""নে""]",নি,ন + ি,নি,starter_content_needs_educator_review
+phonetics-2,3,phonetics_choice,Build the syllable you hear,পা,/pa/,pa,"[""পা"", ""পি"", ""পু"", ""পে""]",পা,প + া,পা,starter_content_needs_educator_review
+phonetics-2,4,phonetics_choice,Build the syllable you hear,পু,/pu/,pu,"[""পু"", ""পা"", ""পি"", ""পে""]",পু,প + ু,পু,starter_content_needs_educator_review
+phonetics-2,5,phonetics_choice,Build the syllable you hear,বা,/ba/,ba,"[""বা"", ""বি"", ""বু"", ""বে""]",বা,ব + া,বা,starter_content_needs_educator_review
+phonetics-2,6,phonetics_choice,Build the syllable you hear,সে,/ʃe/,she,"[""সে"", ""সা"", ""সি"", ""সু""]",সে,স + ে,সে,starter_content_needs_educator_review
+words-1,1,word_choice,Which Bangla word means “mother”?,মা,,ma,"[""মা"", ""বাবা"", ""ভাই"", ""বোন""]",মা,mother,মা,starter_content_needs_educator_review
+words-1,2,word_choice,Which Bangla word means “father”?,বাবা,,baba,"[""বাবা"", ""মা"", ""ভাই"", ""বোন""]",বাবা,father,বাবা,starter_content_needs_educator_review
+words-1,3,word_choice,Which Bangla word means “brother”?,ভাই,,bhai,"[""ভাই"", ""মা"", ""বাবা"", ""বোন""]",ভাই,brother,ভাই,starter_content_needs_educator_review
+words-1,4,word_choice,Which Bangla word means “sister”?,বোন,,bon,"[""বোন"", ""মা"", ""বাবা"", ""ভাই""]",বোন,sister,বোন,starter_content_needs_educator_review
+words-1,5,word_choice,Which Bangla word means “name”?,নাম,,nam,"[""নাম"", ""মা"", ""বাবা"", ""ভাই""]",নাম,name,নাম,starter_content_needs_educator_review
+words-1,6,word_choice,Which Bangla word means “book”?,বই,,boi,"[""বই"", ""মা"", ""বাবা"", ""ভাই""]",বই,book,বই,starter_content_needs_educator_review
+words-2,1,word_choice,Which Bangla word means “water”?,পানি,,pani,"[""পানি"", ""ভাত"", ""ঘর"", ""হাত""]",পানি,water,পানি,starter_content_needs_educator_review
+words-2,2,word_choice,Which Bangla word means “cooked rice”?,ভাত,,bhat,"[""ভাত"", ""পানি"", ""ঘর"", ""হাত""]",ভাত,cooked rice,ভাত,starter_content_needs_educator_review
+words-2,3,word_choice,Which Bangla word means “home/room”?,ঘর,,ghor,"[""ঘর"", ""পানি"", ""ভাত"", ""হাত""]",ঘর,home/room,ঘর,starter_content_needs_educator_review
+words-2,4,word_choice,Which Bangla word means “hand”?,হাত,,hat,"[""হাত"", ""পানি"", ""ভাত"", ""ঘর""]",হাত,hand,হাত,starter_content_needs_educator_review
+words-2,5,word_choice,Which Bangla word means “flower”?,ফুল,,phul,"[""ফুল"", ""পানি"", ""ভাত"", ""ঘর""]",ফুল,flower,ফুল,starter_content_needs_educator_review
+words-2,6,word_choice,Which Bangla word means “tea”?,চা,,cha,"[""চা"", ""পানি"", ""ভাত"", ""ঘর""]",চা,tea,চা,starter_content_needs_educator_review
+sentences-1,1,sentence_choice,Which sentence means “I am well.”?,আমি ভালো আছি।,,,"[""আমি ভালো আছি।"", ""এটা আমার বই।"", ""আমার নাম রবি।"", ""এটা পানি।""]",আমি ভালো আছি।,I am well.,আমি ভালো আছি।,starter_content_needs_educator_review
+sentences-1,2,sentence_choice,Which sentence means “This is my book.”?,এটা আমার বই।,,,"[""এটা আমার বই।"", ""আমি ভালো আছি।"", ""আমার নাম রবি।"", ""এটা পানি।""]",এটা আমার বই।,This is my book.,এটা আমার বই।,starter_content_needs_educator_review
+sentences-1,3,sentence_choice,Which sentence means “My name is Robi.”?,আমার নাম রবি।,,,"[""আমার নাম রবি।"", ""আমি ভালো আছি।"", ""এটা আমার বই।"", ""এটা পানি।""]",আমার নাম রবি।,My name is Robi.,আমার নাম রবি।,starter_content_needs_educator_review
+sentences-1,4,sentence_choice,Which sentence means “This is water.”?,এটা পানি।,,,"[""এটা পানি।"", ""আমি ভালো আছি।"", ""এটা আমার বই।"", ""আমার নাম রবি।""]",এটা পানি।,This is water.,এটা পানি।,starter_content_needs_educator_review
+sentences-1,5,sentence_choice,Which sentence means “I eat rice.”?,আমি ভাত খাই।,,,"[""আমি ভাত খাই।"", ""আমি ভালো আছি।"", ""এটা আমার বই।"", ""আমার নাম রবি।""]",আমি ভাত খাই।,I eat rice.,আমি ভাত খাই।,starter_content_needs_educator_review
+sentences-2,1,sentence_choice,Which sentence means “How are you?”?,তুমি কেমন আছো?,,,"[""তুমি কেমন আছো?"", ""তোমার নাম কী?"", ""আমি বাংলা শিখছি।"", ""ধন্যবাদ।""]",তুমি কেমন আছো?,How are you?,তুমি কেমন আছো?,starter_content_needs_educator_review
+sentences-2,2,sentence_choice,Which sentence means “What is your name?”?,তোমার নাম কী?,,,"[""তোমার নাম কী?"", ""তুমি কেমন আছো?"", ""আমি বাংলা শিখছি।"", ""ধন্যবাদ।""]",তোমার নাম কী?,What is your name?,তোমার নাম কী?,starter_content_needs_educator_review
+sentences-2,3,sentence_choice,Which sentence means “I am learning Bangla.”?,আমি বাংলা শিখছি।,,,"[""আমি বাংলা শিখছি।"", ""তুমি কেমন আছো?"", ""তোমার নাম কী?"", ""ধন্যবাদ।""]",আমি বাংলা শিখছি।,I am learning Bangla.,আমি বাংলা শিখছি।,starter_content_needs_educator_review
+sentences-2,4,sentence_choice,Which sentence means “Thank you.”?,ধন্যবাদ।,,,"[""ধন্যবাদ।"", ""তুমি কেমন আছো?"", ""তোমার নাম কী?"", ""আমি বাংলা শিখছি।""]",ধন্যবাদ।,Thank you.,ধন্যবাদ।,starter_content_needs_educator_review
+sentences-2,5,sentence_choice,Which sentence means “I want water.”?,আমি পানি চাই।,,,"[""আমি পানি চাই।"", ""তুমি কেমন আছো?"", ""তোমার নাম কী?"", ""আমি বাংলা শিখছি।""]",আমি পানি চাই।,I want water.,আমি পানি চাই।,starter_content_needs_educator_review

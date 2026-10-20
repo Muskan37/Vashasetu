@@ -1,0 +1,25 @@
+﻿language_id,display_name,type,existing_app_key,scripts,app_status,geography_nonexclusive,notes
+standard,Standard Bangla,standard_bangla,,Bengali,active,Bangladesh,Standard-language target; not a regional dialect
+barishal-bn,Barishal,regional_bangla,Barishal,Bengali,active,Barishal region,Dialect distribution is not identical to administrative boundaries
+chattogram-bn,Chattogram / Chatgaiya,regional_bangla,Chattogram,Bengali,active,Chattogram region,Can be treated as a distinct language variety in linguistic classification
+mymensingh-bn,Mymensingh,regional_bangla,Mymensingh,Bengali,active,Mymensingh region,Subregional variation
+noakhali-bn,Noakhali,regional_bangla,Noakhali,Bengali,active,Noakhali region,Subregional variation
+rajshahi-bn,Rajshahi,regional_bangla,Rajshahi,Bengali,active_low_data,Rajshahi region,Low dataset coverage
+sylheti,Sylheti,regional_or_separate_language,Sylheti,Bengali and Syloti Nagri,active,Sylhet region and diaspora,Often treated as separate language; do not collapse identity into district label
+rangpur-bn,Rangpur / Rangpuri,regional_bangla,Rangpur,Bengali,data_needed,Rangpur region,Distinguish local Rangpuri/Rajbanshi varieties
+khulna-bn,Khulna,regional_bangla,Khulna,Bengali,data_needed,Khulna region,Do not substitute Narail data as identical
+narail-bn,Narail,regional_bangla,Narail,Bengali,data_needed,Narail region,Specific Narail variety
+dhaka-bn,Dhaka / Old Dhaka,regional_bangla,Dhaka,Bengali,data_needed,Dhaka,Old Dhaka / Dhakaiya needs its own varieties and evidence
+chakma,Chakma,indigenous_language,,Chakma and Bengali transliteration,research_examples_only,Chattogram Hill Tracts and communities elsewhere,Distinct language; display script and romanization separately
+marma,Marma,indigenous_language,,Myanmar script and Bengali transliteration,research_examples_only,Chattogram Hill Tracts and communities elsewhere,Distinct language; not a Chattogram dialect
+garo,Garo / A.chik,indigenous_language,,Latin and Bengali transliteration,research_examples_only,Mymensingh region and others,Distinct language; choose community spelling conventions
+tripura,Tripura / Kokborok varieties,indigenous_language,,Bengali and Latin,data_needed,Chattogram Hill Tracts and elsewhere,Tripura varieties differ; verify language and scripts
+sadri,Sadri,indigenous_or_community_language,,Devanagari/Bengali/Latin,data_needed,Northern Bangladesh tea communities and others,Confirm local orthography and consent
+santali,Santali,indigenous_language,,Ol Chiki and Bengali,data_needed,North-western Bangladesh and elsewhere,Script identity important
+khasi,Khasi,indigenous_language,,Latin,data_needed,Sylhet region and elsewhere,Distinct language
+mro,Mro,indigenous_language,,Mro script,data_needed,Bandarban and elsewhere,No validated direct Bangla dataset in uploaded app
+tanchangya,Tanchangya,indigenous_language,,Varies,data_needed,Hill Tracts and elsewhere,No validated direct Bangla dataset in uploaded app
+bawm,Bawm,indigenous_language,,Latin,data_needed,Hill Tracts and elsewhere,No validated direct Bangla dataset in uploaded app
+khumi,Khumi,indigenous_language,,Latin / community orthographies,data_needed,Hill Tracts and elsewhere,No validated direct Bangla dataset in uploaded app
+rakhine,Rakhine,indigenous_language,,Myanmar script,data_needed,Coastal Bangladesh and elsewhere,Distinct language
+meitei,Meitei/Manipuri,indigenous_language,,Meitei Mayek and Bengali,data_needed,Sylhet region and elsewhere,Distinct language

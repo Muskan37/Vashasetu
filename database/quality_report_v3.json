@@ -1,0 +1,17 @@
+{
+  "sentences_retained": 67605,
+  "sentence_conflicts": 0,
+  "word_meanings_attested": 7607,
+  "word_conflicts": 4,
+  "status_sentences": {
+    "needs_native_review": 60814,
+    "publication_reviewed_not_reaudited": 6771,
+    "research_corpus_not_reaudited": 20
+  },
+  "status_words": {
+    "needs_native_review": 5275,
+    "existing_curated_needs_recheck": 37,
+    "publication_reviewed_not_reaudited": 2295
+  },
+  "note": "Publication-reviewed does not mean independently reaudited. Candidate sentences excluded from live exact translation but included for corpus/training. Native-language references are Bengali-script transliterations."
+}
