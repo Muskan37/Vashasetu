@@ -1,0 +1,792 @@
+﻿language_name,source_text,distinct_standard_bangla_meanings,meanings,source_datasets,status
+Barishal,অইবে,2,উপাদান | করছি,ONUBAD,review_before_training
+Barishal,অ্যাহা তুই দি কসাই হায় তোরে ডাক্তার কয় কেডা,2,তুই ডাক্তার | তুই ডাক্তার না কসাই,Combined-CC; Dwadash,review_before_training
+Barishal,আই,2,আসি | ষ্টিতে,ONUBAD,review_before_training
+Barishal,আইছে,2,আসছে | এসেছে,ONUBAD,review_before_training
+Barishal,আইছো,4,আসছ | এসেছ | এসেছিস | এসেছো,ONUBAD,review_before_training
+Barishal,আইজ কয় তারিখ,2,আজকে কত তারিখ | আজকে কতো তারিখ,Dwadash; Vashantor,review_before_training
+Barishal,আইজ গরীব দেইখ্যা পিরথিবিতে থাহি বড়লোক হইলে মঙ্গল গ্রহে থাকতাম,2,আজ গরিব বলে পৃথিবীতে থাকি বড়লোক হলে মঙ্গল গ্রহে থাকতাম | আজ গরিব বলে পৃথিবীতে থাকিবড়লোক হলে মঙ্গল গ্রহে থাকতাম,Combined-CC; Vashantor,review_before_training
+Barishal,আইজ মোর জন্মদিন,2,আজকে আমার জন্মদিন | আজকে আম্র জন্মদিন,Dwadash; Vashantor,review_before_training
+Barishal,আছো,2,আছ | আছিস,ONUBAD,review_before_training
+Barishal,আব্বার,2,অহংকার | বাবার,ONUBAD,review_before_training
+Barishal,আমনেরা যারা মোরে এহনো চেনেন না,2,আপনা যারা আমাকে এখনো চিনেন না | আপনারা যারা আমাকে এখনো চিনেন না,Dwadash; Vashantor,review_before_training
+Barishal,আমু,2,আসব | আসবো,ONUBAD,review_before_training
+Barishal,আম্মে,2,আপনি | হবে,ONUBAD,review_before_training
+Barishal,আয়,2,আস | পুরষ্কার,ONUBAD,review_before_training
+Barishal,আর হ্যায় যদি ফিররা না আহে হ্যালে হ্যায় কহনোই তোমার আআল্লেহ না,2,আর যদি ফিরে না আসে তবে সে কখনই তোমার ছিল না | আর যদি ফিরে না আসেতবে সে কখনই তোমার ছিল না,Combined-CC; Vashantor,review_before_training
+Barishal,ইউক্কু বিলোই দুয়ারের সামনে বইয়া রইছে,3,একটি বিড়াল দরজার সামনে বসে আছে | বসে আছে | সামনে বসে আছে,Dwadash,review_before_training
+Barishal,উচা,2,উঁচু | লম্বা,ONUBAD,review_before_training
+Barishal,উল্ডা,2,উল্টা | উল্টো,ONUBAD,review_before_training
+Barishal,এইডা মোর বই,2,এটা আমার বই | যে আমার বই,Dwadash,review_before_training
+Barishal,এইয়া কেমনে সম্ভব,2,এ কি করে সম্ভব | কি করে সম্ভব,Dwadash,review_before_training
+Barishal,এইরহম,2,এইভাবে | এরকম,ONUBAD,review_before_training
+Barishal,এইহানে থাকলে মুই খুশি,2,এখানে থাইকলে আমি খুশি | এখানে থাকলে আমি খুশি,Combined-CC; Dwadash,review_before_training
+Barishal,এউক্কা কথাও আর কইয়ো না,2,একটা কথাও আর বলবা না | একটা কথাও আর বলবে না,Dwadash; Vashantor,review_before_training
+Barishal,এউক্কা রঙ্গিন ছবি তোলতে হইবো মোগো,2,আমাদের একটা রঙ্গিন ছবি তুলতে হবে | সবার একটা রঙ্গিন ছবি তুলতে হবে,Dwadash,review_before_training
+Barishal,এহন তুমি গান গাইতে পারবা না,2,একখন তুমি গান গাইতে পারবে না | এখন তুমি গান গাইতে পারবে না,Dwadash; Vashantor,review_before_training
+Barishal,কও,2,চুপ | বলো,ONUBAD,review_before_training
+Barishal,কতোডি বই কিনছি,2,কয়েকটি বই কিনেছি | বেশ কয়েকটি বই কিনেছি,Dwadash,review_before_training
+Barishal,কথা কইতে পাইরা ভালো লাগছে আমার,2,কথা বলতে অনেক ভালো লাগে | কথা বলতে আমার অনেক ভালো লাগে,Dwadash,review_before_training
+Barishal,কন,2,বলুন | বলেন,ONUBAD,review_before_training
+Barishal,কবি,2,চুরির | বলবি,ONUBAD,review_before_training
+Barishal,কাইলগো,2,আগামি কাল | কালকে,ONUBAD,review_before_training
+Barishal,কাউয়া,2,কাক | ফলের,ONUBAD,review_before_training
+Barishal,কাডা,2,কাঁটা | কাটা,ONUBAD,review_before_training
+Barishal,কি হরো,2,কি কর | কি করো,Dwadash,review_before_training
+Barishal,কুত্তার,2,কুকুরের | রঙ্গে,ONUBAD,review_before_training
+Barishal,কোম,2,অল্প | কম,ONUBAD,review_before_training
+Barishal,কোম্বা,2,পেঁপে | পেপে,ONUBAD,review_before_training
+Barishal,কোম্মে,2,কোথা | কোথায়,ONUBAD,review_before_training
+Barishal,ক্যা,3,কেন | কেনো | চেহারা,ONUBAD,review_before_training
+Barishal,খামু,2,খাই | খাব,ONUBAD,review_before_training
+Barishal,গায়ে,2,হাত | হাতেরটা,ONUBAD,review_before_training
+Barishal,গালে,2,গাল | পায়চারি,ONUBAD,review_before_training
+Barishal,গেলাম,2,গেছিলাম | যাই,ONUBAD,review_before_training
+Barishal,ঘ্রান,2,সুগন্ধ | সুগন্ধে,ONUBAD,review_before_training
+Barishal,চরমু,2,চড়বো | থাকার,ONUBAD,review_before_training
+Barishal,ছোডো,2,ছোট | ছোট্ট,ONUBAD,review_before_training
+Barishal,জৈষ্ট,2,জৈষ্ঠ | জৈষ্ঠ্য,ONUBAD,review_before_training
+Barishal,তারাহুরা,2,তাড়াতাড়ি | তারাতাড়ি,ONUBAD,review_before_training
+Barishal,তুমি কি মোরে ভালোবাসা দিবা,2,আপনি নিয়ম ভঙ্গ করেছেন | তুমি কি আমাকে ভালোবাসবে,Dwadash,review_before_training
+Barishal,তুমি কি মোরে মাইররা হালাইবা,2,আপনি খুব সাহসী | তুমি কি আমাকে মেরে ফেলবে,Dwadash,review_before_training
+Barishal,তুমি কি হরো,2,তুমি কি কর | তুমি কি করো,Dwadash,review_before_training
+Barishal,তুমি কোম্মে যাও,2,তুমি কোথায় যাও | তুমি কোথায় যাচ্ছ,Dwadash,review_before_training
+Barishal,তৃহা,2,তৃষ্ণা | পিপাসা,ONUBAD,review_before_training
+Barishal,তোমাগো বাড়ি কোম্মে,2,তোমাদের বাড়ি কোথায় | তোমাদের বাসা কোথায়,Dwadash; Vashantor,review_before_training
+Barishal,তোমার পছন্দের কতোডি বই কিনছি,2,তোমার পছন্দের কয়েকটি বই কিনেছি | তোমার পছন্দের বেশ কয়েকটি বই কিনেছি,Dwadash,review_before_training
+Barishal,থাহার,2,পায়ে | পায়েরটা,ONUBAD,review_before_training
+Barishal,দারে,2,করে | ধারে,ONUBAD,review_before_training
+Barishal,দিমু,4,ডাকব | দিব | দিবো | দেব,ONUBAD,review_before_training
+Barishal,দিয়া,3,দিয়ে | দ্বারা | মহিলার,ONUBAD,review_before_training
+Barishal,দুইডা,2,দুইটা | দুটো,ONUBAD,review_before_training
+Barishal,দেতে,2,আশা | বড়,ONUBAD,review_before_training
+Barishal,ধারে,2,কাছে | সংস্কৃতি,ONUBAD,review_before_training
+Barishal,নাহইল,2,নারকেল | নারিকেল,ONUBAD,review_before_training
+Barishal,পড়ালেহা,2,পড়ালেখা | পড়াশুনা,ONUBAD,review_before_training
+Barishal,পলাইছে,2,উপাদান | পালিয়েছে,ONUBAD,review_before_training
+Barishal,পাও,2,কিছুতেই | পা,ONUBAD,review_before_training
+Barishal,পারমু না,3,পরিব না | পারবো না | পারিব না,Dwadash; ONUBAD,review_before_training
+Barishal,পোলা,3,ছেলে | ছেলেমানুষী | পুত্র,ONUBAD,review_before_training
+Barishal,ফাইন্নে,2,কারনে | জন্য,ONUBAD,review_before_training
+Barishal,ব,2,বস | বসো,ONUBAD,review_before_training
+Barishal,বইন্না,2,ঝড় | বন্যা,ONUBAD,review_before_training
+Barishal,বলদ,2,পাগল | বোকা,ONUBAD,review_before_training
+Barishal,বাইর,2,বাহির | বের,ONUBAD,review_before_training
+Barishal,বিদেশ ঘোরতে যাওয়া মোর স্বপ্ন,2,বিদেশ ঘুরতে যাওয়া আমার স্বপ্ন | বিদেশে ঘুরতে যাওয়া আমার স্বপ্ন,Dwadash; Vashantor,review_before_training
+Barishal,বিয়ালে মায় মোর লইজ্ঞা হোয়ার স্যুপ রানছে,2,বিকালে আম্মু আমার জন্য শসার সুপ রান্না করেছে | বিকালে আম্মু আমার জন্য শসার সুপ রান্না করেছে x000D,Combined-CC; Vashantor,review_before_training
+Barishal,বিষ্টি,2,বৃষ্টি | ভাজা,ONUBAD,review_before_training
+Barishal,বেমালা,2,অনেক | খুবই,ONUBAD,review_before_training
+Barishal,বেমালা বেদ্দপ,2,খুবই বেয়াদব | মেয়েটি বেয়াদব,Dwadash,review_before_training
+Barishal,বেমালা সুন্দর,2,অনেক সুন্দর | খুব সুন্দর,ONUBAD; Vashantor,review_before_training
+Barishal,বেমালা সুন্দর তুমি পেরেমে পড়ছি মুই,2,কত সুন্দর তুমি প্রেমে পড়েছি আমি | কত সুন্দর তুমিপ্রেমে পড়েছি আমি,Combined-CC; Vashantor,review_before_training
+Barishal,বেহায়া,2,নির্লজ্ | বেহায়ার,ONUBAD,review_before_training
+Barishal,ব্যাইন্নাহালে,2,ভোরে | সকালবেলা,ONUBAD,review_before_training
+Barishal,ব্যাডা,2,পুরুষ | যুবক/ পুরুষ,ONUBAD,review_before_training
+Barishal,ভাই কি হরেন,2,ভাই ভাইয়া কী করছেন | ভাই/ভাইয়া কী করছেন,Combined-CC; Dwadash,review_before_training
+Barishal,ভালো লাগছে,3,অনেক ভালো লাগে | ভালো লাগলো | ভালো লাগে,Dwadash,review_before_training
+Barishal,ভাষাডা,2,করই | ভাষাটা,ONUBAD,review_before_training
+Barishal,ভেবাগ,2,দিতে | সব,ONUBAD,review_before_training
+Barishal,মধ্যে,2,ভিতর | মাধ্যমে,ONUBAD,review_before_training
+Barishal,মাইয়া,2,কন্যা | মেয়ে,ONUBAD,review_before_training
+Barishal,মাইয়াডা বেমালা বেদ্দপ,2,মেয়েটি খুবই বেয়াদপ | মেয়েটি খুবই বেয়াদব,Dwadash; Vashantor,review_before_training
+Barishal,মাতারি,2,গ্লাস | মহিলা,ONUBAD,review_before_training
+Barishal,মুই আমু না,2,আমি আসব না | আমি আসবো না,Dwadash; Vashantor,review_before_training
+Barishal,মুই আম্নের লগে আছি,2,আমি আপনার সঙ্গে আছি | আমি আপনার সাথে আছি,Vashantor,review_before_training
+Barishal,মুই কিছু খাইতে ভালো লাগে,4,আমার কিছু খেতে ভালো লাগে | আমার কিছু খেতে ভালো লাগে না | আমার খেতে ভালো লাগে | আমার খেতে ভালো লাগে না,Dwadash,review_before_training
+Barishal,মুই কিছু ভালো লাগে,2,আমার কিছু ভালো লাগে | আমার কিছু ভালো লাগে না,Dwadash,review_before_training
+Barishal,মুই খাইতে ভালো লাগে,2,আমার ভালো লাগে | আমার ভালো লাগে না,Dwadash,review_before_training
+Barishal,মুই খামু,2,আমি খাব | আমি খাবো,Dwadash,review_before_training
+Barishal,মুই খেলি,2,আমি খেলা করি | আমি খেলি,Dwadash,review_before_training
+Barishal,মুই তোমারে ভালোবাসি,3,আমি তোমাকে ভালবাসি | আমি তোমায় ভালবাসি | আমি তোমায় ভালোবাসি,Dwadash; Vashantor,review_before_training
+Barishal,মুই ভালো আছি,2,আমি ভাল আছি | আমি ভালো আছি,Dwadash; Vashantor,review_before_training
+Barishal,মুই ভালো নাই,2,আমি ভালো নাই | আমি ভালো নেই,Dwadash; Vashantor,review_before_training
+Barishal,মুরা,2,মুরগি | মুরগী,ONUBAD,review_before_training
+Barishal,মেলাদিন পর,2,অনেক দিন পর | অনেক সময় পর,Dwadash,review_before_training
+Barishal,মেহোমান,2,পালবে | মেহমান,ONUBAD,review_before_training
+Barishal,মোগো,3,আমাদের | বইটি | হবে,ONUBAD,review_before_training
+Barishal,মোর পরিবারে মুই মা আব্বা আর এউক্কা ছোডো বুইন,2,আমার পরিবারে আমি মা বাবা এবং একটি ছোট বোন | আমার পরিবারে আমি মা বাবা এবং একটি ছোট্ট বোন,Dwadash; Vashantor,review_before_training
+Barishal,মোর বাসায় গতকাইল রাইতে চুরি হইছে,2,আমার বাসায় গতকাল চুরি হয়েছে | আমার বাসায় গতকাল রাতে চুরি হয়েছে,Dwadash; Vashantor,review_before_training
+Barishal,মোর লগে,2,আমার সঙ্গে | আমার সাথে,ONUBAD,review_before_training
+Barishal,মোরা অপেক্ষা করমু,2,আমরা অপেক্ষা করব | আমরা অপেক্ষা করবো,Dwadash; Vashantor,review_before_training
+Barishal,মোরা জীবনে ভুলতে পারমু না,2,আমরা জীবনে ভুলতে পারব না | আমরা জীবনেও ভুলতে পারব না,Dwadash; Vashantor,review_before_training
+Barishal,যত কষ্ট হোউক বেবাক মাইনা নিমু হেইরপরেও হারাজীবন তোমারেই ভালোবাসমু,2,যত কষ্ট হোক সব মেনে নেবো তবুও চিরদিন তোমাকেই ভালোবাসবো | যত কষ্ট হোক সব মেনে নেবোতবুও চিরদিন তোমাকেই ভালোবাসবো,Combined-CC; Vashantor,review_before_training
+Barishal,যতদিন বাইচ্চা থাহি তোমারে মনে রাখমু,2,যতদিন বেঁচে থাকি তোমায় মনে রাখবো | যতদিন বেঁছে থাকি তোমায় মনে রাখবো,Combined-CC; Vashantor,review_before_training
+Barishal,যদি হ্যায় তোমার ধারে ফিররা আহে হ্যালে হ্যায় তোমারি আল্লেহ,2,যদি সে তোমার কাছে ফিরে আসে তবে সে তোমারই ছিল | যদি সে তোমার কাছে ফিরে আসেতবে সে তোমারই ছিল,Combined-CC; Vashantor,review_before_training
+Barishal,যহন কোনো ব্যাডা কোনো বেডিরে ভালবাসে তহন হ্যায় হ্যার লইজ্ঞা বেবাক কিছু করতে পারে,2,যখন কোন পুরুষ কোন নারীকে ভালবাসে তখন সে তার জন্য সব কিছু করতে পারে | যখন কোন পুরুষ কোন নারীকে ভালবাসেতখন সে তার জন্য সব কিছু করতে পারে,Combined-CC; Vashantor,review_before_training
+Barishal,যাইতে,2,প্রজন্মের | যেতে,ONUBAD,review_before_training
+Barishal,যামু,2,যাইব | যাবো,ONUBAD,review_before_training
+Barishal,রইছে,2,আছেন | রয়েছে,ONUBAD,review_before_training
+Barishal,রাখমু,2,রাখবে | রাখবো,ONUBAD,review_before_training
+Barishal,লও,2,চলো | নাও,ONUBAD,review_before_training
+Barishal,লও ঘুড্ডি উড়াই,2,চলো ঘুড়ি উড়াই | চলো ঘুড়ি উরাই,Dwadash; Vashantor,review_before_training
+Barishal,লগে,3,সংগে | সঙ্গে | সাথে,ONUBAD,review_before_training
+Barishal,সব চাইয়া ধারের মানুদা,2,মানুষটি কে | সব থেকে কাছের মানুষ,Dwadash,review_before_training
+Barishal,হরছি,3,করছি | করেছি | হারিয়ে,ONUBAD,review_before_training
+Barishal,হরে,2,করে | বৃষ্টি,ONUBAD,review_before_training
+Barishal,হাচা,2,ঠিক | সত্য,ONUBAD,review_before_training
+Barishal,হুগনা,2,রোগা | শুকনা,ONUBAD,review_before_training
+Barishal,হুদা,5,অহেতুক | একমাত্র | খালি | শুধু | সাক্ষাৎ,ONUBAD,review_before_training
+Barishal,হ্যায় চেইত্যা গ্যাল্লেহ,2,তিনি রেগে গেছিলেন | সে রেগে গেছিলো,Vashantor,review_before_training
+Chattogram,অঁ,2,সাঁকো | হ্যাঁ,ONUBAD,review_before_training
+Chattogram,অইয়্যুম,2,করবো | হবো,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,অইলে,2,হন | হলে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,অনে কডে যাইবেন,2,আপনি কোথায় যাবেন | আপনে যাবেন কই,Kothon,review_before_training
+Chattogram,অনে কেন আছন,2,আপনি কেমন আছেন | তুমি কেমন আছ,Dwadash,review_before_training
+Chattogram,অনে হই যাবেন,2,আপনার গন্তব্য কি | আপনি কোথায় যেতে চান,Dwadash,review_before_training
+Chattogram,অ্যাঁর বহুত জ্বর,2,আমার অনেক জ্বর | আমার খুব জ্বর,Safin-2025,review_before_training
+Chattogram,অ্যাক ঘন্ডা লাইব,2,এক ঘণ্টা লাগবে | এক ঘন্টা লাগবে,Kothon,review_before_training
+Chattogram,আঁই ঘন্ডা খানিক থাইককুম,2,আমি ঘন্টা খানিক থাকব | যে কোন ব্যবসায়ীর পেটের গ্যাস দিয়ে দুই বার্নারের একটা গ্যাস চুলা অনায়াসে কয়েক ঘন্টা জ্বালানো যায়,Kothon,review_before_training
+Chattogram,আঁই বোইর,2,আমরা বসছি | আমি বসছি,Kothon,review_before_training
+Chattogram,আঁইন,2,আইন | আইনরক্ষা,BD-Dialect,review_before_training
+Chattogram,আঁর,2,অভাব | আমার,ONUBAD,review_before_training
+Chattogram,আঁরা রেগুলার ইনশাআল্লাহ আড্ডা দিতু আইসসুম তুঁর কাছে,2,আমরা রেগুলার ইনশাআল্লাহ আড্ডা দিতে আসবো তোর কাছে | তোর যা ইচ্ছা করা,Kothon,review_before_training
+Chattogram,আই,2,এসে | যাই,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,আই নাস্তা হরিয়ার স্কুলত যাই না,2,আমি নাস্তা করে স্কুলে যাই | আমি নাস্তা করে স্কুলে যাই না,Dwadash,review_before_training
+Chattogram,আই পরের মাসত উজ্ঞ বিজ্ঞান প্রদর্শণ কড়িবাড় যাইউর,2,আমি পরের মাসে একটি বিজ্ঞান প্রদর্শনীতে যাচ্ছি | আমি পরের মাসে একটি বিজ্ঞান মেলায় যাচ্ছি,Dwadash,review_before_training
+Chattogram,আই হাইয়ুম,2,আমি খাব | আমি খাবো,Dwadash,review_before_training
+Chattogram,আইজু,2,এখনও | এখনো,ONUBAD,review_before_training
+Chattogram,আইন্নুম,2,আনব | আনবো,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,আইয়ন যে,2,আসুন যাই | স্বাগতম,Kothon,review_before_training
+Chattogram,আইয়্যেদ্দে,2,আগামী | প্রজন্মের,ONUBAD,review_before_training
+Chattogram,আইল্লে,2,কৃষক | রাখাল,ONUBAD,review_before_training
+Chattogram,আইসসিল,2,আসার | ছিল,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,আছন,2,আছ | আছেন,ONUBAD,review_before_training
+Chattogram,আজিয়া,2,আজ | আজকে,Kothon; ONUBAD,review_before_training
+Chattogram,আতিক্কা,2,অলৌকিক | হঠাৎ,Dwadash; ONUBAD,review_before_training
+Chattogram,আদইজ্জা,2,চোখের আপেল | প্রিয়,ONUBAD,review_before_training
+Chattogram,আবার বোই পইজ্জি,2,আবার বসে পড়ল | আবার বসে পড়লেন,Kothon,review_before_training
+Chattogram,আয গরিব বলি পিতিবিত তাকি ডরমানুষ অইলে মঙগল গ্রহত তাকিতাম,2,আজ গরিব বলে পৃথিবীতে থাকি বড়লোক হলে মঙ্গল গ্রহে থাকতাম | আজ গরিব বলে পৃথিবীতে থাকিবড়লোক হলে মঙ্গল গ্রহে থাকতাম,Combined-CC; Vashantor,review_before_training
+Chattogram,আর যদি ফিরি ন আইয়্যে তইলে ইতে হন অত্তে তোঁয়ার ন আচিল,2,আর যদি ফিরে না আসে তবে সে কখনই তোমার ছিল না | আর যদি ফিরে না আসেতবে সে কখনই তোমার ছিল না,Combined-CC; Vashantor,review_before_training
+Chattogram,আরা অফেক্ষা কইজ্জুম,2,আমরা অপেক্ষা করব | আমরা অপেক্ষা করবো,Dwadash; Vashantor,review_before_training
+Chattogram,আরা ন বুইল্লাম,3,আমরা জীবনেও পারব না | আমরা পারব না | আমরা ভুলতে পারব না,Dwadash,review_before_training
+Chattogram,আরে খাইত গম লাগে,2,আমার খেতে ভালো লাগে | আমার খেতে ভালো লাগে না,Dwadash,review_before_training
+Chattogram,আরে গম লাগে,2,আমার ভালো লাগে | আমার ভালো লাগে না,Dwadash,review_before_training
+Chattogram,আরে হিছু খাইত গম লাগে,2,আমার কিছু খেতে ভালো লাগে | আমার কিছু খেতে ভালো লাগে না,Dwadash,review_before_training
+Chattogram,আরে হিছু গম লাগে,2,আমার কিছু ভালো লাগে | আমার কিছু ভালো লাগে না,Dwadash,review_before_training
+Chattogram,আস্সান,2,আকাশ | আসমান,ONUBAD,review_before_training
+Chattogram,ইক্কা,3,এখানে | এদিকে | সেদিকে,ONUBAD,review_before_training
+Chattogram,ইতে,3,উনি/সে | সে | সেই,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,ইতে না আসে,2,সে হাসে | সে হাসে না,Dwadash,review_before_training
+Chattogram,ইতে মেলা সাহসী,2,সে অনেক সাহসী | সে সাহসী,Safin-2025,review_before_training
+Chattogram,ইত্তিরি কউও বাজের,2,এখন কটা বাজে | এখন কয়টা বাজে,Kothon,review_before_training
+Chattogram,ইবা কেরিম্মা গড়ি সম্ভব,2,এ কি করে সম্ভব | কি করে সম্ভব,Dwadash,review_before_training
+Chattogram,ইবা নয়া কিছু নয়,2,এইটা নতুন কিছুই না | এটা নতুন কিছু না,Dwadash,review_before_training
+Chattogram,ইবে,2,এটি | সেই,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,উঠ,3,উঠে | উঠে যাও | যাও,Dwadash; ONUBAD,review_before_training
+Chattogram,এককান হতাও ন হইবা,2,একটা কথাও বলবা না | কথাও আর বলবা না,Dwadash,review_before_training
+Chattogram,একখন কালার ছবি তুলা ফরিবো,2,একটা রঙ্গিন ছবি তুলতে হবে | রঙ্গিন ছবি তুলতে হবে,Dwadash,review_before_training
+Chattogram,এত ঘুমোদ্দে,2,এত ঘুমাও | এত ঘুমাও কেন,Dwadash; ONUBAD,review_before_training
+Chattogram,এদে থাকিলে আই খুশি,2,এখানে থাইকলে আমি খুশি | এখানে থাকলে আমি খুশি,Combined-CC; Dwadash,review_before_training
+Chattogram,এদ্দুর,2,এতটুকু | এতো,ONUBAD,review_before_training
+Chattogram,ওই,2,হই | হয়ে,ONUBAD,review_before_training
+Chattogram,ওয়া,2,ওহে | হে,ONUBAD,review_before_training
+Chattogram,ওয়াদা,2,প্রতিজ্ঞা | শপথ,ONUBAD,review_before_training
+Chattogram,কঁম,2,কাজ | কার্য,BD-Dialect,review_before_training
+Chattogram,কন,2,কারা | বলেন,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,কম,2,সীমিত | স্বল্প,BD-Dialect,review_before_training
+Chattogram,কল নো দিয়ুম,2,ডাকব না | তোমাকে ডাকব না,Dwadash,review_before_training
+Chattogram,কলম ইবা লো,5,আপনি এই কলম টি নিন | আপনি এই কলমটি নিন | আপনি কলম টি নিন | এই কলম টি নিন | কলম টি নিন,Dwadash; Vashantor,review_before_training
+Chattogram,কি কন,2,কি বলছেন | বলেন কি,Kothon,review_before_training
+Chattogram,কি কস,2,কি বলিস | বলিস কি,Kothon,review_before_training
+Chattogram,কিছু ন হয়,2,কিছু হয় না | কিছু হয়নি,Kothon,review_before_training
+Chattogram,কিল্লাই,2,কেন | কেনো,ONUBAD,review_before_training
+Chattogram,কুরা,2,মুরগি | মুরগী,BD-Dialect; ONUBAD,review_before_training
+Chattogram,ক্যান,2,কেন | কেমন,BD-Dialect; ONUBAD,review_before_training
+Chattogram,খঁরস,2,খরচ | ব্যয়,BD-Dialect,review_before_training
+Chattogram,খতম,2,শেষ | সমাপ্ত,BD-Dialect,review_before_training
+Chattogram,খাঁওর,2,আহার | খাবার,BD-Dialect,review_before_training
+Chattogram,খাইত গম না লাগে,2,খেতে ভালো লাগে | খেতে ভালো লাগে না,Dwadash,review_before_training
+Chattogram,গঁরম,2,গরম | তাপ,BD-Dialect,review_before_training
+Chattogram,গইজ্জি,2,করছি | করেছি,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,গবেশঁনা,2,গবেষক | গবেষণা,BD-Dialect,review_before_training
+Chattogram,গম,2,ভাল | ভালো,ONUBAD,review_before_training
+Chattogram,গরন,3,করা | করে | করেন,BD-Dialect; ONUBAD,review_before_training
+Chattogram,গরা,2,করা | কলসি,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,গরাবা,2,করবা | করাবা,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,গরি,2,করি | করে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,গরের,2,করছে | করতেছে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,গরো,2,কর | করো,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,গিয়ি,2,গেছি | গেছিলাম,ONUBAD,review_before_training
+Chattogram,গোরো,2,করুন | করো,ONUBAD,review_before_training
+Chattogram,ঘরত,2,ঘরে | বাসায়,ONUBAD,review_before_training
+Chattogram,চলন,2,চলুন | চলেন,Kothon,review_before_training
+Chattogram,চাই,2,চাইছি | দেখে,ONUBAD,review_before_training
+Chattogram,চিবি,2,চেপে | টিপে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,চ্যাঁই,2,দেখি | দেখে,Chatgaiyya,review_before_training
+Chattogram,জনফঁরির,2,জনপ্রিয় | নায়ক,BD-Dialect,review_before_training
+Chattogram,জিলফা,2,জিব্বা | জিব্বা পা,ONUBAD,review_before_training
+Chattogram,জো,2,চলুন | যান,ONUBAD,review_before_training
+Chattogram,জোয়াব,2,জবাব | সাড়া,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,টঁহা,2,অর্থ | টাকা,BD-Dialect,review_before_training
+Chattogram,টাট্টি,2,টয়লেট | পায়খানা,ONUBAD,review_before_training
+Chattogram,টিবি,2,টিভি | টেলিভিশন,BD-Dialect,review_before_training
+Chattogram,ট্রেন দেরি করের,2,ট্রেন দেরি করছে | ট্রেন দেরিতে আছে,Safin-2025,review_before_training
+Chattogram,ঠিক গঁরা,2,অনুমোদিত | নির্ধারিত,BD-Dialect,review_before_training
+Chattogram,ঠ্যাংঅর,2,পায়ে | পায়ের,ONUBAD,review_before_training
+Chattogram,ডহর,2,বড় | বড়া,BD-Dialect,review_before_training
+Chattogram,তজিয়া,2,কষ্ট | যন্ত্রণা,ONUBAD,review_before_training
+Chattogram,তালোত,2,তাল | তালে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,তিরাশ,2,তৃষ্ণা | পিপাসা,ONUBAD,review_before_training
+Chattogram,তুঁই,2,তুই | তুমি,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,তুঁই কেন আছ,2,তুমি কেমন আছ | তুমি কেমন আছো,Dwadash; Safin-2025,review_before_training
+Chattogram,তুঁই ডাক্তার না হসাই,2,তুই ডাক্তার | তুই ডাক্তার না কসাই,Dwadash; Safin-2025,review_before_training
+Chattogram,তুঁই যদি হনিকারে বালবাসো তইলে ইতারে চারি দ,2,তুমি যদি কাউকে ভালোবাসো তবে তাকে ছেড়ে দাও | তুমি যদি কাউকে ভালোবাসোতবে তাকে ছেড়ে দাও,Combined-CC; Vashantor,review_before_training
+Chattogram,তুঁই হডে,2,তুই কোথায় | তুমি কোথায়,Safin-2025,review_before_training
+Chattogram,তুই হতা ন হইবা,2,তুমি আর কথা বলবা না | তুমি কথা বলবা না,Dwadash,review_before_training
+Chattogram,তুয়ান,2,ঝড় | তুফান,ONUBAD,review_before_training
+Chattogram,তোঁয়ার অভাব অনুভব গরির,2,তোমার অভাব অনভব করছি | তোমার অভাব অনুভব করছি,Kothon,review_before_training
+Chattogram,তোঁয়ার নাম কি,2,তোমার নাম কি | তোমার নাম কী,Kothon; Vashantor,review_before_training
+Chattogram,তোঁয়ারা,2,তোমরা | তোমারা,Chatgaiyya,review_before_training
+Chattogram,তোঁর,2,আপনার | তোমার,BD-Dialect,review_before_training
+Chattogram,তোঁররে,2,আপনাকে | তোমাকে,BD-Dialect,review_before_training
+Chattogram,তোয়ার প্রিই ডেজার্টর ধরন কী,2,তোমার প্রিয় ডিজার্টের ধরণ কী | তোমার প্রিয় মিষ্টান্নের ধরণ কী,Dwadash,review_before_training
+Chattogram,থিয়্যন,2,দাঁড়ান | দাঁড়ানো,ONUBAD,review_before_training
+Chattogram,দঁম,2,মূল্য | শিল্প,BD-Dialect,review_before_training
+Chattogram,দঁয়া গঁরঅনঁ,2,কৃপা করা | দয়া করা,BD-Dialect,review_before_training
+Chattogram,দইজ্জা,2,সমুদ্র | সাগর,ONUBAD,review_before_training
+Chattogram,দওন,4,দাও | দেওয়া | দেয়া | সরবরাহ,BD-Dialect; ONUBAD,review_before_training
+Chattogram,দরজাত,3,দরজায় | দরজার | দরজার সামনে,ONUBAD,review_before_training
+Chattogram,দাঁয়িত্ব,2,দায় | দায়িত্ব,BD-Dialect,review_before_training
+Chattogram,দিতি,2,দিবি | দিবে,Chatgaiyya,review_before_training
+Chattogram,দিয়্যুম,2,দিব | দিবো,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,দিলি,2,দিলা | দ্বারা,ONUBAD,review_before_training
+Chattogram,দুক,2,দুঃখ/ব্যাথা | ব্যাথা,ONUBAD,review_before_training
+Chattogram,দুকান,2,দোকান | স্টোর,BD-Dialect,review_before_training
+Chattogram,দুয়ো,3,দুইটা | দুটো | দুটো/দুইটি,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,দেহাই,2,দেখাই | দেখিয়ে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,ন,2,নয় | না,ONUBAD,review_before_training
+Chattogram,ন বুজি,2,বুঝলাম না | বুঝি না,Kothon; Safin-2025,review_before_training
+Chattogram,নঁদী,2,নদী | নদীগ্রাম,BD-Dialect,review_before_training
+Chattogram,নাইজ্জল,2,নারকেল | নারিকেল,ONUBAD,review_before_training
+Chattogram,নিজর,2,নিজের | ব্যক্তিগত,BD-Dialect; ONUBAD,review_before_training
+Chattogram,পঁঅরই নঁই,2,পড়ে নাই | পড়েন নাই,BD-Dialect,review_before_training
+Chattogram,পাকায়,2,পাকা | পাকিয়ে,ONUBAD,review_before_training
+Chattogram,ফটু আন,2,ছবি | ছবি টি,ONUBAD,review_before_training
+Chattogram,ফড়ি,2,পড়ি | পড়ে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,ফর,2,পড় | পর,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,ফরি,2,পড়ছি | পড়ি,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,ফরিবু,3,পড়বে | লাগবে | হবে,ONUBAD,review_before_training
+Chattogram,ফাঁস,2,পাঁচ | পাস,BD-Dialect; ONUBAD,review_before_training
+Chattogram,ফান,2,পান | মত,ONUBAD,review_before_training
+Chattogram,ফানি,2,জল | পানি,ONUBAD,review_before_training
+Chattogram,ফুয়া,2,ছেলেটি | বাচ্চা,ONUBAD,review_before_training
+Chattogram,ফেলো,2,নিন | ফেল,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,ফোয়া,2,ছেলে | পুত্র,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,ফোয়াদ,2,মজা | স্বাদ,ONUBAD,review_before_training
+Chattogram,ফোয়ারে,2,ছেলেকে | সাথে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,বঁনইতারা,2,উৎপাদক | নির্মাতা,BD-Dialect,review_before_training
+Chattogram,বঁনওন,2,উদ্ভাবন | উৎপাদন,BD-Dialect,review_before_training
+Chattogram,বঁন্দ,2,নিষিদ্ধ | বন্ধ,BD-Dialect,review_before_training
+Chattogram,বই আছে,2,বসে আছে | সামনে বসে আছে,Dwadash,review_before_training
+Chattogram,বইজ্জা,2,পরিপূর্ণ | পূর্ণ,ONUBAD,review_before_training
+Chattogram,বড় মইদানত ইদর নামাজত বেগগুন মাইনষ একলয় অয়,2,খোলা মাঠে ঈদের নামাজ পুরো সম্প্রদায়কে একত্রিত করে | খোলা মাঠে ঈদের নামাজ সব শ্রেণির মানুষকে একত্রিত করে,Safin-2025,review_before_training
+Chattogram,বদ্দা,2,বড় ভাই | ভাই,ONUBAD,review_before_training
+Chattogram,বদ্দা কি গইত্ত্যু লাইগ্গ্যুন,2,ভাই ভাইয়া কী করছেন | ভাই/ভাইয়া কী করছেন,Combined-CC; Dwadash,review_before_training
+Chattogram,বন্নাই,2,নিন্দা | বদনাম,ONUBAD,review_before_training
+Chattogram,বষ্যা থামি গিয়্যি,2,বৃষ্টি থামল | বৃষ্টি থেমেছে,Safin-2025,review_before_training
+Chattogram,বহুত,2,অনেক | অনেক /খুব,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,বহুত দিন ফর,2,অনেক দিন পর | অনেক সময় পর,Dwadash,review_before_training
+Chattogram,বাঁয়রত,2,বহির্ভাগ | বাইরে,BD-Dialect,review_before_training
+Chattogram,বাইক্কে,2,আযথা | বাকী,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,বাইর,3,বাইরে | বাহির | বের,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,বানাইতু,2,তৈরির | বানাতে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,বিকালত আম্মু আর লাই সসার সুপ ফাক গইজ্জে,2,বিকালে আম্মু আমার জন্য শসার সুপ রান্না করেছে | বিকালে আম্মু আমার জন্য শসার সুপ রান্না করেছে x000D,Combined-CC; Vashantor,review_before_training
+Chattogram,বিয়াক,2,সব | সামগ্রিক,BD-Dialect; ONUBAD,review_before_training
+Chattogram,বিরবিজ্জা,2,পিচ্ছিল | পিছলা,ONUBAD,review_before_training
+Chattogram,বৃষ্টিত,2,বৃষ্টিতে | ষ্টিতে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,বেইল,2,বেলা | সূর্য,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,বেডি,2,মহিলা | মাহিলা,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,বেয়াক,2,বহুল | সম্পূর্ণ,BD-Dialect,review_before_training
+Chattogram,বেশি গম লাগে,2,অনেক ভালো লাগে | আমার অনেক ভালো লাগে,Dwadash,review_before_training
+Chattogram,বেশি রাঁধুনি অইলে সালুন নষ্ট অয়,2,বাবুর্চি বেশি হলে রান্না নষ্ট হয় | বেশি বাবুর্চি রান্না নষ্ট করে,Safin-2025,review_before_training
+Chattogram,বোথ ভালা,2,খুব ভাল | বেশ ভাল,Kothon,review_before_training
+Chattogram,ভরি,2,ভরা | ভরে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,ভিডিও বানাইবার কি দরকার আছিল,2,ভিডিও বানানোর কি দরকার ছিল | ভিডিও বানানোর কী দরকার ছিল,Dwadash; Vashantor,review_before_training
+Chattogram,ভিতর,2,অন্দর | ভিতরে,BD-Dialect,review_before_training
+Chattogram,মঁইলা,2,ময়লা | মহিলা,BD-Dialect,review_before_training
+Chattogram,মঁন,2,মন | মান,BD-Dialect,review_before_training
+Chattogram,মনত ইচ্ছা থাকিলে পথ পাওয়া যায়,2,ইচ্ছা থাকলে উপায় হয় | ইচ্ছে থাকলে উপায় হয়,Safin-2025,review_before_training
+Chattogram,মানুশ,2,জনতা | মানুষ,BD-Dialect,review_before_training
+Chattogram,মাল,2,পণ্য | পণ্যমূল্য,BD-Dialect,review_before_training
+Chattogram,মেজ্জান,2,অতিথি | মেজবান,BD-Dialect; Chatgaiyya,review_before_training
+Chattogram,মেহেরবানি করি বহুন,2,অনুগ্রহ করে বসুন | দয়া করে বসুন,Safin-2025,review_before_training
+Chattogram,যত হস্ট ওক মানি লইয়্যুম তারফরও আযিবন তোঁয়ারেই বালবাইসসম,2,যত কষ্ট হোক সব মেনে নেবো তবুও চিরদিন তোমাকেই ভালোবাসবো | যত কষ্ট হোক সব মেনে নেবোতবুও চিরদিন তোমাকেই ভালোবাসবো,Combined-CC; Vashantor,review_before_training
+Chattogram,যতদিন বাচি তাইক্কম তোঁয়ারে মনত রাইক্কম,2,যতদিন বেঁচে থাকি তোমায় মনে রাখবো | যতদিন বেঁছে থাকি তোমায় মনে রাখবো,Combined-CC; Vashantor,review_before_training
+Chattogram,যদি ইতে তোঁয়ার হাচে ফিরি আয়্যিয়ে তইলে ইতে তোঁয়ারই আচিল,2,যদি সে তোমার কাছে ফিরে আসে তবে সে তোমারই ছিল | যদি সে তোমার কাছে ফিরে আসেতবে সে তোমারই ছিল,Combined-CC; Vashantor,review_before_training
+Chattogram,যর,2,বৃষ্টি | যাও,ONUBAD,review_before_training
+Chattogram,যার,2,যাচ্ছিলো | যাচ্ছে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,যেত্তে হনো ফুরুষ হনো নারিরে বালবাসে এত্তে ইতে ইবার লাই বেজ্ঞিন গরিত ফারে,2,যখন কোন পুরুষ কোন নারীকে ভালবাসে তখন সে তার জন্য সব কিছু করতে পারে | যখন কোন পুরুষ কোন নারীকে ভালবাসেতখন সে তার জন্য সব কিছু করতে পারে,Combined-CC; Vashantor,review_before_training
+Chattogram,রঁগ,2,রাগ | রোগ,BD-Dialect,review_before_training
+Chattogram,রাঁকঅন,2,রাখা | সংরক্ষণ,BD-Dialect,review_before_training
+Chattogram,রান্দো,2,রান্নাকর | রান্নাঘর,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,রাহি,2,রাখি | রেখে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,রিক্সাত,2,রিক্সা | রিক্সায়,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,ল,2,নাও | নে,Chatgaiyya,review_before_training
+Chattogram,লঁই,2,নিয়ে | সাথে,ONUBAD,review_before_training
+Chattogram,লইইয়্যুম,2,নিবো | নেবো,Chatgaiyya,review_before_training
+Chattogram,লওন,2,নাও | নেওয়া,BD-Dialect,review_before_training
+Chattogram,লাই,2,জন্য | তোমার,ONUBAD,review_before_training
+Chattogram,লাগিবঅ,2,চাইবেন | লাগবে,BD-Dialect,review_before_training
+Chattogram,লাশারা,2,নির্লজ্ | নির্লজ্জ,ONUBAD,review_before_training
+Chattogram,লো,2,নাও | নিন,ONUBAD,review_before_training
+Chattogram,সঁই,2,খাট | শিম,ONUBAD,review_before_training
+Chattogram,সরি,2,চাকরি | ফিরে,ONUBAD,review_before_training
+Chattogram,সানফ৴র,2,জোছনা | জ্যোৎস্না,ONUBAD,review_before_training
+Chattogram,সাম্মে,2,তাড়াতাড়ি | সামনে,ONUBAD,review_before_training
+Chattogram,সিটাইঙ্গা,2,চাটগাঁইয়া | চিটাইঙ্গা,ONUBAD,review_before_training
+Chattogram,হঁর,2,তোমার | পোশাক,ONUBAD,review_before_training
+Chattogram,হই,2,কৈ | বলি,Chatgaiyya,review_before_training
+Chattogram,হইদি,2,বলছি | বলেছি,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,হইলো,2,বলল | বলেছিল,ONUBAD,review_before_training
+Chattogram,হইস,2,বলিস | বলো,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,হত সুন্দর তুঁই ফ্রেম অত ফইরগি আঁই,2,কত সুন্দর তুমি প্রেমে পড়েছি আমি | কত সুন্দর তুমিপ্রেমে পড়েছি আমি,Combined-CC; Vashantor,review_before_training
+Chattogram,হতার তুন হাজ বড়,2,কথার চেয়ে কাজ বড় | কাজ কথার চেয়ে জোরে কথা বলে,Safin-2025,review_before_training
+Chattogram,হতো,2,কত | কতো,ONUBAD,review_before_training
+Chattogram,হদ্দুর,2,কতটুকু | কতদূর,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,হন,4,কে | কোন | বলুন | বলেন,ONUBAD,review_before_training
+Chattogram,হন হারনে,2,এই | কোন কারণে,Kothon; ONUBAD,review_before_training
+Chattogram,হবর,2,কবর | খবর,ONUBAD,review_before_training
+Chattogram,হাই,3,করি | খাই | খেয়ে,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,হাইওনা,2,খেয়েছো | খেয়েছো প্রশ্ন,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,হাছা গরি কন তো ছার অনে কি বিভ্ৰান্ত ন হন,2,তোকে আল্লার দোহাই লাগে সত্যি কথা বল | সত্যি করে বলুন তো স্যার আপনি কি বিভ্ৰান্ত হননি,Kothon,review_before_training
+Chattogram,হাতর হাস্পাতাল হঁডে,2,কাছের হাসপাতাল কোথায় | নিকটতম হাসপাতাল কোথায়,Safin-2025,review_before_training
+Chattogram,হানা,2,অন্ধ | খাবার,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,হায়,2,খায় | খেয়ে,ONUBAD,review_before_training
+Chattogram,হারা,2,জলদি | তাড়াতাড়ি,Chatgaiyya; ONUBAD,review_before_training
+Chattogram,হালা,2,কালো | শালা,Chatgaiyya; Kothon,review_before_training
+Chattogram,হালিয়ে,2,কাল | কালকে,ONUBAD,review_before_training
+Chattogram,হালুর,2,খালু | খালুর,ONUBAD,review_before_training
+Chattogram,হাস্পাতাল ইয়াত্তুন অনুমান দুই কিলোমিটার দূরে,2,হাসপাতাল এখান থেকে প্রায় দুই কিলোমিটার দূরে | হাসপাতালটি এখান থেকে প্রায় দুই কিলোমিটার দূরে,Safin-2025,review_before_training
+Chattogram,হে,2,ও | সে,BD-Dialect,review_before_training
+Chattogram,হোথা খৈত বেশি গম লাগে,2,কথা বলতে অনেক ভালো লাগে | কথা বলতে আমার অনেক ভালো লাগে,Dwadash,review_before_training
+Chattogram,হোন,2,কোন | বলা,Chatgaiyya; ONUBAD,review_before_training
+Mymensingh,আমারে একটা ভালা হুটেল এর নাম কইতারবাইন,2,আপনি একটি ভালো রেস্তোরাঁ সুপারিশ করতে পারবেন | আপনি কি ভালো একটি রেস্তোরাঁ সুপারিশ করতে পারবেন,Dwadash,review_before_training
+Mymensingh,কওন,4,উদ্ধৃতি | বলা | বাণী | বিবরণ,BD-Dialect,review_before_training
+Mymensingh,কতার দাম রাখো,2,কথা রাখো | মুখ রেখো,BD-Dialect,review_before_training
+Mymensingh,কাইলকা,2,আগামীকাল | গতকাল,BD-Dialect,review_before_training
+Mymensingh,কাগজ,2,ডিপ্লোমা | সার্টিফিকেট,BD-Dialect,review_before_training
+Mymensingh,কাম,3,কাজ | কার্য | প্রোজেক্ট,BD-Dialect,review_before_training
+Mymensingh,কামলা,2,কর্মচারী | কর্মী,BD-Dialect,review_before_training
+Mymensingh,খবর,3,তথ্য | নোটিফিকেশন | সংবাদ,BD-Dialect,review_before_training
+Mymensingh,খাওন,2,আহার | খাওয়া,BD-Dialect,review_before_training
+Mymensingh,খারাপ,2,অনুস্বাস্থ্যকর | নেতিবাচক,BD-Dialect,review_before_training
+Mymensingh,গুম,2,গম | স্বপ্ন,BD-Dialect,review_before_training
+Mymensingh,ছোট,2,ছোট্ট | সঙ্কুচিত,BD-Dialect,review_before_training
+Mymensingh,জমায়েত করন,2,সংগঠন করা | সম্মেলন করা,BD-Dialect,review_before_training
+Mymensingh,ট্যাহা দেওন,2,টাকা দেওয়া | পেমেন্ট করা,BD-Dialect,review_before_training
+Mymensingh,ডেটাডা লও,2,ডেটা নাও | ডেটা সংগ্রহ,BD-Dialect,review_before_training
+Mymensingh,দরকার নাই,2,প্রয়োজন নাই | লাগবে না,BD-Dialect,review_before_training
+Mymensingh,দেওন,3,দেওয়া | দেখা | সরবরাহ,BD-Dialect,review_before_training
+Mymensingh,দেহ্মাওন,2,উপস্থাপনা | প্রদর্শন,BD-Dialect,review_before_training
+Mymensingh,ধরণ,2,ধরন | প্রবণতা,BD-Dialect,review_before_training
+Mymensingh,নেট,2,ইন্টারনেট | নেটওয়ার্ক,BD-Dialect,review_before_training
+Mymensingh,পড়ন,2,পঠিত করা | পড়া,BD-Dialect,review_before_training
+Mymensingh,পাইক্ক্যাডারে ধরো,2,পাখি ধরো | পাখিটি ধরো,BD-Dialect,review_before_training
+Mymensingh,পাস অইসে,2,উত্তরণ হয়েছে | পাস হয়েছে,BD-Dialect,review_before_training
+Mymensingh,ফায়দা,2,উপকার | উপকারিতা,BD-Dialect,review_before_training
+Mymensingh,বছরের,2,বার্ষিক | বার্ষিকি,BD-Dialect,review_before_training
+Mymensingh,বলা,2,কথন | বর্ণনা,BD-Dialect,review_before_training
+Mymensingh,বান,2,ঝড় | মিসাইল,BD-Dialect,review_before_training
+Mymensingh,ব্যবহারকারী,2,ইউজার | ব্যবহারকারী মানুষ,BD-Dialect,review_before_training
+Mymensingh,ভাগ,2,উপাংশ | ডিপার্টমেন্ট,BD-Dialect,review_before_training
+Mymensingh,ভিতর,2,অন্দর | ভিতরে,BD-Dialect,review_before_training
+Mymensingh,মাইনষে,3,জনতা | পুরুষ | মানুষ,BD-Dialect,review_before_training
+Mymensingh,মাল,3,উপকরণ | উপাদান | পণ্য,BD-Dialect,review_before_training
+Noakhali,অয়,2,ও | হয়,BD-Dialect,review_before_training
+Noakhali,অ্যাঁই খাইয়ুম,2,আমি খাব | আমি খাবো,Combined-CC,review_before_training
+Noakhali,অ্যাঁই খ্যালি,2,আমি খেলা করি | আমি খেলি,Combined-CC,review_before_training
+Noakhali,অ্যাঁই তোয়ারে ভালোবাসি,2,আমি তোমাকে ভালবাসি | আমি তোমায় ভালোবাসি,Combined-CC,review_before_training
+Noakhali,অ্যাঁই নাস্তা করি স্কুলত যাই,2,আমি নাস্তা করে স্কুলে যাই | আমি নাস্তা করে স্কুলে যাই না,Combined-CC,review_before_training
+Noakhali,অ্যাঁই বুঝিয়ের না,2,আমি বুঝতে পারছি না | আমি বুঝি না,Combined-CC,review_before_training
+Noakhali,অ্যাঁই বেনে নাস্তা করি স্কুলত যাই,2,আমি সকালে নাস্তা করে স্কুলে যাই | আমি সকালে নাস্তা করে স্কুলে যাই না,Combined-CC,review_before_training
+Noakhali,অ্যাঁই ভালা নাই,2,আমি ভাল নাই | আমি ভালো নাই,Combined-CC,review_before_training
+Noakhali,অ্যাঁই যাইতান্নো,2,আমি যাবো না | ওদিকে যাব না,Combined-CC,review_before_training
+Noakhali,অ্যাঁর কিছু খাইতাম ভালা লাগেনা,2,আমার কিছু খেতে ভালো লাগে না | আমার খেতে ভালো লাগে না,Combined-CC,review_before_training
+Noakhali,অ্যাঁর ফ্রিয় ফল,2,আম প্রিয় ফল | আমার প্রিয় ফল,Combined-CC,review_before_training
+Noakhali,আঁবিশকার,2,আবিষ্কার | উদ্ভাবন,BD-Dialect,review_before_training
+Noakhali,আই আজি গেছি,2,আমি হারিয়ে গিয়েছি | আমি হারিয়ে গেছি,Combined-CC; Vashantor,review_before_training
+Noakhali,আই আন্নের লগে আছি,2,আমি আপনার সঙ্গে আছি | আমি আপনার সাথে আছি,Vashantor,review_before_training
+Noakhali,আচাঁর,2,প্রবণতা | স্বভাব,BD-Dialect,review_before_training
+Noakhali,আন্নে কলম ইগা লন,2,আপনি এই কলম টি নিন | আপনি কলম টি নিন,Combined-CC,review_before_training
+Noakhali,আর স্কুলে কোনো খেলাত মাঠ নাই,2,আমার বড় বোনটি কাঁচা আমের শরবত খেতে খুব ভালবাসে | আমার স্কুলে কোনো খেলার মাঠ নেই,Vashantor,review_before_training
+Noakhali,আরি গেছি,2,হেরে গেছি | হেরে গেছিলাম,Combined-CC,review_before_training
+Noakhali,আলোচ্ছ,2,আলোচ্য | আলোচ্যা,BD-Dialect,review_before_training
+Noakhali,আল্লা,2,আল্লাহ | সৃষ্টিকর্তা,BD-Dialect,review_before_training
+Noakhali,আশপাশ,2,পরিচিত | পরিচ্ছন্নতা,BD-Dialect,review_before_training
+Noakhali,আসল,2,বাস্তব | বাস্তবতা,BD-Dialect,review_before_training
+Noakhali,ইগা অন রাজশাহী চলি গেছে,2,সে এখন রাজশাহী | সে এখন রাজশাহী চলে গেছে,Combined-CC,review_before_training
+Noakhali,ইয়ান আ্যঁর বই,2,এটা আমার বই | যে আমার বই,Combined-CC,review_before_training
+Noakhali,একগা বল দি খেলেএর,2,একটা রঙ্গিন ছবি তুলতে হবে | একটি বল দিয়ে খেলছে,Combined-CC,review_before_training
+Noakhali,এমনে কোঁতা কইতে হারেন না,2,আপনি এভাবে কথা বলতে পারেন না | এভাবে কথা বলতে পারেন না,Combined-CC,review_before_training
+Noakhali,কওয়া,4,উদ্ধৃতি | কথোপকথন | বর্ণনা | বলা,BD-Dialect,review_before_training
+Noakhali,কাইল,3,আগামীকাল | কাল | গতকাল,BD-Dialect,review_before_training
+Noakhali,কাপড় দেও,2,কাপড় দাও | কাপড় দেখো,BD-Dialect,review_before_training
+Noakhali,কামে যাইতাম চাই,2,কাজে যেতে চাই | কাজে যেতে চাই না,Combined-CC,review_before_training
+Noakhali,কিতাব,3,উপন্যাস | কবি | সাহিত্য,BD-Dialect,review_before_training
+Noakhali,কিয়ারো,2,কি কর | কি করো,Combined-CC,review_before_training
+Noakhali,কোনায় যাও,2,কোথাও যাও | কোথায় যাচ্ছ,Combined-CC,review_before_training
+Noakhali,খরছ,2,খরচ | ব্যয়,BD-Dialect,review_before_training
+Noakhali,খানা,2,খাওয়া | খাবার,BD-Dialect,review_before_training
+Noakhali,খিদমত,2,উপকার | সেবাপ্রদানকারী,BD-Dialect,review_before_training
+Noakhali,গিরাক,2,কাস্টমার | গ্রাহক,BD-Dialect,review_before_training
+Noakhali,জমা,2,সংগ্রহ | সঞ্চয়,BD-Dialect,review_before_training
+Noakhali,টেহা,2,অর্থ | টাকা,BD-Dialect,review_before_training
+Noakhali,তত্ত্ব,2,ঔষধ | তথ্য,BD-Dialect,review_before_training
+Noakhali,তুঁই কিয়ারো,2,তুমি কি কর | তুমি কি করো,Combined-CC,review_before_training
+Noakhali,তুঁই মাতবানা,2,তুমি কথা বলবা না | তুমি বলবা না,Combined-CC,review_before_training
+Noakhali,তুউই কি দেইকছো,2,তুমি কি দেখছো | তুমি কি দেখেছো,Vashantor,review_before_training
+Noakhali,তোয়ার নাম কিয়া,2,তোমার নাম কী | তোর নাম কি,Combined-CC; Vashantor,review_before_training
+Noakhali,তোয়ার প্রিয় গানের ধরন কিয়া,2,তোমার প্রিয় সঙ্গীতের ধরণ কি | তোমার প্রিয় সঙ্গীতের ধরণ কী,Combined-CC,review_before_training
+Noakhali,ধুঁয়া,2,বাষ্প | বাষ্পীভবন,BD-Dialect,review_before_training
+Noakhali,নিজর,2,ব্যক্তিগত | স্থায়িত্ব,BD-Dialect,review_before_training
+Noakhali,ফাঁকা,2,খালি | পাঁকা,BD-Dialect,review_before_training
+Noakhali,বইন,2,উপকরণসমূহ | বোন,BD-Dialect,review_before_training
+Noakhali,বড্ডা,2,বড় | বড়া,BD-Dialect,review_before_training
+Noakhali,বনানীওয়ালা,2,উৎপাদক | নির্মাতা,BD-Dialect,review_before_training
+Noakhali,বস্তু,3,উপকরণ | উপাদান | পদার্থ,BD-Dialect,review_before_training
+Noakhali,বহুত দিন পর,2,অনেক দিন পর | অনেক সময় পর,Combined-CC,review_before_training
+Noakhali,বানান,2,গতি | বাণী,BD-Dialect,review_before_training
+Noakhali,বালা,2,ভালো | সুন্দর,BD-Dialect,review_before_training
+Noakhali,বিক্রি,2,বাজারজাত | বিক্রয়,BD-Dialect,review_before_training
+Noakhali,বিয়ালে আম্মু আর লাই শসার সুপ রান্না কইচ্চে,2,বিকালে আম্মু আমার জন্য শসার সুপ রান্না করেছে | বিকালে আম্মু আমার জন্য শসার সুপ রান্না করেছে x000D,Combined-CC; Vashantor,review_before_training
+Noakhali,বুড়া,2,বার্ষিকি | বৃদ্ধ,BD-Dialect,review_before_training
+Noakhali,বেনে নাস্তা করি স্কুলত যাই,2,সকালে নাস্তা করে স্কুলে যাই | সকালে নাস্তা করে স্কুলে যাই না,Combined-CC,review_before_training
+Noakhali,বেবাক,4,বেশি | সম্পূর্ণ | সামগ্রিক | সামগ্রী,BD-Dialect,review_before_training
+Noakhali,মাইনষ,2,মানুষ | লোক,BD-Dialect,review_before_training
+Noakhali,মাইয়া,2,মহিলা | মেয়ে,BD-Dialect,review_before_training
+Noakhali,মাতবা না,2,কথা বলবা না | বলবা না,Combined-CC,review_before_training
+Noakhali,মানচিত্রে,2,মানচিত্র | ম্যাপ,BD-Dialect,review_before_training
+Noakhali,সাঙ্কি,5,চিহ্ন | নিদর্শন | প্রচার | বিজ্ঞাপন | লক্ষণ,BD-Dialect,review_before_training
+Noakhali,হওর,2,পরশু | শহর,BD-Dialect,review_before_training
+Noakhali,হতিষ্ঠা করন,2,প্রতিষ্ঠা করা | প্রতিষ্ঠান করা,BD-Dialect,review_before_training
+Noakhali,হাঁর,2,কার | তার,BD-Dialect,review_before_training
+Noakhali,হাইরতান্নো,2,পারিব না | হারবো না,Combined-CC,review_before_training
+Noakhali,হাগর,2,উপসাগর | সমুদ্র,BD-Dialect,review_before_training
+Noakhali,হেতাক্কের,2,কাদের | তাদের,BD-Dialect,review_before_training
+Noakhali,হোলাগা রাস্তা দি আডি যায়,3,ছেলেটি রাস্তা দিয়ে যাচ্ছে | ছেলেটি রাস্তা দিয়ে হেঁটে যাচ্ছে | ছেলেটি রাস্তা দিয়ে হেটে যাচ্ছে,Combined-CC; Vashantor,review_before_training
+Rajshahi,আন্ধেন,2,রান্না করা | রান্না করো,BD-Dialect,review_before_training
+Rajshahi,আসল,2,প্রকৃতি | বাস্তবতা,BD-Dialect,review_before_training
+Rajshahi,উত্তর দেন,2,উত্তর করো | উত্তর দেওয়া,BD-Dialect,review_before_training
+Rajshahi,কহা,3,কথন | বর্ণনা | বলা,BD-Dialect,review_before_training
+Rajshahi,কাগজ,2,পেপার | সার্টিফিকেট,BD-Dialect,review_before_training
+Rajshahi,কাজ,2,পদক্ষেপ | প্রোজেক্ট,BD-Dialect,review_before_training
+Rajshahi,কাম শেষ,2,কাজ শেষ | প্রোগ্রাম শেষ,BD-Dialect,review_before_training
+Rajshahi,কালি,2,আগামীকাল | গতকাল,BD-Dialect,review_before_training
+Rajshahi,গান করেন,2,গান করা | সঙ্গীত করা,BD-Dialect,review_before_training
+Rajshahi,জিনিসপত্র,2,উপকরণ | সামগ্রী,BD-Dialect,review_before_training
+Rajshahi,ট্যাকা দেন,2,টাকা দাও | টাকা দেওয়া,BD-Dialect,review_before_training
+Rajshahi,তথ্য দেন,2,ডেটা দাও | তথ্য দেওয়া,BD-Dialect,review_before_training
+Rajshahi,দরজা খুলেন,2,খোল দরজা | দরজা খোলো,BD-Dialect,review_before_training
+Rajshahi,দ্যাখান,3,উপস্থাপনা | প্রদর্শন | প্রমাণ,BD-Dialect,review_before_training
+Rajshahi,ধরণ,2,ধরন | প্রবণতা,BD-Dialect,review_before_training
+Rajshahi,পাকটি ধরেন,2,পাখি ধরো | পাখিটি ধরো,BD-Dialect,review_before_training
+Rajshahi,ফসল লাগান,2,ফসল লাগানো | শস্য লাগানো,BD-Dialect,review_before_training
+Rajshahi,বছরের,2,বার্ষিক | বার্ষিকি,BD-Dialect,review_before_training
+Rajshahi,বুলন,2,বাণী | বিবরণ,BD-Dialect,review_before_training
+Rajshahi,মানষি,2,জনতা | মানুষ,BD-Dialect,review_before_training
+Rajshahi,মাফ করেন,2,ক্ষমা করা | মাফ করা,BD-Dialect,review_before_training
+Rajshahi,মাল,2,উপাদান | পণ্য,BD-Dialect,review_before_training
+Rajshahi,মুখ থুয়েন,2,মুখ রাখো | মুখ রেখো,BD-Dialect,review_before_training
+Rajshahi,লিয়্যা আয়,2,উপস্থিত করা | নিয়ে আসো,BD-Dialect,review_before_training
+Rajshahi,সনদ,2,ডিগ্রি | ডিপ্লোমা,BD-Dialect,review_before_training
+Rajshahi,সাফ করেন,2,ধোয়ামোছা করো | সাফ করো,BD-Dialect,review_before_training
+Rajshahi,সাফাই,2,পরিচ্ছন্নতা | পরিষ্কার,BD-Dialect,review_before_training
+Sylheti,অউ আশা লইয়া এবো হাইন্জা অয়,2,আর আশা নিয়ে দিন শুরু হবে | এই আশা নিয়ে এখনো সন্ধ্যা হয়,Dwadash; Kothon,review_before_training
+Sylheti,অখন,2,এক্ষুনি | এখন,ONUBAD; SylhetiDS,review_before_training
+Sylheti,অততা,2,অনেক বেশি পরিমাণ | এতগুলো,ONUBAD; SylhetiDS,review_before_training
+Sylheti,অতা ভাবতে ভাবতে বিয়ার দিন সমাগত অয়,2,এটা ভাবতে ভাবতে বিয়ের দিন সমাগত হয় | এসব ভেবে ভেবে বিয়ের দিন সমাগত হয়,Dwadash; Kothon,review_before_training
+Sylheti,অনো থাকলে আমি খুশি,2,এখানে থাইকলে আমি খুশি | এখানে থাকলে আমি খুশি,Combined-CC; Dwadash,review_before_training
+Sylheti,অয়,3,হয় | হ্যা হয় | হ্যাঁ,BD-Dialect; ONUBAD; SylhetiDS,review_before_training
+Sylheti,অয় রাখি দেউ,2,আচ্ছা রেখে দাও | হ্যাঁ রাখো,Dwadash; Kothon,review_before_training
+Sylheti,আই,2,আসি | হংসী হাঁস স্ত্রী আসি,ONUBAD; SylhetiDS,review_before_training
+Sylheti,আইচ্চা হুনো তে,2,আচ্ছা শোনো তো | আরে শোন ভাই,Dwadash; Kothon,review_before_training
+Sylheti,আইছি,2,এলাম | এসেছি,ONUBAD; SylhetiDS,review_before_training
+Sylheti,আইছো,3,আসছ | এসেছ | এসেছো,ONUBAD,review_before_training
+Sylheti,আইজ,2,আজ | আজকে,ONUBAD; SylhetiDS,review_before_training
+Sylheti,আইজ আমার জন্মদিন,2,আজকে আমার জন্মদিন | আজকে আম্র জন্মদিন,Dwadash; Vashantor,review_before_training
+Sylheti,আইঞ্জা আইঞ্জি,2,কোলাকুলি | ক্ষণ,ONUBAD,review_before_training
+Sylheti,আইন,2,আসুন | আসে,ONUBAD; SylhetiDS,review_before_training
+Sylheti,আইরাম,2,আসছি | আসছি/ আসতেছি,ONUBAD; SylhetiDS,review_before_training
+Sylheti,আউরি দেওয়া,2,আত্মগোপন লুকিয়ে থাকা | গোপন হওয়া/করা,SylhetiDS,review_before_training
+Sylheti,আউলা,2,আলো | এলোমেলো,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,আও,3,আস | আসো | এসো আসো,BD-Dialect; ONUBAD; SylhetiDS,review_before_training
+Sylheti,আখতা,2,হঠাৎ | হঠাৎ অকথ্য অশ্রাব্য,ONUBAD; SylhetiDS,review_before_training
+Sylheti,আখল,2,আক্কেল | বুদ্ধি,ONUBAD,review_before_training
+Sylheti,আগনি,2,আগুন | আগুন অগ্নিকোণ,SylhetiDS,review_before_training
+Sylheti,আচ্ছাতে রাখি দেই,2,আচ্ছা তাহলে রেখে দিলাম | আচ্ছা রেখে দেই,Dwadash; Kothon,review_before_training
+Sylheti,আচ্ছাতে সামনের মঙ্গলবারে আমরাখগ্গু তর বাড়িত আইয়ার মাত খতা মাতিলিমুনে,2,আচ্ছা আগামী মঙ্গলবার আমরা কয়েকজন তোর বাড়িতে এসে কথা বলবো | আচ্ছা সামনে মঙ্গলবার আমরা তোমার বাড়িতে এসে একটু কথা বলব,Dwadash; Kothon,review_before_training
+Sylheti,আছইন,2,আছে | আছেন,ONUBAD,review_before_training
+Sylheti,আছল,2,প্রকৃতি | বাস্তব,BD-Dialect,review_before_training
+Sylheti,আজকে গরীব দেকিয়া পৃথিবীত থাকিয়ার ধনী অইলে মঙ্গল গ্রহত থাকতাম,2,আজ গরিব বলে পৃথিবীতে থাকি বড়লোক হলে মঙ্গল গ্রহে থাকতাম | আজ গরিব বলে পৃথিবীতে থাকিবড়লোক হলে মঙ্গল গ্রহে থাকতাম,Combined-CC; Vashantor,review_before_training
+Sylheti,আজার,2,রোগ শোক | হাজার,SylhetiDS,review_before_training
+Sylheti,আটি আটি কত দূর যাই,2,হাঁটতে হাঁটতে কত দূর যাই | হেঁটে হেঁটে কত দূর যাই,Dwadash; Kothon,review_before_training
+Sylheti,আটু,2,হাঁটু | হাঁটু ধান চাল মাপার বাঁশ বা বেতের তৈরি বড় ঝুরি,ONUBAD; SylhetiDS,review_before_training
+Sylheti,আতপাত,2,এদিক ওদিক | এদিক সেদিক,SylhetiDS,review_before_training
+Sylheti,আফনার,2,আপনাদের | আপনার,ONUBAD,review_before_training
+Sylheti,আফনার লগে মাত্তে বাক্কা ভালা লাগে আমার,2,আপনার সাথে কথা বলতে অনেক ভালো লাগে আমার | আপনার সাথে কথা বলতে আমার অনেক ভালো লাগে,Dwadash; Vashantor,review_before_training
+Sylheti,আফনার সব তাকি কাছ ওর মানুষ কে,2,আপনার সব থেকে কাছে মানুষটি কে | আপনার সব থেকে কাছের মানুষটি কে,Dwadash; Vashantor,review_before_training
+Sylheti,আফনারা,2,আপনরা | আপনারা,BD-Dialect; ONUBAD,review_before_training
+Sylheti,আফনে কিতা দয়া কইরা আমারে ন্যাপকিন আজ্ঞাইয়া দিতা পারবায় নি,2,আপনি কি দয়া করে আমাকে ন্যাপকিন এগিয়ে দিতে পারবেন | আপনি কি দয়া করে আমাকে লবণ এবং মরিচ এগিয়ে দিতে পারবেন,Dwadash,review_before_training
+Sylheti,আবর,2,অবসর | বেড়া,ONUBAD; SylhetiDS,review_before_training
+Sylheti,আমরা উবাইমু নে,2,আমরা অপেক্ষা করব | আমরা অপেক্ষা করবো,Dwadash; Vashantor,review_before_training
+Sylheti,আমরা জীবনেও ভুলতাম ফারতাম নায়,2,আমরা জীবনে ভুলতে পারব না | আমরা জীবনেও ভুলতে পারব না,Dwadash; Vashantor,review_before_training
+Sylheti,আমরা মুর্তার ফুল থুকাইতে থাকি,2,আমরা মুর্তার ফুল খুঁজতে থাকি | আমরা মুর্তার ফুল তুলতে থাকি,Dwadash; Kothon,review_before_training
+Sylheti,আমল,2,চরিত্র | বিচার,SylhetiDS,review_before_training
+Sylheti,আমার আব্বা বিদেশ থাকোইন,2,আমার আব্বু বিদেশ থাকে | আমার আব্বু বিদেশে থাকে,Dwadash; Vashantor,review_before_training
+Sylheti,আমার কুন্টা খাইতে ভালা লাগে,4,আমার কিছু খেতে ভালো লাগে | আমার কিছু খেতে ভালো লাগে না | আমার খেতে ভালো লাগে | আমার খেতে ভালো লাগে না,Dwadash,review_before_training
+Sylheti,আমার কুন্টা ভালা লাগে,2,আমার কিছু ভালো লাগে | আমার কিছু ভালো লাগে না,Dwadash,review_before_training
+Sylheti,আমার খাইতে ভালা লাগে,2,আমার ভালো লাগে | আমার ভালো লাগে না,Dwadash,review_before_training
+Sylheti,আমার বেইল নাই অইজায়,2,আমার বেলা নাই হয়ে যায় | আমার সময় আর থাকে না,Dwadash; Kothon,review_before_training
+Sylheti,আমার লগে,2,আমার সঙ্গে | আমার সাথে,ONUBAD,review_before_training
+Sylheti,আমি আফনার লগে আছি,3,আমি আপনার সংগে আছি | আমি আপনার সঙ্গে আছি | আমি আপনার সাথে আছি,Dwadash; Vashantor,review_before_training
+Sylheti,আমি খরছি,2,আমি করছি | আমি করেছি,Kothon,review_before_training
+Sylheti,আমি টাল অইজাই,2,আমি টালমাটাল হয়ে যাই | আমি মাতাল হয়ে যাই,Dwadash; Kothon,review_before_training
+Sylheti,আমি তুমার লাগি ফাগল,2,আমি তোমার সম্পর্কে পাগল | আমি তোমার সাথে পাগল,Dwadash,review_before_training
+Sylheti,আমি তোমারে বালা ফাই,2,আমি তোমাকে ভালোবাসি | আমি তোমায় ভালবাসি,Kothon; Vashantor,review_before_training
+Sylheti,আমি নাস্তা খাইয়া বাদে স্কুল ও যাই না,2,আমি নাস্তা করে স্কুলে যাই | আমি নাস্তা করে স্কুলে যাই না,Dwadash,review_before_training
+Sylheti,আমি পড়রাম,2,আমি পড়াশুনা করছি | আমি পড়ি,Dwadash; Kothon,review_before_training
+Sylheti,আমি ভালা নাই,2,আমি ভাল নাই | আমি ভালো নাই,Dwadash,review_before_training
+Sylheti,আমি যেখানো উবাই,2,আমি যেখানে দাঁড়াই | আমি যেখানে দাড়াঁই,Dwadash; Kothon,review_before_training
+Sylheti,আমি হারি গেছি,2,আমি হারিয়ে গেছি | হারিয়ে গেছি,Dwadash; Vashantor,review_before_training
+Sylheti,আমি হেরারে দেখছি,2,আমি ওদের দেখতে পেলাম | আমি তাকে দেখতে পেলাম,Dwadash; Vashantor,review_before_training
+Sylheti,আম্মায় হুনাইবা গিত,2,আম্মাকে শোনাবো গান | মা গীত শোনাবেন,Dwadash; Kothon,review_before_training
+Sylheti,আম্মায় হুনায়বা গিত,2,আম্মাকে শোনাবো গান | মা গান শোনাবেন,Dwadash; Kothon,review_before_training
+Sylheti,আয়,2,আসো | এসো,ONUBAD; SylhetiDS,review_before_training
+Sylheti,আর,2,আরো | হার,ONUBAD; SylhetiDS,review_before_training
+Sylheti,আর যদি ফিরিয়া না আয় তে হে কুনোদিন অউ তুমার আছিল না,2,আর যদি ফিরে না আসে তবে সে কখনই তোমার ছিল না | আর যদি ফিরে না আসেতবে সে কখনই তোমার ছিল না,Combined-CC; Vashantor,review_before_training
+Sylheti,আলুয়া,2,আতপ চাল | হালুয়া,SylhetiDS,review_before_training
+Sylheti,আস মুরুগ ডাকি ডাকি ঘরো উঠিজায়,2,আজ মুরগি ডাকতে ডাকতে ঘর উঠেছে | হাঁস মুরগি ডেকে ডেকে ঘরে ঢুকে,Dwadash; Kothon,review_before_training
+Sylheti,আস্পাতাল,2,কলেজ | হাসপাতাল,BD-Dialect,review_before_training
+Sylheti,ইংসা,2,ঈর্ষা | হিংসা,ONUBAD; SylhetiDS,review_before_training
+Sylheti,ইগু,2,এ কি | এটা,ONUBAD; SylhetiDS,review_before_training
+Sylheti,ইগু কিলা ওই,2,এ কি করে সম্ভব | কি করে সম্ভব,Dwadash,review_before_training
+Sylheti,ইচা,2,চিংড়ি | চিংড়ি মাছ,ONUBAD; SylhetiDS,review_before_training
+Sylheti,ইচ্ছা,2,আশা | ইচ্ছে,ONUBAD,review_before_training
+Sylheti,ইটা,2,ইহা | ঢিল মারা,SylhetiDS,review_before_training
+Sylheti,ইটা কিতা,2,এটা কী | সেটা কি,Kothon,review_before_training
+Sylheti,ইটার দাম খত,2,এটা কত দাম | এটার দাম কত,Kothon,review_before_training
+Sylheti,ইতা,2,এইটা | এসব,ONUBAD; SylhetiDS,review_before_training
+Sylheti,ইনাম,2,পুরষ্কার | পুরস্কার,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,ইলা,2,এ রকম | এভাবে,SylhetiDS,review_before_training
+Sylheti,উকইন,2,উকুন | ধান মাড়াইয়ের বাঁশের উপকরণ,SylhetiDS,review_before_training
+Sylheti,উঠি,2,উঠে | চোখের পাতা,ONUBAD; SylhetiDS,review_before_training
+Sylheti,উনদাল,2,কিচেন | চুলায়,ONUBAD; SylhetiDS,review_before_training
+Sylheti,উন্দাল,2,পাকঘর | রান্নাঘর,ONUBAD,review_before_training
+Sylheti,উন্দুর,2,ইঁদুর | চিকা,ONUBAD,review_before_training
+Sylheti,উপকরন,3,উপকরণ | উপকরণসমূহ | উপাদান,BD-Dialect,review_before_training
+Sylheti,উফকার,2,উপকার | উপায়,BD-Dialect; ONUBAD,review_before_training
+Sylheti,উবাউকা,2,অপেক্ষা | অপেক্ষা করুন,Dwadash; ONUBAD,review_before_training
+Sylheti,উবাও,2,দাঁড়াও | দাড়াঁন,ONUBAD,review_before_training
+Sylheti,উবানি,2,দাঁড়ান | দাঁড়ানো,ONUBAD,review_before_training
+Sylheti,উয়া,2,নিশ্বাস প্রশ্বাস | শ্বাস,SylhetiDS,review_before_training
+Sylheti,উরি,2,শিম | শিম বা ধান মাপার বস্তু বিশেষ,ONUBAD; SylhetiDS,review_before_training
+Sylheti,উলা,2,বিড়াল | বিড়াল পুরুষ,SylhetiDS,review_before_training
+Sylheti,এগু,2,একটা | একটি,ONUBAD; SylhetiDS,review_before_training
+Sylheti,এড়া,2,তালাকপ্রাপ্ত | নিয়ন্ত্রণহীন,SylhetiDS,review_before_training
+Sylheti,এরলাগি আমরা ভাই বইন বইথাকি লাগে,2,এ কারণেই আমরা ভাই বোন বসে থাকি | এজন্য আমরা ভাইবোন বসে থাকি লাগে,Dwadash; Kothon,review_before_training
+Sylheti,এরে,4,এই যে | এইযে | ওহে | তাকে,ONUBAD; SylhetiDS,review_before_training
+Sylheti,ওই,2,সম্ভব | হয়ে,ONUBAD,review_before_training
+Sylheti,ওইটা কিতা,2,ওটা কী | সেটা কী,Kothon,review_before_training
+Sylheti,ওউ,2,এই | ও,BD-Dialect; ONUBAD,review_before_training
+Sylheti,ওবা,2,ওহে | হ্যালো,SylhetiDS,review_before_training
+Sylheti,ওবায়দি,2,এদিকে | ওদিকে,ONUBAD,review_before_training
+Sylheti,ঔটা নতুন কিচ্ছু না,2,এইটা নতুন কিছুই না | এটা নতুন কিছু না,Dwadash,review_before_training
+Sylheti,কই থাকি আইছো,2,কোথা থেকে আসছ | কোথায় থেকে আসছো,Dwadash,review_before_training
+Sylheti,কইছি,2,বলছি | বলা হয়েছে,Dwadash; ONUBAD,review_before_training
+Sylheti,কইন,3,বলা | বলেন | বলো,ONUBAD; SylhetiDS,review_before_training
+Sylheti,কইলো,2,বলল | বললো,ONUBAD; SylhetiDS,review_before_training
+Sylheti,কও,3,বল | বলুন | বলেন,ONUBAD; SylhetiDS,review_before_training
+Sylheti,কয়া,2,ফড়িং | বলা,SylhetiDS,review_before_training
+Sylheti,করছি,2,করলাম | করেছি,ONUBAD,review_before_training
+Sylheti,কররাম,2,করছি | করি,ONUBAD,review_before_training
+Sylheti,করি,2,করছি | করে,ONUBAD,review_before_training
+Sylheti,কাইল,3,আগামীকাল | কাল | গতকাল,BD-Dialect,review_before_training
+Sylheti,কাঠল,2,কাঁঠাল | কাঠাল,ONUBAD; SylhetiDS,review_before_training
+Sylheti,কান্দাত,2,কাঁদা | কাছে,BD-Dialect; ONUBAD,review_before_training
+Sylheti,কাম,2,কাজ | কার্য,BD-Dialect; ONUBAD,review_before_training
+Sylheti,কাম অর,2,কাজের | নিন,ONUBAD,review_before_training
+Sylheti,কামলা,3,কর্মচারী | কর্মী | চাকর,BD-Dialect; ONUBAD,review_before_training
+Sylheti,কাস,2,কাছ | কাশি,BD-Dialect,review_before_training
+Sylheti,কিতা,2,কি | কী,ONUBAD; SylhetiDS,review_before_training
+Sylheti,কিতা কররায়,2,কি করছো | কী করছেন,Dwadash,review_before_training
+Sylheti,কিতা খও তে,2,কি বলো তো | কি হয়েছে বল,Dwadash; Kothon,review_before_training
+Sylheti,কিতা খবর,2,কি খবর | খবর কী,Dwadash; Kothon,review_before_training
+Sylheti,কিতার,3,করতেছে | কিসের | কেন,ONUBAD,review_before_training
+Sylheti,কুটা,2,বাশের লাটি | লম্বা বাঁশ,SylhetiDS,review_before_training
+Sylheti,কুটুম,2,আত্মীয় | মেহমান,ONUBAD,review_before_training
+Sylheti,কুত্তা,2,কুকুর | কুকুুর,ONUBAD; SylhetiDS,review_before_training
+Sylheti,কুন,2,কোন | গৃহকোণ,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,কুরিয়া,2,অলস | আলসে,ONUBAD; SylhetiDS,review_before_training
+Sylheti,কোনানো,2,কোথা | কোথায়,ONUBAD,review_before_training
+Sylheti,খওক্কা ছাই খিতা খইতাই,2,বলেন কি বলবেন | বলো কী কথা বলবে,Dwadash; Kothon,review_before_training
+Sylheti,খত সময় লাগব,2,কত সময় লাগবে | কতটা সময় লাগবে,Kothon,review_before_training
+Sylheti,খত সুন্দর তুমি পেরেমো পরছি মুই,2,কত সুন্দর তুমি প্রেমে পড়েছি আমি | কত সুন্দর তুমিপ্রেমে পড়েছি আমি,Combined-CC; Vashantor,review_before_training
+Sylheti,খবিছ,2,খবিশ | দুষ্ট,ONUBAD; SylhetiDS,review_before_training
+Sylheti,খয়টা বাজে,2,কটা বাজে | কয়টা বাজে,Dwadash; Kothon,review_before_training
+Sylheti,খাইমু,2,খাই | খাব,BD-Dialect; ONUBAD,review_before_training
+Sylheti,খাইয়া,2,করে | খালি,ONUBAD,review_before_training
+Sylheti,খাইল,2,আগামী | কাঠের তৈরি শস্য পেষানোর যন্ত্র,ONUBAD; SylhetiDS,review_before_training
+Sylheti,খাইলকু,2,আগামি কাল | এতো,ONUBAD,review_before_training
+Sylheti,খাওন,2,আহার | খাবার,BD-Dialect,review_before_training
+Sylheti,খাটল,2,কাঁঠাল | কাঠাল,ONUBAD; SylhetiDS,review_before_training
+Sylheti,খাড়া,2,উলম্ব | দণ্ডায়মান,ONUBAD; SylhetiDS,review_before_training
+Sylheti,খানি,3,খাওয়া | খাদ্য | খাবার,ONUBAD; SylhetiDS,review_before_training
+Sylheti,খালকে রাইত,2,আগামীকাল রাত | গত রাত,Kothon,review_before_training
+Sylheti,খালাছ,2,শেষ | সমাপ্ত,SylhetiDS,review_before_training
+Sylheti,খালি,3,ফাঁকা | শুধু | শূণ্য,ONUBAD; SylhetiDS,review_before_training
+Sylheti,খুরা,2,কক্ষ | পায়া,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,খেতা,2,কাঁথা | কাথা,SylhetiDS,review_before_training
+Sylheti,খেনে,2,কেন | কেনো,ONUBAD,review_before_training
+Sylheti,গতকাইল চুরি অই গেছে,2,গতকাল চুরি হয়ে গেছে | গতকাল চুরি হয়েছে,Dwadash,review_before_training
+Sylheti,গাই,2,গরু স্ত্রী | গাভী,SylhetiDS,review_before_training
+Sylheti,গাইল,2,গাল | গালি,ONUBAD; SylhetiDS,review_before_training
+Sylheti,গাউ,2,এলাকা | গ্রাম,ONUBAD; SylhetiDS,review_before_training
+Sylheti,গালাত,2,কাছে | ধারে,ONUBAD,review_before_training
+Sylheti,গুজা,2,কুঁজো | পেয়ারা,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,গেছি,2,গিয়ে | যাই,ONUBAD,review_before_training
+Sylheti,গেছে,2,গম | হয়ে গেছে,Dwadash; ONUBAD,review_before_training
+Sylheti,গোয়ালাত বান্ধা গরুর লাখান,2,গরুর ঘরে বাধা গরুর মত | গোয়ালঘরে বাঁধা গরুর মতো,Dwadash; Kothon,review_before_training
+Sylheti,চখ,2,ক্ষেত | চোখ,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,চিনা,2,ধান জাতীয় একপ্রকার শস্য | পরিচিত,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,চুকা,2,টক | ধারালো,ONUBAD; SylhetiDS,review_before_training
+Sylheti,ছাইবায় না,2,চাইবেন না | দেখুন না,BD-Dialect,review_before_training
+Sylheti,জর,2,জ্বর | বিষ,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,জাতর,2,জাতের | ধরনের,ONUBAD,review_before_training
+Sylheti,জানে মারা,2,হত্যা | হত্যা করা,ONUBAD; SylhetiDS,review_before_training
+Sylheti,জানো,2,জানে | জানের,ONUBAD,review_before_training
+Sylheti,জিকানি,2,জিগ্যেস | প্রশ্ন করা,ONUBAD,review_before_training
+Sylheti,জিদ,2,জেদ | বায়না,ONUBAD; SylhetiDS,review_before_training
+Sylheti,জিনিস,2,পণ্য | পদার্থ,BD-Dialect,review_before_training
+Sylheti,জিলকি,2,খিড়কি | বিদ্যুৎ চমকানো,SylhetiDS,review_before_training
+Sylheti,জুস্না,2,জোছনা | জ্যোৎস্না,ONUBAD,review_before_training
+Sylheti,জেগার,2,জায়গায় | জায়গার,ONUBAD,review_before_training
+Sylheti,জোয়ান,2,যুবক | যুবক/ পুরুষ,ONUBAD; SylhetiDS,review_before_training
+Sylheti,টাটকা,2,টকটকে | পাকা,ONUBAD,review_before_training
+Sylheti,টিচার,2,শিক্ষার্থী | শিক্ষিকা,BD-Dialect,review_before_training
+Sylheti,টেংগা,2,কর্কশ | টক,ONUBAD; SylhetiDS,review_before_training
+Sylheti,টেরা,2,দোষ ধরা | বাঁকা,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,ঠান্ডা,2,শীত | হিমায়ন,BD-Dialect,review_before_training
+Sylheti,ঠিক,2,উপযুক্ত | বৈধ,BD-Dialect,review_before_training
+Sylheti,ঠেঙের,2,পায়ে | পায়ের,ONUBAD,review_before_training
+Sylheti,ডাকবা,2,ডাকবে | ডাকবেন,ONUBAD; SylhetiDS,review_before_training
+Sylheti,ডুগি,2,ডাটা | ডাটা শাক,SylhetiDS,review_before_training
+Sylheti,ডেখা,3,শহুরে | ষাঁড় | ষাড়,ONUBAD; SylhetiDS,review_before_training
+Sylheti,তর ফুরি উরি হক্বল ভালানী,2,তোমার ছেলেমেয়ে সবাই ভালো আছে | তোমার মেয়ে সবাই ভালো তো,Dwadash; Kothon,review_before_training
+Sylheti,তা আমার ফুয়া ও ত বেটা আল্লার হুকুম অইলে বাক্কা বড় বেটা অই গেছ,2,আমার ছেলে ও আল্লাহর হুকুমে অনেক বড় হইছে | আর আমার ছেলে ও তো আল্লাহর হুকুমে অনেক বড় হয়ে গেছে,Dwadash; Kothon,review_before_training
+Sylheti,তাই,2,সে মহিলা | সে স্ত্রী,SylhetiDS,review_before_training
+Sylheti,তাইন,3,উনি | তারা | তিনি,ONUBAD; SylhetiDS,review_before_training
+Sylheti,তারারে,2,তাদের | তাদেরকে,ONUBAD,review_before_training
+Sylheti,তুঁই ডাক্তার না হসাই,2,তুই ডাক্তার | তুই ডাক্তার না কসাই,Combined-CC; Dwadash,review_before_training
+Sylheti,তুকানি,2,খোঁজ করা | খোঁজা,ONUBAD; SylhetiDS,review_before_training
+Sylheti,তুমাইতাইন ওর কিলা লাগে,2,ক্রিকেট কেমন লাগে | তমার কেমন লাগে,Dwadash,review_before_training
+Sylheti,তুমার আত থাকি কুন্তা খাইলে,2,তোমার হাত থেকে কষ্ট পেলে | তোমার হাত থেকে কিছু খাইলে,Dwadash; Kothon,review_before_training
+Sylheti,তুমার ফাও ইকান কিতা,2,তোমার পা গুলো কি | তোমার পায়ে এইটা কি,Dwadash; Kothon,review_before_training
+Sylheti,তুমি আমারে চিনো নি,2,তুমি আমাকে চিনো | তুমি কি আমাকে চিনো,Dwadash; Vashantor,review_before_training
+Sylheti,তুমি কই থাকি আইছো,2,তুমি কোথা থেকে আসছ | তুমি কোথায় থেকে আসছো,Dwadash,review_before_training
+Sylheti,তুমি কিতা খুশি,2,তুমি কি আনন্দিত | তুমি কি খুশি,Kothon,review_before_training
+Sylheti,তুমি কিলাখান আছ,2,তুমি কেমন আছ | তুমি কেমন আছো,Dwadash; Kothon,review_before_training
+Sylheti,তুমি মাতবায় না,2,তুমি কথা বলবা না | তুমি বলবা না,Dwadash,review_before_training
+Sylheti,তুমিতাইন অত ঘুমাও কিতার লাগি,2,তোমার এত ঘুম আসে কেন | তোমার এত ঘুম কেন,Dwadash,review_before_training
+Sylheti,তুমিতাইন কিতা দেখছো নি,2,তুমি কি দেখছো | তুমি কি দেখেছো,Vashantor,review_before_training
+Sylheti,তুরা বালা উলা আছনি,2,তোমরা কেমন আছো | তোমরা ভালো আছ তো,Dwadash; Kothon,review_before_training
+Sylheti,তূর্য খইল আফনে খেটা,2,আপনি যে একজন মানসিক রোগী তা কি জানেন | তূর্য বলল আপনি কে,Kothon,review_before_training
+Sylheti,তেড়া,2,বাঁকা | ব্যাঁকা,ONUBAD; SylhetiDS,review_before_training
+Sylheti,তেল ছোঁড়া,2,তেলাপোকা | তেলাপোকার,ONUBAD,review_before_training
+Sylheti,থাখার,2,চলান্যি | থাকার,ONUBAD,review_before_training
+Sylheti,দক্ষিণ এশিয়াত আমরা র জ্ঞান অভিজ্ঞতা দক্ষতা আর বিনিয়োগোর মাইধ্যমে বাকিরার আত ধরা লাগব,2,কিছুক্ষন পর ঝাপসা চোখে দেখলাম মুগ্ধর আইডি কার্ড হাতে ডাক্তার আমাকে বলতেসে আপনার কি হয় | দক্ষিণ এশিয়ায় আমাদের জ্ঞান অভিজ্ঞতা দক্ষতা ও বিনিয়োগের মাধ্যমে অন্যদের হাত ধরতে হবে,Kothon,review_before_training
+Sylheti,দরকারি,2,গুরুত্বপূর্ণ | প্রয়োজনীয়,BD-Dialect,review_before_training
+Sylheti,দরজা খুইল্লা উবাই,2,দরজা খুলে দাঁড়াই | দরজা খুলে দাড়াও,Dwadash; Kothon,review_before_training
+Sylheti,দিছইন,2,দিয়েছেন | দিলা,ONUBAD; SylhetiDS,review_before_training
+Sylheti,দিমু,3,দিব | দিবো | দেব,ONUBAD,review_before_training
+Sylheti,দিয়া,2,দিয়ে | দ্বারা,ONUBAD,review_before_training
+Sylheti,দিলাও,2,দাও | দিয়ে দাও,ONUBAD; SylhetiDS,review_before_training
+Sylheti,দুকান,2,দোকান | স্টোর,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,দুনিয়া,2,পৃথিবী | বিশ্ব,BD-Dialect; ONUBAD,review_before_training
+Sylheti,দুয়ার,2,দরজা | দরজায়,ONUBAD,review_before_training
+Sylheti,দেইন,2,দেন | দেয়,ONUBAD; SylhetiDS,review_before_training
+Sylheti,দেখাত,2,দেখতে | দেখা,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,নাই,2,নাভি | নেই,ONUBAD; SylhetiDS,review_before_training
+Sylheti,নাইকল,2,নারকেল | নারিকেল,ONUBAD,review_before_training
+Sylheti,নাখিতা খছ,2,কিছু আপত্তি আছে কি | ঠিক আছে কিনা বল,Dwadash; Kothon,review_before_training
+Sylheti,নারে বো খুনতা নাই,2,না কিছু না | না রে বোন কিছু না,Dwadash; Kothon,review_before_training
+Sylheti,পতা,2,ভোরে | সেহরি,ONUBAD; SylhetiDS,review_before_training
+Sylheti,পারবায়,2,পারবে | পারবেন,ONUBAD,review_before_training
+Sylheti,পুয়া,2,ছেলে | পুত্র,ONUBAD,review_before_training
+Sylheti,পেটর,2,পেট | পেটে,ONUBAD,review_before_training
+Sylheti,প্রতিষ্টা খরা,2,প্রতিষ্ঠা করা | প্রতিষ্ঠান করা,BD-Dialect,review_before_training
+Sylheti,প্রধানমন্ত্রী খইলা দেশোর সবচেয়ে বড় খয়লা বিদ্যুৎ কেন্দ্র খয়লার জেটি আর একটা এলএনজি টার্মিনাল মাতারবাড়িত গড়িয়া তোলা হর,2,জাপানের সহায়তায় বাংলাদেশে বাস্তবায়নাধীন বিভিন্ন মেগা প্রকল্পের উল্লেখ করে জাপানের রাষ্ট্রদূত বলেন বাংলাদেশ জাপানের সব থেকে দীর্ঘ এবং বৃহৎ উন্নয়ন সহযোগী | প্রধানমন্ত্রী বলেন দেশের সর্ববৃহৎ কয়লা বিদ্যুৎ কেন্দ্র কয়লার জেটি এবং একটি এলএনজি টার্মিনাল মাতারবাড়িতে গড়ে তোলা হচ্ছে,Kothon,review_before_training
+Sylheti,ফতিজ্ঞা,2,যন্ত্রণা | শপথ,ONUBAD,review_before_training
+Sylheti,ফাখাইয়া,2,ঘুরে | পাকিয়ে,ONUBAD,review_before_training
+Sylheti,ফায় ফরিস্কার,2,পরিচ্ছন্নতা | প্রত্যাশা,ONUBAD,review_before_training
+Sylheti,ফারে,2,পারে | ব্যাপার,ONUBAD,review_before_training
+Sylheti,ফাস,2,অনুমোদিত | উত্তরণ,BD-Dialect,review_before_training
+Sylheti,ফিছলা,2,পিচ্ছিল | পিছলা,ONUBAD,review_before_training
+Sylheti,ফুটা ফুটা মেঘ ঝরে,2,ফুটো ফুটো বৃষ্টি পড়ে | ফোঁটা ফোঁটা মেঘ ঝরে,Dwadash; Kothon,review_before_training
+Sylheti,ফুয়াগু রাস্তা বায়দি হাটিয়া যাইরো,2,ছেলেটি রাস্তা দিয়ে হেঁটে যাচ্ছে | ছেলেটি রাস্তা দিয়ে হেটে যাচ্ছে,Dwadash; Vashantor,review_before_training
+Sylheti,ফুয়াটায় ঢাকাত আইছে,2,ছেলেটি ঢাকায় এসেছে | সিলেট থেকে ঢাকায়,Dwadash,review_before_training
+Sylheti,ফুরোন,2,পরিচ্ছন্নতা | স্থায়ী,BD-Dialect,review_before_training
+Sylheti,বও,2,বস | বসো,ONUBAD,review_before_training
+Sylheti,বড়া,2,পরিপূর্ণ | পূর্ণ,ONUBAD,review_before_training
+Sylheti,বাক্কা ভালা লাগে,2,অনেক ভালো লাগে | কথা ভালো লাগে,Dwadash,review_before_training
+Sylheti,বারইবায়,2,বাইরে | বের,ONUBAD,review_before_training
+Sylheti,বালা থাকিছ,2,ভাল থাকিস | ভালো থাকিস,Kothon,review_before_training
+Sylheti,বাসাত,2,বসায় | বাসায়,ONUBAD,review_before_training
+Sylheti,বিকালে আম্মা আমার লাগি শসার সুপ রান্দা করছইন,2,বিকালে আম্মু আমার জন্য শসার সুপ রান্না করেছে | বিকালে আম্মু আমার জন্য শসার সুপ রান্না করেছে x000D,Combined-CC; Vashantor,review_before_training
+Sylheti,বিদেশ ঘুরাত যাওয়া আমার স্বপ্ন,2,বিদেশ ঘুরতে যাওয়া আমার স্বপ্ন | বিদেশে ঘুরতে যাওয়া আমার স্বপ্ন,Dwadash; Vashantor,review_before_training
+Sylheti,বিশিবিদ্যানয়,2,বিশ্ববিদ্যালয় | স্কুল,BD-Dialect,review_before_training
+Sylheti,বুইছো,3,বুঝিস | বুঝে | বুঝেছেন,ONUBAD,review_before_training
+Sylheti,বেহায়া,3,নির্লজ্ | নির্লজ্জ | বেহায়ার,ONUBAD,review_before_training
+Sylheti,ভাই কিতা কররায়,2,ভাই ভাইয়া কী করছেন | ভাই/ভাইয়া কী করছেন,Combined-CC; Dwadash,review_before_training
+Sylheti,ভালা,2,ভাল | ভালো,ONUBAD,review_before_training
+Sylheti,ভালা আছইন নি,2,ভাল আছেন | ভালো আছেন তো,Kothon,review_before_training
+Sylheti,ভালা লাগে,3,আভালো লাগে | পছন্দ করি | ভালো লাগে,Dwadash,review_before_training
+Sylheti,মজা,2,সুস্বাদু | স্বাদ,BD-Dialect; ONUBAD,review_before_training
+Sylheti,মত,2,বস | মতামত,ONUBAD,review_before_training
+Sylheti,মতলব,2,উদ্দেশ্য | দুরভিসন্ধি,ONUBAD; SylhetiDS,review_before_training
+Sylheti,মনো অয় হাঝর লাখান উইড়া যাই,2,মনে হয় মেঘের মতো উড়ে যাই | মনে হয় হাজার বাতাসে উড়ে যাই,Dwadash; Kothon,review_before_training
+Sylheti,মাইমল,2,জেলে | জেলে সম্প্রদায়,SylhetiDS,review_before_training
+Sylheti,মাইর,2,আঘাত | ঝগড়া,ONUBAD; SylhetiDS,review_before_training
+Sylheti,মাত,5,কথন | কথা | প্রশ্নের | বক্তব্য | বাণী,BD-Dialect; ONUBAD,review_before_training
+Sylheti,মাতছে,2,কথা বলেছে | বলেছে,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,মাতবায় না,2,কথা বলবা না | বলবা না,Dwadash,review_before_training
+Sylheti,মাতু,2,জাম্বুরা | বাতাবিলেবু,ONUBAD; SylhetiDS,review_before_training
+Sylheti,মাত্তে বাক্কা ভালা লাগে,2,কথা বলতে অনেক ভালো লাগে | কথা বলতে ভালো লাগে,Dwadash,review_before_training
+Sylheti,মারমো ত হাছা ওই,2,তোর খালু নারায়ণগঞ্জ গাড়ি আনতে গেছে | মারবে তো বটেই,Kothon,review_before_training
+Sylheti,মিছা মাত মাইত্ত না আমারে ভূলি গেছ,2,মিথ্যা কথা বলবে না আমাকে ভুলে গেছো | মিথ্যে কথা বলো না আমাকে ভুলে গেছো,Dwadash; Kothon,review_before_training
+Sylheti,মুই আইজ বিয়ানে ফুটবল খেলাইছি,2,আমি আজ সকালে ফুটবল খেলেছি | আমি আজকে সকালে ফুটবল খেলেছি,Dwadash; Vashantor,review_before_training
+Sylheti,মুত,2,প্রশ্রাব | মূত্র,SylhetiDS,review_before_training
+Sylheti,মুর,2,আমার | তলদেশ,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,মুরা,4,টাক | টাকনু | বাঁক | মৃত্যু,ONUBAD; SylhetiDS,review_before_training
+Sylheti,মেকুর,2,বিড়াল | বিড়াল স্ত্রী,ONUBAD; SylhetiDS,review_before_training
+Sylheti,যতদিন বাছিয়া থাখমু তুমারে মনো রাখমু,2,যতদিন বেঁচে থাকি তোমায় মনে রাখবো | যতদিন বেঁছে থাকি তোমায় মনে রাখবো,Combined-CC; Vashantor,review_before_training
+Sylheti,যদি হে তুমার কাছে ফিরিয়া আয় তে হে তুমার অউ আছিল,2,যদি সে তোমার কাছে ফিরে আসে তবে সে তোমারই ছিল | যদি সে তোমার কাছে ফিরে আসেতবে সে তোমারই ছিল,Combined-CC; Vashantor,review_before_training
+Sylheti,যাইমু,2,যাইব | যাবো,ONUBAD,review_before_training
+Sylheti,যাইরাম,2,যাই | যাচ্ছি,ONUBAD,review_before_training
+Sylheti,যে,2,অনেক | খুবই,ONUBAD,review_before_training
+Sylheti,যে বেয়াদপ,2,খুবই বেয়াদব | মেয়েটি বেয়াদব,Dwadash,review_before_training
+Sylheti,যেসময় কুনো বেটা কুনো বেটিরে ভালাপায় হেসময় তাইর লাগি হখলতা খরতো পারে,2,যখন কোন পুরুষ কোন নারীকে ভালবাসে তখন সে তার জন্য সব কিছু করতে পারে | যখন কোন পুরুষ কোন নারীকে ভালবাসেতখন সে তার জন্য সব কিছু করতে পারে,Combined-CC; Vashantor,review_before_training
+Sylheti,রইদ মেঘ সব বাদে হাইন্জা নামে,2,রোদ মেঘ সব বাদে দিন শুরু হয় | রোদ মেঘের পরে সন্ধ্যা আসে,Dwadash; Kothon,review_before_training
+Sylheti,রাখমু,2,রাখবে | রাখবো,ONUBAD,review_before_training
+Sylheti,লগে,3,সংগে | সঙ্গে | সাথে,ONUBAD,review_before_training
+Sylheti,লামাত,2,নিচে | মনেহয়,ONUBAD,review_before_training
+Sylheti,লুয়া,2,পেরাক | পেরেক,ONUBAD,review_before_training
+Sylheti,শেষ,2,সমাপ্ত | সর্বনাশ,BD-Dialect; Kothon,review_before_training
+Sylheti,ষিখারী,2,শিকার | শিকারী,ONUBAD,review_before_training
+Sylheti,সাদা রঙ্গের শার্ট পিন্দিয়া আইছিল,2,সাদা রঙের একটি শার্ট পরে এসেছিল | সাদা রঙের শার্ট পরে এসেছিল,Dwadash,review_before_training
+Sylheti,সামাজিক অওয়া,2,সামাজিক হওয়া | সামাজিকীকরণ,BD-Dialect,review_before_training
+Sylheti,সুন্দর,2,নান্দনিক | বেশি,BD-Dialect; ONUBAD,review_before_training
+Sylheti,সুমন আছিল গাওয়ের মৃত সামসু মিয়ার ফোয়া,2,টেলিভিশনের কোন ম্যাগাজিন অনুষ্ঠানেও ম্যাডামকে পাথরসহ দেখা যাবে | সুমন ছিল গ্রামের মৃত সামসু মিয়ার ছেলে,Kothon,review_before_training
+Sylheti,স্কুল ও কিতা শিখানি ওইত,2,মুখের চেয়ে জিহ্বা বড় | স্কুলে কি শেখানো হত,Kothon,review_before_training
+Sylheti,হইছে,2,হচ্ছে | হয়েছে,ONUBAD,review_before_training
+Sylheti,হক্কল,2,সকল | সবাই,ONUBAD,review_before_training
+Sylheti,হাইঞ্জা,3,সঙ্গী | সন্ধা | সন্ধ্যাবেলা,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,হাছা,3,ঠিক | সত্য | সত্যি,ONUBAD,review_before_training
+Sylheti,হারাদিন বিয়ান থাকি হাইন্জা,2,সারাদিন সকাল থেকে সন্ধ্যা | সারাদিন সকাল থেকে সন্ধ্যা পর্যন্ত,Dwadash; Kothon,review_before_training
+Sylheti,হারি,2,হারিয়ে | হেরে,ONUBAD,review_before_training
+Sylheti,হিয়াল,2,শিয়াল | শেয়াল,ONUBAD; SylhetiDS,review_before_training
+Sylheti,হুকনা,4,চিকন | রোগা | শপথ | শুকনা,ONUBAD,review_before_training
+Sylheti,হুদা,2,অহেতুক | সাক্ষাৎ,ONUBAD,review_before_training
+Sylheti,হুনলাম বেটা তর ফুরি বড় অই গেছ,2,শুনলাম তোমার মেয়ে বড় হয়ে গেছে | শুনলাম তোর মেয়ে বড় হয়ে গেছে,Dwadash; Kothon,review_before_training
+Sylheti,হুফা,2,ফুফা | মাস্ক,SylhetiDS,review_before_training
+Sylheti,হে,2,সে | সে পুরুষ,BD-Dialect; SylhetiDS,review_before_training
+Sylheti,হে সিলেট থাকি আমার লগে দেখা করাত আইছিল,2,দেখা করতে এসেছিল | সে সিলেট থেকে আমার সাথে দেখা করতে এসেছিল,Dwadash; Vashantor,review_before_training

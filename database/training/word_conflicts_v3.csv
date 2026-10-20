@@ -1,0 +1,5 @@
+language,word,possible_meanings,action
+Chattogram,করুম,করব | করবো,EXCLUDED_word_conflict
+Chattogram,দে,দেন | দেয়,EXCLUDED_word_conflict
+Chattogram,হান,কান | পান,EXCLUDED_word_conflict
+Noakhali,দে,দাও | দেন,EXCLUDED_word_conflict
