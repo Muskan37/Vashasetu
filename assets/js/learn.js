@@ -19,7 +19,8 @@ async function init(){try{
  const data=await api({action:'languages'});state.languages=data.languages;
  let savedSrc='',savedTgt='';try{savedSrc=safeId(localStorage.getItem('vashasetu-v4-source')||'');savedTgt=safeId(localStorage.getItem('vashasetu-v4-target')||'');}catch(e){}
  for(const id of ['sourceLang','targetLang']){const s=$(id);s.replaceChildren();for(const l of state.languages){let opt=el('option','',l.display_name+' · '+l.language_type.replaceAll('_',' '));opt.value=l.language_id;s.add(opt);}}
- state.src=state.languages.some(x=>x.language_id===savedSrc)?savedSrc:'noakhali-bn';
+ const initialSource=safeId(new URLSearchParams(location.search).get('source')||'');
+ state.src=state.languages.some(x=>x.language_id===savedSrc)?savedSrc:(state.languages.some(x=>x.language_id===initialSource)?initialSource:'noakhali-bn');
  state.tgt=state.languages.some(x=>x.language_id===savedTgt)?savedTgt:'standard';
  if(state.src===state.tgt)state.tgt=state.src==='standard'?'noakhali-bn':'standard';
  $('sourceLang').value=state.src;$('targetLang').value=state.tgt;

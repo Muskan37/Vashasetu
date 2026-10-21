@@ -458,7 +458,7 @@ function standard_to_dialect(PDO $pdo, string $dialect, array $tokens): array {
         }
     }
     foreach (curated_pairs()[$dialect] ?? [] as $dw => $stds) {      // verified corrections (reverse direction)
-        foreach ($stds as $std) if (in_array($std, $tokens, true)) { $alt[$std][] = [$dw, 1.95, 0.95]; if (!isset($map[$std]) || 1.95 > $map[$std][1]) $map[$std] = [$dw, 1.95, 0.95]; }
+        foreach ($stds as $std) if (in_array($std, $tokens, true)) { $alt[$std][] = [$dw, 3.5, 0.95]; if (!isset($map[$std]) || 3.5 > $map[$std][1]) $map[$std] = [$dw, 3.5, 0.95]; }
     }
     $ctxPick = [];
     if (count($tokens) > 1) {

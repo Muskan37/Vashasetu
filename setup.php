@@ -47,6 +47,13 @@ say('Database "' . DB_NAME . '" ready.');
 $sql = file_get_contents(__DIR__ . '/database/schema.sql');
 foreach (array_filter(array_map('trim', explode(';', preg_replace('/^--.*$/m', '', $sql)))) as $stmt) $root->exec($stmt);
 say('Tables ready.');
+// Non-destructive V6 upgrade: add current district to existing users without dropping rows.
+$hasDistrict = $root->query("SHOW COLUMNS FROM `users` LIKE 'current_district'")->fetch();
+if (!$hasDistrict) { $root->exec('ALTER TABLE `users` ADD COLUMN `current_district` VARCHAR(70) NULL DEFAULT NULL'); say('Users: added current_district (existing accounts preserved).'); }
+$hasSpoken = $root->query("SHOW COLUMNS FROM `users` LIKE 'spoken_language'")->fetch();
+if (!$hasSpoken) { $root->exec('ALTER TABLE `users` ADD COLUMN `spoken_language` VARCHAR(60) NULL DEFAULT NULL'); say('Users: added spoken_language (existing accounts preserved).'); }
+
+
 
 function csv_rows(string $file): Generator {
     $fh = fopen(__DIR__ . '/database/' . $file, 'r');

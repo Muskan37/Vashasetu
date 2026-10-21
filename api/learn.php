@@ -197,7 +197,7 @@ try{
     }
     if($method==='GET'&&$action==='course_items')unit_items($pdo,$input);
     if($method==='GET'&&$action==='course_preview')sample_preview($pdo,$input);
-    if($method==='POST'&&$action==='course_answer')judge_answer($pdo,$input);
+    if($method==='POST'&&$action==='course_answer'){require_login();judge_answer($pdo,$input);}
     respond(['error'=>'Unsupported learning endpoint'],405);
 }catch(Throwable $e){
     error_log('VashaSetu learning API: '.$e->getMessage());

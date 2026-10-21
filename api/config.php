@@ -72,3 +72,24 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
 
 // The five supported dialects (what the app sends). Anything else is rejected or replaced.
 function valid_dialect(string $d): bool { return in_array($d, ['Chattogram', 'Sylheti', 'Noakhali', 'Barishal', 'Mymensingh', 'Rajshahi'], true); }
+
+/** High-trust learned word list (database/showcase.csv) used when a language has too few reviewed word records. */
+function showcase_rows(?string $dialect = null): ?array {
+    static $all = null;
+    if ($all === null) {
+        $all = [];
+        $f = __DIR__ . '/../database/showcase.csv';
+        if (is_file($f) && ($h = fopen($f, 'r'))) {
+            fgetcsv($h);
+            while (($r = fgetcsv($h)) !== false) {
+                if (count($r) < 3) continue;
+                $all[] = ['id' => crc32($r[0] . '|' . $r[1] . '|' . $r[2]), 'dialect_word' => $r[1], 'standard_meaning' => $r[2], 'dialect_type' => $r[0]];
+            }
+            fclose($h);
+        }
+    }
+    if (!$all) return null;
+    if ($dialect === null || $dialect === '' || strtolower($dialect) === 'any') return $all;
+    $out = array_values(array_filter($all, fn($r) => $r['dialect_type'] === $dialect));
+    return $out ?: null;
+}

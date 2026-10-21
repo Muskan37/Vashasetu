@@ -1,7 +1,12 @@
-<?php function asset_v($p) { return htmlspecialchars($p, ENT_QUOTES) . '?v=' . @filemtime(__DIR__ . '/' . $p); } ?>
+<?php
+// A logged-in account is required for learning progress in V6.
+if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+if (empty($_SESSION['user_id'])) { header('Location: index.php#login', true, 302); exit; }
+$embedded = isset($_GET['embedded']) && $_GET['embedded'] === '1';
+function asset_v($p) { return htmlspecialchars($p, ENT_QUOTES) . '?v=' . @filemtime(__DIR__ . '/' . $p); } ?>
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0f5c56"><title>Learn Languages · VashaSetu</title><link rel="stylesheet" href="<?= asset_v('assets/css/learn.css') ?>"></head>
-<body>
-<header class="top"><a class="back" href="index.php">← VashaSetu</a><strong>ভাষাসেতু · Learn together</strong><span>★</span></header>
+<body class="<?= $embedded ? 'embedded-learn' : '' ?>">
+<?php if (!$embedded): ?><header class="top"><a class="back" href="index.php">← VashaSetu</a><strong>ভাষাসেতু · Learn together</strong><span>★</span></header><?php endif; ?>
 <main class="wrap">
  <section class="hero">
   <small>YOU CHOOSE THE LANGUAGE PATH</small>

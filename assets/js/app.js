@@ -43,14 +43,87 @@ const LANGS = [
   { id: 'english',    name: 'English',     sub: 'Word-by-word from a dictionary', from: true, to: true },
 ];
 const langName = (id) => (LANGS.find((l) => l.id === id) || { name: id }).name;
+/* Dictionary language state is intentionally independent of translator source/target. */
+const ADDITIONAL_DICTIONARY_LANGS = [
+  { id:'Dhaka', name:'Dhaka · dataset pending' }, { id:'Khulna', name:'Khulna · dataset pending' },
+  { id:'Narail', name:'Narail · dataset pending' }, { id:'Rangpur', name:'Rangpur · dataset pending' },
+  { id:'tripura', name:'Tripura / Kokborok' }, { id:'sadri', name:'Sadri' },
+  { id:'santali', name:'Santali' }, { id:'khasi', name:'Khasi' },
+  { id:'mro', name:'Mro' }, { id:'tanchangya', name:'Tanchangya' },
+  { id:'bawm', name:'Bawm' }, { id:'khumi', name:'Khumi' },
+  { id:'rakhine', name:'Rakhine' }, { id:'meitei', name:'Meitei' },
+];
+const DICTIONARY_LANGS = LANGS.filter(l=>l.to && !['standard','english'].includes(l.id)).concat(ADDITIONAL_DICTIONARY_LANGS);
+const DICT_IDS = new Set(DICTIONARY_LANGS.map(l=>l.id));
 
-const S = { user: null, dialect: 'Chattogram', from: 'auto', to: 'standard', last: null, breakdown: [], result: '', wod: null, history: [], mapSel: null, mapBuilt: false };
+const S = { user: null, dialect: 'Chattogram', from: 'auto', to: (function(){try { const t=JSON.parse(localStorage.getItem("vs_translate_target")); return LANGS.some(l=>l.id===t&&l.to)?t:"standard"; } catch(e){ return "standard"; } })(), last: null, breakdown: [], result: '', wod: null, history: [], mapSel: null, mapBuilt: false };
 
 /* ---------- small helpers ---------- */
 const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* private mode */ } },
 };
+/* Bangladesh's 64 districts are administrative locations, not language/ethnicity labels. */
+let DISTRICTS = [];
+let PROFILE_LANGUAGES = [];
+let afterLoginDestination = null;
+function selectedDistrict() { return S.user ? (S.user.current_district || '') : store.get('vs_guest_district',''); }
+function districtById(id) { return DISTRICTS.find(d=>d.id===id); }
+function districtSelectOptions(value) {
+  const divisions = [...new Set(DISTRICTS.map(d=>d.division))];
+  let html = '<option value="">Choose district (optional)</option>';
+  for (const div of divisions) {
+    html += '<optgroup label="'+esc(div)+' Division">';
+    for (const d of DISTRICTS.filter(d=>d.division===div)) html += '<option value="'+esc(d.id)+'"'+(d.id===value?' selected':'')+'>'+esc(d.name)+' · '+esc(d.name_bn)+'</option>';
+    html += '</optgroup>';
+  }
+  return html;
+}
+function spokenSelectOptions(value) {
+  let html='<option value="">Choose a language (optional)</option>';
+  for (const l of PROFILE_LANGUAGES) html += '<option value="'+esc(l.id)+'"'+(l.id===value?' selected':'')+'>'+esc(l.name)+'</option>';
+  return html;
+}
+function districtHint(id) {
+  const district=districtById(id);
+  if (!district) return 'Your district is not your native language. Choose your spoken language separately.';
+  const candidates=(district.suggested_languages||[]).map(k=>PROFILE_LANGUAGES.find(l=>l.id===k)?.name).filter(Boolean);
+  return '<b>'+esc(district.name)+' · '+esc(district.division)+' Division</b><div class="district-candidates">'+candidates.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div><small>These are possible languages in or near the area, not verified district-wide assignments. You choose what you speak or learn.</small>';
+}
+function refreshDistrictUI() {
+  const d=selectedDistrict();
+  if ($('#home-district')) $('#home-district').innerHTML=districtSelectOptions(d);
+  if ($('#home-district-hint')) $('#home-district-hint').innerHTML=districtHint(d);
+  if ($('#register-district')) {
+    const selected=$('#register-district').value;
+    $('#register-district').innerHTML=districtSelectOptions(selected);
+  }
+  if ($('#register-spoken')) {
+    const selected=$('#register-spoken').value;
+    $('#register-spoken').innerHTML=spokenSelectOptions(selected);
+  }
+  if ($('#register-district-hint')) $('#register-district-hint').innerHTML=districtHint($('#register-district')?.value||'');
+  if (document.body.dataset.screen==='profile') loadProfile();
+}
+async function loadDistricts() {
+  try {
+    const res=await api('districts.php');
+    if (!res.success||!Array.isArray(res.districts)||res.districts.length!==64) throw Error('District list unavailable');
+    DISTRICTS=res.districts; PROFILE_LANGUAGES=res.languages||[];
+    refreshDistrictUI();
+  } catch(e) { if ($('#home-district-hint')) $('#home-district-hint').textContent='Could not load districts. Check application files.'; }
+}
+function openLearning() {
+  const frame=$('#learn-frame');
+  if (!frame||!S.user) return;
+  // Shared same-origin PHP session: scored course progress belongs to the logged-in user.
+  const src=S.user.spoken_language || '';
+  const url='learn.php?embedded=1'+(src?'&source='+encodeURIComponent(src):'');
+  if (frame.dataset.account!==String(S.user.id)) {
+    frame.src=url;
+    frame.dataset.account=String(S.user.id);
+  }
+}
 const vib = (p = 12) => { try { navigator.vibrate && navigator.vibrate(p); } catch (e) { /* ignore */ } };
 let toastTimer = null;
 function toast(msg, ms = 2600) {
@@ -111,12 +184,13 @@ function touchStreak() {
 /* ============================================================
    ROUTER
    ============================================================ */
-const SCREENS = ['splash', 'choice', 'home', 'translate', 'breakdown', 'history', 'contribute', 'profile', 'login', 'register', 'quiz', 'dictionary'];
-const NAV_ON = new Set(['home', 'translate', 'breakdown', 'history', 'contribute', 'profile', 'dictionary']);
+const SCREENS = ['splash', 'choice', 'home', 'translate', 'breakdown', 'history', 'contribute', 'profile', 'login', 'register', 'quiz', 'dictionary', 'learn'];
+const NAV_ON = new Set(['home', 'translate', 'breakdown', 'history', 'contribute', 'profile', 'dictionary', 'learn']);
 const TAB_OF = { breakdown: 'translate', contribute: 'dictionary' };
 
 function goTo(name) {
   if (!SCREENS.includes(name)) return;
+  if (name === 'learn' && !S.user) { afterLoginDestination = 'learn'; name = 'login'; toast('Log in or create an account to save your learning progress.'); }
   if (name === 'choice' && S.user) name = 'home';      // already signed in: no need to ask again
   $$('.screen').forEach((s) => s.classList.toggle('active', s.id === 'screen-' + name));
   document.body.dataset.screen = name;
@@ -125,7 +199,7 @@ function goTo(name) {
   $$('#nav button').forEach((b) => b.classList.toggle('active', b.dataset.tab === tab));
   const sc = $(`#screen-${name} .scroll`);
   if (sc) sc.scrollTop = 0;
-  const hooks = { home: onHome, translate: onTranslate, breakdown: renderBridge, history: loadHistory, profile: loadProfile, quiz: startQuiz, dictionary: onDict };
+  const hooks = { home: onHome, translate: onTranslate, breakdown: renderBridge, history: loadHistory, profile: loadProfile, quiz: startQuiz, dictionary: onDict, learn: openLearning };
   if (hooks[name]) hooks[name]();
 }
 window.goTo = goTo;
@@ -135,6 +209,7 @@ window.goTo = goTo;
    ============================================================ */
 function onHome() {
   renderGreeting();
+  refreshDistrictUI();
   if (!S.mapBuilt) buildMap();
   selectPin(S.dialect, true);
   if (!S.wod) loadWod();
@@ -235,16 +310,19 @@ function setDialect(k) {            // used by the map, profile preference, "wor
   const api = toApiName(k);
   if (!LANGS.some((l) => l.id === api && l.to)) return;
   S.dialect = fromApiName(api);
-  S.from = api; S.to = 'standard';
+  // Region map/profile changes only the regional preference; never silently changes translation direction.
   renderLangBar();
 }
 function renderLangBar() {
   const f = $('#from-label'), t = $('#to-label');
   if (!f) return;
-  let ftxt = langName(S.from);
-  let fsmall = 'From';
-  if ((S.from === 'auto' || S.from === 'banglish') && S.last && S.last.detected) { ftxt = S.last.detected.label; fsmall = S.from === 'auto' ? 'From · detected' : 'From · Banglish'; }
+  let ftxt = S.from === 'auto' ? 'Detect automatically' : langName(S.from);
+  let fsmall = S.from === 'auto' ? 'Input · Auto detect' : 'Input · Manual';
+  if (S.from === 'auto' && S.last && S.last.detected && !S.last.requires_source_confirmation) {
+    ftxt = S.last.detected.label; fsmall = 'Input · Detected';
+  }
   $('#from-btn small').textContent = fsmall;
+  $('#to-btn small').textContent = 'Output · Selected';
   f.textContent = ftxt;
   t.textContent = langName(S.to);
   $('#result-label').textContent = S.to === 'standard' ? 'Standard Bangla · প্রমিত বাংলা' : langName(S.to);
@@ -270,20 +348,25 @@ function closeSheet() { const sh = $('#sheet'); sh.classList.remove('open'); sh.
 function pickLang(side) {
   const rows = LANGS.filter((l) => l[side === 'from' ? 'from' : 'to']);
   const cur = side === 'from' ? S.from : S.to;
-  openSheet(`<h3>${side === 'from' ? 'Translate from' : 'Translate to'}</h3>` + rows.map((l) =>
+  openSheet(`<h3>${side === 'from' ? 'Input language · automatic or manual' : 'Output language · your choice'}</h3>` + rows.map((l) =>
     `<button class="lang-row ${l.id === cur ? 'on' : ''}" data-act="chooseLang" data-side="${side}" data-id="${l.id}">
       <span class="dot" style="--c:${l.c || '#8A9A98'}"></span><span>${esc(l.name)}${l.bn ? ` <span class="bn" style="font-weight:600;color:var(--ink-soft);font-size:15px">${l.bn}</span>` : ''}${l.sub ? `<small>${esc(l.sub)}</small>` : ''}</span>
       <svg class="ic tick" style="width:20px;height:20px"><use href="#i-check"/></svg></button>`).join(''));
 }
 function chooseLang(side, id) {
-  if (side === 'from') S.from = id; else S.to = id;
-  { const dd = side === 'to' ? id : id; if (dd !== 'standard' && dd !== 'english' && dd !== 'auto' && dd !== 'banglish') S.dialect = fromApiName(dd); }
-  S.last = null; S.wod = null;
+  if (side === 'from') S.from = id;
+  else { S.to = id; store.set('vs_translate_target', id); }
+  // Never change the dictionary language when changing translation direction.
+  S.last = null;
   closeSheet(); renderLangBar(); renderDetect(null);
   if ($('#dialect-input').value.trim()) doTranslate({ live: true });
   vib(8);
 }
 function swapLang() {
+  if ((S.from === 'auto' || S.from === 'banglish') && (!S.last || S.last.requires_source_confirmation || !S.last.source)) {
+    toast('Detect or manually choose an input language before swapping.');
+    pickLang('from'); return;
+  }
   let newTo = S.from;
   if (S.from === 'auto' || S.from === 'banglish') newTo = (S.last && S.last.detected && S.last.detected.variety !== 'english') ? S.last.detected.variety : 'standard';
   let newFrom = S.to;
@@ -293,7 +376,7 @@ function swapLang() {
     if (newFrom === 'standard') newTo = toApiName(S.dialect) !== 'standard' ? toApiName(S.dialect) : 'Chattogram';
     else newFrom = 'auto';
   }
-  S.from = newFrom; S.to = newTo;
+  S.from = newFrom; S.to = newTo; store.set('vs_translate_target', newTo);
   const res = (S.result || '').trim();
   if (res && res !== $('#dialect-input').value.trim() && !(S.last && S.last.detected && S.last.detected.variety === S.last.target)) setInput(res);
   S.last = null;
@@ -310,11 +393,17 @@ function renderDetect(data) {
   if (!data) { el.innerHTML = ''; tl.classList.remove('show'); tl.innerHTML = ''; return; }
   const d = data.detected;
   let h = '';
+  if (data.requires_source_confirmation) {
+    const candidates = (data.source_candidates || []).filter(c=>LANGS.some(l=>l.id===c.id&&l.from));
+    h += `<div class="vs-source-warning"><b>Input dialect not certain</b><p>${esc(data.detection_reason || 'The words may belong to more than one region. Choose the input language to prevent wrong meanings.')}</p><button class="btn btn-gold btn-sm" data-act="pickLang" data-side="from">Choose input language</button>` +
+      (candidates.length ? `<div class="vs-source-suggestions">${candidates.slice(0,6).map(c=>`<button class="chip" data-act="chooseLang" data-side="from" data-id="${esc(c.id)}">${esc(langName(c.id))}</button>`).join('')}</div>` : '') + `</div>`;
+    el.innerHTML = h; tl.classList.remove('show'); tl.innerHTML = ''; return;
+  }
   if (d.was_auto || d.script === 'banglish') {
     const pct = Math.round((d.confidence || 0) * 100);
-    const weak = d.script !== 'english' && pct < 55;
+    const weak = d.script !== 'english' && d.method !== 'single_dataset_phrase_match' && pct < 55;
     h += `<span class="chip ${weak ? 'warn' : ''}"><svg class="ic" style="width:14px;height:14px"><use href="#i-eye"/></svg> ${d.script === 'banglish' ? 'Banglish · ' : ''}${esc(d.label)}</span>`;
-    if (d.script !== 'english') h += `<span class="conf">${pct}% sure${weak ? ' — short text is hard to tell apart' : ''}</span>`;
+    if (d.script !== 'english') h += `<span class="conf">${d.method === 'single_dataset_phrase_match' ? 'Exact source-labeled phrase · research data, not independently verified' : `Classifier score ${pct}% · not a certainty measure${weak ? ' · short text can be ambiguous' : ''}`}</span>`;
   }
   if (d.variety === data.target && d.script !== 'english' && data.target === 'standard') {
     h += `<div class="samehint">Already Standard Bangla — convert it to: ` + ['Chattogram','Sylheti','Noakhali','Barishal','Mymensingh','Rajshahi'].map((k) => `<button class="chip" data-act="chooseLang" data-side="to" data-id="${k}">${k}</button>`).join(' ') + '</div>';
@@ -356,7 +445,7 @@ async function doTranslate(opts = {}) {
     S.last = data;
     S.breakdown = data.breakdown || [];
     S.result = data.translated_text;
-    if (doLog) lastLogged = text;
+    if (doLog && data.translated_text) lastLogged = text;
     renderLangBar(); renderDetect(data); renderResult(data);
     if (!live) { vib(15); setTimeout(() => $('#result-card').scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 120); }
   } catch (e) {
@@ -381,7 +470,7 @@ function logCurrent() {                              // save to history when the
 /* One chip per source token. Sentence translations NEVER imply positional word alignment. */
 function renderResult(data) {
   const card = $('#result-card');
-  $('#result-text').textContent = data.translated_text || 'Translation not available for this sentence.';
+  $('#result-text').textContent = data.requires_source_confirmation ? 'Choose the input dialect to translate accurately.' : (data.translated_text || 'Translation not available for this sentence.');
   $('#result-roman').textContent = data.romanization && data.target !== 'english' ? data.romanization : '';
   const words = data.word_meanings || [];
   $('#result-pairs').innerHTML = words.map((w, i) => {
@@ -400,7 +489,8 @@ function renderResult(data) {
   const note = $('#no-match-note');
   note.textContent = `${unknown} individual word${unknown===1?'':'s'} have no independently established meaning. The sentence can still have a full translation; we do not guess word meanings from word order.`;
   note.classList.toggle('show', unknown > 0);
-  const quality = data.translation_quality === 'research_sentence_candidate_not_reaudited' || data.translation_quality === 'research_candidate_not_reaudited'
+  const quality = data.requires_source_confirmation ? 'Automatic detection was not confident enough. No translation or word meaning was guessed.' :
+    data.translation_quality === 'research_sentence_candidate_not_reaudited' || data.translation_quality === 'research_candidate_not_reaudited'
     ? 'Exact sentence match from a research dataset; not independently checked for this app.'
     : ['unavailable','unavailable_without_approximation'].includes(data.translation_quality) ? 'No source-supported sentence translation is available. The original text is not returned as a translation.'
     : 'Word-level translation may be unreliable; verify with a fluent speaker.';
@@ -417,10 +507,10 @@ function showWordEvidence(index) {
 }
 
 /* ---------- word card ---------- */
-async function lookupWord(w) {
+async function lookupWord(w, sourceLanguage = null) {
   openSheet('<div class="empty"><b>Looking up…</b></div>');
   try {
-    const lang = (S.from !== 'standard' && S.from !== 'auto' && S.from !== 'english' && S.from !== 'banglish') ? S.from : (S.to !== 'standard' && S.to !== 'english' ? S.to : D.dialect);
+    const lang = sourceLanguage && DICT_IDS.has(sourceLanguage) ? sourceLanguage : D.dialect;
     const d = await api('lookup.php?language=' + encodeURIComponent(lang) + '&word=' + encodeURIComponent(w));
     if (!d.found) { openSheet(`<h3>${esc(w)}</h3><p style="color:var(--ink-soft)">Not in the dictionary yet.</p><button class="btn btn-gold btn-block" data-act="teachWord" data-w="${esc(w)}">Teach it to Vashasetu</button>`); return; }
     const means = (d.means || []).map((m) => `<div class="wc-row"><span class="dot" style="--c:${colorOf(m.dialect)}"></span><span><small>${esc(m.dialect)} word</small><br>means</span><span class="r"><b>${esc(m.standard)}</b>${m.verified ? '<br><small>✓ community verified</small>' : `<br><small>${esc((m.status || 'needs_review').replace(/_/g,' '))}</small>`}</span></div>`).join('');
@@ -436,32 +526,46 @@ async function lookupWord(w) {
   } catch (e) { openSheet('<div class="empty"><b>Could not load the word</b>Check your connection and try again.</div>'); }
 }
 
-/* ---------- dictionary browser ---------- */
-const D = { dialect: 'Chattogram', q: '', page: 1, pages: 1, busy: false, t: null };
+/* ---------- dictionary browser: completely independent of the translator ---------- */
+const savedDict = store.get('vs_dictionary_language', 'Chattogram');
+const D = { dialect: DICT_IDS.has(savedDict)?savedDict:'Chattogram', q: '', page: 1, pages: 1, busy: false, seq:0, t: null };
 function onDict() {
-  const selected = ['auto','standard','english','banglish'].includes(S.from) ? toApiName(S.dialect) : S.from;
-  if (['Barishal','Chattogram','Mymensingh','Noakhali','Rajshahi','Sylheti'].includes(selected)) D.dialect = selected;
-  $('#dict-chips').innerHTML = LANGS.filter((l) => l.to && !['standard','english','chakma','marma','garo'].includes(l.id)).map((l) =>
-    `<button class="dchip ${l.id === D.dialect ? 'on' : ''}" data-act="dictDialect" data-id="${l.id}"><span class="dot" style="--c:${l.c}"></span>${l.name}</button>`).join('');
+  const select = $('#dict-language');
+  select.innerHTML = DICTIONARY_LANGS.map(l=>`<option value="${esc(l.id)}">${esc(l.name)}</option>`).join('');
+  select.value = D.dialect;
+  const popular = ['Chattogram','Sylheti','Noakhali','Barishal','Mymensingh','Rajshahi'];
+  const visible = popular.includes(D.dialect) ? popular : [D.dialect,...popular];
+  $('#dict-chips').innerHTML = visible.map(id=> {
+    const l=DICTIONARY_LANGS.find(x=>x.id===id);
+    return `<button class="dchip ${id === D.dialect ? 'on' : ''}" data-act="dictDialect" data-id="${esc(id)}"><span class="dot" style="--c:${l.c||colorOf(id)}"></span>${esc(l.name)}</button>`;
+  }).join('');
   loadDict(true);
 }
+function changeDictionaryLanguage(id) {
+  if (!DICT_IDS.has(id)) return;
+  D.dialect=id;
+  store.set('vs_dictionary_language',id);
+  onDict();
+}
 async function loadDict(reset) {
-  if (D.busy) return;
-  if (reset) { D.page = 1; $('#dict-list').innerHTML = ''; }
+  if (D.busy && !reset) return;
+  if (reset) { D.page = 1; D.pages=1; $('#dict-list').innerHTML = ''; }
+  const seq=++D.seq, dialect=D.dialect, page=D.page;
   D.busy = true;
   try {
-    const d = await api(`dictionary.php?dialect=${encodeURIComponent(D.dialect)}&q=${encodeURIComponent(D.q)}&page=${D.page}`);
-    D.pages = d.pages;
-    const total = Object.values(d.dialect_totals || {}).reduce((a, b) => a + b, 0);
-    $('#dict-sub').textContent = `${total.toLocaleString()} attested dialect words · not all independently verified · search in Bangla`;
-    $('#dict-count').textContent = d.total ? `${d.total.toLocaleString()} ${D.q ? 'matches' : 'words'} in ${D.dialect}` : '';
-    const rows = d.rows.map((r) => `<button class="drow ${r.verified ? 'v' : ''}" data-act="lookup" data-w="${esc(r.dialect_word)}" title="${esc(r.review_status || 'Needs review')} · ${esc(r.source_dataset || '')}">
+    const d = await api(`dictionary.php?dialect=${encodeURIComponent(dialect)}&q=${encodeURIComponent(D.q)}&page=${page}`);
+    if (seq !== D.seq || dialect !== D.dialect) return;
+    if (d.error) throw Error(d.error);
+    D.pages = d.pages || 1;
+    $('#dict-sub').textContent = `Browsing ${langName(dialect) === dialect ? (DICTIONARY_LANGS.find(l=>l.id===dialect)||{}).name||dialect : langName(dialect)} · separate dictionary · sources require verification`;
+    $('#dict-count').textContent = `${(d.total||0).toLocaleString()} ${D.q ? 'matches' : 'available word meanings'} in this language`;
+    const rows = (d.rows || []).map(r=>`<button class="drow ${r.verified ? 'v' : ''}" data-act="lookup" data-lang="${esc(dialect)}" data-w="${esc(r.dialect_word)}" title="${esc(r.review_status||'Needs review')} · ${esc(r.source_dataset||'')}">
       <span class="a">${esc(r.dialect_word)}<small>${esc(r.roman)}</small></span><svg class="ic arrow" style="width:18px;height:18px"><use href="#i-arrow"/></svg><span class="b">${esc(r.standard_word)}</span></button>`).join('');
-    if (!d.rows.length && D.page === 1) $('#dict-list').innerHTML = `<div class="card empty"><b>Nothing found</b>Try another spelling, or search in English.</div>`;
+    if (!d.rows.length && D.page === 1) $('#dict-list').innerHTML = `<div class="card empty"><b>${D.q?'No matching words':'No published word meanings yet'}</b>Only ${esc(dialect)} records were checked. Try another spelling or select a different language.</div>`;
     else $('#dict-list').insertAdjacentHTML('beforeend', rows);
     $('#dict-more').style.display = D.page < D.pages ? '' : 'none';
-  } catch (e) { toast('Could not load the dictionary'); }
-  finally { D.busy = false; }
+  } catch (e) { if(seq===D.seq) { toast('Could not load the dictionary'); $('#dict-list').innerHTML='<div class="card empty">Database unavailable. Check MySQL and setup.php.</div>'; } }
+  finally { if(seq===D.seq) D.busy = false; }
 }
 
 async function copyResult() {
@@ -821,9 +925,10 @@ async function checkAuth() {
   try {
     const data = await api('auth.php?action=me');
     S.user = data.user || null;
-    if (S.user && S.user.preferred_dialect && !store.get('vs_touched_lang', false)) { S.from = toApiName(S.user.preferred_dialect); S.dialect = fromApiName(S.from); renderLangBar(); }
+    if (S.user && S.user.preferred_dialect && !store.get('vs_touched_lang', false)) { S.dialect = fromApiName(toApiName(S.user.preferred_dialect)); renderLangBar(); }
   } catch (e) { S.user = null; }
   renderGreeting();
+  refreshDistrictUI();
 }
 function loadProfile() {
   const box = $('#profile-body');
@@ -849,6 +954,15 @@ function loadProfile() {
       ${stats}
       <div class="setting"><span>Preferred dialect</span>
         <select id="profile-dialect">${SUPPORTED.map(toApiName).map((k) => `<option ${k === toApiName(S.user.preferred_dialect) ? 'selected' : ''}>${k}</option>`).join('')}</select></div>
+      <div class="setting" style="display:block">
+        <label class="district-label" for="profile-district">Current district (64 districts)</label>
+        <select id="profile-district" class="input" style="width:100%">${districtSelectOptions(S.user.current_district||'')}</select>
+        <div class="district-hint" id="profile-district-hint">${districtHint(S.user.current_district||'')}</div>
+        <label class="district-label" for="profile-spoken">Language I speak (independent of district)</label>
+        <select id="profile-spoken" class="input" style="width:100%">${spokenSelectOptions(S.user.spoken_language||'')}</select>
+        <p class="district-explain">Your district never automatically sets your dialect or translation output. Learning courses remain your choice.</p>
+      </div>
+      <button class="btn btn-gold btn-block" data-go="learn">📚 Continue learning</button>
       ${links}
       <div style="height:14px"></div>
       <button class="btn btn-line btn-block" data-act="doLogout" style="color:var(--rose);border-color:#F6C9D1;box-shadow:0 4px 0 #F6C9D1">Log out</button></div>`;
@@ -864,28 +978,30 @@ async function doLogin() {
     setDialect(S.user.preferred_dialect);
     $('#login-email').value = ''; $('#login-password').value = '';
     toast('Welcome back, ' + S.user.name.split(' ')[0] + '!');
-    renderGreeting(); goTo('profile');
+    renderGreeting(); goTo(afterLoginDestination || 'profile'); afterLoginDestination = null;
   } catch (e) { toast('Could not reach the server'); }
   finally { btn.disabled = false; }
 }
 async function doRegister() {
   const name = $('#register-name').value.trim(), email = $('#register-email').value.trim(), password = $('#register-password').value,
-        dialect = $('#register-dialect').value, btn = $('#register-btn');
+        dialect = $('#register-dialect').value, district = $('#register-district').value, spoken = $('#register-spoken').value, btn = $('#register-btn');
   if (!name || !email || !password) { toast('Please fill in all fields'); return; }
   btn.disabled = true;
   try {
-    const data = await post('auth.php?action=register', { name, email, password, preferred_dialect: dialect });
+    const data = await post('auth.php?action=register', { name, email, password, preferred_dialect: dialect, current_district: district, spoken_language: spoken });
     if (data.error) { toast(data.error); vib([20, 30, 20]); return; }
     S.user = data.user;
     setDialect(S.user.preferred_dialect);
     toast('Account created — welcome, ' + S.user.name.split(' ')[0] + '!');
-    confetti(34); renderGreeting(); goTo('profile');
+    confetti(34); renderGreeting(); goTo(afterLoginDestination || 'profile'); afterLoginDestination = null;
   } catch (e) { toast('Could not reach the server'); }
   finally { btn.disabled = false; }
 }
 async function doLogout() {
   try { await api('auth.php?action=logout', { method: 'POST' }); } catch (e) { /* ignore */ }
   S.user = null; S.history = [];
+  const lf=$('#learn-frame'); if(lf){lf.src='about:blank';delete lf.dataset.account;}
+  afterLoginDestination=null;
   renderGreeting(); goTo('splash'); toast('Logged out');
 }
 
@@ -963,7 +1079,7 @@ const ACTIONS = {
   toggleMic, doTranslate, copyResult, playAudio, clearScan, doLogin, doRegister, doLogout, submitContribution,
   openBridge() { goTo('breakdown'); },
   clearText() { setInput(''); $('#dialect-input').focus(); },
-  translateIn(el) { setDialect(el.dataset.d); goTo('translate'); $('#dialect-input').focus(); },
+  translateIn(el) { setDialect(el.dataset.d); S.to = toApiName(el.dataset.d); store.set('vs_translate_target', S.to); S.from='auto'; S.last=null; renderLangBar(); goTo('translate'); $('#dialect-input').focus(); },
   anotherSample(el) { loadSample(el.dataset.d); vib(8); },
   contribFor(el) { openContribute({ dialect: el.dataset.d }); },
   teachWord(el) { closeSheet(); const d = (S.last && S.last.source && S.last.source !== 'standard' && S.last.source !== 'english') ? S.last.source : toApiName(S.dialect); openContribute({ word: el.dataset.w, dialect: d }); },
@@ -973,7 +1089,7 @@ const ACTIONS = {
     if (!h) return;
     const m = String(h.dialect_type || '').split(' → ');
     const idOf = (name) => (LANGS.find((l) => l.name === name) || {}).id;
-    if (m.length === 2 && idOf(m[0]) && idOf(m[1])) { S.from = idOf(m[0]); S.to = idOf(m[1]); } else { S.from = 'auto'; S.to = 'standard'; }
+    if (m.length === 2 && idOf(m[0]) && idOf(m[1])) { S.from = idOf(m[0]); S.to = idOf(m[1]); } else { S.from = 'auto'; S.to = 'standard'; } store.set('vs_translate_target',S.to);
     S.last = null; renderLangBar();
     setInput(h.original_text);
     goTo('translate');
@@ -998,14 +1114,14 @@ const ACTIONS = {
   chooseLang(el) { chooseLang(el.dataset.side, el.dataset.id); },
   swapLang,
   closeSheet,
-  lookup(el) { lookupWord(el.dataset.w); },
+  lookup(el) { lookupWord(el.dataset.w, el.dataset.lang || (document.body.dataset.screen === 'breakdown' && S.last && DICT_IDS.has(S.last.source) ? S.last.source : D.dialect)); },
   speakText(el) { playAudio(null, null, el.dataset.t); },
-  dictDialect(el) { D.dialect = el.dataset.id; onDict(); vib(8); },
+  dictDialect(el) { changeDictionaryLanguage(el.dataset.id); vib(8); },
   dictMore() { D.page++; loadDict(false); },
   delHistory(el) { deleteHistory(el.dataset.id, el.closest('.hcard')); },
   tryWod() {
     if (!S.wod) return;
-    setDialect(S.wod.dialect_type);
+    setDialect(S.wod.dialect_type); S.from=toApiName(S.wod.dialect_type); S.to='standard'; store.set('vs_translate_target','standard'); renderLangBar();
     setInput(S.wod.dialect_word);
     goTo('translate');
     doTranslate();
@@ -1037,7 +1153,23 @@ document.addEventListener('keydown', (e) => {
   }
 });
 document.addEventListener('change', async (e) => {
+  if (e.target.id==='home-district' || e.target.id==='profile-district') {
+    const d=e.target.value;
+    if (S.user) {
+      try {const res=await post('auth.php?action=update_district',{current_district:d}); if(res.error)throw Error(res.error); S.user.current_district=d;toast('District preference saved ✓');}
+      catch(err){toast('District not saved: '+err.message);}
+    } else { store.set('vs_guest_district',d);toast('District saved on this device'); }
+    refreshDistrictUI();
+  }
+  if (e.target.id==='register-district') $('#register-district-hint').innerHTML=districtHint(e.target.value);
+  if (e.target.id==='profile-spoken' && S.user) {
+    const id=e.target.value;
+    try {const res=await post('auth.php?action=update_spoken_language',{spoken_language:id});if(res.error)throw Error(res.error); S.user.spoken_language=id; toast('Spoken language saved ✓');}
+    catch(err){toast('Could not save spoken language: '+err.message);}
+  }
+
   if (e.target.id === 'image-input') handleImage(e.target);
+  if (e.target.id === 'dict-language') changeDictionaryLanguage(e.target.value);
   if (e.target.id === 'allow-approximate') { lastLogged = ''; scheduleLive(); }
   if (e.target.id === 'profile-dialect' && S.user) {
     const d = e.target.value;
@@ -1062,12 +1194,12 @@ function openFromHash() {
 window.addEventListener('hashchange', openFromHash);
 
 /* ---------- start ---------- */
-function init() {
+async function init() {
   tickClock(); setInterval(tickClock, 30000);
   touchStreak();
   renderLangBar();
   renderGreeting();
-  checkAuth();
+  await Promise.all([checkAuth(),loadDistricts()]);
   openFromHash();
 
   if ('serviceWorker' in navigator) {

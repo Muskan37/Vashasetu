@@ -108,7 +108,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
       <div class="splash-stack">
         <button class="btn btn-gold btn-block" data-go="login">Log In</button>
         <button class="btn btn-ghost btn-block" data-go="translate">Continue without Login</button>
-        <a class="btn btn-ghost btn-block" href="learn.php" style="display:flex;align-items:center;justify-content:center;text-decoration:none">📚 Learn a dialect or language</a>
+        <button class="btn btn-ghost btn-block" data-go="learn">📚 Learn a dialect or language</button>
         <button class="link" style="color:#BFE3D4" data-go="register">New here? Create an account</button>
       </div>
       <div class="waves" aria-hidden="true">
@@ -144,6 +144,16 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
       </div>
 
       <div class="section">
+        <div class="card district-card">
+          <h2>Where are you now? <span class="bn">আপনার বর্তমান জেলা</span></h2>
+          <p class="district-explain">Choose from all 64 districts. Your location does not decide your language.</p>
+          <label for="home-district" class="district-label">Current district</label>
+          <select id="home-district" class="input"><option value="">Loading districts…</option></select>
+          <div class="district-hint" id="home-district-hint"></div>
+          <button class="btn btn-line btn-sm" data-go="learn" style="margin-top:12px">📚 Learn in the app</button>
+        </div>
+      </div>
+      <div class="section">
         <h2>Tap your region <span class="bn">আপনার অঞ্চল</span></h2>
         <div class="card mapcard">
           <div id="map-home"></div>
@@ -178,15 +188,15 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
     <div class="scroll">
       <header class="hero" style="padding-bottom:58px">
         <h1>Translate</h1>
-        <p>Dialect · Standard Bangla · Banglish · English</p>
+        <p>Auto-detect input · choose your output language</p>
       </header>
       <div class="pull">
         <div class="langbar">
-          <button class="lang-btn" id="from-btn" data-act="pickLang" data-side="from" aria-label="Translate from"><small>From</small><span id="from-label">Detect language</span></button>
+          <button class="lang-btn" id="from-btn" data-act="pickLang" data-side="from" aria-label="Detected source language or manual source override"><small>Input · Auto</small><span id="from-label">Detect automatically</span></button>
           <button class="swap-btn" data-act="swapLang" aria-label="Swap languages"><svg class="ic"><use href="#i-swap"/></svg></button>
-          <button class="lang-btn" id="to-btn" data-act="pickLang" data-side="to" aria-label="Translate to"><small>To</small><span id="to-label">Standard Bangla</span></button>
+          <button class="lang-btn" id="to-btn" data-act="pickLang" data-side="to" aria-label="Choose the fixed translation output language"><small>Output · Choose</small><span id="to-label">Standard Bangla</span></button>
         </div>
-        <div class="detect-line" id="detect-line"></div>
+        <p class="vs-direction-hint">Choose the <strong>output language</strong>. VashaSetu detects the input, or lets you select it if uncertain.</p><div class="detect-line" id="detect-line"></div>
 
         <div class="card compose" id="compose">
           <div class="scan-row" id="scan-row">
@@ -206,7 +216,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
           </div>
         </div>
 
-        <label class="vs-approx-control"><input type="checkbox" id="allow-approximate"> <span>Show approximate translations when no exact sentence is found <small>(May be incorrect · off by default)</small></span></label>
+        <label class="vs-approx-control"><input type="checkbox" id="allow-approximate" checked> <span>Also translate word by word when no exact sentence is found <small>(approximate · may be incorrect · uses only the chosen language)</small></span></label>
         <button class="btn btn-gold btn-block translate-go" id="translate-btn" data-act="doTranslate">Translate &amp; save <svg class="ic"><use href="#i-arrow"/></svg></button>
         <div class="live-hint">Translates as you type · Banglish is understood</div>
 
@@ -234,7 +244,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
           <svg class="ic" style="color:#B8893A"><use href="#i-arrow"/></svg>
         </button>
         <div class="centered"><button class="link" data-go="home">Explore dialects on the map</button></div>
-        <div class="centered"><a class="link" href="learn.php">📚 Choose a language to learn →</a></div>
+        <div class="centered"><button class="link" data-go="learn">📚 Choose a language to learn →</button></div>
       </div>
     </div>
   </section>
@@ -281,6 +291,15 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
     </div>
   </section>
 
+  <!-- ===================== LEARN INSIDE APP ===================== -->
+  <section class="screen" id="screen-learn">
+    <div class="learn-in-app-head">
+      <div><b>📚 Learn languages</b><small>Learn any supported language · আপনার পছন্দ</small></div>
+      <button class="learn-account" data-go="profile" aria-label="Account and district preferences"><svg class="ic"><use href="#i-user"/></svg></button>
+    </div>
+    <iframe id="learn-frame" title="VashaSetu language learning course" loading="lazy" src="about:blank" allow="autoplay" referrerpolicy="same-origin"></iframe>
+  </section>
+
   <!-- ===================== PROFILE ===================== -->
   <section class="screen" id="screen-profile">
     <div class="scroll">
@@ -319,7 +338,15 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
           <div class="field"><label for="register-name">Full name</label><input class="input" id="register-name" placeholder="Your name" autocomplete="name"></div>
           <div class="field"><label for="register-email">Email</label><input class="input" id="register-email" type="email" placeholder="you@example.com" autocomplete="email"></div>
           <div class="field"><label for="register-password">Password</label><div class="pw"><input class="input" id="register-password" type="password" placeholder="At least 6 characters" autocomplete="new-password"><button type="button" data-act="togglePw" data-target="register-password" aria-label="Show password"><svg class="ic"><use href="#i-eye"/></svg></button></div></div>
-          <div class="field"><label for="register-dialect">Your dialect</label>
+          <div class="field"><label for="register-district">Current district (optional)</label>
+            <select class="input" id="register-district"><option value="">Loading districts…</option></select>
+            <div class="district-hint" id="register-district-hint">Current district does not define the language you speak.</div>
+          </div>
+          <div class="field"><label for="register-spoken">Language you speak (optional)</label>
+            <select class="input" id="register-spoken"><option value="">Choose a language</option></select>
+            <div class="district-hint">Independent of your district. Indigenous languages have their own identity.</div>
+          </div>
+          <div class="field"><label for="register-dialect">Preferred dialect for the regional map</label>
             <select class="input" id="register-dialect"><option>Chattogram</option><option>Sylheti</option><option>Noakhali</option><option>Barishal</option><option>Mymensingh</option><option>Rajshahi</option></select>
           </div>
           <button class="btn btn-gold btn-block" id="register-btn" data-act="doRegister">Create account</button>
@@ -344,12 +371,14 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
   <!-- ===================== DICTIONARY ===================== -->
   <section class="screen" id="screen-dictionary">
     <div class="scroll" id="dict-scroll">
-      <header class="hero" style="padding-bottom:60px"><h1>Dictionary</h1><p id="dict-sub">Search in Bangla, Banglish or English</p></header>
+      <header class="hero" style="padding-bottom:60px"><h1>Dictionary</h1><p id="dict-sub">Pick any dialect or Indigenous language to browse its own dictionary.</p></header>
       <div class="pull">
         <div class="card dict-search">
           <svg class="ic"><use href="#i-search"/></svg>
-          <input class="input" id="dict-q" placeholder="Try  valo,  water  or  ভাত" autocomplete="off" aria-label="Search the dictionary">
+          <input class="input" id="dict-q" placeholder="Search a word in this language or Standard Bangla" autocomplete="off" aria-label="Search the dictionary">
         </div>
+        <label class="vs-dict-language-label" for="dict-language">Browse words from</label>
+        <select id="dict-language" class="vs-dict-language-select" aria-label="Choose dictionary dialect or Indigenous language"></select>
         <div class="dchips scrolly" id="dict-chips"></div>
         <div class="dict-count" id="dict-count"></div>
         <div id="dict-list"></div>
@@ -363,6 +392,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
   <nav class="nav" id="nav" aria-label="Main">
     <button data-go="home" data-tab="home"><span class="ni"><svg class="ic"><use href="#i-home"/></svg></span><span class="l">Home</span></button>
     <button data-go="translate" data-tab="translate"><span class="ni"><svg class="ic"><use href="#i-translate"/></svg></span><span class="l">Translate</span></button>
+    <button data-go="learn" data-tab="learn"><span class="ni"><svg class="ic"><use href="#i-book"/></svg></span><span class="l">Learn</span></button>
     <button data-go="history" data-tab="history"><span class="ni"><svg class="ic"><use href="#i-clock"/></svg></span><span class="l">History</span></button>
     <button data-go="dictionary" data-tab="dictionary"><span class="ni"><svg class="ic"><use href="#i-book"/></svg></span><span class="l">Words</span></button>
     <button data-go="profile" data-tab="profile"><span class="ni"><svg class="ic"><use href="#i-user"/></svg></span><span class="l">Profile</span></button>

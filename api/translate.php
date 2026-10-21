@@ -19,7 +19,7 @@ if ($source === '' && isset($input['dialect_type'])) { $source = trim($input['di
 if ($source === '') $source = 'auto';
 if ($target === '') $target = 'standard';
 $log = !empty($input['log']);
-$allowApproximate = !empty($input['allow_approximate']);
+$allowApproximate = array_key_exists('allow_approximate', $input) ? !empty($input['allow_approximate']) : true;
 
 if ($text === '') {
     http_response_code(400);

@@ -19,7 +19,7 @@ try {
     // one-word evidence, never mixed lexicon candidate alignments.
     $st=$pdo->prepare("SELECT id,source_word AS dialect_word,standard_word AS standard_meaning,language AS dialect_type FROM word_meanings
              WHERE language=? AND source_word<>standard_word
-             AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified')");
+             AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported')");
     $st->execute([$dialect]); $all=$st->fetchAll();
 
     $questions = array_values(array_filter($all, fn($r) => !in_array((int) $r['id'], $exclude, true)));

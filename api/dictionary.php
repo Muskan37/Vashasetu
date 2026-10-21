@@ -3,16 +3,22 @@
 // from lexicon no longer appear as if verified.
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/matching_engine.php';
+require_once __DIR__ . '/word_evidence.php';
 $dialect = trim($_GET['dialect'] ?? 'Chattogram');
-if (!in_array($dialect, DIALECTS, true)) $dialect = 'Chattogram';
+$dictionaryLanguages = array_merge(DIALECTS, array_keys(VS_NATIVE_LANGUAGES), ['Dhaka','Khulna','Narail','Rangpur']);
+if (!in_array($dialect, $dictionaryLanguages, true)) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Unsupported dictionary language. Please choose an available language.']);
+    exit;
+}
 $q = mb_substr(trim($_GET['q'] ?? ''),0,60);
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $per=30;
 $includeCandidates=!empty($_GET['include_candidates']);
 try {
     $db=get_db();
-    $where='language=? AND source_word <> standard_word';$args=[$dialect];
-    if (!$includeCandidates) $where.=" AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified')";
+    $where='language=?';$args=[$dialect]; // strictly selected-language records
+    if (!$includeCandidates) $where.=" AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported')";
     if ($q!=='') {
         $normalized=bn_normalize($q);
         $escaped=str_replace(['|','%','_'],['||','|%','|_'],$normalized);
@@ -26,8 +32,16 @@ try {
     foreach ($st->fetchAll() as $r) $rows[]=['dialect_word'=>$r['source_word'],'standard_word'=>$r['standard_word'],'roman'=>bn_romanize($r['source_word']),
       'count'=>(int)$r['evidence_count'],'verified'=>$r['meaning_status']==='community_verified'?1:0,
       'conf'=>null,'review_status'=>$r['meaning_status'],'source_dataset'=>$r['source_dataset']];
+    // Nothing reviewed yet for this language: show the confident learned pairs, clearly labelled unverified.
+    if ($total===0) {
+        $sc=showcase_rows($dialect)?:[];
+        if ($q!=='') $sc=array_values(array_filter($sc,fn($x)=>mb_strpos($x['dialect_word'],$q)===0||mb_strpos($x['standard_meaning'],$q)===0));
+        $total=count($sc);
+        foreach (array_slice($sc,($page-1)*$per,$per) as $x) $rows[]=['dialect_word'=>$x['dialect_word'],'standard_word'=>$x['standard_meaning'],'roman'=>bn_romanize($x['dialect_word']),
+          'count'=>0,'verified'=>0,'conf'=>null,'review_status'=>'learned_not_verified','source_dataset'=>'Learned from datasets (not verified)'];
+    }
     $totals=[];
-    $st=$db->query("SELECT language,COUNT(*) n FROM word_meanings WHERE meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified') AND source_word <> standard_word GROUP BY language");
+    $st=$db->query("SELECT language,COUNT(*) n FROM word_meanings WHERE meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported') GROUP BY language");
     foreach ($st->fetchAll() as $r) $totals[$r['language']]=(int)$r['n'];
     echo json_encode(['success'=>true,'dialect'=>$dialect,'total'=>$total,'page'=>$page,'pages'=>max(1,(int)ceil($total/$per)), 'rows'=>$rows,'dialect_totals'=>$totals,
         'note'=>'Research-reviewed is not independent native-speaker verification. Add include_candidates=1 to inspect unreviewed items.'],JSON_UNESCAPED_UNICODE);

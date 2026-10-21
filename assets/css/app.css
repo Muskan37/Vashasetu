@@ -483,3 +483,25 @@ body[data-nav="0"] .toast{bottom:28px}
 .vs-approx-control{display:flex;align-items:flex-start;gap:9px;margin:12px 3px;font-size:13px;color:var(--ink-soft);cursor:pointer;line-height:1.35}
 .vs-approx-control input{margin-top:2px;accent-color:#0a766a;width:16px;height:16px;flex-shrink:0}
 .vs-approx-control small{display:block;font-size:11px;opacity:.75}
+
+/* V5: independent dictionary + auto-source detection controls */
+.vs-dict-language-label{display:block;margin:4px 4px 6px;color:var(--ink-soft);font:700 13px var(--body)}
+.vs-dict-language-select{display:block;width:100%;border-radius:15px;border:2px solid var(--line);background:#fff;color:var(--teal-800);padding:11px 14px;font:750 16px var(--body);margin-bottom:12px}
+.vs-direction-hint{font:500 12px/1.5 var(--body);color:var(--ink-soft);margin:3px 1px 10px}
+.vs-source-warning{width:100%;border:1px solid #d7a756;background:#fff6e3;padding:12px;border-radius:14px;font:500 13px/1.5 var(--body);color:#75500c}
+.vs-source-warning p{margin:6px 0 10px}
+.vs-source-suggestions{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.vs-source-suggestions .chip{cursor:pointer;border:1px solid #e0be79}
+
+/* V6: Six-tab navigation and integrated learning pane. */
+.nav button{font-size:10.5px;min-width:0}.nav .ni{width:38px;height:32px}.nav button .l{white-space:nowrap}
+.learn-in-app-head{padding:var(--top) 17px 12px;background:linear-gradient(135deg,#0f5c56,#093c39);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.learn-in-app-head b{display:block;font:800 18px var(--display)}.learn-in-app-head small{display:block;color:#cde6de;font-size:11px;margin-top:3px}
+.learn-account{border:1px solid #ffffff55;background:#ffffff16;color:#fff;border-radius:12px;width:40px;height:40px;display:grid;place-items:center;cursor:pointer}
+#learn-frame{width:100%;flex:1;min-height:0;display:block;border:0;background:#fbf6ec;margin-bottom:var(--navh)}
+.district-card h2{font-size:17px;margin:0 0 5px}.district-card h2 .bn{font-size:12px;color:#66827a}
+.district-explain,.district-hint{font-size:12px;color:#647973;line-height:1.5;margin:6px 0 10px}
+.district-label{display:block;font-weight:800;font-size:13px;margin:8px 0 5px}
+.district-card select,.district-card .input{width:100%;max-width:100%}
+.district-candidates{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.district-candidates span{font-size:11px;line-height:1.35;padding:5px 8px;background:#eef3ea;border-radius:99px;border:1px solid #d9e7de;color:#22514a}
