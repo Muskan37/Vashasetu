@@ -1,0 +1,734 @@
+{
+  "source": "Bangladesh National Portal, District List (administrative divisions and districts)",
+  "source_url": "https://bangladesh.gov.bd/views/district-list/District-List/",
+  "caution": "District is a current location, NOT a person’s language or ethnicity. Suggestions are approximate geographic candidates needing local confirmation. Districts may have multiple dialects and distinct Indigenous languages. No language is automatically assigned.",
+  "districts": [
+    {
+      "id": "dhaka",
+      "name": "Dhaka",
+      "name_bn": "ঢাকা",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "faridpur",
+      "name": "Faridpur",
+      "name_bn": "ফরিদপুর",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "gazipur",
+      "name": "Gazipur",
+      "name_bn": "গাজীপুর",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "gopalganj",
+      "name": "Gopalganj",
+      "name_bn": "গোপালগঞ্জ",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "kishoreganj",
+      "name": "Kishoreganj",
+      "name_bn": "কিশোরগঞ্জ",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "madaripur",
+      "name": "Madaripur",
+      "name_bn": "মাদারীপুর",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "manikganj",
+      "name": "Manikganj",
+      "name_bn": "মানিকগঞ্জ",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "munshiganj",
+      "name": "Munshiganj",
+      "name_bn": "মুন্সীগঞ্জ",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "narayanganj",
+      "name": "Narayanganj",
+      "name_bn": "নারায়ণগঞ্জ",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "narsingdi",
+      "name": "Narsingdi",
+      "name_bn": "নরসিংদী",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "rajbari",
+      "name": "Rajbari",
+      "name_bn": "রাজবাড়ী",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "shariatpur",
+      "name": "Shariatpur",
+      "name_bn": "শরীয়তপুর",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "tangail",
+      "name": "Tangail",
+      "name_bn": "টাঙ্গাইল",
+      "division": "Dhaka",
+      "suggested_languages": [
+        "dhaka-bn",
+        "mymensingh-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "bandarban",
+      "name": "Bandarban",
+      "name_bn": "বান্দরবান",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "marma",
+        "mro",
+        "bawm",
+        "khumi",
+        "tripura",
+        "chattogram-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "brahmanbaria",
+      "name": "Brahmanbaria",
+      "name_bn": "ব্রাহ্মণবাড়িয়া",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "chattogram-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "chandpur",
+      "name": "Chandpur",
+      "name_bn": "চাঁদপুর",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "chattogram-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "chattogram",
+      "name": "Chattogram",
+      "name_bn": "চট্টগ্রাম",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "chattogram-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "cumilla",
+      "name": "Cumilla",
+      "name_bn": "কুমিল্লা",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "noakhali-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "coxs-bazar",
+      "name": "Coxs Bazar",
+      "name_bn": "কক্সবাজার",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "chattogram-bn",
+        "rakhine",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "feni",
+      "name": "Feni",
+      "name_bn": "ফেনী",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "noakhali-bn",
+        "chattogram-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "khagrachhari",
+      "name": "Khagrachhari",
+      "name_bn": "খাগড়াছড়ি",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "chakma",
+        "tripura",
+        "marma",
+        "chattogram-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "lakshmipur",
+      "name": "Lakshmipur",
+      "name_bn": "লক্ষ্মীপুর",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "noakhali-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "noakhali",
+      "name": "Noakhali",
+      "name_bn": "নোয়াখালী",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "noakhali-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "rangamati",
+      "name": "Rangamati",
+      "name_bn": "রাঙ্গামাটি",
+      "division": "Chattogram",
+      "suggested_languages": [
+        "chakma",
+        "tanchangya",
+        "marma",
+        "tripura",
+        "chattogram-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "bogura",
+      "name": "Bogura",
+      "name_bn": "বগুড়া",
+      "division": "Rajshahi",
+      "suggested_languages": [
+        "rajshahi-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "joypurhat",
+      "name": "Joypurhat",
+      "name_bn": "জয়পুরহাট",
+      "division": "Rajshahi",
+      "suggested_languages": [
+        "rajshahi-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "naogaon",
+      "name": "Naogaon",
+      "name_bn": "নওগাঁ",
+      "division": "Rajshahi",
+      "suggested_languages": [
+        "rajshahi-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "natore",
+      "name": "Natore",
+      "name_bn": "নাটোর",
+      "division": "Rajshahi",
+      "suggested_languages": [
+        "rajshahi-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "chapainawabganj",
+      "name": "Chapainawabganj",
+      "name_bn": "চাঁপাইনবাবগঞ্জ",
+      "division": "Rajshahi",
+      "suggested_languages": [
+        "rajshahi-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "pabna",
+      "name": "Pabna",
+      "name_bn": "পাবনা",
+      "division": "Rajshahi",
+      "suggested_languages": [
+        "rajshahi-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "rajshahi",
+      "name": "Rajshahi",
+      "name_bn": "রাজশাহী",
+      "division": "Rajshahi",
+      "suggested_languages": [
+        "rajshahi-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "sirajganj",
+      "name": "Sirajganj",
+      "name_bn": "সিরাজগঞ্জ",
+      "division": "Rajshahi",
+      "suggested_languages": [
+        "rajshahi-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "bagerhat",
+      "name": "Bagerhat",
+      "name_bn": "বাগেরহাট",
+      "division": "Khulna",
+      "suggested_languages": [
+        "khulna-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "chuadanga",
+      "name": "Chuadanga",
+      "name_bn": "চুয়াডাঙ্গা",
+      "division": "Khulna",
+      "suggested_languages": [
+        "khulna-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "jashore",
+      "name": "Jashore",
+      "name_bn": "যশোর",
+      "division": "Khulna",
+      "suggested_languages": [
+        "khulna-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "jhenaidah",
+      "name": "Jhenaidah",
+      "name_bn": "ঝিনাইদহ",
+      "division": "Khulna",
+      "suggested_languages": [
+        "khulna-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "khulna",
+      "name": "Khulna",
+      "name_bn": "খুলনা",
+      "division": "Khulna",
+      "suggested_languages": [
+        "khulna-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "kushtia",
+      "name": "Kushtia",
+      "name_bn": "কুষ্টিয়া",
+      "division": "Khulna",
+      "suggested_languages": [
+        "khulna-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "magura",
+      "name": "Magura",
+      "name_bn": "মাগুরা",
+      "division": "Khulna",
+      "suggested_languages": [
+        "khulna-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "meherpur",
+      "name": "Meherpur",
+      "name_bn": "মেহেরপুর",
+      "division": "Khulna",
+      "suggested_languages": [
+        "khulna-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "narail",
+      "name": "Narail",
+      "name_bn": "নড়াইল",
+      "division": "Khulna",
+      "suggested_languages": [
+        "narail-bn",
+        "khulna-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "satkhira",
+      "name": "Satkhira",
+      "name_bn": "সাতক্ষীরা",
+      "division": "Khulna",
+      "suggested_languages": [
+        "khulna-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "barguna",
+      "name": "Barguna",
+      "name_bn": "বরগুনা",
+      "division": "Barishal",
+      "suggested_languages": [
+        "barishal-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "barishal",
+      "name": "Barishal",
+      "name_bn": "বরিশাল",
+      "division": "Barishal",
+      "suggested_languages": [
+        "barishal-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "bhola",
+      "name": "Bhola",
+      "name_bn": "ভোলা",
+      "division": "Barishal",
+      "suggested_languages": [
+        "barishal-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "jhalokati",
+      "name": "Jhalokati",
+      "name_bn": "ঝালকাঠি",
+      "division": "Barishal",
+      "suggested_languages": [
+        "barishal-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "patuakhali",
+      "name": "Patuakhali",
+      "name_bn": "পটুয়াখালী",
+      "division": "Barishal",
+      "suggested_languages": [
+        "barishal-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "pirojpur",
+      "name": "Pirojpur",
+      "name_bn": "পিরোজপুর",
+      "division": "Barishal",
+      "suggested_languages": [
+        "barishal-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "habiganj",
+      "name": "Habiganj",
+      "name_bn": "হবিগঞ্জ",
+      "division": "Sylhet",
+      "suggested_languages": [
+        "sylheti",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "moulvibazar",
+      "name": "Moulvibazar",
+      "name_bn": "মৌলভীবাজার",
+      "division": "Sylhet",
+      "suggested_languages": [
+        "sylheti",
+        "khasi",
+        "meitei",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "sunamganj",
+      "name": "Sunamganj",
+      "name_bn": "সুনামগঞ্জ",
+      "division": "Sylhet",
+      "suggested_languages": [
+        "sylheti",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "sylhet",
+      "name": "Sylhet",
+      "name_bn": "সিলেট",
+      "division": "Sylhet",
+      "suggested_languages": [
+        "sylheti",
+        "khasi",
+        "meitei",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "dinajpur",
+      "name": "Dinajpur",
+      "name_bn": "দিনাজপুর",
+      "division": "Rangpur",
+      "suggested_languages": [
+        "rangpur-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "gaibandha",
+      "name": "Gaibandha",
+      "name_bn": "গাইবান্ধা",
+      "division": "Rangpur",
+      "suggested_languages": [
+        "rangpur-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "kurigram",
+      "name": "Kurigram",
+      "name_bn": "কুড়িগ্রাম",
+      "division": "Rangpur",
+      "suggested_languages": [
+        "rangpur-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "lalmonirhat",
+      "name": "Lalmonirhat",
+      "name_bn": "লালমনিরহাট",
+      "division": "Rangpur",
+      "suggested_languages": [
+        "rangpur-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "nilphamari",
+      "name": "Nilphamari",
+      "name_bn": "নীলফামারী",
+      "division": "Rangpur",
+      "suggested_languages": [
+        "rangpur-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "panchagarh",
+      "name": "Panchagarh",
+      "name_bn": "পঞ্চগড়",
+      "division": "Rangpur",
+      "suggested_languages": [
+        "rangpur-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "rangpur",
+      "name": "Rangpur",
+      "name_bn": "রংপুর",
+      "division": "Rangpur",
+      "suggested_languages": [
+        "rangpur-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "thakurgaon",
+      "name": "Thakurgaon",
+      "name_bn": "ঠাকুরগাঁও",
+      "division": "Rangpur",
+      "suggested_languages": [
+        "rangpur-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "jamalpur",
+      "name": "Jamalpur",
+      "name_bn": "জামালপুর",
+      "division": "Mymensingh",
+      "suggested_languages": [
+        "mymensingh-bn",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "mymensingh",
+      "name": "Mymensingh",
+      "name_bn": "ময়মনসিংহ",
+      "division": "Mymensingh",
+      "suggested_languages": [
+        "mymensingh-bn",
+        "garo",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "netrokona",
+      "name": "Netrokona",
+      "name_bn": "নেত্রকোণা",
+      "division": "Mymensingh",
+      "suggested_languages": [
+        "mymensingh-bn",
+        "garo",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    },
+    {
+      "id": "sherpur",
+      "name": "Sherpur",
+      "name_bn": "শেরপুর",
+      "division": "Mymensingh",
+      "suggested_languages": [
+        "mymensingh-bn",
+        "garo",
+        "standard"
+      ],
+      "mapping_status": "geographic_candidates_unverified"
+    }
+  ]
+}

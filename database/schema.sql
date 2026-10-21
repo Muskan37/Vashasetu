@@ -8,6 +8,8 @@ CREATE TABLE IF NOT EXISTS users (
   email VARCHAR(150) NOT NULL UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
   preferred_dialect VARCHAR(50) DEFAULT 'Chattogram',
+  current_district VARCHAR(70) DEFAULT NULL,
+  spoken_language VARCHAR(60) DEFAULT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
