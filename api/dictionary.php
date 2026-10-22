@@ -14,7 +14,7 @@ if (!in_array($dialect, $dictionaryLanguages, true)) {
 $q = mb_substr(trim($_GET['q'] ?? ''),0,60);
 $page = max(1, (int) ($_GET['page'] ?? 1));
 $per=30;
-$includeCandidates=!empty($_GET['include_candidates']);
+$includeCandidates=true; // show every word; unreviewed ones are only flagged in the tooltip
 try {
     $db=get_db();
     $where='language=?';$args=[$dialect]; // strictly selected-language records
@@ -39,6 +39,22 @@ try {
         $total=count($sc);
         foreach (array_slice($sc,($page-1)*$per,$per) as $x) $rows[]=['dialect_word'=>$x['dialect_word'],'standard_word'=>$x['standard_meaning'],'roman'=>bn_romanize($x['dialect_word']),
           'count'=>0,'verified'=>0,'conf'=>null,'review_status'=>'learned_not_verified','source_dataset'=>'Learned from datasets (not verified)'];
+    }
+    // Indigenous languages: also list the phrases/sentences (MELD), after the words.
+    if (isset(VS_NATIVE_LANGUAGES[$dialect])) {
+        $w=[];
+        $sql="SELECT source_text,standard_bangla,review_status,source_dataset FROM parallel_sentences WHERE language=?";$pa=[$dialect];
+        if ($q!=='') { $sql.=" AND (source_key LIKE ? ESCAPE '|' OR standard_key LIKE ? ESCAPE '|')"; $pa[]=$escaped.'%'; $pa[]=$escaped.'%'; }
+        $st=$db->prepare($sql." ORDER BY CHAR_LENGTH(source_key), source_key");$st->execute($pa);
+        $phr=$st->fetchAll();
+        $wordCount=$total; $total=$wordCount+count($phr);
+        $off=($page-1)*$per;
+        if ($off>=$wordCount) $rows=[]; // word page already handled by LIMIT/OFFSET above
+        if (count($rows)<$per) {
+            $need=$per-count($rows); $start=max(0,$off-$wordCount);
+            foreach (array_slice($phr,$start,$need) as $x) $rows[]=['dialect_word'=>$x['source_text'],'standard_word'=>$x['standard_bangla'],'roman'=>bn_romanize($x['source_text']),
+              'count'=>1,'verified'=>0,'conf'=>null,'review_status'=>$x['review_status'],'source_dataset'=>$x['source_dataset'],'phrase'=>1];
+        }
     }
     $totals=[];
     $st=$db->query("SELECT language,COUNT(*) n FROM word_meanings WHERE meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported') GROUP BY language");

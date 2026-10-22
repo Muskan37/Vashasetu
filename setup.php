@@ -192,6 +192,31 @@ load($root, 'word_meanings', fn() => [['pair_hash','language','source_word','sta
     foreach (language_csv_rows('words') as $r) yield [$r['hash'],$r['language'],$r['source_word'],$r['standard_word'],$r['meaning_status'],$r['source_dataset'],$r['evidence_count']];
 })()], ($reset || $refreshWords));
 
+// Re-apply dictionary edits made inside the app.
+if (is_file(__DIR__ . '/database/user_edits.csv')) {
+    $applied = 0;
+    foreach (csv_rows('user_edits.csv') as $e) {
+        if (($e['kind'] ?? 'word') === 'phrase') {
+            $key = trim(preg_replace('/\s+/u', ' ', preg_replace('/[?!।.,;:"“”\']/u', '', $e['source_word'])));
+            $root->prepare('DELETE FROM parallel_sentences WHERE language=? AND source_key=?')->execute([$e['language'],$key]);
+            if (($e['action'] ?? 'save') === 'save') {
+                $mk = trim(preg_replace('/\s+/u', ' ', preg_replace('/[?!।.,;:"“”\']/u', '', $e['standard_word'])));
+                $root->prepare("INSERT IGNORE INTO parallel_sentences (pair_hash,language,source_text,source_key,standard_bangla,standard_key,source_dataset,review_status,eligible_exact,split_name,script,source_count) VALUES (?,?,?,?,?,?, 'Edited in the app','native_speaker_reported',1,'train','Bengali transliteration',1)")
+                     ->execute([hash('sha256','editp|'.$e['language'].'|'.$key.'|'.$mk),$e['language'],$e['source_word'],$key,$e['standard_word'],$mk]);
+            }
+            $applied++; continue;
+        }
+        if (is_file(__DIR__ . '/api/curated_edit.php') && in_array($e['language'], ['Barishal','Chattogram','Sylheti','Noakhali','Mymensingh','Rajshahi'], true)) { require_once __DIR__ . '/api/curated_edit.php'; vs_curated_edit($e['language'], '', $e['source_word'], ($e['action'] ?? 'save') === 'save' ? $e['standard_word'] : '', $e['action'] ?? 'save'); }
+        $root->prepare('DELETE FROM word_meanings WHERE language=? AND source_word=?')->execute([$e['language'],$e['source_word']]);
+        if (($e['action'] ?? 'save') === 'save') {
+            $root->prepare("INSERT IGNORE INTO word_meanings (pair_hash,language,source_word,standard_word,meaning_status,source_dataset,evidence_count) VALUES (?,?,?,?, 'native_speaker_reported','Edited in the app',1)")
+                 ->execute([hash('sha256','edit|'.$e['language'].'|'.$e['source_word'].'|'.$e['standard_word']),$e['language'],$e['source_word'],$e['standard_word']]);
+        }
+        $applied++;
+    }
+    say("Dictionary edits re-applied: $applied.");
+}
+
 try {
     $bp = (int) $root->query("SHOW VARIABLES LIKE 'innodb_buffer_pool_size'")->fetch(PDO::FETCH_NUM)[1];
     if ($bp > 0 && $bp < 64 * 1048576) {

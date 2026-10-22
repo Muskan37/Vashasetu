@@ -206,7 +206,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
           </div>
           <button class="clear-btn" id="clear-btn" data-act="clearText" aria-label="Clear text"><svg class="ic" style="width:15px;height:15px"><use href="#i-x"/></svg></button>
           <textarea id="dialect-input" rows="3" placeholder="Type in dialect, Bangla, Banglish or English…" aria-label="Text to translate"></textarea>
-          <div class="wavebox" id="wavebox"><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span id="listen-label">Listening… speak now</span></div>
+          <div class="wavebox" id="wavebox"><div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span id="listen-label">Listening… speak now</span><button type="button" class="stopbtn" data-act="stopMic" aria-label="Stop listening">■ Stop</button></div>
           <div class="translit" id="translit"></div>
           <input type="file" id="image-input" accept="image/*" hidden>
           <div class="actions3">
@@ -381,6 +381,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
         <select id="dict-language" class="vs-dict-language-select" aria-label="Choose dictionary dialect or Indigenous language"></select>
         <div class="dchips scrolly" id="dict-chips"></div>
         <div class="dict-count" id="dict-count"></div>
+        <div class="centered" style="margin-bottom:8px"><button class="btn btn-line btn-sm" data-act="addWord">＋ Add a word</button></div>
         <div id="dict-list"></div>
         <div class="centered"><button class="btn btn-line btn-sm" id="dict-more" data-act="dictMore" style="display:none">Show more</button></div>
         <p class="credit">Dialect data: Vashantor / Unified-Bangla (CC BY 4.0) · Word lists: MinhasKamal/BengaliDictionary · Verified phrases: Wikivoyage</p>

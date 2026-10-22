@@ -39,3 +39,36 @@ dictionary will still contain mistakes (e.g. Sylheti "খাব" may come out as
 
 ## V6.2: full MELD merged
 Chakma 797, Marma 290, Garo 312 sentence pairs (MELD, Bengali transliteration) loaded into database/languages/<lang>/sentences.csv and indigenous_pairs.csv. All marked research_corpus_not_reaudited (needs community review). Ambiguous source phrases were dropped. No word-level pairs were invented. Run setup.php?reset=1 (or --reset) once. Check the Mendeley licence before publishing.
+
+## V6.3
+Roman-letter input (ami vat khabo) is converted to Bangla for Standard source. Word chips now show a meaning for every word (learned meaning, or the same word). Dictionary lists all words. Dictionary rows have an edit button; 'Add a word' button. Edits save to MySQL and database/user_edits.csv (re-applied by setup.php). Optional EDIT_PASSCODE in api/edit_word.php.
+
+## V6.3.1
+Chakma/Marma/Garo dictionary now lists word candidates (co-occurrence from MELD, tools/meld_words.py) plus all MELD phrases/sentences. Phrases can be edited too.
+
+## V6.3.2
+Learn: Words and Sentences stages for any language now have a 'Start quiz' button (10 multiple-choice questions built from the dataset, unverified, progress not saved). Stages with no material show 'No lesson material for this language yet'.
+
+## V6.3.3
+Voice: Stop button, keeps listening until Stop, shows 'Heard: …', auto-retries with another Bangla voice setting.
+
+## V6.3.4
+Edit now changes both the dialect word and its meaning.
+
+## V6.3.5
+Edit/Add word uses one form with both boxes (dialect word + meaning) plus Delete.
+
+## V6.3.6
+Learn audio: waits for the phone's voice list, tries bn-BD even without a listed voice, and shows install steps instead of a blocking alert.
+
+## V6.3.7
+Dialect-to-dialect (e.g. Noakhali to Chattogram) now works word by word through Standard Bangla when the approximate option is on.
+
+## V6.3.8
+Dictionary edits for the six Bangla dialects now also update database/curated.csv, so translation uses them. Removed three doubtful Chattogram rows (আই, খামু, যামু).
+
+## V6.3.9
+Manifest background_color set to the icon's green (#0A423E) so the phone start screen is solid green, not a box on beige. Re-add the app to the home screen to see it.
+
+## V6.3.10
+Phone layout: app frame is position:fixed inset:0 so the bottom navigation is never pushed below the visible screen.

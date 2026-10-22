@@ -476,18 +476,18 @@ function renderResult(data) {
   $('#result-pairs').innerHTML = words.map((w, i) => {
     const meaning = data.target !== 'standard' && data.source === 'standard' ? w.target_word : w.standard_meaning;
     const has = meaning != null && meaning !== '';
-    const label = has ? esc(meaning) : 'Meaning not verified';
+    const label = has ? esc(meaning) : 'No meaning found';
     const status = w.status || 'not_verified';
     const suffix = (w.english_hint && data.target !== 'english') ? `<span class="via">${esc(w.english_hint)}</span>` : '';
     const tip = (w.dataset || 'No independently validated word-level evidence');
     return `<div class="pair ${has ? '' : 'miss'}" style="--i:${i}" data-act="wordEvidence" data-idx="${i}" role="button" tabindex="0" title="${esc(tip)}">
       <small>${esc(w.word)}</small><b>${label}</b>${suffix}
-      <span class="vs-evidence-status">${status === 'standard_bangla_identity' ? 'Standard Bangla' : status === 'not_verified' ? 'Not verified' : status === 'dictionary_reference' ? 'Dictionary' : 'Source attested · review needed'}</span>
+      <span class="vs-evidence-status">${status === 'standard_bangla_identity' ? 'Standard Bangla' : status === 'learned' ? 'Learned' : status === 'not_verified' ? 'No match' : status === 'dictionary_reference' ? 'Dictionary' : 'Source attested · review needed'}</span>
     </div>`;
   }).join('');
   const unknown = words.filter((w) => !w.known).length;
   const note = $('#no-match-note');
-  note.textContent = `${unknown} individual word${unknown===1?'':'s'} have no independently established meaning. The sentence can still have a full translation; we do not guess word meanings from word order.`;
+  note.textContent = `${unknown} word${unknown===1?'':'s'} not found in the dictionary yet. The rest of the translation is shown above.`;
   note.classList.toggle('show', unknown > 0);
   const quality = data.requires_source_confirmation ? 'Automatic detection was not confident enough. No translation or word meaning was guessed.' :
     data.translation_quality === 'research_sentence_candidate_not_reaudited' || data.translation_quality === 'research_candidate_not_reaudited'
@@ -559,8 +559,8 @@ async function loadDict(reset) {
     D.pages = d.pages || 1;
     $('#dict-sub').textContent = `Browsing ${langName(dialect) === dialect ? (DICTIONARY_LANGS.find(l=>l.id===dialect)||{}).name||dialect : langName(dialect)} · separate dictionary · sources require verification`;
     $('#dict-count').textContent = `${(d.total||0).toLocaleString()} ${D.q ? 'matches' : 'available word meanings'} in this language`;
-    const rows = (d.rows || []).map(r=>`<button class="drow ${r.verified ? 'v' : ''}" data-act="lookup" data-lang="${esc(dialect)}" data-w="${esc(r.dialect_word)}" title="${esc(r.review_status||'Needs review')} · ${esc(r.source_dataset||'')}">
-      <span class="a">${esc(r.dialect_word)}<small>${esc(r.roman)}</small></span><svg class="ic arrow" style="width:18px;height:18px"><use href="#i-arrow"/></svg><span class="b">${esc(r.standard_word)}</span></button>`).join('');
+    const rows = (d.rows || []).map(r=>`<div class="drow-wrap"><button class="drow ${r.verified ? 'v' : ''}" data-act="lookup" data-lang="${esc(dialect)}" data-w="${esc(r.dialect_word)}" title="${esc(r.review_status||'')} · ${esc(r.source_dataset||'')}">
+      <span class="a">${esc(r.dialect_word)}<small>${esc(r.roman)}</small></span><svg class="ic arrow" style="width:18px;height:18px"><use href="#i-arrow"/></svg><span class="b">${esc(r.standard_word)}</span></button><button class="dedit" data-act="editWord" data-lang="${esc(dialect)}" data-w="${esc(r.dialect_word)}" data-m="${esc(r.standard_word)}" data-p="${r.phrase?1:''}" aria-label="Edit this word" title="Edit">✎</button></div>`).join('');
     if (!d.rows.length && D.page === 1) $('#dict-list').innerHTML = `<div class="card empty"><b>${D.q?'No matching words':'No published word meanings yet'}</b>Only ${esc(dialect)} records were checked. Try another spelling or select a different language.</div>`;
     else $('#dict-list').insertAdjacentHTML('beforeend', rows);
     $('#dict-more').style.display = D.page < D.pages ? '' : 'none';
@@ -589,6 +589,19 @@ function setListening(on, label) {
   $('#compose').classList.toggle('listening', on);
   if (label) $('#listen-label').textContent = label;
 }
+function openWordForm(lang, word, meaning, phrase) {
+  openSheet(`<div class="wordform" data-lang="${esc(lang)}" data-old="${esc(word)}" data-p="${phrase ? 1 : ''}">
+    <h3>${word ? 'Edit word' : 'Add a word'} · ${esc(langName(lang))}</h3>
+    <label class="vs-dict-language-label" for="wf-word">${esc(langName(lang))} word (in Bangla letters)</label>
+    <input class="input" id="wf-word" value="${esc(word)}" autocomplete="off">
+    <label class="vs-dict-language-label" for="wf-mean" style="margin-top:10px;display:block">Standard Bangla meaning</label>
+    <input class="input" id="wf-mean" value="${esc(meaning)}" autocomplete="off">
+    <div style="display:flex;gap:8px;margin-top:14px">
+      <button class="btn btn-sm" data-act="saveWordForm" style="flex:1">Save</button>
+      ${word ? '<button class="btn btn-line btn-sm" data-act="deleteWordForm">Delete</button>' : ''}
+    </div></div>`);
+}
+function stopMic() { if (recognizer) { try { recognizer.stop(); } catch (e) { /* ignore */ } } }
 function toggleMic() {
   const input = $('#dialect-input');
   if (recognizer) { try { recognizer.stop(); } catch (e) { /* ignore */ } return; }
@@ -599,17 +612,17 @@ function toggleMic() {
   const rec = new SR();
   rec.lang = voiceLang;
   rec.interimResults = true;
-  rec.continuous = false;
+  rec.continuous = true;   // keep listening until the person taps Stop
   rec.maxAlternatives = 1;
   let gotText = false, failed = false, retrying = false;
   const before = input.value;
 
-  rec.onstart = () => { setListening(true, 'Listening… speak now'); vib(15); };
+  rec.onstart = () => { setListening(true, 'Listening… speak now, then tap Stop'); vib(15); };
   rec.onresult = (e) => {
     let t = '';
     for (let i = 0; i < e.results.length; i++) t += e.results[i][0].transcript;
     setInput(t);
-    gotText = true;
+    if (t.trim()) { gotText = true; $('#listen-label').textContent = 'Heard: ' + t.slice(-40); }
   };
   rec.onerror = (e) => {
     failed = true;
@@ -631,7 +644,11 @@ function toggleMic() {
     setListening(false);
     recognizer = null;
     if (gotText) setTimeout(logCurrent, 1200);
-    if (!gotText && !failed && !retrying) { setInput(before); toast('Did not catch anything. Tap the mic and try again.'); }
+    if (!gotText && !failed && !retrying) {
+      setInput(before);
+      if (!voiceRetried) { voiceRetried = true; voiceLang = voiceLang === 'bn-BD' ? 'bn-IN' : 'bn-BD'; toast('Trying another Bangla voice setting…'); setTimeout(toggleMic, 250); }
+      else toast('Nothing was heard. Check the microphone permission, or use the microphone on your keyboard instead.', 4200);
+    }
   };
   recognizer = rec;
   try { rec.start(); } catch (err) { recognizer = null; toast('Could not start the microphone. Please try again.'); }
@@ -1117,6 +1134,23 @@ const ACTIONS = {
   lookup(el) { lookupWord(el.dataset.w, el.dataset.lang || (document.body.dataset.screen === 'breakdown' && S.last && DICT_IDS.has(S.last.source) ? S.last.source : D.dialect)); },
   speakText(el) { playAudio(null, null, el.dataset.t); },
   dictDialect(el) { changeDictionaryLanguage(el.dataset.id); vib(8); },
+  stopMic() { stopMic(); },
+  dictMore() { D.page++; loadDict(false); },
+  editWord(el) { openWordForm(el.dataset.lang, el.dataset.w, el.dataset.m, !!el.dataset.p); },
+  addWord() { openWordForm(D.dialect, '', '', false); },
+  async saveWordForm(el) {
+    const f = el.closest('.wordform'); const lang = f.dataset.lang, old = f.dataset.old, phrase = !!f.dataset.p;
+    const word = $('#wf-word').value.trim(), mean = $('#wf-mean').value.trim();
+    if (!word || !mean) { toast('Please fill both boxes'); return; }
+    try { await post('edit_word.php', { language: lang, word, old_word: old, meaning: mean, phrase, action: 'save' }); closeSheet(); toast('Saved'); loadDict(true); }
+    catch (e) { toast('Could not save'); }
+  },
+  async deleteWordForm(el) {
+    const f = el.closest('.wordform'); if (!f.dataset.old || !window.confirm('Delete this word?')) return;
+    try { await post('edit_word.php', { language: f.dataset.lang, word: f.dataset.old, meaning: '', phrase: !!f.dataset.p, action: 'delete' }); closeSheet(); toast('Deleted'); loadDict(true); }
+    catch (e) { toast('Could not delete'); }
+  },
+  stopMic() { stopMic(); },
   dictMore() { D.page++; loadDict(false); },
   delHistory(el) { deleteHistory(el.dataset.id, el.closest('.hcard')); },
   tryWod() {

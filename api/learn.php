@@ -156,7 +156,7 @@ function sample_preview(PDO $pdo,array $input):void{
             $samples[]=['target_text'=>$target,'source_text'=>$own,'standard_bangla'=>$std,
                 'source_fallback'=>$own===null,'source_dataset'=>$r['source_dataset'],
                 'review_status'=>$r['meaning_status'],'script'=>$to['display_name']];
-            if(count($samples)>=16)break;
+            if(count($samples)>=30)break;
         }
     }else{
         $st=$pdo->prepare("SELECT source_text,standard_bangla,standard_key,review_status,source_dataset,script FROM parallel_sentences WHERE language=? AND split_name='train' AND eligible_exact=1 AND CHAR_LENGTH(source_text) BETWEEN 5 AND 140 ORDER BY CHAR_LENGTH(source_text),pair_hash LIMIT 50");
@@ -179,7 +179,7 @@ function sample_preview(PDO $pdo,array $input):void{
             $samples[]=['target_text'=>$r['source_text'],'source_text'=>$own,
                 'standard_bangla'=>$r['standard_bangla'],'source_fallback'=>$own===null,
                 'source_dataset'=>$r['source_dataset'],'review_status'=>$r['review_status'],'script'=>$r['script']];
-            if(count($samples)>=16)break;
+            if(count($samples)>=30)break;
         }
     }
     respond(['success'=>true,'samples'=>$samples,'verified'=>false,'source'=>$src,'target'=>$tgt,

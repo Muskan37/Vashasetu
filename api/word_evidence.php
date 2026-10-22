@@ -151,12 +151,29 @@ function vs_scoped_translate(PDO $pdo, string $text, string $src, string $tgt, b
         } elseif ($bnTok && $src === 'standard' && in_array($tgt, DIALECTS, true)) {
             $approxRows = standard_to_dialect($pdo, $tgt, $bnTok);
             $out = implode(' ', array_column($approxRows, 'tgt'));
+        } elseif ($bnTok && in_array($src, DIALECTS, true) && in_array($tgt, DIALECTS, true)) {
+            // Dialect -> Standard Bangla -> dialect, word by word. Only these two varieties' data is used.
+            $first = dialect_to_standard($pdo, $src, $bnTok, null);
+            $stdTok = array_column($first, 'std');
+            $second = $stdTok ? standard_to_dialect($pdo, $tgt, $stdTok) : [];
+            if (count($first) === count($second)) {
+                $approxRows = [];
+                foreach ($first as $k => $a) {
+                    $b = $second[$k];
+                    $approxRows[] = ['src'=>$a['src'] ?? $bnTok[$k], 'std'=>$a['std'], 'tgt'=>$b['tgt'],
+                        'matched'=>!empty($a['matched']) || !empty($b['matched']),
+                        'conf'=>min($a['conf'] ?? 1, $b['conf'] ?? 1)];
+                }
+                $out = implode(' ', array_column($approxRows, 'tgt'));
+                $path[] = 'standard'; $path[] = $tgt;
+            }
         }
         if ($approxRows !== null && $out !== '') {
             $quality = 'approximate_word_by_word';
             $unsure = [];
-            foreach ($approxRows as $ar) if (!empty($ar['matched']) && isset($ar['conf']) && $ar['conf'] < 0.6) $unsure[] = $src === 'standard' ? $ar['tgt'] : $ar['src'];
-            $notes[] = 'Approximate word-by-word translation using only the ' . ($src === 'standard' ? $tgt : $src) . ' data. It is not a checked sentence translation and may be wrong. Please double-check anything important.';
+            foreach ($approxRows as $ar) if (!empty($ar['matched']) && isset($ar['conf']) && $ar['conf'] < 0.6) $unsure[] = ($src === 'standard' || $tgt !== 'standard') ? $ar['tgt'] : $ar['src'];
+            $notes = array_values(array_filter($notes, static fn($n) => strpos($n, 'Dialect-to-dialect') !== 0));
+            $notes[] = 'Approximate word-by-word translation using only the ' . (in_array($src, DIALECTS, true) && in_array($tgt, DIALECTS, true) ? $src . ' and ' . $tgt : ($src === 'standard' ? $tgt : $src)) . ' data. It is not a checked sentence translation and may be wrong. Please double-check anything important.';
             if ($unsure) $notes[] = 'Less sure about: ' . implode(', ', array_slice(array_values(array_unique($unsure)), 0, 6)) . '.';
         } else { $approxRows = null; $out = ''; }
     }
@@ -251,6 +268,13 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
             $text = $manualBanglish['bangla_text'];
         }
     }
+    if ($explicit && $src === 'standard') {
+        $counts = script_stats($text);
+        if ($counts['latin'] > 0 && $counts['bangla'] === 0) {
+            $manualBanglish = detect_text($pdo,$text,'banglish');
+            $text = $manualBanglish['bangla_text'];
+        }
+    }
     if (!$explicit) {
         $autoDet = vs_auto_source($pdo,$text,$src);
         if ($autoDet['source'] === null) {
@@ -316,6 +340,22 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
         }
         unset($bw);
     }
+    // Fill every remaining word with the best learned or candidate meaning (shown as a normal meaning).
+    foreach ($r['word_meanings'] as $i => &$wm) {
+        if (!empty($wm['known'])) continue;
+        $bw = $r['breakdown'][$i] ?? null;
+        $m = null;
+        if ($bw && ($bw['kind'] ?? '') === 'learned_unverified') $m = ($src === 'standard') ? ($bw['tgt'] ?? null) : ($bw['std'] ?? null);
+        if (($m === null || $m === '') && !empty($r['approx_rows']) && count($r['approx_rows']) === count($r['word_meanings'])) {
+            // engine kept the word as it is (same form in both varieties): prefer that over an unreliable pair
+            $ar = $r['approx_rows'][$i]; $m = ($src === 'standard') ? ($ar['tgt'] ?? null) : ($ar['std'] ?? null);
+        }
+        if (($m === null || $m === '') && !empty($wm['candidate_meaning'])) $m = $wm['candidate_meaning'];
+        if ($m === null || $m === '') continue;
+        if ($src === 'standard' && $tgt !== 'standard') $wm['target_word'] = $m; else $wm['standard_meaning'] = $m;
+        $wm['display_meaning'] = $m; $wm['known'] = true; $wm['status'] = 'learned';
+    }
+    unset($wm);
     unset($r['approx_rows']);
     $r['matched_words']=count(array_filter($r['word_meanings'],static fn($w)=>$w['known']));
     $r['approximate_allowed']=$allowApproximate;

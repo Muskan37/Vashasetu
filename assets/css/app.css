@@ -51,7 +51,7 @@ h1,h2,h3{font-family:var(--display);margin:0;font-weight:800}
 .device{--top:44px}
 @media (max-width:520px){
   body{display:block;padding:0;background:var(--paper)}
-  .device{width:100%;height:100vh;height:100dvh;border:0;border-radius:0;box-shadow:none;--top:calc(env(safe-area-inset-top,0px) + 22px)}
+  .device{position:fixed;inset:0;width:100%;height:auto;border:0;border-radius:0;box-shadow:none;--top:calc(env(safe-area-inset-top,0px) + 22px)}
   .statusbar{display:none}
 }
 
@@ -505,3 +505,7 @@ body[data-nav="0"] .toast{bottom:28px}
 .district-card select,.district-card .input{width:100%;max-width:100%}
 .district-candidates{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .district-candidates span{font-size:11px;line-height:1.35;padding:5px 8px;background:#eef3ea;border-radius:99px;border:1px solid #d9e7de;color:#22514a}
+
+.drow-wrap{display:flex;gap:6px;align-items:stretch;margin-bottom:8px}.drow-wrap .drow{margin-bottom:0;flex:1;min-width:0}.dedit{flex:none;width:44px;border:1.5px solid var(--line);background:#fff;border-radius:16px;font-size:18px;color:var(--teal-800);cursor:pointer}
+
+.stopbtn{margin-left:auto;border:0;background:var(--rose);color:#fff;font:700 13px var(--body);padding:6px 12px;border-radius:14px;cursor:pointer}
