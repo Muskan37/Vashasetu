@@ -79,3 +79,19 @@ After updating the app, remove it from the phone's home screen and add it again 
 | Voice writes nothing | Allow the microphone for the site; check the internet; try the keyboard microphone. |
 | Listen is silent | Install the Bengali voice: Settings → Languages → Text-to-speech output → Google → Install voice data. |
 | Setup stops halfway | Run it again with `?reset=1`, or from the command line: `C:\xampp\php\php.exe setup.php --reset`. |
+
+## 8. Test results (22 Oct 2026)
+Word-by-word accuracy on 150 held-out corpus sentences per dialect (Rajshahi 64), counting a word correct only if it matches the reference spelling exactly:
+
+| Dialect | Standard → dialect (words) | Dialect → Standard (words) |
+|---|---|---|
+| Barishal | 79% | 87% |
+| Chattogram | 55% | 76% |
+| Mymensingh | 79% | 90% |
+| Noakhali | 66% | 85% |
+| Rajshahi | 89% (small set) | 93% |
+| Sylheti | 61% | 80% |
+
+Many "errors" are spelling variants (আঁই / অ্যাঁই, যাইয়ুম / যাইয়্যুম), so real accuracy is higher, but these numbers are not a native-speaker evaluation.
+Old trusted entries were checked against the corpus; 28 that the corpus contradicts were removed (14 from curated.csv, 14 from lexicon.csv) (e.g. Chattogram করমু, হানি; Noakhali খামু, যামু).
+Mymensingh -বাম verb forms and Chattogram খাইয়ুম are kept because a native speaker confirmed them.

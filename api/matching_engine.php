@@ -446,9 +446,10 @@ function dialect_to_standard(PDO $pdo, string $dialect, array $tokens, ?array $p
 /** Spelling variants of a Standard Bangla word that mean the same (খাব / খাবো, করব / করবো). */
 function bn_std_variants(string $w): array {
     $v = [$w];
-    if (mb_strlen($w) > 1) {
-        if (mb_substr($w, -1) === 'ো') $v[] = mb_substr($w, 0, -1);
-        else $v[] = $w . 'ো';
+    // Only verb endings where the final "ো" is optional (খাব/খাবো, আছ/আছো). Not কাল/কালো (tomorrow/black).
+    if (mb_strlen($w) > 2) {
+        if (preg_match('/[বছ]ো$/u', $w)) $v[] = mb_substr($w, 0, -1);
+        elseif (preg_match('/[বছ]$/u', $w)) $v[] = $w . 'ো';
     }
     return array_values(array_unique($v));
 }
@@ -469,24 +470,23 @@ function standard_to_dialect(PDO $pdo, string $dialect, array $tokens): array {
         if (!isset($map[$tok]) || $sc > $map[$tok][1]) $map[$tok] = [$dw, $sc, $c3];
     };
     if ($look) {
-        $st = $pdo->prepare('SELECT standard_word, dialect_word, p_dia, p_std, verified FROM lexicon WHERE dialect = ? AND (p_dia + p_std) >= 0.55 AND standard_word IN (' . in_placeholders($look) . ')');
+        $st = $pdo->prepare('SELECT standard_word, dialect_word, p_dia, p_std, cnt, verified FROM lexicon WHERE dialect = ? AND (p_dia + p_std) >= 0.55 AND standard_word IN (' . in_placeholders($look) . ')');
         $st->execute(array_merge([$dialect], $look));
         foreach ($st->fetchAll() as $r) {
             $sc = (float) $r['p_dia'] + (float) $r['p_std'] + ($r['verified'] ? 1 : 0);
+            if (!$r['verified'] && (int) $r['cnt'] < 3) $sc -= 0.4;      // seen only once or twice: often noise
+            if ($sc < 0.45) continue;                                     // too weak: keep the Standard word instead
             $c3 = min(1.0, ((float) $r['p_dia'] + (float) $r['p_std']) / 2);
             foreach ($tokenOf[$r['standard_word']] ?? [] as $tok) $add($tok, $r['dialect_word'], $r['standard_word'] === $tok ? $sc : $sc - 0.05, $c3);
         }
         // The dialect's own dictionary (Words screen) also counts. Words a native speaker entered or fixed in the app win.
         try {
-            $st = $pdo->prepare('SELECT source_word, standard_word, meaning_status FROM word_meanings WHERE language = ? AND standard_word IN (' . in_placeholders($look) . ')');
+            $st = $pdo->prepare('SELECT source_word, standard_word, meaning_status FROM word_meanings WHERE language = ? AND meaning_status IN (\'native_speaker_reported\',\'community_verified\') AND standard_word IN (' . in_placeholders($look) . ')');
             $st->execute(array_merge([$dialect], $look));
+            // Only words confirmed by a person count; unreviewed word-list pairs (often wrong) are ignored here.
             foreach ($st->fetchAll() as $r) {
-                $trusted = in_array($r['meaning_status'], ['native_speaker_reported', 'community_verified'], true);
-                foreach ($tokenOf[$r['standard_word']] ?? [] as $tok) {
-                    $base = 0.0;
-                    foreach ($alt[$tok] ?? [] as $a) if ($a[0] === $r['source_word']) $base = $a[1];
-                    $add($tok, $r['source_word'], $trusted ? 4.0 : max($base + 0.5, 1.5), $trusted ? 0.95 : 0.7);
-                }
+                if (!in_array($r['meaning_status'], ['native_speaker_reported', 'community_verified'], true)) continue;
+                foreach ($tokenOf[$r['standard_word']] ?? [] as $tok) $add($tok, $r['source_word'], 4.0, 0.95);
             }
         } catch (Throwable $e) { /* older database without word_meanings */ }
     }
