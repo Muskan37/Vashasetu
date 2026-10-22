@@ -443,22 +443,55 @@ function dialect_to_standard(PDO $pdo, string $dialect, array $tokens, ?array $p
     return $out;
 }
 
+/** Spelling variants of a Standard Bangla word that mean the same (খাব / খাবো, করব / করবো). */
+function bn_std_variants(string $w): array {
+    $v = [$w];
+    if (mb_strlen($w) > 1) {
+        if (mb_substr($w, -1) === 'ো') $v[] = mb_substr($w, 0, -1);
+        else $v[] = $w . 'ো';
+    }
+    return array_values(array_unique($v));
+}
+
 function standard_to_dialect(PDO $pdo, string $dialect, array $tokens): array {
-    $uniq = array_values(array_unique($tokens));
     $map = []; $alt = [];
-    if ($uniq) {
-        $st = $pdo->prepare('SELECT standard_word, dialect_word, p_dia, p_std, verified FROM lexicon WHERE dialect = ? AND (p_dia + p_std) >= 0.55 AND standard_word IN (' . in_placeholders($uniq) . ')');
-        $st->execute(array_merge([$dialect], $uniq));
+    // token => every spelling we look up for it
+    $variantsOf = []; $tokenOf = [];
+    foreach (array_unique($tokens) as $t) foreach (bn_std_variants($t) as $v) { $variantsOf[$t][] = $v; $tokenOf[$v][] = $t; }
+    $look = array_keys($tokenOf);
+    $add = function (string $tok, string $dw, float $sc, float $c3) use (&$alt, &$map) {
+        foreach ($alt[$tok] ?? [] as $n => $a) if ($a[0] === $dw) {           // same dialect word seen again: keep the best score
+            if ($sc > $a[1]) $alt[$tok][$n] = [$dw, $sc, max($c3, $a[2])];
+            if (!isset($map[$tok]) || $alt[$tok][$n][1] > $map[$tok][1]) $map[$tok] = $alt[$tok][$n];
+            return;
+        }
+        $alt[$tok][] = [$dw, $sc, $c3];
+        if (!isset($map[$tok]) || $sc > $map[$tok][1]) $map[$tok] = [$dw, $sc, $c3];
+    };
+    if ($look) {
+        $st = $pdo->prepare('SELECT standard_word, dialect_word, p_dia, p_std, verified FROM lexicon WHERE dialect = ? AND (p_dia + p_std) >= 0.55 AND standard_word IN (' . in_placeholders($look) . ')');
+        $st->execute(array_merge([$dialect], $look));
         foreach ($st->fetchAll() as $r) {
-            $k = $r['standard_word'];
             $sc = (float) $r['p_dia'] + (float) $r['p_std'] + ($r['verified'] ? 1 : 0);
             $c3 = min(1.0, ((float) $r['p_dia'] + (float) $r['p_std']) / 2);
-            $alt[$k][] = [$r['dialect_word'], $sc, $c3];
-            if (!isset($map[$k]) || $sc > $map[$k][1]) $map[$k] = [$r['dialect_word'], $sc, $c3];
+            foreach ($tokenOf[$r['standard_word']] ?? [] as $tok) $add($tok, $r['dialect_word'], $r['standard_word'] === $tok ? $sc : $sc - 0.05, $c3);
         }
+        // The dialect's own dictionary (Words screen) also counts. Words a native speaker entered or fixed in the app win.
+        try {
+            $st = $pdo->prepare('SELECT source_word, standard_word, meaning_status FROM word_meanings WHERE language = ? AND standard_word IN (' . in_placeholders($look) . ')');
+            $st->execute(array_merge([$dialect], $look));
+            foreach ($st->fetchAll() as $r) {
+                $trusted = in_array($r['meaning_status'], ['native_speaker_reported', 'community_verified'], true);
+                foreach ($tokenOf[$r['standard_word']] ?? [] as $tok) {
+                    $base = 0.0;
+                    foreach ($alt[$tok] ?? [] as $a) if ($a[0] === $r['source_word']) $base = $a[1];
+                    $add($tok, $r['source_word'], $trusted ? 4.0 : max($base + 0.5, 1.5), $trusted ? 0.95 : 0.7);
+                }
+            }
+        } catch (Throwable $e) { /* older database without word_meanings */ }
     }
     foreach (curated_pairs()[$dialect] ?? [] as $dw => $stds) {      // verified corrections (reverse direction)
-        foreach ($stds as $std) if (in_array($std, $tokens, true)) { $alt[$std][] = [$dw, 3.5, 0.95]; if (!isset($map[$std]) || 3.5 > $map[$std][1]) $map[$std] = [$dw, 3.5, 0.95]; }
+        foreach ($stds as $std) foreach ($tokenOf[$std] ?? [] as $tok) $add($tok, $dw, 3.5, 0.95);
     }
     $ctxPick = [];
     if (count($tokens) > 1) {

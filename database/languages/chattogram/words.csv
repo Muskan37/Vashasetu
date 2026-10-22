@@ -74,7 +74,7 @@ Chattogram,আঁর,আমার,existing_curated_needs_recheck,Existing app cu
 Chattogram,আঁরার,আমাদের,needs_native_review,ONUBAD,1,ae199ff696cf6650106e0a35230acdd64fca1be15a90b15cfba3a8ce088ec228
 Chattogram,আঁশ,হাঁস,needs_native_review,ONUBAD,1,ee09828f3a647c85346c13f01dc96ee7b2ea95892beca105335921e539f8fff3
 Chattogram,আঁসুর,সাঁতার,needs_native_review,ONUBAD,1,ed21ba9607188498a6d3ba23b40c5936dcdde7b8ac613d3e4a41321ff2dab285
-Chattogram,আই,আমি,existing_curated_needs_recheck,Existing app curated.csv,1,e95171fc0e9aa1e9c3f18ed13a2fe887354668a9a1124da844be1ce2b5f32621
+Chattogram,আই,আমি,needs_native_review,Existing app curated.csv,1,e95171fc0e9aa1e9c3f18ed13a2fe887354668a9a1124da844be1ce2b5f32621
 Chattogram,আইও,আসুন,needs_native_review,ONUBAD,1,0497d8f469506ac5102aca3155ffb3373e6c32e71d0791d7ed45f2bd07584305
 Chattogram,আইচ্চুস,এসেছিস,needs_native_review,ONUBAD,1,6fcef033d77a9e137b8c83a085eb0e3647c9be7bc9f0914367ad814781eeade6
 Chattogram,আইচ্ছা,আচ্ছা,needs_native_review,ONUBAD,1,b1d27c23542f2fb2138c056195915aa30a84b4c3fe5f8659db0040340c047eab
@@ -368,7 +368,7 @@ Chattogram,খাট্টাবাইয়্যুন,টমেটো,needs_n
 Chattogram,খান্দান,বংশ,needs_native_review,Chatgaiyya,1,1bfaf03554cdb1769a5153631b6accbdb4743d48694474099dd41ce7dfa4605b
 Chattogram,খান্দানর,বংশের,needs_native_review,Chatgaiyya,1,a2ab9c8c2bf9d580607cecbd11d05c61145752031842bfbde9fdd3f495da9e5f
 Chattogram,খামিস,কামিজ,needs_native_review,ONUBAD,1,2fc4024d293a0b098f6ae170913f5baad7ea595ffbcca9dba66701b7b8d90d91
-Chattogram,খামু,খাবো,existing_curated_needs_recheck,Existing app curated.csv,1,ffc22bc84ecbc92261d98673b2f37e35c2f1f766fce1841737e6b1e47f1d01c1
+Chattogram,খামু,খাবো,needs_native_review,Existing app curated.csv,1,ffc22bc84ecbc92261d98673b2f37e35c2f1f766fce1841737e6b1e47f1d01c1
 Chattogram,খারা,দাঁড়া,needs_native_review,Chatgaiyya,1,96673fe8694872a6a1d7786741c6edde68505f0d4cfce3aeb1ae44a2c5fd74eb
 Chattogram,খারাই,দাঁড়িয়ে,needs_native_review,Chatgaiyya,1,45837523d6fa79d0084b8566a9ef00b0e439a176fa24dbfc0a430289b9468f5a
 Chattogram,খিয়াল,খেয়াল,needs_native_review,ONUBAD,1,9d6722af904d436178be805ae4f292c6dc6ef35d9577810fd0aa0f3d1de91100
@@ -1390,7 +1390,7 @@ Chattogram,যাইয়ুম,যাইব,needs_native_review,ONUBAD,1,f5398
 Chattogram,যাইয়্যুম,যাবো,needs_native_review,ONUBAD,1,cebf0d85d9077b77620446926499b62903fc6582da5d37057eb14137499fa935
 Chattogram,যাইরগুই,যাচ্ছি,needs_native_review,ONUBAD,1,7d31b3d34919053074c166f53eac5d9476bb865f554e7ee0933d32a4141c8ffb
 Chattogram,যাবিগ়ই,আসবি,needs_native_review,ONUBAD,1,14ffe04a427e6f153fe215100e0a32be68ecf72fb4e09ca6526097141a1a3e0f
-Chattogram,যামু,যাবো,existing_curated_needs_recheck,Existing app curated.csv,1,a78c43e70d286c042f5a84b80cb3f388c6b17b45b05d8994b42a6eb1e0bac2f9
+Chattogram,যামু,যাবো,needs_native_review,Existing app curated.csv,1,a78c43e70d286c042f5a84b80cb3f388c6b17b45b05d8994b42a6eb1e0bac2f9
 Chattogram,যায়বের,যাবার,needs_native_review,Chatgaiyya,1,1e8d798dd7ebb611d3a6308ac6b92941b788a48192395e4639887eb474235071
 Chattogram,যারগো,দুষ্ট,needs_native_review,ONUBAD,1,dce6fe63a8080b20bf2eee3016324db486abf190f7ece103045afe6c165aaf1f
 Chattogram,যিবে,যে,needs_native_review,ONUBAD,1,b52a917632299f380b843232754528c54c700b429775ebb1102c60364525a4f2
@@ -2366,3 +2366,5 @@ Chattogram,হেঁতেরার,তাদের,needs_native_review,BD-Diale
 Chattogram,হেতারা,তারা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,a82c23ff71ac77c42b876b9164a51e34f3d5eaff0c317eb3cab7c58d2fcc3a9e
 Chattogram,হোটল,হোটেল,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,9983af3d38e7e89f9a464350ec5fb44f019a9079011a33c0fbd2d421721d1737
 Chattogram,হোনদর,সুন্দর,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,52f49e3838c5cc508e5bf015794603b1439794fc0010cf912d4c790a482be2bf
+Chattogram,খাইয়ুম,খাবো,native_speaker_reported,Reported by app owner (native check),1,2a56c0d7dceab838987c56bad558ce96879eb6ef0cad10fdc8a1175f3f3195d4
+Chattogram,খাইয়ুম,খাব,native_speaker_reported,Reported by app owner (native check),1,87c34e9772c7da8c874f7c8a1f664d221cf23bb3e6924714b7b627c021fb3f2c

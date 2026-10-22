@@ -2,7 +2,7 @@ language,dataset,path,rows,status
 Barishal,parallel_sentences,languages/barishal/sentences.csv,4830,research candidates; validation status in each row
 Barishal,word_meanings,languages/barishal/words.csv,711,research candidates; validation status in each row
 Chattogram,parallel_sentences,languages/chattogram/sentences.csv,25314,research candidates; validation status in each row
-Chattogram,word_meanings,languages/chattogram/words.csv,2367,research candidates; validation status in each row
+Chattogram,word_meanings,languages/chattogram/words.csv,2369,research candidates; validation status in each row
 Dhaka,parallel_sentences,languages/dhaka/sentences.csv,0,research candidates; validation status in each row
 Dhaka,word_meanings,languages/dhaka/words.csv,0,research candidates; validation status in each row
 Khulna,parallel_sentences,languages/khulna/sentences.csv,0,research candidates; validation status in each row
