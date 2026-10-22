@@ -2383,3 +2383,12 @@ Chattogram,ঘরত,বাড়িতে,native_speaker_reported,Native speake
 Chattogram,দোহানত,দোকানে,native_speaker_reported,Native speaker dataset (chattogram_native_dataset.csv),1,97c298d8a1a11aafe0220c598be7c6dcb93d6518ac12e2fb78a6b480421826b6
 Chattogram,ইস্কুলত,স্কুলে,native_speaker_reported,Native speaker dataset (chattogram_native_dataset.csv),1,d1f391deb1a77877a789923308f681ffe4c3e2c1578b4040ff9a58e7acfccc68
 Chattogram,শঅরত,শহরে,native_speaker_reported,Native speaker dataset (chattogram_native_dataset.csv),1,07f0a99ac732a3105d15c2ffdefd981ba6dcac3662544cb07e1fb639e1bcc05d
+Chattogram,তোঁয়া,তুমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,5ffb5df24ff21f74fa4371afb681ecc9b786107db9e85536e8b305d2a13c957f
+Chattogram,টিয়া,টাকা,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,d39521740a61bcbe6008329d771899c4d3daf341f775fb9430bc206fedb55b9c
+Chattogram,পোয়া,ছেলে,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,3e67a9cee9ef1c6d82f9a95532a872de7809f08c7031aecac1059a112615691a
+Chattogram,মাইয়াপোয়া,মেয়ে,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,1006acc8e2ad0e5304e699350d5a837be31d05505709a799b862be7f3722909a
+Chattogram,হুটকী,শুটকি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,daa8b0ad503d0ac9b282580469e482b0a28cf7b8cf3bdd7542fc3a62f6283d36
+Chattogram,ঘর,বাড়ি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,bbfa75d8937175a512cc7152ccbfe98bfc26b4f739100fcdb29d330c12115660
+Chattogram,মাইয়্যাপোয়া,মেয়ে,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,02e5cf21a9d7659f43c89eef149c0b3abba436033a4132a1dc92778c25f0dd3c
+Chattogram,খানাউইন,খাবার,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,c55efcf2e260633fe0cf1ff4c687d1dae95c22465f4a194a27d4ceb904aa5c2d
+Chattogram,মাছ,মাছ,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,c21ab5c8b0f360fb425ad039fc759d1dc726eb3731ea121f38dfbcfc155acbb9

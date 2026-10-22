@@ -1,1 +1,4 @@
 language,source_word,standard_word,meaning_status,source_dataset,evidence_count,hash
+santali,ইঞ্জ,আমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,aa23455dc9133931ac7f74b4c8b00a4841e86c9caff17d5c55162a0fa72dd1f6
+santali,আম,তুমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,561cedd3728ea61f3d8ee5416b536ee05cb7929d7e25aadd95cd0e8fda0e8410
+santali,দাকা,ভাত,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,aa3589e17f2d8ae02817abfb26e9e83c5935c38a3e38b0c8bc92bd787fa7111e

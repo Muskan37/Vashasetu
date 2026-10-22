@@ -1,1 +1,4 @@
 pair_hash,language,source_text,source_key,standard_bangla,standard_key,source_dataset,review_status,eligible_exact,split,script,source_count
+01925e483144b288a88badaa3493e405e8d1d7a672c7b8248da7e87db5d4d934,Rangpur,মুই ভাত খামো।,মুই ভাত খামো,আমি ভাত খাবো।,আমি ভাত খাবো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,1,train,Bengali,1
+900f2f2c7ca1198d4e640460cdb14a31295a95bc94cc162820975c990131464c,Rangpur,তুঁই কেমন আছেন?,তুঁই কেমন আছেন,তুমি কেমন আছো?,তুমি কেমন আছো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,1,train,Bengali,1
+f1d0b65fddf93b72d76d43beeeed29e641dd5b0ea9a9e30463b82a6e6334c7ca,Rangpur,বাহে কেমন আছেন?,বাহে কেমন আছেন,তুমি কেমন আছো?,তুমি কেমন আছো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,0,train,Bengali,1

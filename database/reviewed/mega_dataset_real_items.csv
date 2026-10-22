@@ -1,0 +1,65 @@
+language,type,standard_bangla,dialect,english
+Chattogram,Word,পানি,ফানি,Water
+Chattogram,Word,টাকা,টিয়া,Money
+Chattogram,Word,বাড়ি,ঘর,House
+Chattogram,Word,ছেলে,পোয়া,Boy
+Chattogram,Word,মেয়ে,মাইয়্যাপোয়া,Girl
+Chattogram,Word,খাবার,খানাউইন,Food
+Chattogram,Word,মাছ,মাছ,Fish
+Chattogram,Word,ভাত,ভাত,Rice
+Chattogram,Phrase,খারাপ পানি,উড্ডা ফানি,Bad Water
+Chattogram,Phrase,অনেক টাকা,বেযূঁত টিয়া,A lot Money
+Chattogram,Phrase,একটু বাড়ি,এক্কানা ঘর,A little House
+Chattogram,Phrase,ভালো ছেলে,গম পোয়া,Good Boy
+Chattogram,Phrase,খারাপ মেয়ে,উড্ডা মাইয়্যাপোয়া,Bad Girl
+Chattogram,Phrase,অনেক খাবার,বেযূঁত খানাউইন,A lot Food
+Chattogram,Phrase,একটু মাছ,এক্কানা মাছ,A little Fish
+Chattogram,Phrase,ভালো ভাত,গম ভাত,Good Rice
+Barishal,Word,পানি,পানি,Water
+Barishal,Word,টাকা,টাহা,Money
+Barishal,Word,বাড়ি,বাড়ি,House
+Barishal,Word,ছেলে,পোল্যা,Boy
+Barishal,Word,মেয়ে,মাইয়্যাপোলা,Girl
+Barishal,Word,খাবার,খাওন,Food
+Barishal,Word,মাছ,মাছ,Fish
+Barishal,Word,ভাত,ভাত,Rice
+Barishal,Phrase,খারাপ পানি,খরাপ পানি,Bad Water
+Barishal,Phrase,অনেক টাকা,উন্দা টাহা,A lot Money
+Barishal,Phrase,একটু বাড়ি,একটুখানি বাড়ি,A little House
+Barishal,Phrase,ভালো ছেলে,ভালা পোল্যা,Good Boy
+Barishal,Phrase,খারাপ মেয়ে,খরাপ মাইয়্যাপোলা,Bad Girl
+Barishal,Phrase,অনেক খাবার,উন্দা খাওন,A lot Food
+Barishal,Phrase,একটু মাছ,একটুখানি মাছ,A little Fish
+Barishal,Phrase,ভালো ভাত,ভালা ভাত,Good Rice
+Noakhali,Word,পানি,হানি,Water
+Noakhali,Word,টাকা,টিয়া,Money
+Noakhali,Word,বাড়ি,বাড়ি,House
+Noakhali,Word,ছেলে,হুত,Boy
+Noakhali,Word,মেয়ে,ঝী,Girl
+Noakhali,Word,খাবার,হানা,Food
+Noakhali,Word,মাছ,মাছ,Fish
+Noakhali,Word,ভাত,ভাত,Rice
+Noakhali,Phrase,খারাপ পানি,হঁড়া হানি,Bad Water
+Noakhali,Phrase,অনেক টাকা,বেযূঁত টিয়া,A lot Money
+Noakhali,Phrase,একটু বাড়ি,এক্কানা বাড়ি,A little House
+Noakhali,Phrase,ভালো ছেলে,ভালা হুত,Good Boy
+Noakhali,Phrase,খারাপ মেয়ে,হঁড়া ঝী,Bad Girl
+Noakhali,Phrase,অনেক খাবার,বেযূঁত হানা,A lot Food
+Noakhali,Phrase,একটু মাছ,এক্কানা মাছ,A little Fish
+Noakhali,Phrase,ভালো ভাত,ভালা ভাত,Good Rice
+Sylheti,Word,পানি,পানি,Water
+Sylheti,Word,টাকা,টাকা,Money
+Sylheti,Word,বাড়ি,ঘর,House
+Sylheti,Word,ছেলে,ফুয়া,Boy
+Sylheti,Word,মেয়ে,ফুরি,Girl
+Sylheti,Word,খাবার,খানী,Food
+Sylheti,Word,মাছ,মাছ,Fish
+Sylheti,Word,ভাত,ভাত,Rice
+Sylheti,Phrase,খারাপ পানি,নালায়েক পানি,Bad Water
+Sylheti,Phrase,অনেক টাকা,খুউব টাকা,A lot Money
+Sylheti,Phrase,একটু বাড়ি,এক্কেনো ঘর,A little House
+Sylheti,Phrase,ভালো ছেলে,ভালা ফুয়া,Good Boy
+Sylheti,Phrase,খারাপ মেয়ে,নালায়েক ফুরি,Bad Girl
+Sylheti,Phrase,অনেক খাবার,খুউব খানী,A lot Food
+Sylheti,Phrase,একটু মাছ,এক্কেনো মাছ,A little Fish
+Sylheti,Phrase,ভালো ভাত,ভালা ভাত,Good Rice

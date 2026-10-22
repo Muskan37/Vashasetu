@@ -101,3 +101,8 @@ Put a CSV with the columns `Type,Standard Bangla,<Dialect> Dialect,English` in `
 `python tools/import_native_dialect.py database/reviewed/<file>.csv <Dialect>` and open `setup.php?reset=1`.
 Words go to the dictionary and the trusted list; phrases and sentences become exact translations marked "native speaker".
 The Chittagong list `database/reviewed/chattogram_native_dataset.csv` is already imported (21 words, 19 phrases/sentences).
+
+`tools/import_language_list_xlsx.py` imports `database/reviewed/bangladesh_languages_and_dialects.xlsx` (all dialects, Dhaka/Khulna/Rangpur, Chakma, Marma, Garo, Santali)
+and the real items from the "complete mega dataset" (`database/reviewed/mega_dataset_real_items.csv`: 8 words and 8 phrases each for Chattogram, Barishal, Noakhali, Sylheti;
+its other sheets were copies of the Chattogram sheet and its generated sentences were nonsense, so they were left out).
+Every entry is shown in the dictionary; an entry only changes translations when the corpus or a native speaker's entry does not contradict it. Skipped overrides are listed in `tools/import_report.txt`.
