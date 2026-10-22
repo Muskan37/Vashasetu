@@ -371,12 +371,12 @@ Rajshahi,হামি,আমি,needs_native_review,BD-Dialect Words (pairs by m
 Rajshahi,হিসাবওয়ালা,বিশ্লেষক,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,6341fe31f9be3a6cc41abf4ab8996822b42c6bbbefaf9ddfd82aa0ce95dc37b1
 Rajshahi,হ্যাঁপা,স্মৃতি,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,2d071ac6cd6480c1b5717460d31f7a2a2602c8715559bfe3a2c9b9104fe57893
 Rajshahi,হ্যেয়,সে,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,a7f194c6c953bbfca854a5a3cdd83dbd9cfe1f127d14d23a686e2f11de612b1c
-Rajshahi,আমি,আমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,aceea429b2820a5e448ff6588be21a7acb6cefacc3cd63e4e298d7700f293470
-Rajshahi,তুমি,তুমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,db235787b5d865654f6e9a35eaf6d9d7f9a30dcc6b6db69eb938783ec2bbfdd9
-Rajshahi,তুঁহি,তুমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,2edf2cf7b26ac8dd70a5891414591b401c7cf8b9b8743061c0fcf469dbc6691b
-Rajshahi,ট্যাকা,টাকা,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,e65c1a37a06c6097a8a7d763653cb0575f271d00a0d91af4e3de72dd7615623e
-Rajshahi,ব্যাটাছেলে,ছেলে,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,e7fb88f4ccb86f7165e17045c2c130060846947c87afd80ed6b9d926e335adc3
-Rajshahi,ছাওয়াল,ছেলে,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,856976b415699701228e473b6cbfa2ddae82e1247c70fd52a507696eea1e4962
-Rajshahi,বেটিছেলে,মেয়ে,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,9085a40358c810bbe2336c45254d292b33672413efdbf2cfd5c5a760b2eae152
-Rajshahi,মাইয়া,মেয়ে,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,7be389b31a2db65be9a07dafd1f3e2f103e816e89e333489c7e7b72a639a7683
-Rajshahi,তুড়মুজ,তরমুজ,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,2aa212a42a84626f8004381c547b9ae0cac09db34d4d1f2a584e9b9a58707770
+Rajshahi,আমি,আমি,corpus_confirmed,Languages list (checked),1,ad88fb8abc6e2a31914e1ab7471e8f8e9f12648d09486233b8efa1b18b7e6854
+Rajshahi,তুমি,তুমি,corpus_confirmed,Languages list (checked),1,b013eae8a9750954ad4e3c72f4ce1529f4882b8ce9aee4026d8c30931f3155c4
+Rajshahi,তুঁহি,তুমি,needs_native_review,Languages list (checked),1,f1e13ea97a3817a7f346be7be6dd42dbfad96b2160453855654dbc7dbe5f1b87
+Rajshahi,ট্যাকা,টাকা,needs_native_review,Languages list (checked),1,bf2b3c3e24fcce58247ac6d8a722d6b22642c4d2d4895845c0ca7001c2240def
+Rajshahi,ব্যাটাছেলে,ছেলে,needs_native_review,Languages list (checked),1,befc28adaa0885e2f5759a65b49aa4dfec09d641e74014062dedb23ad14cd53f
+Rajshahi,ছাওয়াল,ছেলে,needs_native_review,Languages list (checked),1,e7c5b5b9e20c634a236a060a34f9f2bab60d00d6950bcfc559391a119ffd98be
+Rajshahi,বেটিছেলে,মেয়ে,needs_native_review,Languages list (checked),1,c7c238cc199a74548ff42dddcc5ba9bb2f346c15f8ebf3e9be156751f9af64b6
+Rajshahi,মাইয়া,মেয়ে,needs_native_review,Languages list (checked),1,ec7d60e6e3be64af3ce7323686b2bd5be5bb948dda4c952b83ca0c95b39fd805
+Rajshahi,তুড়মুজ,তরমুজ,needs_native_review,Languages list (checked),1,0c8ebefd1f305d5ca8eb6086e2e31dd8b472b167060d044f111e7fa5052329f9

@@ -1,4 +1,4 @@
 language,source_word,standard_word,meaning_status,source_dataset,evidence_count,hash
-Dhaka,আমি,আমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,6e48c2c0bff162a53f0a426b30892d0581b4d1c6a908905abc95aef03bfaaaf1
-Dhaka,টাকা,টাকা,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,ba14024cafa3e34b91d95d3c77a9b461415aadf9036d5921e91d1ecbb9352427
-Dhaka,টাহাঁ,টাকা,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,a51a773be113d37767228ea0e958eb58cd6b12ca7d330d29d2949784ebd1bbea
+Dhaka,আমি,আমি,needs_native_review,Languages list (checked),1,8246f192ac8560003a152a4b7bf26f803f2b3f7e3413319a49e9c614be3472b7
+Dhaka,টাকা,টাকা,needs_native_review,Languages list (checked),1,9b48e202a7d82eaff556c290c0a7d865db6ff98f9f9ebc00e2adf70b58b70815
+Dhaka,টাহাঁ,টাকা,needs_native_review,Languages list (checked),1,ca0dedd7e8eff95af3b1a098a0fcd4777b2292eda93f6fc9512aaa3ee5f38c2b

@@ -1,2 +1,2 @@
 pair_hash,language,source_text,source_key,standard_bangla,standard_key,source_dataset,review_status,eligible_exact,split,script,source_count
-49848e2389ed4cf55333f8a29527544e5ab1ef4ed294647a94fc63f7d7238633,Dhaka,আমি ভাত খামু।,আমি ভাত খামু,আমি ভাত খাবো।,আমি ভাত খাবো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,1,train,Bengali,1
+3ddb8b139a159836fe85a7a6ef240cbaab99d1ce5648bced4ddda356b47d5aac,Dhaka,আমি ভাত খামু।,আমি ভাত খামু,আমি ভাত খাবো।,আমি ভাত খাবো,Languages list (checked),needs_native_review,0,train,Bengali,1

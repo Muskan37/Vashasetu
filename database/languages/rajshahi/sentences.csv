@@ -1212,10 +1212,10 @@ d28477e361f4c35803ed97abfbb51fc50ac18e525cb0cb05be299da37e46c3e2,Rajshahi,হি
 083cfcaa5de816453831ef791a7a51775e4536408ff2c09c896db89b78666d45,Rajshahi,হৃদয় ভাঙা,হৃদয় ভাঙা,হৃদয় ভাঙ্গা,হৃদয় ভাঙ্গা,BD-Dialect,publication_reviewed_not_reaudited,1,train,Bengali,2
 3e135b6d065a988f044e8a1984599d1693edc6ac5f84c68f50007130697291bf,Rajshahi,হ্যাঁপা,হ্যাঁপা,স্মৃতি,স্মৃতি,BD-Dialect,publication_reviewed_not_reaudited,0,train,Bengali,2
 766aa9dcf0a32513091ffa036a427609a300d8d731702516c43af4b2810bf75d,Rajshahi,হ্যেয়,হ্যেয়,সে,সে,BD-Dialect,publication_reviewed_not_reaudited,0,train,Bengali,2
-9f4a3dd8cd28257d08c3f8015b93568d2995148f22e19286d32ad05d3148dfe6,Rajshahi,কোনে যাচ্ছেন,কোনে যাচ্ছেন,কোথায় যাচ্ছেন,কোথায় যাচ্ছেন,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,1,train,Bengali,1
-d4f10ebda7bf33ebc40461ad4b962f1ba8fbaa553afd73cfc9d73089f24c37a1,Rajshahi,খুব ভালো,খুব ভালো,খুব ভালো,খুব ভালো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,1,train,Bengali,1
-79497eb1258c9f91f24da4be31fde251dcaf9fd7e3aa7481ab6003e82ad4b883,Rajshahi,খাসা,খাসা,খুব ভালো,খুব ভালো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,0,train,Bengali,1
-58bacc39c8a39ee007b1a6a13fd6da01fa5ffcdf9727d5ccd6cff138e83bdddb,Rajshahi,আমি ভাত খামু,আমি ভাত খামু,আমি ভাত খাবো।,আমি ভাত খাবো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,1,train,Bengali,1
-4c70a787e27bd63067fdcf3c8afd034107a4c1ac381ac2edae1c934215b6c718,Rajshahi,খাবেক।,খাবেক,আমি ভাত খাবো।,আমি ভাত খাবো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,0,train,Bengali,1
-2eecf4e51fc62c0e26712619c94119d27bcc78c113cc6c194e2f266a6434b7ef,Rajshahi,তুমি কেমন আছো?,তুমি কেমন আছো,তুমি কেমন আছো?,তুমি কেমন আছো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,1,train,Bengali,1
-7cbe8b427d6f694392a69f9a0c1f0e57eeea806ec9580b86a08958eba426e7be,Rajshahi,কি খবর?,কি খবর,তুমি কেমন আছো?,তুমি কেমন আছো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,0,train,Bengali,1
+3f5afff122510bb4807c82949c10e4f0dae96eaeccd3d293328cfbac80d9700b,Rajshahi,কোনে যাচ্ছেন,কোনে যাচ্ছেন,কোথায় যাচ্ছেন,কোথায় যাচ্ছেন,Languages list (checked),needs_native_review,1,train,Bengali,1
+262b58aaf5abc312123ff23d4ee97793fe1e319648ee432e94b64be8c6b47c89,Rajshahi,খুব ভালো,খুব ভালো,খুব ভালো,খুব ভালো,Languages list (checked),needs_native_review,1,train,Bengali,1
+eb3fc3943e6822e7e7a3ec04a224d4dd97815c4683d3a35c48b40070fe2db116,Rajshahi,খাসা,খাসা,খুব ভালো,খুব ভালো,Languages list (checked),needs_native_review,0,train,Bengali,1
+ffbf4edc3407bf838212d33ed927fbdb109859896a5cf2333629e2a3a9c5e78d,Rajshahi,আমি ভাত খামু,আমি ভাত খামু,আমি ভাত খাবো।,আমি ভাত খাবো,Languages list (checked),needs_native_review,0,train,Bengali,1
+0635acd51bfe70b895d9e50ea1ee89790e2a1a64a85c8fdd6a5411f062bba3d8,Rajshahi,খাবেক।,খাবেক,আমি ভাত খাবো।,আমি ভাত খাবো,Languages list (checked),needs_native_review,0,train,Bengali,1
+bd030c92c8d446da65e463b568503c5ddb7f7dc2cd3ccf95ef605fb33d3deb87,Rajshahi,তুমি কেমন আছো?,তুমি কেমন আছো,তুমি কেমন আছো?,তুমি কেমন আছো,Languages list (checked),needs_native_review,1,train,Bengali,1
+e0d867d62e99a5a6b58bd99b4c6e74123bd3985500c70e4cd71136757e23eb95,Rajshahi,কি খবর?,কি খবর,তুমি কেমন আছো?,তুমি কেমন আছো,Languages list (checked),needs_native_review,0,train,Bengali,1

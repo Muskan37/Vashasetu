@@ -3196,16 +3196,16 @@ Sylheti,হাফাহাফি,লাফালাফি,needs_native_review,BD
 Sylheti,হাসাত,হাসা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,225f6585ecc69abc56737ef00bcbfd3725149a985a50fa2ad38e24379a2423bd
 Sylheti,হিসাব,গণনা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,bdbf1a0afc4ee76d2d980aadb67148d2d499535fe754ffdffd6846efa51f3fda
 Sylheti,হেল্পলেস,অসহায়,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,669c066b0a8082373af1391e1322688374e325f7d8e0f16a89a83773fd859041
-Sylheti,আমি,আমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,79ce274391b62cafeac1b2f6dc361a65c4af6749bb2b578404d117fde944e8d1
-Sylheti,আউই,আমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,9d584621c180138b862ff2d0cea5b0b1cbbc87e4622b60ec6196694c0773876d
-Sylheti,তুমি,তুমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,97cd0339743f675f74b86c05f320a73bd3f7836f1d42985757e8f1b50e6b9dca
-Sylheti,তুমিইন,তুমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,91e5b0e25a2492083a2ecf92af8d63f4dc223d0810b31dbb9f6a065650086e67
-Sylheti,আমরা,আমরা,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,7db28d0276a364528ab0d32f4246b94c36ac95a8a5618fd44c7e9807795d6bf1
-Sylheti,পানি,পানি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,d6aa000e21b6443b70d810fc0f752785232e4311a992cc2f70ce2c36a0212b29
-Sylheti,ফুনি,পানি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,dd6b2aa551bd5944b785d57110ec53e3014adf677769f84947ee1e9347bb4ddb
-Sylheti,ভালা,ভালো,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,d6666ff27b0c51e4e661006dfa440f22f3a653d2807003b1eec17439944ae12d
-Sylheti,টাকা,টাকা,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,2781825cc09befbaaf608a7381d27fd6a24a971fac5bd2abe071c0b9dbbbee32
-Sylheti,ঘর,বাড়ি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,d336022c6f7ec698a81d211205ca3a4ccd55b43ada19f567cf9545505bcbb62a
-Sylheti,খানী,খাবার,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,994728620c8a382bd96fd0b3e084d696db8cc757ca1c816a6b4a859eaeae3e12
-Sylheti,মাছ,মাছ,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,db7da9c83680e4c28661e5ee8047df1242632a5c1dfad0878928281bd8a821aa
-Sylheti,ভাত,ভাত,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,f03bdecd5afef3a4fe807f226c5a155641c94ac936669e8f986a615f3bbc18c3
+Sylheti,আমি,আমি,corpus_confirmed,Languages list (checked),1,981dbb62fc1df26c048583e290234721bc88b8e5b95c2d623374dc765c85c30d
+Sylheti,আউই,আমি,needs_native_review,Languages list (checked),1,b2fcc05364146bfc26aa31b523614047344b42f6ff698e3c7d4dfe9ca1a728a1
+Sylheti,তুমি,তুমি,corpus_confirmed,Languages list (checked),1,fb195539bcabb7aac53f9cd2b0af48ddd8c2bd02f2256298b92ada9c5e6ba97f
+Sylheti,তুমিইন,তুমি,needs_native_review,Languages list (checked),1,6fd6f46cc3f1941d4f10a64dd744925fe2f1e7748cdfc66b79f7d7b7c4fa3b09
+Sylheti,আমরা,আমরা,corpus_confirmed,Languages list (checked),1,bf13c64b13e23c7bd62ab9db5a036710f9f9660891b20b7fe759e22563e227ac
+Sylheti,পানি,পানি,corpus_confirmed,Languages list (checked),1,83356a46b9eeddc897c4d29a6a90e646d18384a757cf2441b97d5ecc6d7775d7
+Sylheti,ফুনি,পানি,needs_native_review,Languages list (checked),1,5ab2738b877f19199549a93e23b0a5b1c7fb12a1b3606c5dabbc176fb06c5845
+Sylheti,ভালা,ভালো,corpus_confirmed,Languages list (checked),1,2c25870614f20e3d77f8b6c49e44aaa6a9898e8fa03045a06b9c26229f397b65
+Sylheti,টাকা,টাকা,corpus_confirmed,Mega dataset real part (checked),1,9a00d81c72fb0f0128b45f3d39ca1df4b7c0d6e3b87d9b41fd2489390ee2dc2b
+Sylheti,ঘর,বাড়ি,needs_native_review,Mega dataset real part (checked),1,e59c6cc7d7d3819f4ee6db283d2d6d20ac71c931da9806d9b458a95edb952ab8
+Sylheti,খানী,খাবার,needs_native_review,Mega dataset real part (checked),1,8f55997e3df2e83f1c034ee91c8f1ffe2e25e69f2ae057b8a7c96027b8e67bab
+Sylheti,মাছ,মাছ,corpus_confirmed,Mega dataset real part (checked),1,15437c25ab88a3802b88755aabb9249e2bc3a7853a7c47d2d466e5a863bf221f
+Sylheti,ভাত,ভাত,corpus_confirmed,Mega dataset real part (checked),1,a8f93403253a6065253e851b5ef158b0ae520d26dab7593abb260da38b5d773c

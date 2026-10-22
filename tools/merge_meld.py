@@ -48,3 +48,4 @@ for r in m[1:]:
         n=sum(1 for _ in open(ROOT/r[2],encoding='utf-8'))-1; r[3]=str(n)
 csv.writer(open(ROOT/'languages'/'manifest.csv','w',encoding='utf-8',newline='')).writerows(m)
 # NOTE: after this, run tools/meld_words.py to (re)build the Chakma/Marma/Garo word lists.
+# Run tools/import_checked_lists.py after this to load the checked user word lists.

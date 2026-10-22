@@ -1,3 +1,3 @@
 pair_hash,language,source_text,source_key,standard_bangla,standard_key,source_dataset,review_status,eligible_exact,split,script,source_count
-56a21a8a0e18d0fbfc09c85b55af6a73790271de1988c6bc9555883a1c87b7a4,santali,ইঞ্জ দাকাঞ্জ জমআ,ইঞ্জ দাকাঞ্জ জমআ,আমি ভাত খাবো।,আমি ভাত খাবো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,1,train,Bengali transliteration,1
-e11b583bc4a2009485888b88dbf0797b08c6d3d44a727f1902b784eb0de1669a,santali,চেলেকা মেনামা?,চেলেকা মেনামা,তুমি কেমন আছো?,তুমি কেমন আছো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,1,train,Bengali transliteration,1
+796ac2edead999a93dd3a3a2f8e18a7e4cd51f8754427d9d1638d9f740654ea1,santali,ইঞ্জ দাকাঞ্জ জমআ,ইঞ্জ দাকাঞ্জ জমআ,আমি ভাত খাবো।,আমি ভাত খাবো,Languages list (checked),needs_native_review,0,train,Bengali transliteration,1
+d650b2ca8a76e71f23021610dbc86e5a6eb940906dab6b81cda27b4edae765eb,santali,চেলেকা মেনামা?,চেলেকা মেনামা,তুমি কেমন আছো?,তুমি কেমন আছো,Languages list (checked),needs_native_review,0,train,Bengali transliteration,1

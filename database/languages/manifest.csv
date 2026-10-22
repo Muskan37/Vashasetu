@@ -1,8 +1,8 @@
 language,dataset,path,rows,status
-Barishal,parallel_sentences,languages/barishal/sentences.csv,4846,research candidates; validation status in each row
+Barishal,parallel_sentences,languages/barishal/sentences.csv,4845,research candidates; validation status in each row
 Barishal,word_meanings,languages/barishal/words.csv,728,research candidates; validation status in each row
-Chattogram,parallel_sentences,languages/chattogram/sentences.csv,25343,research candidates; validation status in each row
-Chattogram,word_meanings,languages/chattogram/words.csv,2393,research candidates; validation status in each row
+Chattogram,parallel_sentences,languages/chattogram/sentences.csv,25345,research candidates; validation status in each row
+Chattogram,word_meanings,languages/chattogram/words.csv,2384,research candidates; validation status in each row
 Dhaka,parallel_sentences,languages/dhaka/sentences.csv,1,research candidates; validation status in each row
 Dhaka,word_meanings,languages/dhaka/words.csv,3,research candidates; validation status in each row
 Khulna,parallel_sentences,languages/khulna/sentences.csv,1,research candidates; validation status in each row
@@ -15,7 +15,7 @@ Noakhali,parallel_sentences,languages/noakhali/sentences.csv,7898,research candi
 Noakhali,word_meanings,languages/noakhali/words.csv,537,research candidates; validation status in each row
 Rajshahi,parallel_sentences,languages/rajshahi/sentences.csv,1220,research candidates; validation status in each row
 Rajshahi,word_meanings,languages/rajshahi/words.csv,381,research candidates; validation status in each row
-Rangpur,parallel_sentences,languages/rangpur/sentences.csv,3,research candidates; validation status in each row
+Rangpur,parallel_sentences,languages/rangpur/sentences.csv,5,research candidates; validation status in each row
 Rangpur,word_meanings,languages/rangpur/words.csv,2,research candidates; validation status in each row
 Sylheti,parallel_sentences,languages/sylheti/sentences.csv,21810,research candidates; validation status in each row
 Sylheti,word_meanings,languages/sylheti/words.csv,3210,research candidates; validation status in each row
@@ -30,7 +30,7 @@ khasi,word_meanings,languages/khasi/words.csv,0,research candidates; validation 
 khumi,parallel_sentences,languages/khumi/sentences.csv,0,research candidates; validation status in each row
 khumi,word_meanings,languages/khumi/words.csv,0,research candidates; validation status in each row
 marma,parallel_sentences,languages/marma/sentences.csv,292,research candidates; validation status in each row
-marma,word_meanings,languages/marma/words.csv,49,research candidates; validation status in each row
+marma,word_meanings,languages/marma/words.csv,51,research candidates; validation status in each row
 meitei,parallel_sentences,languages/meitei/sentences.csv,0,research candidates; validation status in each row
 meitei,word_meanings,languages/meitei/words.csv,0,research candidates; validation status in each row
 mro,parallel_sentences,languages/mro/sentences.csv,0,research candidates; validation status in each row

@@ -448,13 +448,13 @@ Mymensingh,হেষ,সম্পন্ন,needs_native_review,BD-Dialect Words 
 Mymensingh,হোটেল,রেস্তোরাঁ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,ca3d48eda652e822a3ac12a07022886914fa4ab1ccbcc69a3fe1d586869ae522
 Mymensingh,হ্কুল,স্কুল,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,649fdc105bcecd18d9174dea54bdfc7837117363004aadd0fdb2b410280ac18f
 Mymensingh,হ্যারলাই,তাই,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,53d47983b64d40f2df373e0ff4db0e0f287ae6cb292a77a30f67994f56083541
-Mymensingh,আমি,আমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,b1bae436f55adb1ea36347ddb727d3d8e76505a0daae11cd1a160c57df622ebf
-Mymensingh,আমী,আমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,fd6a9acd34d7886532582cf472dd03bd3410f945e2f66a71423f9e367a0cc61d
-Mymensingh,তুমি,তুমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,e60c5e08b85a6de06bc4715c5be007647613da5bddde8fb84dcd90e4cf91dd9c
-Mymensingh,তুইন,তুমি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,8c204ea0f291e217a6d575e3d312f8bb034bbe8c7ed74c4aca83eed807ed492b
-Mymensingh,আমরা,আমরা,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,b1542da2021c26565bd96eaf764aa185c4db503d52ca21d7a5355f3ea19def7d
-Mymensingh,টাহা,টাকা,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,215bf225c5b4b5ff4cd4d3d27ae802104018c191571154e9e03bbe1866080667
-Mymensingh,ফানি,পানি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,98f40569401c785dc3ea54c67f39ab0d27d4c2d1420fff87a85071b502504fca
-Mymensingh,গুয়া,সুপারি,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,62d7d852afe1ab933561a550e32f954d925cc2805c768ac317e25e076e101f52
-Mymensingh,পুত,ছেলে,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,b07fe04d1c13e537ef3cd5d2f5748be36871ccf1f83b379386933238a0b59694
-Mymensingh,পুলা,ছেলে,needs_native_review,User language list (bangladesh_languages_and_dialects.xlsx),1,e8b9ecaa079028fce1f9012c8bc28963af1f5626a30175572e650603f5b26952
+Mymensingh,আমি,আমি,corpus_confirmed,Languages list (checked),1,4cdeaf558f2868cf8b7d7f2e0e9daa081d59a075b30e5997a1aacca28ba1a7dc
+Mymensingh,আমী,আমি,needs_native_review,Languages list (checked),1,f18a8872c1637f21f933393e21bf5dda5213c5a0483c61e895fb7fc833a2af77
+Mymensingh,তুমি,তুমি,corpus_confirmed,Languages list (checked),1,32b39ca87a4f4dc702947a2964d3bca1a70925b78c5a09e84519e800296b534a
+Mymensingh,তুইন,তুমি,needs_native_review,Languages list (checked),1,9b995502d8e771abd7d378c61bbb0dfd4f1a5e194a3d645f77274f972077732c
+Mymensingh,আমরা,আমরা,corpus_confirmed,Languages list (checked),1,41366891a47d436dbd5e682c7ce377a3ff7ec9eee8baecb32f413b9db28a2a9b
+Mymensingh,টাহা,টাকা,needs_native_review,Languages list (checked),1,6801c4282b5de8ff71063f7f3ae527ff6f53ca15fae78dba0eb70c3d7731509a
+Mymensingh,ফানি,পানি,needs_native_review,Languages list (checked),1,9b7836bad4771c861ead0f8f474667646369d694fce735297181574dc0d957f2
+Mymensingh,গুয়া,সুপারি,needs_native_review,Languages list (checked),1,bf8a148a21032fff75fc9008bcb65217e55d960dd90044403a3f355c90427cd4
+Mymensingh,পুত,ছেলে,needs_native_review,Languages list (checked),1,7422abc260c2c91c5e4a445388db92927fc76cae969e67a3a4f5292f4df7c07f
+Mymensingh,পুলা,ছেলে,needs_native_review,Languages list (checked),1,d0378cf55956ad487624c7a36c520045284014b6b59cb692eae998aac72c46bb

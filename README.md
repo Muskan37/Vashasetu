@@ -96,13 +96,11 @@ Many "errors" are spelling variants (আঁই / অ্যাঁই, যাই�
 Old trusted entries were checked against the corpus; 28 that the corpus contradicts were removed (14 from curated.csv, 14 from lexicon.csv) (e.g. Chattogram করমু, হানি; Noakhali খামু, যামু).
 Mymensingh -বাম verb forms and Chattogram খাইয়ুম are kept because a native speaker confirmed them.
 
-## 9. Adding a native speaker's word list
-Put a CSV with the columns `Type,Standard Bangla,<Dialect> Dialect,English` in `database/reviewed/`, then run
-`python tools/import_native_dialect.py database/reviewed/<file>.csv <Dialect>` and open `setup.php?reset=1`.
-Words go to the dictionary and the trusted list; phrases and sentences become exact translations marked "native speaker".
-The Chittagong list `database/reviewed/chattogram_native_dataset.csv` is already imported (21 words, 19 phrases/sentences).
-
-`tools/import_language_list_xlsx.py` imports `database/reviewed/bangladesh_languages_and_dialects.xlsx` (all dialects, Dhaka/Khulna/Rangpur, Chakma, Marma, Garo, Santali)
-and the real items from the "complete mega dataset" (`database/reviewed/mega_dataset_real_items.csv`: 8 words and 8 phrases each for Chattogram, Barishal, Noakhali, Sylheti;
-its other sheets were copies of the Chattogram sheet and its generated sentences were nonsense, so they were left out).
-Every entry is shown in the dictionary; an entry only changes translations when the corpus or a native speaker's entry does not contradict it. Skipped overrides are listed in `tools/import_report.txt`.
+## 9. Adding word lists (checked first)
+Put lists in `database/reviewed/` and run `python tools/import_checked_lists.py`, then open `setup.php?reset=1`.
+Before anything is loaded, every entry is checked against that language's own data (parallel corpora, BanglaDial word counts, MELD):
+* **Confirmed** — the corpus pairs that Standard word with that dialect form. Only confirmed forms that are also common (at least a quarter of the corpus uses) change translations.
+* **Contradicted / Not found** — kept in the dictionary as "needs native review", never used for translation.
+* Phrases and sentences become exact translations only if every dialect word occurs in that dialect's data and nothing a native speaker entered disagrees.
+The result for every entry is in `database/reviewed/check_report.xlsx`.
+Checked so far: `chattogram_native_dataset.csv`, `bangladesh_languages_and_dialects.xlsx`, and the real part of the "complete mega dataset" (`mega_dataset_real_items.csv`; its copied sheets and generated sentences were discarded).

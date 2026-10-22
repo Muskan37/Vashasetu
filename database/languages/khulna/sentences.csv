@@ -1,2 +1,2 @@
 pair_hash,language,source_text,source_key,standard_bangla,standard_key,source_dataset,review_status,eligible_exact,split,script,source_count
-22c6c77f4c2dfc39668f2ffd228c89afdc910f7cdbf9b96c12b58a3db3189929,Khulna,আমি ভাত খাবানে।,আমি ভাত খাবানে,আমি ভাত খাবো।,আমি ভাত খাবো,User language list (bangladesh_languages_and_dialects.xlsx),needs_native_review,1,train,Bengali,1
+9daf677e923403909084f20931f79c1fb26b40ebbe91706685df261f5fb69f81,Khulna,আমি ভাত খাবানে।,আমি ভাত খাবানে,আমি ভাত খাবো।,আমি ভাত খাবো,Languages list (checked),needs_native_review,0,train,Bengali,1
