@@ -490,6 +490,7 @@ function renderResult(data) {
   note.textContent = `${unknown} word${unknown===1?'':'s'} not found in the dictionary yet. The rest of the translation is shown above.`;
   note.classList.toggle('show', unknown > 0);
   const quality = data.requires_source_confirmation ? 'Automatic detection was not confident enough. No translation or word meaning was guessed.' :
+    data.translation_quality === 'native_speaker_sentence' ? 'Exact sentence from a native speaker\'s list.' :
     data.translation_quality === 'research_sentence_candidate_not_reaudited' || data.translation_quality === 'research_candidate_not_reaudited'
     ? 'Exact sentence match from a research dataset; not independently checked for this app.'
     : ['unavailable','unavailable_without_approximation'].includes(data.translation_quality) ? 'No source-supported sentence translation is available. The original text is not returned as a translation.'

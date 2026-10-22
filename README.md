@@ -95,3 +95,9 @@ Word-by-word accuracy on 150 held-out corpus sentences per dialect (Rajshahi 64)
 Many "errors" are spelling variants (আঁই / অ্যাঁই, যাইয়ুম / যাইয়্যুম), so real accuracy is higher, but these numbers are not a native-speaker evaluation.
 Old trusted entries were checked against the corpus; 28 that the corpus contradicts were removed (14 from curated.csv, 14 from lexicon.csv) (e.g. Chattogram করমু, হানি; Noakhali খামু, যামু).
 Mymensingh -বাম verb forms and Chattogram খাইয়ুম are kept because a native speaker confirmed them.
+
+## 9. Adding a native speaker's word list
+Put a CSV with the columns `Type,Standard Bangla,<Dialect> Dialect,English` in `database/reviewed/`, then run
+`python tools/import_native_dialect.py database/reviewed/<file>.csv <Dialect>` and open `setup.php?reset=1`.
+Words go to the dictionary and the trusted list; phrases and sentences become exact translations marked "native speaker".
+The Chittagong list `database/reviewed/chattogram_native_dataset.csv` is already imported (21 words, 19 phrases/sentences).

@@ -1,0 +1,45 @@
+﻿Type,Standard Bangla,Chattogram Dialect,English
+Word,আমি,আঁই,I
+Word,তুমি,তুঁই,You
+Word,সে,হেতে,He
+Word,আমরা,আঁরা,We
+Word,তারা,হেতারা,They
+Word,ছেলে,পোয়া,Boy
+Word,মেয়ে,মাইয়াপোয়া,Girl
+Word,বাবা,বাফ,Father
+Word,মা,মা,Mother
+Word,ভাই,বাই,Brother
+Word,বোন,বইন,Sister
+Word,টাকা,টিয়া,Money
+Word,পানি,ফানি,Water
+Word,ভাত,ভাত,Rice
+Word,ভালো,গম,Good
+Phrase,একটু শুনুন,এক্কানা হুনুন,Listen a bit
+Phrase,এদিকে এসো,এয়্যাডে আয়,Come here
+Phrase,কোথায় যাও?,হঁডে যার?,Where are you going?
+Phrase,ঠিক আছে,ঠিক আছ্যে,All right
+Phrase,ভালো আছি,গম আছি,I am fine
+Sentence,তোমার নাম কী?,তোঁয়ার নাম কি?,What is your name?
+Sentence,আমি ভাত খাবো না।,আঁই ভাত ন খাইয়ুম।,I will not eat rice.
+Sentence,আজ খুব গরম পড়েছে।,আইজ্যা বেযূঁত গরম হর্যার।,It is very hot today.
+Sentence,তোমার বাড়ি কোথায়?,তোঁয়ার ঘর হঁডে?,Where is your house?
+Generated Sentence,আমি বাজারে যাবো।,আঁই বজারত যাইয়ুম।,I will go to the market.
+Generated Sentence,আমি বাড়িে যাবো।,আঁই ঘরত যাইয়ুম।,I will go to the home.
+Generated Sentence,আমি দোকানে যাবো।,আঁই দোহানত যাইয়ুম।,I will go to the shop.
+Generated Sentence,আমি স্কুলে যাবো।,আঁই ইস্কুলত যাইয়ুম।,I will go to the school.
+Generated Sentence,আমি শহরে যাবো।,আঁই শঅরত যাইয়ুম।,I will go to the city.
+Generated Sentence,আমরা বাজারে যাবো।,আঁরা বজারত যাইয়ুম।,We will go to the market.
+Generated Sentence,আমরা বাড়িে যাবো।,আঁরা ঘরত যাইয়ুম।,We will go to the home.
+Generated Sentence,আমরা দোকানে যাবো।,আঁরা দোহানত যাইয়ুম।,We will go to the shop.
+Generated Sentence,আমরা স্কুলে যাবো।,আঁরা ইস্কুলত যাইয়ুম।,We will go to the school.
+Generated Sentence,আমরা শহরে যাবো।,আঁরা শঅরত যাইয়ুম।,We will go to the city.
+Generated Sentence,তুমি বাজারে যাবো।,তুঁই বজারত যাইয়ুম।,You will go to the market.
+Generated Sentence,তুমি বাড়িে যাবো।,তুঁই ঘরত যাইয়ুম।,You will go to the home.
+Generated Sentence,তুমি দোকানে যাবো।,তুঁই দোহানত যাইয়ুম।,You will go to the shop.
+Generated Sentence,তুমি স্কুলে যাবো।,তুঁই ইস্কুলত যাইয়ুম।,You will go to the school.
+Generated Sentence,তুমি শহরে যাবো।,তুঁই শঅরত যাইয়ুম।,You will go to the city.
+Generated Sentence,সে বাজারে যাবো।,হেতে বজারত যাইয়ুম।,He will go to the market.
+Generated Sentence,সে বাড়িে যাবো।,হেতে ঘরত যাইয়ুম।,He will go to the home.
+Generated Sentence,সে দোকানে যাবো।,হেতে দোহানত যাইয়ুম।,He will go to the shop.
+Generated Sentence,সে স্কুলে যাবো।,হেতে ইস্কুলত যাইয়ুম।,He will go to the school.
+Generated Sentence,সে শহরে যাবো।,হেতে শঅরত যাইয়ুম।,He will go to the city.

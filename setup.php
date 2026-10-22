@@ -186,10 +186,10 @@ load($root, 'learning_localizations', fn() => [['language_id','unit_key','item_o
 // V3 datasets. Each dataset lives in database/languages/<language>/ and is isolated at load time.
 // Run ?refresh_parallel=1 or ?refresh_words=1 to update ONLY the new evidence tables.
 load($root, 'parallel_sentences', fn() => [['pair_hash','language','source_text','source_key','standard_bangla','standard_key','source_dataset','review_status','eligible_exact','split_name','script','source_count'], (function () {
-    foreach (language_csv_rows('sentences') as $r) yield [$r['pair_hash'],$r['language'],$r['source_text'],$r['source_key'],$r['standard_bangla'],$r['standard_key'],$r['source_dataset'],$r['review_status'],$r['eligible_exact'],$r['split'],$r['script'],$r['source_count']];
+    foreach (language_csv_rows('sentences') as $r) yield [$r['pair_hash'],$r['language'],$r['source_text'],bn_normalize($r['source_key']),$r['standard_bangla'],bn_normalize($r['standard_key']),$r['source_dataset'],$r['review_status'],$r['eligible_exact'],$r['split'],$r['script'],$r['source_count']];
 })()], ($reset || $refreshParallel));
 load($root, 'word_meanings', fn() => [['pair_hash','language','source_word','standard_word','meaning_status','source_dataset','evidence_count'], (function () {
-    foreach (language_csv_rows('words') as $r) yield [$r['hash'],$r['language'],$r['source_word'],$r['standard_word'],$r['meaning_status'],$r['source_dataset'],$r['evidence_count']];
+    foreach (language_csv_rows('words') as $r) yield [$r['hash'],$r['language'],bn_normalize($r['source_word']),bn_normalize($r['standard_word']),$r['meaning_status'],$r['source_dataset'],$r['evidence_count']];
 })()], ($reset || $refreshWords));
 
 // Re-apply dictionary edits made inside the app.

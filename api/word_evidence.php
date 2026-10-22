@@ -119,8 +119,13 @@ function vs_scoped_translate(PDO $pdo, string $text, string $src, string $tgt, b
     }
     if ($hit) {
         $source = $hit['source'];
-        $quality = 'research_sentence_candidate_not_reaudited';
-        $notes[] = 'Exact source-specific research candidate, not independently reverified by VashaSetu educators.';
+        if (in_array($hit['status'] ?? '', ['native_speaker_reported', 'community_verified'], true)) {
+            $quality = 'native_speaker_sentence';
+            $notes[] = 'Exact sentence from a native speaker\'s list.';
+        } else {
+            $quality = 'research_sentence_candidate_not_reaudited';
+            $notes[] = 'Exact source-specific research candidate, not independently reverified by VashaSetu educators.';
+        }
     }
     // Optional approximation uses only independently attested one-token meanings from
     // the chosen language. No global lexicon, bigram model or other variety can enter.
