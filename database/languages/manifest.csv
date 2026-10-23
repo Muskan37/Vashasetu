@@ -11,7 +11,7 @@ Mymensingh,parallel_sentences,languages/mymensingh/sentences.csv,6553,research c
 Mymensingh,word_meanings,languages/mymensingh/words.csv,459,research candidates; validation status in each row
 Narail,parallel_sentences,languages/narail/sentences.csv,0,research candidates; validation status in each row
 Narail,word_meanings,languages/narail/words.csv,0,research candidates; validation status in each row
-Noakhali,parallel_sentences,languages/noakhali/sentences.csv,7898,research candidates; validation status in each row
+Noakhali,parallel_sentences,languages/noakhali/sentences.csv,7899,research candidates; validation status in each row
 Noakhali,word_meanings,languages/noakhali/words.csv,537,research candidates; validation status in each row
 Rajshahi,parallel_sentences,languages/rajshahi/sentences.csv,1220,research candidates; validation status in each row
 Rajshahi,word_meanings,languages/rajshahi/words.csv,381,research candidates; validation status in each row

@@ -5,7 +5,6 @@ Noakhali,আজগুবি,অলৌকিক,needs_native_review,Dwadash,1,db1
 Noakhali,আমু,আসবো,existing_curated_needs_recheck,Existing app curated.csv,1,1cf888a7109343960b0a20291795eeb656e5e209d46bed4d9c973c93a8ad09fb
 Noakhali,করমু,করবো,existing_curated_needs_recheck,Existing app curated.csv,1,b4813b6a3801ebde733bcaadb56345d358c638700684d4c03c60c768c6a5669a
 Noakhali,করুম,করব,existing_curated_needs_recheck,Existing app curated.csv,1,c259d12227424974bbe6616d590ff810aa6094fe10429afb55f86f1b0ecdef72
-Noakhali,খামু,খাবো,existing_curated_needs_recheck,Existing app curated.csv,1,634d33e6194ef20afc6e39b30c08c193d3dbd3768936287178701fabadf1ef4d
 Noakhali,দিমু,দেবো,existing_curated_needs_recheck,Existing app curated.csv,1,5ad0475ffbd8dfda0f2f728eb2fd4efaee4bb1b274a8cf2a1f8b6162451a36aa
 Noakhali,নিমু,নেবো,existing_curated_needs_recheck,Existing app curated.csv,1,ebde75a746e6a778a6b5fd469b6b2e2c0aa62f8420a71dee9ef0581dfaf5999d
 Noakhali,যামু,যাবো,existing_curated_needs_recheck,Existing app curated.csv,1,15315828834479715ad5cda37f846325abfcd343c17ecc0fc7a61931b6620069
@@ -521,18 +520,19 @@ Noakhali,হোয়াদ,স্বাদ,needs_native_review,BD-Dialect Words
 Noakhali,হোয়াব,কল্পনা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,0ef6544c6cacde6c8db06602db9281f96e73fd598a21a19da774fe8566ad945e
 Noakhali,হোলা,ছেলে,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,d7836818fe6f1dcd25100176dcbdd374025da0a7865e0f274d34981997f99ec8
 Noakhali,হ্থায়ী,স্থায়ী,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,cef962e330ce209067474092ec92e31e6f349d5c4c19016c27c1cb7b0e81bb0f
-Noakhali,আইঁ,আমি,needs_native_review,Languages list (checked),1,0797c21c4389d0b264d664f11df4d9318da2330160d7ee4a818a63cb061a1f5b
 Noakhali,তুমি,তুমি,corpus_confirmed,Languages list (checked),1,8c26535bd5b0622cb11850d7cd3582be56876efe4c479939258a3317d9f6e757
 Noakhali,টিয়া,টাকা,corpus_confirmed,Languages list (checked),1,0b75fa35c879aead789eea819f63735ed4db8c8543d56d01cff8dbc0fa4f0145
 Noakhali,হানি,পানি,corpus_confirmed,Languages list (checked),1,88cf275ac0317a4057893006bcf23fa1f973d5263b35e462941f1d582e86019b
-Noakhali,হাল্লা,ভালো,needs_native_review,Languages list (checked),1,8691b9de211cb688dadd2b6cd2b25668ea084f625b61cfa817c10a6547a6f03a
-Noakhali,ভালা,ভালো,corpus_confirmed,Languages list (checked),1,0b3ccd790734b1a4af520664f522079bfbd3b19cfa32c23dd639c3e989d27804
 Noakhali,হেডল,পাগল,needs_native_review,Languages list (checked),1,c3b59cb60187ca25c3aada3cdbb0303e6bcedd0882b3ca393fbfed9ec3cfb843
 Noakhali,গুয়া,সুপারি,needs_native_review,Languages list (checked),1,bb85cc21a2506431cac7321290809f5e29d6da0ec02de73b790d88847edc9290
-Noakhali,হুত,ছেলে,needs_native_review,Languages list (checked),1,33c3fa6e04b67d911410e05ca83c01ef77653cea864eda787641cdd31485d9c4
 Noakhali,ঝিউড়ি,মেয়ে,needs_native_review,Languages list (checked),1,a2f2dcbe9d3e4001d94da9209b5e8a1ae4d917d21bde93928d4658d4146ea2f3
 Noakhali,বাড়ি,বাড়ি,corpus_confirmed,Mega dataset real part (checked),1,66707116ec1924c06458fac9be559fdb1e3425fcd7580572a68d296ed3c6dda0
-Noakhali,ঝী,মেয়ে,needs_native_review,Mega dataset real part (checked),1,f5c18b9d1d2d7a59254a697d5316a3003c568a9bcdc712ebeb12023256fca015
 Noakhali,হানা,খাবার,needs_native_review,Mega dataset real part (checked),1,0868a29f222992cb6dc6b3dfd9d0b4c7d0dea24d3ce710bd0d319052700766f0
 Noakhali,মাছ,মাছ,corpus_confirmed,Mega dataset real part (checked),1,190683b916edfd57750dd93b818f5d0ec802c3c831e0e253ac63bff92c22a2f8
 Noakhali,ভাত,ভাত,corpus_confirmed,Mega dataset real part (checked),1,0f82ea7256e9903682729a4e2e3316e7cbb8bc9e82f7513f251c6d1f19003d41
+Noakhali,আইঁ,আমি,native_speaker_reported,Native speaker confirmation,1,49b2b7bc309e96d24072d8941402f7b1fbaec12e5beab8066e08da6fb3cd5dd3
+Noakhali,হুত,ছেলে,native_speaker_reported,Native speaker confirmation,1,f151c2cfa2826a50a1c2e91e75b3cbf6d29052bf83bcd3c1a1394b7ebded8835
+Noakhali,ঝী,মেয়ে,native_speaker_reported,Native speaker confirmation,1,06050ddc310d1cb4636ed893832781fc11118bc0d317db5e088acc5b839d606f
+Noakhali,ভালা,ভালো,native_speaker_reported,Native speaker confirmation,1,76f3b39b03b34738328fd0685fbaa8268ce4b00e37aa72d77f6fcde12e1a2b16
+Noakhali,হাল্লা,ভালো,native_speaker_alternative,Native speaker confirmation,1,f3b6a9991061c29809e60209870578912cf2afc44543c3c245e041e4d65e60ed
+Noakhali,খামু,খাবো,native_speaker_reported,Native speaker confirmation,1,64b74acaeb4d2cc22752af2103680c04dddab57f099cec2dd36cb46947224077

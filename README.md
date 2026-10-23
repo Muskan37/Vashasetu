@@ -104,3 +104,17 @@ Before anything is loaded, every entry is checked against that language's own da
 * Phrases and sentences become exact translations only if every dialect word occurs in that dialect's data and nothing a native speaker entered disagrees.
 The result for every entry is in `database/reviewed/check_report.xlsx`.
 Checked so far: `chattogram_native_dataset.csv`, `bangladesh_languages_and_dialects.xlsx`, and the real part of the "complete mega dataset" (`mega_dataset_real_items.csv`; its copied sheets and generated sentences were discarded).
+
+## 10. Exact sentence translations from the research corpora
+`tools/enable_exact_matches.py` lets about 43,000 sentence pairs from Kothon, Dwadash, Vashantor, ONUBAD, SylhetiDS and ChatgaiyyaAlap
+give whole-sentence translations. A pair is used only if: no dataset gives a different translation for either side, its words line up
+with known word pairs, it has 2–25 words in Bangla script only, and it does not overrule a word a native speaker confirmed.
+About 24,000 pairs were left out for these reasons. When a sentence is matched exactly, the word boxes still show each word's own meaning
+(taken from the matched sentence where the words line up, otherwise from the word-by-word engine).
+Order of the data scripts: `import_checked_lists.py`, then `enable_exact_matches.py`, then `setup.php?reset=1`.
+
+## 11. Native-speaker rules
+* `database/reviewed/native_confirmations.csv` — words a native speaker confirmed (column `default`: yes = the translator uses it, no = real but only shown in the dictionary).
+* `database/reviewed/native_sentences.csv` — whole sentences a native speaker gave; always used as the exact translation.
+* Noakhali "will not" (confirmed: আমি ভাত খাবো না = আইঁ ভাত খাইতান ন): the verb takes -ইতান and না becomes ন after it,
+  e.g. যাবো না → যাইতান ন, করবো না → কইরতান ন, দেখবো না → দেইখতান ন, বলবো না → কইতান ন. Irregular verbs (দেবো, নেবো) are left unchanged.

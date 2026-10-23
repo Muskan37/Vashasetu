@@ -173,6 +173,10 @@ function vs_scoped_translate(PDO $pdo, string $text, string $src, string $tgt, b
                 $path[] = 'standard'; $path[] = $tgt;
             }
         }
+        if ($approxRows !== null && $out !== '' && ($src === 'Noakhali' || $tgt === 'Noakhali')) {
+            $approxRows = vs_noakhali_negative_future($approxRows, $src === 'Noakhali');
+            $out = implode(' ', array_column($approxRows, $src === 'Noakhali' ? 'std' : 'tgt'));
+        }
         if ($approxRows !== null && $out !== '') {
             $quality = 'approximate_word_by_word';
             $unsure = [];
@@ -181,6 +185,38 @@ function vs_scoped_translate(PDO $pdo, string $text, string $src, string $tgt, b
             $notes[] = 'Approximate word-by-word translation using only the ' . (in_array($src, DIALECTS, true) && in_array($tgt, DIALECTS, true) ? $src . ' and ' . $tgt : ($src === 'standard' ? $tgt : $src)) . ' data. It is not a checked sentence translation and may be wrong. Please double-check anything important.';
             if ($unsure) $notes[] = 'Less sure about: ' . implode(', ', array_slice(array_values(array_unique($unsure)), 0, 6)) . '.';
         } else { $approxRows = null; $out = ''; }
+    }
+    // Exact sentence found: still give every word its own meaning for the word boxes.
+    // Same number of words -> pair them by position with the matched sentence; otherwise use the word-by-word engine.
+    if ($hit && $out !== '' && $approxRows === null) {
+        $inTok = bn_tokens($text); $outTok = bn_tokens($out);
+        $dial2std = in_array($src, DIALECTS, true) && $tgt === 'standard';
+        $std2dial = $src === 'standard' && in_array($tgt, DIALECTS, true);
+        if ($inTok && ($dial2std || $std2dial)) {
+            $dia = $dial2std ? $src : $tgt;
+            $eng = $dial2std ? dialect_to_standard($pdo, $dia, $inTok, null) : standard_to_dialect($pdo, $dia, $inTok);
+            $col = $dial2std ? 'std' : 'tgt';
+            // which (dialect word, standard word) pairs the learned lexicon knows, to trust a by-position pairing
+            $known = [];
+            if (count($inTok) === count($outTok)) {
+                $dw = $dial2std ? $inTok : $outTok; $sw = $dial2std ? $outTok : $inTok;
+                $q = $pdo->prepare('SELECT dialect_word, standard_word FROM lexicon WHERE dialect = ? AND dialect_word IN (' . in_placeholders($dw) . ') AND standard_word IN (' . in_placeholders($sw) . ')');
+                $q->execute(array_merge([$dia], $dw, $sw));
+                foreach ($q->fetchAll() as $k) $known[$k['dialect_word'] . '|' . $k['standard_word']] = true;
+            }
+            $approxRows = [];
+            foreach ($inTok as $i => $w) {
+                $e = $eng[$i][$col] ?? $w;
+                $m = $e;
+                if (count($inTok) === count($outTok)) {
+                    $p = $outTok[$i];
+                    $pair = $dial2std ? ($w . '|' . $p) : ($p . '|' . $w);
+                    if ($p === $w || isset($known[$pair]) || ($hit['status'] ?? '') === 'native_speaker_reported') $m = $p;      // the matched sentence's own word at this position
+                }
+                $approxRows[] = $dial2std ? ['src' => $w, 'std' => $m, 'matched' => $m !== $w, 'conf' => 0.9]
+                                          : ['std' => $w, 'tgt' => $m, 'matched' => $m !== $w, 'conf' => 0.9];
+            }
+        }
     }
     if ($out === '') $notes[] = 'No unambiguous eligible sentence match in the selected language. Other language datasets were not consulted.';
     return ['success'=>true,'original_text'=>$text,'source'=>$src,'target'=>$tgt,
@@ -334,11 +370,12 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
     $r['breakdown']=array_map(static function($w) {return ['src'=>$w['word'],'std'=>$w['standard_meaning']??'',
           'tgt'=>$w['target_word']??null,'matched'=>$w['known'],'kind'=>$w['status'],'conf'=>null,
           'source_dataset'=>$w['dataset']];},$r['word_meanings']);
+    $nativeSentence = ($r['translation_quality'] ?? '') === 'native_speaker_sentence';   // a native speaker's sentence: its own words win in the boxes
     // Words with no individually attested meaning get the engine's learned (unverified) meaning when one exists.
     if (!empty($r['approx_rows']) && count($r['approx_rows']) === count($r['breakdown'])) {
         foreach ($r['breakdown'] as $i => &$bw) {
             $ar = $r['approx_rows'][$i];
-            if (empty($bw['matched']) && !empty($ar['matched'])) {
+            if ((empty($bw['matched']) || $nativeSentence || !empty($ar['rule'])) && !empty($ar['matched'])) {
                 if ($src === 'standard') $bw['tgt'] = $ar['tgt']; else $bw['std'] = $ar['std'];
                 $bw['matched'] = true; $bw['kind'] = 'learned_unverified'; $bw['conf'] = $ar['conf'] ?? null;
             }
@@ -347,7 +384,7 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
     }
     // Fill every remaining word with the best learned or candidate meaning (shown as a normal meaning).
     foreach ($r['word_meanings'] as $i => &$wm) {
-        if (!empty($wm['known'])) continue;
+        if (!empty($wm['known']) && !$nativeSentence && empty($r['approx_rows'][$i]['rule'])) continue;
         $bw = $r['breakdown'][$i] ?? null;
         $m = null;
         if ($bw && ($bw['kind'] ?? '') === 'learned_unverified') $m = ($src === 'standard') ? ($bw['tgt'] ?? null) : ($bw['std'] ?? null);
@@ -358,7 +395,7 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
         if (($m === null || $m === '') && !empty($wm['candidate_meaning'])) $m = $wm['candidate_meaning'];
         if ($m === null || $m === '') continue;
         if ($src === 'standard' && $tgt !== 'standard') $wm['target_word'] = $m; else $wm['standard_meaning'] = $m;
-        $wm['display_meaning'] = $m; $wm['known'] = true; $wm['status'] = 'learned';
+        $wm['display_meaning'] = $m; $wm['known'] = true; $wm['status'] = $nativeSentence ? 'native_speaker_reported' : 'learned';
     }
     unset($wm);
     unset($r['approx_rows']);
@@ -367,4 +404,42 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
     $r['requires_source_confirmation']=false;
     $r['source_candidates']=[];
     return $r;
+}
+
+/**
+ * Noakhali "will not": the verb takes -ইতান and না becomes ন, after it (native speaker: আমি ভাত খাবো না = আইঁ ভাত খাইতান ন).
+ *   খাবো না -> খাইতান ন   যাবো না -> যাইতান ন   করবো না -> কইরতান ন   দেখবো না -> দেইখতান ন
+ * Only regular stems are changed (a vowel-ending stem like খা/যা, or consonant-vowel-consonant like কর/দেখ).
+ */
+function vs_noakhali_negative_future(array $rows, bool $toStandard): array {
+    $n = count($rows);
+    for ($i = 0; $i + 1 < $n; $i++) {
+        if ($toStandard) {
+            $w = $rows[$i]['src'] ?? ''; $next = $rows[$i + 1]['src'] ?? '';
+            if ($next !== 'ন' || !preg_match('/^(.+)তান$/u', $w, $m)) continue;
+            $x = $m[1];
+            if (preg_match('/^(.+[া])ই$/u', $x, $q)) $stem = $q[1];                         // খাই -> খা
+            elseif (preg_match('/^([\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?)ই([\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?)$/u', $x, $q)) $stem = $q[1] . $q[2];               // কইর -> কর
+            elseif (preg_match('/^([\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?)েই([\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?)$/u', $x, $q)) $stem = $q[1] . 'ে' . $q[2];       // দেইখ -> দেখ
+            else continue;
+            $rows[$i]['std'] = $stem . 'বো'; $rows[$i]['matched'] = true; $rows[$i]['rule'] = true;
+            $rows[$i + 1]['std'] = 'না'; $rows[$i + 1]['matched'] = true; $rows[$i + 1]['rule'] = true;
+        } else {
+            $w = $rows[$i]['std'] ?? ''; $next = $rows[$i + 1]['std'] ?? '';
+            if ($next !== 'না' || !preg_match('/^(.+?)বো?$/u', $w, $m)) continue;
+            $stem = $m[1];
+            // prefer the dialect's own verb root (Noakhali কমু -> ক, করমু -> কর) over the Standard one
+            $t = $rows[$i]['tgt'] ?? '';
+            if (preg_match('/^(.+)মু$/u', $t, $q) || preg_match('/^(.+?)(?:ইয়ুম|য়ুম|উম)$/u', $t, $q)) $stem = $q[1];
+            if (preg_match('/^([\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?)$/u', $stem)) { $form = $stem . 'ইতান'; }                     // ক -> কইতান
+            else
+            if (preg_match('/^.+[াই]$/u', $stem)) $form = preg_replace('/ই$/u', '', $stem) . 'ইতান';                             // খা -> খাইতান
+            elseif (preg_match('/^([\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?)([\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?)$/u', $stem, $q)) $form = $q[1] . 'ই' . $q[2] . 'তান';   // কর -> কইরতান
+            elseif (preg_match('/^([\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?)ে([\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?)$/u', $stem, $q)) $form = $q[1] . 'েই' . $q[2] . 'তান'; // দেখ -> দেইখতান
+            else continue;
+            $rows[$i]['tgt'] = $form; $rows[$i]['matched'] = true; $rows[$i]['rule'] = true;
+            $rows[$i + 1]['tgt'] = 'ন'; $rows[$i + 1]['matched'] = true; $rows[$i + 1]['rule'] = true;
+        }
+    }
+    return $rows;
 }

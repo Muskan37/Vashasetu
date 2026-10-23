@@ -482,7 +482,7 @@ function renderResult(data) {
     const tip = (w.dataset || 'No independently validated word-level evidence');
     return `<div class="pair ${has ? '' : 'miss'}" style="--i:${i}" data-act="wordEvidence" data-idx="${i}" role="button" tabindex="0" title="${esc(tip)}">
       <small>${esc(w.word)}</small><b>${label}</b>${suffix}
-      <span class="vs-evidence-status">${status === 'standard_bangla_identity' ? 'Standard Bangla' : status === 'learned' ? 'Learned' : status === 'not_verified' ? 'No match' : status === 'dictionary_reference' ? 'Dictionary' : 'Source attested · review needed'}</span>
+      <span class="vs-evidence-status">${status === 'standard_bangla_identity' ? 'Standard Bangla' : status === 'native_speaker_reported' ? 'Native speaker' : status === 'learned' ? 'Learned' : status === 'not_verified' ? 'No match' : status === 'dictionary_reference' ? 'Dictionary' : 'Source attested · review needed'}</span>
     </div>`;
   }).join('');
   const unknown = words.filter((w) => !w.known).length;

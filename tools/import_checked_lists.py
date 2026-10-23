@@ -20,7 +20,7 @@ norm = lambda s: ''.join(DECOMP.get(c, c) for c in str(s))
 key = lambda s: re.sub(r'\s+', ' ', re.sub(r'[?!।.,;:"“”\'()\-]', ' ', norm(s))).strip()   # = bn_normalize()
 DIAL = ['Barishal', 'Chattogram', 'Mymensingh', 'Noakhali', 'Rajshahi', 'Sylheti']
 NATIVE = ['chakma', 'marma', 'garo']
-SRC = {'csv': 'Chittagong list (checked)', 'xlsx': 'Languages list (checked)', 'mega': 'Mega dataset real part (checked)'}
+SRC = {'native': 'Native speaker confirmation', 'csv': 'Chittagong list (checked)', 'xlsx': 'Languages list (checked)', 'mega': 'Mega dataset real part (checked)'}
 OLD = ('Native speaker dataset', 'User language list') + tuple(SRC.values())
 # ---------------- evidence ----------------
 align, dvoc = {}, collections.defaultdict(collections.Counter)
@@ -75,12 +75,20 @@ for ws in openpyxl.load_workbook(REV / 'bangladesh_languages_and_dialects.xlsx',
             entries.append(('xlsx', lang, 'Word' if typ.startswith('Word') else 'Sentence', str(r[1]).strip(), v, i == 0, None))
 for r in csv.DictReader(open(REV / 'mega_dataset_real_items.csv', encoding='utf-8')):
     entries.append(('mega', r['language'], 'Word' if r['type'] == 'Word' else 'Sentence', r['standard_bangla'], r['dialect'], True, None))
+# Forms a native speaker has confirmed directly (database/reviewed/native_confirmations.csv) override the corpus check.
+CONF = {}; ALT = set()   # ALT: real but not the form the translator should pick
+if (REV / 'native_confirmations.csv').exists():
+    for r in csv.DictReader(open(REV / 'native_confirmations.csv', encoding='utf-8')):
+        CONF[(r['language'], key(r['standard_bangla']), key(r['dialect_form']))] = r['confirmed_by']
+        if r.get('default', 'yes').strip().lower() != 'yes': ALT.add((r['language'], key(r['standard_bangla']), key(r['dialect_form'])))
+        entries.append(('native', r['language'], 'Word', r['standard_bangla'], r['dialect_form'], True, None))
 # ---------------- check ----------------
 rows = []
 for src, lang, kind, std, dia, primary, skip in entries:
     if skip: rows.append([src, lang, kind, std, dia, skip, '', 'No', primary]); continue
     if kind == 'Word' and len(key(std).split()) == 1 and len(key(dia).split()) == 1: v, ev = check_word(lang, key(std), key(dia))
     else: kind = 'Phrase/Sentence' if kind == 'Word' else kind; v, ev = check_sent(lang, std, dia)
+    if (lang, key(std), key(dia)) in CONF: v, ev = 'Confirmed by native speaker', (ev + '; ' if ev else '') + 'confirmed by ' + CONF[(lang, key(std), key(dia))]
     rows.append([src, lang, kind, std, dia, v, ev, '', primary])
 # ---------------- apply ----------------
 cur = [r for r in csv.reader(open(ROOT / 'curated.csv', encoding='utf-8'))]
@@ -95,6 +103,18 @@ for row in rows:
     src, lang, kind, std, dia, verdict, ev, _, primary = row
     if verdict.startswith('Skipped'): continue
     d, W, S = files[lang]; SD = SRC[src]
+    if verdict == 'Confirmed by native speaker':
+        k_dia, k_std = key(dia), key(std)
+        W[:] = [r for r in W if not (r[1] == k_dia and r[2] == k_std)]
+        alt = (lang, k_std, k_dia) in ALT
+        W.append([lang, k_dia, k_std, 'native_speaker_alternative' if alt else 'native_speaker_reported', 'Native speaker confirmation', '1', hashlib.sha256(f'nsr|{lang}|{k_dia}|{k_std}'.encode()).hexdigest()])
+        if alt: row[7] = 'Dictionary (native speaker: real, but not the default)'; continue
+        # the confirmed default replaces any other default form for this Standard word
+        for r in W[1:]:
+            if r[2] == k_std and r[1] != k_dia and r[3] == 'native_speaker_reported': r[3] = 'native_speaker_alternative'
+        if lang in DIAL and k_dia != k_std:
+            cur[:] = [r for r in cur if not (r[0] == lang and r[2] in stdvar(k_std))] + [[lang, k_dia, k_std]]
+        row[7] = 'Yes (native speaker)'; continue
     if kind == 'Word':
         ok = verdict == 'Confirmed'
         k_dia, k_std = key(dia), key(std)
@@ -118,6 +138,20 @@ for row in rows:
             S.append([hashlib.sha256(f'chk|{lang}|{sk}|{bk}'.encode()).hexdigest(), lang, dia, sk, std, bk, SD, 'needs_native_review', '1' if ok else '0', 'train', 'Bengali transliteration' if lang.islower() else 'Bengali', '1'])
             row[7] = 'Yes' if ok else ('Reference only (dataset already has a different translation)' if clash else 'Reference only (a native speaker gave a different word)' if against else 'Reference only (alternative form)' if not primary else 'Reference only')
         else: row[7] = 'Already in dataset'
+# Whole sentences a native speaker gave directly (database/reviewed/native_sentences.csv): always the exact match.
+if (REV / 'native_sentences.csv').exists():
+    for r in csv.DictReader(open(REV / 'native_sentences.csv', encoding='utf-8')):
+        lang = r['language']
+        if lang not in files:
+            d = ROOT / 'languages' / lang.lower()
+            files[lang] = (d, [x for x in csv.reader(open(d / 'words.csv', encoding='utf-8')) if len(x) > 4 and not x[4].startswith(OLD)],
+                           [x for x in csv.reader(open(d / 'sentences.csv', encoding='utf-8')) if len(x) > 6 and not x[6].startswith(OLD)])
+        d, W, S = files[lang]
+        sk, bk = key(r['dialect_sentence']), key(r['standard_bangla'])
+        for x in S[1:]:
+            if norm(x[5]) == bk or norm(x[3]) == sk: x[8] = '0'      # the native sentence replaces any other match
+        S.append([hashlib.sha256(f'nss|{lang}|{sk}|{bk}'.encode()).hexdigest(), lang, r['dialect_sentence'], sk, r['standard_bangla'], bk, 'Native speaker confirmation', 'native_speaker_reported', '1', 'train', 'Bengali', '1'])
+        rows.append(['native', lang, 'Sentence', r['standard_bangla'], r['dialect_sentence'], 'Confirmed by native speaker', 'confirmed by ' + r['confirmed_by'], 'Yes (native speaker)', True])
 for lang, (d, W, S) in files.items():
     csv.writer(open(d / 'words.csv', 'w', encoding='utf-8', newline='')).writerows(W)
     csv.writer(open(d / 'sentences.csv', 'w', encoding='utf-8', newline='')).writerows(S)
@@ -129,10 +163,10 @@ csv.writer(open(ROOT / 'languages' / 'manifest.csv', 'w', encoding='utf-8', newl
 wb = openpyxl.Workbook(); ws = wb.active; ws.title = 'Check report'
 ws.append(['Source file', 'Language', 'Type', 'Standard Bangla', 'Given form', 'Result', 'Evidence', 'Used for translation'])
 for c in ws[1]: c.font = Font(bold=True)
-fill = {'Confirmed': 'C6EFCE', 'All words found': 'C6EFCE', 'Contradicted': 'FFC7CE', 'Skipped': 'FFC7CE', 'No data': 'EDEDED'}
+fill = {'Confirmed by native': '9BD8A8', 'Confirmed': 'C6EFCE', 'All words found': 'C6EFCE', 'Contradicted': 'FFC7CE', 'Skipped': 'FFC7CE', 'No data': 'EDEDED'}
 for r in rows:
     r = r[:8]
-    ws.append([{'csv': 'chattogram_native_dataset.csv', 'xlsx': 'bangladesh_languages_and_dialects.xlsx', 'mega': 'mega dataset (real part)'}[r[0]]] + r[1:])
+    ws.append([{'native': 'native_confirmations.csv', 'csv': 'chattogram_native_dataset.csv', 'xlsx': 'bangladesh_languages_and_dialects.xlsx', 'mega': 'mega dataset (real part)'}[r[0]]] + r[1:])
     col = next((v for k, v in fill.items() if r[5].startswith(k)), 'FFEB9C')
     ws.cell(ws.max_row, 6).fill = PatternFill('solid', fgColor=col)
 for col, w in zip('ABCDEFGH', (30, 12, 16, 26, 26, 34, 70, 26)): ws.column_dimensions[col].width = w
@@ -140,4 +174,4 @@ ws.freeze_panes = 'A2'; ws.auto_filter.ref = ws.dimensions
 wb.save(REV / 'check_report.xlsx')
 c = collections.Counter(re.sub(r'^\d+ of \d+ ', 'some ', re.sub(r' \(occurs.*', '', r[5])) for r in rows)
 print(len(rows), 'entries:', dict(c.most_common()))
-print('used for translation:', sum(r[7] == 'Yes' for r in rows))
+print('used for translation:', sum(str(r[7]).startswith('Yes') for r in rows))
