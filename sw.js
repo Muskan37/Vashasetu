@@ -1,7 +1,7 @@
 // Vashasetu service worker (v3)
 // Pages are fetched network-first, so a freshly uploaded index.php always shows.
 // The cache is only used when you are offline.
-const CACHE_NAME = 'vashasetu-shell-v35';
+const CACHE_NAME = 'vashasetu-shell-v39';
 const SHELL_FILES = [
   './index.php',
   './learn.php',

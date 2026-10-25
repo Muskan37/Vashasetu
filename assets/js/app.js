@@ -15,11 +15,15 @@ const DIALECTS = {
   Sylheti:    { bn: 'সিলেট',      c: '#2F6FE0', on: true,  lab: { dx: 0,   dy: -12, a: 'middle' } },
   Noakhali:   { bn: 'নোয়াখালী',   c: '#E8960F', on: true,  lab: { dx: 0,   dy: -12, a: 'middle' } },
   Barisal:    { bn: 'বরিশাল',     c: '#8B5CF6', on: true,  lab: { dx: 0,   dy: 20,  a: 'middle' } },
-  Dhaka:      { bn: 'ঢাকা',       c: '#8A9A98', on: false, lab: { dx: 11,  dy: 4,   a: 'start' } },
+  Dhaka:      { bn: 'ঢাকা',       c: '#8A9A98', on: false, lab: { dx: -11, dy: 8,   a: 'end' } },
   Mymensingh: { bn: 'ময়মনসিংহ',  c: '#0E9F8E', on: true,  lab: { dx: 11,  dy: 4,   a: 'start' } },
   Rajshahi:   { bn: 'রাজশাহী',    c: '#C2410C', on: true,  lab: { dx: 11,  dy: 4,   a: 'start' } },
-  Rangpur:    { bn: 'রংপুর',      c: '#8A9A98', on: false, lab: { dx: 11,  dy: 4,   a: 'start' } },
+  Rangpur:    { bn: 'রংপুর',      c: '#4D7C0F', on: true,  lab: { dx: 11,  dy: 4,   a: 'start' } },
   Khulna:     { bn: 'খুলনা',      c: '#8A9A98', on: false, lab: { dx: -11, dy: 4,   a: 'end' } },
+  Narail:     { bn: 'নড়াইল',      c: '#B45309', on: true,  lab: { dx: 11,  dy: 4,   a: 'start' } },
+  Kishoreganj:{ bn: 'কিশোরগঞ্জ',  c: '#0369A1', on: true,  lab: { dx: 11,  dy: 4,   a: 'start' } },
+  Narsingdi:  { bn: 'নরসিংদী',    c: '#9D174D', on: true,  lab: { dx: 11,  dy: -6,  a: 'start' } },
+  Tangail:    { bn: 'টাঙ্গাইল',     c: '#4338CA', on: true,  lab: { dx: 11,  dy: 4,   a: 'start' } },
 };
 const SUPPORTED = Object.keys(DIALECTS).filter((k) => DIALECTS[k].on);
 const fromApiName = (k) => (k === 'Barishal' ? 'Barisal' : k);          // map uses "Barisal", the dictionary uses "Barishal"
@@ -36,6 +40,11 @@ const LANGS = [
   { id: 'Barishal',   name: 'Barishal',    bn: 'বরিশাল',     from: true, to: true, c: '#8B5CF6' },
   { id: 'Mymensingh', name: 'Mymensingh',  bn: 'ময়মনসিংহ',  from: true, to: true, c: '#0E9F8E' },
   { id: 'Rajshahi',   name: 'Rajshahi',    bn: 'রাজশাহী',    from: true, to: true, c: '#C2410C' },
+  { id: 'Rangpur',    name: 'Rangpur',     bn: 'রংপুর',      sub: 'Smaller dataset (Dwadash)', from: true, to: true, c: '#4D7C0F' },
+  { id: 'Narail',     name: 'Narail',      bn: 'নড়াইল',      sub: 'Small dataset (Dwadash)', from: true, to: true, c: '#B45309' },
+  { id: 'Kishoreganj',name: 'Kishoreganj', bn: 'কিশোরগঞ্জ',  sub: 'Small dataset (Dwadash)', from: true, to: true, c: '#0369A1' },
+  { id: 'Narsingdi',  name: 'Narsingdi',   bn: 'নরসিংদী',    sub: 'Small dataset (Dwadash)', from: true, to: true, c: '#9D174D' },
+  { id: 'Tangail',    name: 'Tangail',     bn: 'টাঙ্গাইল',     sub: 'Small dataset (Dwadash)', from: true, to: true, c: '#4338CA' },
   { id: 'chakma',     name: 'Chakma',     bn: 'চাকমা',     sub: 'Research phrase matches only · Bengali transliteration', from: true, to: true, c:'#488A7B' },
   { id: 'marma',      name: 'Marma',      bn: 'মারমা',      sub: 'Research phrase matches only · Bengali transliteration', from: true, to: true, c:'#A56C42' },
   { id: 'garo',       name: 'Garo / A.chik', bn: 'গারো',    sub: 'Research phrase matches only · Bengali transliteration', from: true, to: true, c:'#8067B1' },
@@ -46,7 +55,6 @@ const langName = (id) => (LANGS.find((l) => l.id === id) || { name: id }).name;
 /* Dictionary language state is intentionally independent of translator source/target. */
 const ADDITIONAL_DICTIONARY_LANGS = [
   { id:'Dhaka', name:'Dhaka · dataset pending' }, { id:'Khulna', name:'Khulna · dataset pending' },
-  { id:'Narail', name:'Narail · dataset pending' }, { id:'Rangpur', name:'Rangpur · dataset pending' },
   { id:'tripura', name:'Tripura / Kokborok' }, { id:'sadri', name:'Sadri' },
   { id:'santali', name:'Santali' }, { id:'khasi', name:'Khasi' },
   { id:'mro', name:'Mro' }, { id:'tanchangya', name:'Tanchangya' },
@@ -406,7 +414,7 @@ function renderDetect(data) {
     if (d.script !== 'english') h += `<span class="conf">${d.method === 'single_dataset_phrase_match' ? 'Exact source-labeled phrase · research data, not independently verified' : `Classifier score ${pct}% · not a certainty measure${weak ? ' · short text can be ambiguous' : ''}`}</span>`;
   }
   if (d.variety === data.target && d.script !== 'english' && data.target === 'standard') {
-    h += `<div class="samehint">Already Standard Bangla — convert it to: ` + ['Chattogram','Sylheti','Noakhali','Barishal','Mymensingh','Rajshahi'].map((k) => `<button class="chip" data-act="chooseLang" data-side="to" data-id="${k}">${k}</button>`).join(' ') + '</div>';
+    h += `<div class="samehint">Already Standard Bangla — convert it to: ` + ['Chattogram','Sylheti','Noakhali','Barishal','Mymensingh','Rajshahi','Rangpur','Narail','Kishoreganj','Narsingdi','Tangail'].map((k) => `<button class="chip" data-act="chooseLang" data-side="to" data-id="${k}">${k}</button>`).join(' ') + '</div>';
   }
   el.innerHTML = h;
   if (data.bangla_input) {
@@ -534,7 +542,7 @@ function onDict() {
   const select = $('#dict-language');
   select.innerHTML = DICTIONARY_LANGS.map(l=>`<option value="${esc(l.id)}">${esc(l.name)}</option>`).join('');
   select.value = D.dialect;
-  const popular = ['Chattogram','Sylheti','Noakhali','Barishal','Mymensingh','Rajshahi'];
+  const popular = ['Chattogram','Sylheti','Noakhali','Barishal','Mymensingh','Rajshahi','Rangpur','Narail','Kishoreganj','Narsingdi','Tangail'];
   const visible = popular.includes(D.dialect) ? popular : [D.dialect,...popular];
   $('#dict-chips').innerHTML = visible.map(id=> {
     const l=DICTIONARY_LANGS.find(x=>x.id===id);
@@ -1143,12 +1151,12 @@ const ACTIONS = {
     const f = el.closest('.wordform'); const lang = f.dataset.lang, old = f.dataset.old, phrase = !!f.dataset.p;
     const word = $('#wf-word').value.trim(), mean = $('#wf-mean').value.trim();
     if (!word || !mean) { toast('Please fill both boxes'); return; }
-    try { await post('edit_word.php', { language: lang, word, old_word: old, meaning: mean, phrase, action: 'save' }); closeSheet(); toast('Saved'); loadDict(true); }
+    try { const r = await post('edit_word.php', { language: lang, word, old_word: old, meaning: mean, phrase, action: 'save' }); if (r.error) { toast(r.error, 3600); return; } closeSheet(); toast('Saved'); loadDict(true); }
     catch (e) { toast('Could not save'); }
   },
   async deleteWordForm(el) {
     const f = el.closest('.wordform'); if (!f.dataset.old || !window.confirm('Delete this word?')) return;
-    try { await post('edit_word.php', { language: f.dataset.lang, word: f.dataset.old, meaning: '', phrase: !!f.dataset.p, action: 'delete' }); closeSheet(); toast('Deleted'); loadDict(true); }
+    try { const r = await post('edit_word.php', { language: f.dataset.lang, word: f.dataset.old, meaning: '', phrase: !!f.dataset.p, action: 'delete' }); if (r.error) { toast(r.error, 3600); return; } closeSheet(); toast('Deleted'); loadDict(true); }
     catch (e) { toast('Could not delete'); }
   },
   stopMic() { stopMic(); },
@@ -1237,6 +1245,14 @@ async function init() {
   await Promise.all([checkAuth(),loadDistricts()]);
   openFromHash();
 
+  // "Install app" button: Chrome offers installation through this event; show our own button for it.
+  let installEvt = null;
+  window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvt = e; const b = $('#install-btn'); if (b) b.hidden = false; });
+  window.addEventListener('appinstalled', () => { const b = $('#install-btn'); if (b) b.hidden = true; toast('App installed ✓'); });
+  ACTIONS.installApp = async () => {
+    if (!installEvt) { toast('Use the browser menu (⋮) → Install app / Add to Home screen', 4200); return; }
+    installEvt.prompt(); await installEvt.userChoice.catch(() => {}); installEvt = null; $('#install-btn').hidden = true;
+  };
   if ('serviceWorker' in navigator) {
     const hadController = !!navigator.serviceWorker.controller;
     navigator.serviceWorker.addEventListener('controllerchange', () => {

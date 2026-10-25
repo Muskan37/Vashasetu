@@ -12,7 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent / 'database'
 DECOMP = {'ড়': 'ড়', 'ঢ়': 'ঢ়', 'য়': 'য়', '‌': '', '‍': ''}
 key = lambda s: re.sub(r'\s+', ' ', re.sub(r'[?!।.,;:"“”\'()\[\]‘’—\-]+', ' ', ''.join(DECOMP.get(c, c) for c in s))).strip()
 RESEARCH = ('Kothon', 'Dwadash', 'Vashantor', 'ONUBAD', 'SylhetiDS', 'Chatgaiyya', 'Safin-2025', 'Combined-CC')
-DIAL = ['barishal', 'chattogram', 'mymensingh', 'noakhali', 'rajshahi', 'sylheti']
+DIAL = ['barishal', 'chattogram', 'mymensingh', 'noakhali', 'rajshahi', 'sylheti', 'rangpur', 'narail', 'kishoreganj', 'narsingdi', 'tangail']
 total = collections.Counter()
 # word pairs the learned lexicon knows, per dialect: used to check that a sentence pair really lines up
 LEX = collections.defaultdict(set)

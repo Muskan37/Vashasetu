@@ -8,6 +8,7 @@ Please keep this credit when you share the project, and check each dataset's lic
 - Bangla Regional Dialect-to-Standard Bangla Parallel Corpus for Dialect Bias Evaluation (CC BY 4.0) - data.mendeley.com/datasets/42gvc83xkg
 - Kothon: Large-Scale Dataset for MT of Chittagonian and Sylheti into Standard Bangla - data.mendeley.com/datasets/2fv6vf9v2z
 - Dwadash: Multi-Dialectal Translation Across Twelve Bengali Variations - data.mendeley.com/datasets/v9cf66fk2t
+  (all 11 dialect columns used since 2026-10-25: also Rajshahi, Rangpur, Narail, Kishoreganj, Narsingdi, Tangail)
 - ChatgaiyyaAlap: Chittagonian to Standard Bangla - data.mendeley.com/datasets/wtms9xbkkw
 - A Dataset for Translating Local Bangla (Sylheti) Dialects into Standard Bangla - data.mendeley.com/datasets/5rmskrvh6g
 - Bangla to Chittagonian (Safin & Ara), MIT - github.com/sihabsafin/bangla-chittagonian-translation

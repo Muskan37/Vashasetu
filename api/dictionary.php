@@ -5,7 +5,7 @@ require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/matching_engine.php';
 require_once __DIR__ . '/word_evidence.php';
 $dialect = trim($_GET['dialect'] ?? 'Chattogram');
-$dictionaryLanguages = array_merge(DIALECTS, array_keys(VS_NATIVE_LANGUAGES), ['Dhaka','Khulna','Narail','Rangpur']);
+$dictionaryLanguages = array_merge(DIALECTS, array_keys(VS_NATIVE_LANGUAGES), ['Dhaka','Khulna']);
 if (!in_array($dialect, $dictionaryLanguages, true)) {
     http_response_code(400);
     echo json_encode(['error' => 'Unsupported dictionary language. Please choose an available language.']);

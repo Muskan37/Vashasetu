@@ -1,0 +1,8 @@
+# Vashasetu: hide files that should never be downloaded through the public link
+<FilesMatch "\.(md|txt|csv|py|sql|xlsx|json\.bak|log)$">
+  Require all denied
+</FilesMatch>
+<Files "manifest.json">
+  Require all granted
+</Files>
+Options -Indexes

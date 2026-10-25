@@ -509,3 +509,5 @@ body[data-nav="0"] .toast{bottom:28px}
 .drow-wrap{display:flex;gap:6px;align-items:stretch;margin-bottom:8px}.drow-wrap .drow{margin-bottom:0;flex:1;min-width:0}.dedit{flex:none;width:44px;border:1.5px solid var(--line);background:#fff;border-radius:16px;font-size:18px;color:var(--teal-800);cursor:pointer}
 
 .stopbtn{margin-left:auto;border:0;background:var(--rose);color:#fff;font:700 13px var(--body);padding:6px 12px;border-radius:14px;cursor:pointer}
+
+.install-btn{margin:0 0 14px}

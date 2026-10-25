@@ -35,11 +35,34 @@ function get_db() {
     return $pdo;
 }
 
+/** True when the request came through HTTPS, including through the Cloudflare tunnel. */
+function vs_is_https(): bool {
+    return !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'
+        || strtolower($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https'
+        || stripos($_SERVER['HTTP_CF_VISITOR'] ?? '', 'https') !== false;
+}
+/** The visitor's address (through the tunnel the real one is in CF-Connecting-IP). */
+function vs_client_ip(): string {
+    return $_SERVER['HTTP_CF_CONNECTING_IP'] ?? ($_SERVER['REMOTE_ADDR'] ?? '');
+}
+/** Only someone sitting at this computer (not someone using the public tunnel link). */
+function vs_is_local_request(): bool {
+    if (PHP_SAPI === 'cli') return true;
+    $ra = $_SERVER['REMOTE_ADDR'] ?? '';
+    $viaProxy = isset($_SERVER['HTTP_CF_CONNECTING_IP']) || isset($_SERVER['HTTP_X_FORWARDED_FOR']) || isset($_SERVER['HTTP_CF_RAY']);
+    return in_array($ra, ['127.0.0.1', '::1'], true) && !$viaProxy;
+}
+if (PHP_SAPI !== 'cli' && !headers_sent()) {
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header('Referrer-Policy: same-origin');
+}
+
 if (session_status() === PHP_SESSION_NONE) {
     session_set_cookie_params([
         'lifetime' => 60 * 60 * 24 * 30,
         'path' => '/',
-        'secure' => isset($_SERVER['HTTPS']),
+        'secure' => vs_is_https(),
         'httponly' => true,
         'samesite' => 'Lax',
     ]);
@@ -71,7 +94,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
 }
 
 // The five supported dialects (what the app sends). Anything else is rejected or replaced.
-function valid_dialect(string $d): bool { return in_array($d, ['Chattogram', 'Sylheti', 'Noakhali', 'Barishal', 'Mymensingh', 'Rajshahi'], true); }
+function valid_dialect(string $d): bool { return in_array($d, ['Chattogram', 'Sylheti', 'Noakhali', 'Barishal', 'Mymensingh', 'Rajshahi', 'Rangpur', 'Narail', 'Kishoreganj', 'Narsingdi', 'Tangail'], true); }
 
 /** High-trust learned word list (database/showcase.csv) used when a language has too few reviewed word records. */
 function showcase_rows(?string $dialect = null): ?array {

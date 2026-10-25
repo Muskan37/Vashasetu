@@ -56,6 +56,7 @@ if ($action === 'register' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$name, $email, $hash, $dialect, $district, $spoken]);
         $userId = (int) $pdo->lastInsertId();
 
+        session_regenerate_id(true);
         $_SESSION['user_id'] = $userId;
 
         echo json_encode([
@@ -64,7 +65,7 @@ if ($action === 'register' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
     } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(['error' => 'Registration failed', 'detail' => $e->getMessage()]);
+        echo json_encode(['error' => 'Registration failed']);
     }
     exit;
 }
@@ -83,17 +84,26 @@ if ($action === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    // Slow down password guessing: at most 8 failed tries per address or account in 15 minutes.
+    $pdo->exec('CREATE TABLE IF NOT EXISTS login_attempts (id BIGINT AUTO_INCREMENT PRIMARY KEY, ip VARCHAR(64) NOT NULL, email VARCHAR(190) NOT NULL, at DATETIME NOT NULL, INDEX ix_ip (ip, at), INDEX ix_email (email, at)) ENGINE=InnoDB');
+    $pdo->exec('DELETE FROM login_attempts WHERE at < NOW() - INTERVAL 1 DAY');
+    $ip = vs_client_ip();
+    $cnt = $pdo->prepare('SELECT COUNT(*) FROM login_attempts WHERE (ip = ? OR email = ?) AND at > NOW() - INTERVAL 15 MINUTE');
+    $cnt->execute([$ip, $email]);
+    if ((int) $cnt->fetchColumn() >= 8) { http_response_code(429); echo json_encode(['error' => 'Too many wrong tries. Please wait 15 minutes and try again.']); exit; }
     try {
         $stmt = $pdo->prepare("SELECT id, name, email, password_hash, preferred_dialect, current_district, spoken_language FROM users WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
         if (!$user || !password_verify($password, $user['password_hash'])) {
+            $pdo->prepare('INSERT INTO login_attempts (ip, email, at) VALUES (?, ?, NOW())')->execute([$ip, $email]);
             http_response_code(401);
             echo json_encode(['error' => 'Incorrect email or password']);
             exit;
         }
 
+        session_regenerate_id(true);   // new session id after login (stops session fixation)
         $_SESSION['user_id'] = (int) $user['id'];
 
         echo json_encode([
@@ -109,7 +119,7 @@ if ($action === 'login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
     } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(['error' => 'Login failed', 'detail' => $e->getMessage()]);
+        echo json_encode(['error' => 'Login failed']);
     }
     exit;
 }
@@ -140,7 +150,7 @@ if ($action === 'me' && $_SERVER['REQUEST_METHOD'] === 'GET') {
         echo json_encode(['success' => true, 'user' => $user ?: null]);
     } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(['error' => 'Could not fetch user', 'detail' => $e->getMessage()]);
+        echo json_encode(['error' => 'Could not fetch user']);
     }
     exit;
 }
@@ -163,7 +173,7 @@ if ($action === 'update_dialect' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['success' => true]);
     } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(['error' => 'Update failed', 'detail' => $e->getMessage()]);
+        echo json_encode(['error' => 'Update failed']);
     }
     exit;
 }

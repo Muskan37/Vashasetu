@@ -21,13 +21,21 @@ function course_pair(PDO $pdo, array $input): array {
     $source = safe_id($input['source'] ?? '');
     $target = safe_id($input['target'] ?? '');
     if ($source === $target) respond(['error'=>'Choose two different languages'],400);
-    $q = $pdo->prepare('SELECT language_id, display_name, existing_app_key, app_status FROM language_catalog WHERE language_id IN (?,?)');
+    $q = $pdo->prepare('SELECT language_id, display_name, existing_app_key, app_status, language_type FROM language_catalog WHERE language_id IN (?,?)');
     $q->execute([$source, $target]);
     $found = [];
     foreach ($q->fetchAll() as $r) $found[$r['language_id']] = $r;
     if (!isset($found[$source],$found[$target])) respond(['error'=>'Unsupported language selection'],400);
     return [$source,$target,$found[$source],$found[$target]];
 }
+/** Every Bangla variety (Standard and the regional dialects) is written in the same Bangla script,
+ *  so the Standard Bangla sound / letter / phonetics lessons are the right start for all of them. */
+function is_bangla_target(PDO $pdo, string $tgt): bool {
+    if ($tgt === 'standard') return true;
+    $q = $pdo->prepare('SELECT language_type, scripts FROM language_catalog WHERE language_id = ?'); $q->execute([$tgt]); $r = $q->fetch();
+    return $r && in_array($r['language_type'], ['standard_bangla', 'regional_bangla', 'regional_or_separate_language'], true) && stripos((string) $r['scripts'], 'Bengali') !== false;
+}
+const SCRIPT_STAGES = ['sounds', 'letters', 'phonetics'];
 function course_stages(): array {
     return [
       ['unit_key'=>'sounds','stage'=>'sounds','title_en'=>'Sounds','title_bn'=>'ধ্বনি','description_en'=>'Hear and recognize authentic sounds.'],
@@ -77,7 +85,7 @@ function other_units(PDO $pdo,string $src,string $tgt): array {
 function unit_items(PDO $pdo,array $input): void {
     [$src,$tgt]=course_pair($pdo,$input);
     $unit=safe_id($input['unit']??'');
-    if($tgt==='standard'){
+    if($tgt==='standard' || (is_bangla_target($pdo,$tgt) && preg_match('/^(sounds|letters|phonetics)-\d+$/',$unit))){
         $st=$pdo->prepare('SELECT i.id,i.item_order,i.exercise_type,i.prompt,i.ipa,i.romanization,i.options_json,i.gloss_en,i.speech_bn,loc.prompt_native,loc.hint_native FROM learning_items i LEFT JOIN learning_localizations loc ON loc.language_id=? AND loc.unit_key=i.unit_key AND loc.item_order=i.item_order AND loc.review_status=? WHERE i.unit_key=? AND i.review_status=? ORDER BY i.item_order');
         $st->execute([$src,'community_verified',$unit,'starter_content_needs_educator_review']);
         $items=$st->fetchAll();
@@ -96,7 +104,7 @@ function judge_answer(PDO $pdo,array $input): void {
     $kind=$input['item_kind']??null;
     $guess=$input['answer']??null;
     if(!$id||!in_array($kind,['core','pair'],true)||!is_string($guess)||mb_strlen($guess)>300) respond(['error'=>'Invalid answer'],400);
-    if($kind==='core' && $tgt==='standard'){
+    if($kind==='core' && is_bangla_target($pdo,$tgt)){
         $st=$pdo->prepare('SELECT correct_answer,options_json,gloss_en,display_bn AS display_text FROM learning_items WHERE id=? AND review_status=?');
         $st->execute([$id,'starter_content_needs_educator_review']);
     }elseif($kind==='pair'&&$tgt!=='standard'){
@@ -191,9 +199,16 @@ try{
     }
     if($method==='GET' && $action==='course_units'){
         [$src,$tgt,$from,$to]=course_pair($pdo,$input);
-        $units=$tgt==='standard'?core_units($pdo,$src,$tgt):other_units($pdo,$src,$tgt);
-        respond(['success'=>true,'source'=>$src,'target'=>$tgt,'units'=>$units,'guest'=>!current_user_id(),
-          'course_status'=>$tgt==='standard'?'starter_core':(array_sum(array_column($units,'total_items'))?'some_verified_lessons':'research_previews_only')]);
+        if($tgt==='standard'){ $units=core_units($pdo,$src,$tgt); $status='starter_core'; }
+        elseif(is_bangla_target($pdo,$tgt)){
+            // a dialect learner (e.g. a Chakma speaker learning Noakhali) first learns the shared Bangla script,
+            // then the dialect's own words and sentences
+            $script=array_values(array_filter(core_units($pdo,$src,$tgt),fn($u)=>in_array($u['stage'],SCRIPT_STAGES,true)));
+            foreach($script as &$u){$u['status']='shared_bangla_script';} unset($u);
+            $rest=array_values(array_filter(other_units($pdo,$src,$tgt),fn($u)=>!in_array($u['stage'],SCRIPT_STAGES,true)));
+            $units=array_merge($script,$rest); $status='script_then_dialect';
+        } else { $units=other_units($pdo,$src,$tgt); $status=array_sum(array_column($units,'total_items'))?'some_verified_lessons':'research_previews_only'; }
+        respond(['success'=>true,'source'=>$src,'target'=>$tgt,'units'=>$units,'guest'=>!current_user_id(),'course_status'=>$status]);
     }
     if($method==='GET'&&$action==='course_items')unit_items($pdo,$input);
     if($method==='GET'&&$action==='course_preview')sample_preview($pdo,$input);

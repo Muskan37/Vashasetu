@@ -118,3 +118,27 @@ Order of the data scripts: `import_checked_lists.py`, then `enable_exact_matches
 * `database/reviewed/native_sentences.csv` — whole sentences a native speaker gave; always used as the exact translation.
 * Noakhali "will not" (confirmed: আমি ভাত খাবো না = আইঁ ভাত খাইতান ন): the verb takes -ইতান and না becomes ন after it,
   e.g. যাবো না → যাইতান ন, করবো না → কইরতান ন, দেখবো না → দেইখতান ন, বলবো না → কইতান ন. Irregular verbs (দেবো, নেবো) are left unchanged.
+
+## 12. Learning a dialect from an indigenous language
+When the language to learn is any Bangla variety (Standard or a dialect such as Noakhali), the path starts with the Bangla-script
+lessons (sounds, letters, phonetics — 36 exercises, unlocked one after another), because every dialect is written with the same letters.
+Then come the Words and Sentences quizzes for that dialect, built from its own data and shown next to the learner's language where a match exists.
+The app also shows an "Install the app on this phone" button on Home when the browser allows installing (learn.php now links the manifest too).
+
+## 13. Security
+* Passwords are stored only as bcrypt hashes (`password_hash`); all database queries use prepared statements.
+* Login: at most 8 wrong passwords per address or account in 15 minutes; a new session id is issued at login and registration.
+* Session cookie: HttpOnly, SameSite=Lax, and Secure when opened through HTTPS (also through the Cloudflare tunnel).
+* `setup.php` only works on the computer running XAMPP (http://localhost/...), never through the public tunnel link.
+* Editing the dictionary is open to anyone with the link for now (`REQUIRE_LOGIN = false` in `api/edit_word.php`). Every edit is saved with the editor's internet address and what the word was before: all edits in `database/user_edits.csv`, and separately per address in `database/edits_by_ip/<address>.csv`.
+  Open http://localhost/vashasetu/admin_edits.php on the laptop to see edits grouped by address and undo all edits from one address. Set `REQUIRE_LOGIN = true` (and optionally `EDITOR_EMAILS`) to allow only logged-in editors.
+* `.htaccess` files stop the `database/`, `tools/` and `docs/` folders and .md/.csv/.py/.sql/.xlsx files from being downloaded.
+* Error messages no longer reveal internal database details.
+* Still to do before real public use: give MySQL's root user a password (and put it in `api/config.php`), and keep regular backups of the database and `database/user_edits.csv`.
+
+## 14. All of Dwadash (12 Bengali varieties)
+`tools/add_dwadash_full.py path/to/Dwadash.xlsx` adds the Dwadash columns the first build skipped:
+Rajshahi (+885 sentence pairs, now about 2,100) and five new dialects — Rangpur (1,156), Narail, Kishoreganj, Narsingdi and Tangail (about 500 each).
+Each gets its own sentence data, a learned word list and dialect-recognition words; they appear in the translator, dictionary, quiz and Learn.
+With only a few hundred sentences their word-by-word translations are rough; whole sentences from the dataset are matched exactly.
+Order of the data scripts: `import_checked_lists.py`, `add_dwadash_full.py`, `enable_exact_matches.py`, then `setup.php?reset=1`.

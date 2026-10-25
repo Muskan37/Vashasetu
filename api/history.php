@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         echo json_encode(['success' => true, 'history' => $stmt->fetchAll()]);
     } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(['error' => 'Fetch failed', 'detail' => $e->getMessage()]);
+        echo json_encode(['error' => 'Fetch failed']);
     }
     exit;
 }
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
         echo json_encode(['success' => true, 'deleted' => $stmt->rowCount() > 0]);
     } catch (Exception $e) {
         http_response_code(500);
-        echo json_encode(['error' => 'Delete failed', 'detail' => $e->getMessage()]);
+        echo json_encode(['error' => 'Delete failed']);
     }
     exit;
 }

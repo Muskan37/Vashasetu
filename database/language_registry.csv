@@ -1,4 +1,4 @@
-﻿language_id,display_name,type,existing_app_key,scripts,app_status,geography_nonexclusive,notes
+language_id,display_name,type,existing_app_key,scripts,app_status,geography_nonexclusive,notes
 standard,Standard Bangla,standard_bangla,,Bengali,active,Bangladesh,Standard-language target; not a regional dialect
 barishal-bn,Barishal,regional_bangla,Barishal,Bengali,active,Barishal region,Dialect distribution is not identical to administrative boundaries
 chattogram-bn,Chattogram / Chatgaiya,regional_bangla,Chattogram,Bengali,active,Chattogram region,Can be treated as a distinct language variety in linguistic classification
@@ -6,9 +6,9 @@ mymensingh-bn,Mymensingh,regional_bangla,Mymensingh,Bengali,active,Mymensingh re
 noakhali-bn,Noakhali,regional_bangla,Noakhali,Bengali,active,Noakhali region,Subregional variation
 rajshahi-bn,Rajshahi,regional_bangla,Rajshahi,Bengali,active_low_data,Rajshahi region,Low dataset coverage
 sylheti,Sylheti,regional_or_separate_language,Sylheti,Bengali and Syloti Nagri,active,Sylhet region and diaspora,Often treated as separate language; do not collapse identity into district label
-rangpur-bn,Rangpur / Rangpuri,regional_bangla,Rangpur,Bengali,data_needed,Rangpur region,Distinguish local Rangpuri/Rajbanshi varieties
+rangpur-bn,Rangpur / Rangpuri,regional_bangla,Rangpur,Bengali,active_low_data,Rangpur region,Distinguish local Rangpuri/Rajbanshi varieties; sentence data from Dwadash
 khulna-bn,Khulna,regional_bangla,Khulna,Bengali,data_needed,Khulna region,Do not substitute Narail data as identical
-narail-bn,Narail,regional_bangla,Narail,Bengali,data_needed,Narail region,Specific Narail variety
+narail-bn,Narail,regional_bangla,Narail,Bengali,active_low_data,Narail region,Specific Narail variety; sentence data from Dwadash
 dhaka-bn,Dhaka / Old Dhaka,regional_bangla,Dhaka,Bengali,data_needed,Dhaka,Old Dhaka / Dhakaiya needs its own varieties and evidence
 chakma,Chakma,indigenous_language,,Chakma and Bengali transliteration,research_examples_only,Chattogram Hill Tracts and communities elsewhere,Distinct language; display script and romanization separately
 marma,Marma,indigenous_language,,Myanmar script and Bengali transliteration,research_examples_only,Chattogram Hill Tracts and communities elsewhere,Distinct language; not a Chattogram dialect
@@ -23,3 +23,6 @@ bawm,Bawm,indigenous_language,,Latin,data_needed,Hill Tracts and elsewhere,No va
 khumi,Khumi,indigenous_language,,Latin / community orthographies,data_needed,Hill Tracts and elsewhere,No validated direct Bangla dataset in uploaded app
 rakhine,Rakhine,indigenous_language,,Myanmar script,data_needed,Coastal Bangladesh and elsewhere,Distinct language
 meitei,Meitei/Manipuri,indigenous_language,,Meitei Mayek and Bengali,data_needed,Sylhet region and elsewhere,Distinct language
+kishoreganj-bn,Kishoreganj,regional_bangla,Kishoreganj,Bengali,active_low_data,Kishoreganj district,About 500 example sentences (Dwadash); low coverage
+narsingdi-bn,Narsingdi,regional_bangla,Narsingdi,Bengali,active_low_data,Narsingdi district,About 500 example sentences (Dwadash); low coverage
+tangail-bn,Tangail,regional_bangla,Tangail,Bengali,active_low_data,Tangail district,About 500 example sentences (Dwadash); low coverage

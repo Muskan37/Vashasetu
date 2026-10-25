@@ -10,12 +10,16 @@ require_once __DIR__ . '/lib/text.php';
 
 // Word-by-word translation only (like a statistical translator). Set true to also allow exact stored-sentence lookups.
 const USE_SENTENCE_MEMORY = false;
-const VARIETIES = ['standard', 'Barishal', 'Chattogram', 'Mymensingh', 'Noakhali', 'Rajshahi', 'Sylheti'];
+const VARIETIES = ['standard', 'Barishal', 'Chattogram', 'Mymensingh', 'Noakhali', 'Rajshahi', 'Sylheti', 'Rangpur', 'Narail', 'Kishoreganj', 'Narsingdi', 'Tangail'];
+// Dialects with only a few hundred example sentences (from Dwadash). They take part in auto-detect with the same
+// small handicap as Rajshahi, so plain Standard Bangla is not mistaken for them.
+const SMALL_DIALECTS = ['Rajshahi', 'Rangpur', 'Narail', 'Kishoreganj', 'Narsingdi', 'Tangail'];
 const RAJSHAHI_PRIOR = 1.2;
-const DIALECTS  = ['Barishal', 'Chattogram', 'Mymensingh', 'Noakhali', 'Rajshahi', 'Sylheti'];
+const DIALECTS  = ['Barishal', 'Chattogram', 'Mymensingh', 'Noakhali', 'Rajshahi', 'Sylheti', 'Rangpur', 'Narail', 'Kishoreganj', 'Narsingdi', 'Tangail'];
 const VARIETY_LABEL = [
     'standard' => 'Standard Bangla', 'Barishal' => 'Barishal', 'Chattogram' => 'Chattogram',
-    'Mymensingh' => 'Mymensingh', 'Noakhali' => 'Noakhali', 'Rajshahi' => 'Rajshahi', 'Sylheti' => 'Sylheti', 'english' => 'English',
+    'Mymensingh' => 'Mymensingh', 'Noakhali' => 'Noakhali', 'Rajshahi' => 'Rajshahi', 'Sylheti' => 'Sylheti', 'Rangpur' => 'Rangpur', 'Narail' => 'Narail',
+    'Kishoreganj' => 'Kishoreganj', 'Narsingdi' => 'Narsingdi', 'Tangail' => 'Tangail', 'english' => 'English',
 ];
 
 function in_placeholders(array $a): string { return implode(',', array_fill(0, count($a), '?')); }
@@ -232,7 +236,7 @@ function detect_variety(PDO $pdo, array $tokens): array {
     if ($known === 0) return ['variety' => 'standard', 'confidence' => 0.0, 'scores' => [], 'known' => 0];
     // Rajshahi has far less training text than the others, so everyday words it happens to contain would otherwise look
     // "too Rajshahi". A small prior keeps plain Standard Bangla from being mistaken for it.
-    if (isset($score['Rajshahi'])) $score['Rajshahi'] -= RAJSHAHI_PRIOR * min(3, $known);
+    foreach (SMALL_DIALECTS as $sd) if (isset($score[$sd])) $score[$sd] -= RAJSHAHI_PRIOR * min(3, $known);
     $max = max($score);
     $p = []; $z = 0.0;
     foreach ($score as $v => $s) { $p[$v] = exp($s - $max); $z += $p[$v]; }

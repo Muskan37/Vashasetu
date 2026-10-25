@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 }
 
 $dialect = trim($_GET['dialect'] ?? 'Chattogram');
-if (!in_array($dialect,['Barishal','Chattogram','Mymensingh','Noakhali','Rajshahi','Sylheti'],true)) {http_response_code(400);echo json_encode(['error'=>'Select a supported dialect for quizzes']);exit;}
+if (!valid_dialect($dialect)) {http_response_code(400);echo json_encode(['error'=>'Select a supported dialect for quizzes']);exit;}
 $exclude = array_values(array_filter(array_map('intval', explode(',', $_GET['exclude'] ?? ''))));
 
 $pdo = get_db();
@@ -21,6 +21,10 @@ try {
              WHERE language=? AND source_word<>standard_word
              AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported')");
     $st->execute([$dialect]); $all=$st->fetchAll();
+    if (count($all) < 4) {   // newer dialects have no reviewed words yet: use the learned (unverified) ones
+        $st=$pdo->prepare("SELECT id,source_word AS dialect_word,standard_word AS standard_meaning,language AS dialect_type FROM word_meanings WHERE language=? AND source_word<>standard_word");
+        $st->execute([$dialect]); $all=$st->fetchAll();
+    }
 
     $questions = array_values(array_filter($all, fn($r) => !in_array((int) $r['id'], $exclude, true)));
     if (!$questions) $questions = $all;

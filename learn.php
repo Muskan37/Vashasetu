@@ -4,7 +4,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 if (empty($_SESSION['user_id'])) { header('Location: index.php#login', true, 302); exit; }
 $embedded = isset($_GET['embedded']) && $_GET['embedded'] === '1';
 function asset_v($p) { return htmlspecialchars($p, ENT_QUOTES) . '?v=' . @filemtime(__DIR__ . '/' . $p); } ?>
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0f5c56"><title>Learn Languages · VashaSetu</title><link rel="stylesheet" href="<?= asset_v('assets/css/learn.css') ?>"></head>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0f5c56"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/icon-192.png"><title>Learn Languages · VashaSetu</title><link rel="stylesheet" href="<?= asset_v('assets/css/learn.css') ?>"></head>
 <body class="<?= $embedded ? 'embedded-learn' : '' ?>">
 <?php if (!$embedded): ?><header class="top"><a class="back" href="index.php">← VashaSetu</a><strong>ভাষাসেতু · Learn together</strong><span>★</span></header><?php endif; ?>
 <main class="wrap">
@@ -26,4 +26,5 @@ function asset_v($p) { return htmlspecialchars($p, ENT_QUOTES) . '?v=' . @filemt
  <section id="previewView" hidden><button type="button" class="plain" id="previewBack">← Back to learning path</button><div class="smallrow"><h2 id="previewTitle">Research flashcards</h2><span id="previewCount"></span></div><p class="notice previewWarning" id="previewWarning"></p>
  <div id="previewCards" aria-live="polite"></div><p class="minor">These are reference examples, not checked lessons. Audio and dialect-specific pronunciation require authentic recordings and native-speaker review.</p></section>
  <footer>Indigenous languages are never treated as Bangla dialects. Only the selected source and target language datasets are used, with Standard Bangla as an explicitly labeled reference bridge. Unreviewed research examples are not graded. The learner's first language requires community-reviewed prompts for full localized instruction.</footer>
-</main><script src="<?= asset_v('assets/js/learn.js') ?>"></script></body></html>
+</main><script src="<?= asset_v('assets/js/learn.js') ?>"></script><script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}</script>
+</body></html>

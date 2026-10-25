@@ -133,6 +133,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
       </header>
 
       <div class="pull">
+        <button class="btn btn-gold btn-block install-btn" id="install-btn" data-act="installApp" hidden>📲 Install the app on this phone</button>
         <div class="card">
           <div class="quick-title">Translate a dialect</div>
           <div class="quick-row">

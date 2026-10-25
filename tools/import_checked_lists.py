@@ -18,7 +18,7 @@ REV = ROOT / 'reviewed'
 DECOMP = {'ড়': 'ড়', 'ঢ়': 'ঢ়', 'য়': 'য়', '‌': '', '‍': ''}
 norm = lambda s: ''.join(DECOMP.get(c, c) for c in str(s))
 key = lambda s: re.sub(r'\s+', ' ', re.sub(r'[?!।.,;:"“”\'()\-]', ' ', norm(s))).strip()   # = bn_normalize()
-DIAL = ['Barishal', 'Chattogram', 'Mymensingh', 'Noakhali', 'Rajshahi', 'Sylheti']
+DIAL = ['Barishal', 'Chattogram', 'Mymensingh', 'Noakhali', 'Rajshahi', 'Sylheti', 'Rangpur', 'Narail', 'Kishoreganj', 'Narsingdi', 'Tangail']
 NATIVE = ['chakma', 'marma', 'garo']
 SRC = {'native': 'Native speaker confirmation', 'csv': 'Chittagong list (checked)', 'xlsx': 'Languages list (checked)', 'mega': 'Mega dataset real part (checked)'}
 OLD = ('Native speaker dataset', 'User language list') + tuple(SRC.values())

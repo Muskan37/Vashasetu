@@ -9,6 +9,8 @@
 // ============================================================
 require_once __DIR__ . '/api/config.php';
 require_once __DIR__ . '/api/lib/text.php';
+// Setup can wipe and reload the data, so it only runs for someone at this computer, never through the public link.
+if (!vs_is_local_request()) { http_response_code(403); exit('setup.php can only be opened on the computer running XAMPP: http://localhost/vashasetu/setup.php'); }
 @set_time_limit(0);
 @ini_set('memory_limit', '512M');
 header('Content-Type: text/html; charset=utf-8');
@@ -112,7 +114,7 @@ function load(PDO $db, string $table, callable $make, bool $reset): void {
     say("$table: loaded " . number_format($n) . ' rows (' . round(microtime(true) - $t, 1) . 's).');
 }
 
-$varieties = ['Barishal', 'Chattogram', 'Mymensingh', 'Noakhali', 'Rajshahi', 'Sylheti'];
+$varieties = ['Barishal', 'Chattogram', 'Mymensingh', 'Noakhali', 'Rajshahi', 'Sylheti'];   // columns of corpus.csv (newer dialects live in database/languages/)
 
 load($root, 'lexicon', fn() => [['dialect','dialect_word','standard_word','p_std','p_dia','cnt','verified'], (function () {
     foreach (csv_rows('lexicon.csv') as $r) yield [$r['dialect'], $r['dialect_word'], $r['standard_word'], $r['p_to_std'], $r['p_to_dialect'], $r['count'], $r['verified']];
@@ -206,7 +208,7 @@ if (is_file(__DIR__ . '/database/user_edits.csv')) {
             }
             $applied++; continue;
         }
-        if (is_file(__DIR__ . '/api/curated_edit.php') && in_array($e['language'], ['Barishal','Chattogram','Sylheti','Noakhali','Mymensingh','Rajshahi'], true)) { require_once __DIR__ . '/api/curated_edit.php'; vs_curated_edit($e['language'], '', $e['source_word'], ($e['action'] ?? 'save') === 'save' ? $e['standard_word'] : '', $e['action'] ?? 'save'); }
+        if (is_file(__DIR__ . '/api/curated_edit.php') && valid_dialect($e['language'])) { require_once __DIR__ . '/api/curated_edit.php'; vs_curated_edit($e['language'], '', $e['source_word'], ($e['action'] ?? 'save') === 'save' ? $e['standard_word'] : '', $e['action'] ?? 'save'); }
         $root->prepare('DELETE FROM word_meanings WHERE language=? AND source_word=?')->execute([$e['language'],$e['source_word']]);
         if (($e['action'] ?? 'save') === 'save') {
             $root->prepare("INSERT IGNORE INTO word_meanings (pair_hash,language,source_word,standard_word,meaning_status,source_dataset,evidence_count) VALUES (?,?,?,?, 'native_speaker_reported','Edited in the app',1)")

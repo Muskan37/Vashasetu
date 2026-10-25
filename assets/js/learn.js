@@ -35,7 +35,9 @@ async function selectionChanged(){showOnly('unitsView');state.current=null;
  $('chosenCourse').textContent=name(state.src)+' → '+name(state.tgt);
  $('unitList').textContent='Loading this language pair…';
  try{const d=await api(params({action:'course_units'}));state.units=d.units;state.guest=d.guest;
- $('courseNotice').textContent=d.course_status==='starter_core'
+ $('courseNotice').textContent=d.course_status==='script_then_dialect'
+ ?'First learn the Bangla script (sounds, letters, phonetics) - '+name(state.tgt)+' is written with the same letters. Then practise '+name(state.tgt)+' words and sentences with the quizzes below.'
+ :d.course_status==='starter_core'
  ?'Standard Bangla starter lessons are available. Some prompts remain in English until your chosen teaching language has reviewed translations; the starter lessons themselves still need educator review.'
  :d.course_status==='some_verified_lessons'
  ?'Community-verified lessons are available where marked. Other stages have research previews or await authentic recordings and educator review.'
@@ -44,7 +46,7 @@ async function selectionChanged(){showOnly('unitsView');state.current=null;
  }catch(e){$('unitList').textContent='Could not load course: '+e.message+'. Run setup.php to add the V4 course tables.';}}
 function renderUnits(){const root=$('unitList');root.replaceChildren();if(!state.units.length){root.textContent='No learning stages found.';return;}
  state.units.forEach((u,idx)=>{const total=Number(u.total_items)||0;const done=getDone(u);
- const prev=state.units[idx-1];const sequential=state.tgt==='standard';const locked=sequential&&idx>0&&getDone(prev)<Number(prev.total_items);
+ const prev=state.units[idx-1];const sequential=state.tgt==='standard'||u.status==='shared_bangla_script';const locked=sequential&&idx>0&&getDone(prev)<Number(prev.total_items);
  const card=el('div','unit stageCard');const bubble=el('span','bubble',locked?'🔒':(ICONS[u.stage]||'★'));card.append(bubble);
  const title=el('span','stageDetail');title.append(el('strong','',u.title_en),el('small','',u.title_bn+' · '+u.description_en));card.append(title);
  const actions=el('div','stageActions');
@@ -77,7 +79,7 @@ function renderQuestion(){const q=state.items[state.step];if(!q){finish();return
  const audio=$('listenBtn');audio.hidden=true;audio.onclick=null;
  if(q.audio_path&&!q.audio_path.includes('..')&&/^assets\/audio\/[a-zA-Z0-9_\/.\-]+\.(mp3|ogg|wav)$/i.test(q.audio_path)){
   audio.hidden=false;audio.textContent='🔊 Listen to native recording';audio.onclick=()=>new Audio(q.audio_path).play().catch(()=>alert('Recording unavailable'));
- }else if(state.tgt==='standard'&&q.speech_text&&supportsAudio()){
+ }else if((state.tgt==='standard'||q.item_kind==='core')&&q.speech_text&&supportsAudio()){
   audio.hidden=false;audio.textContent='🔊 Listen to Bangla';audio.onclick=()=>speakBangla(q.speech_text);
  }
  $('sound').style.display='block';$('feedback').textContent='';$('nextBtn').hidden=true;
