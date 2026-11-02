@@ -26,6 +26,7 @@ if ($text === '') {
     echo json_encode(['error' => 'No text provided']);
     exit;
 }
+$text = bn_compose($text);          // ে + া typed in two parts = ো
 if (mb_strlen($text) > 500) $text = mb_substr($text, 0, 500);
 
 $pdo = get_db();
@@ -43,6 +44,9 @@ try {
         $stmt->execute([$userId, $sessionId, mb_substr($text, 0, 500), mb_substr($result['translated_text'], 0, 500), mb_substr($label, 0, 80)]);
     }
     echo json_encode($result, JSON_UNESCAPED_UNICODE);
+} catch (InvalidArgumentException $e) {
+    http_response_code(400);   // unknown input or output language
+    echo json_encode(['error' => 'Unsupported language. Choose one from the list.']);
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['error' => 'Translation failed']);

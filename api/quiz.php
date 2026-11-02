@@ -19,7 +19,7 @@ try {
     // one-word evidence, never mixed lexicon candidate alignments.
     $st=$pdo->prepare("SELECT id,source_word AS dialect_word,standard_word AS standard_meaning,language AS dialect_type FROM word_meanings
              WHERE language=? AND source_word<>standard_word
-             AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported')");
+             AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported','native_speaker_alternative')");
     $st->execute([$dialect]); $all=$st->fetchAll();
     if (count($all) < 4) {   // newer dialects have no reviewed words yet: use the learned (unverified) ones
         $st=$pdo->prepare("SELECT id,source_word AS dialect_word,standard_word AS standard_meaning,language AS dialect_type FROM word_meanings WHERE language=? AND source_word<>standard_word");

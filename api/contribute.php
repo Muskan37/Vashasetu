@@ -26,6 +26,7 @@ if (!valid_dialect($dialectType)) {
 }
 
 $pdo = get_db();
+vs_require_rate($pdo, 'contribute', 30, 600, 'Too many contributions from your connection. Please wait a few minutes.');
 $userId = current_user_id();
 
 // Attribute to the real logged-in account (server-trusted), never a client-supplied

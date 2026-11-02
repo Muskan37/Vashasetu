@@ -1,6 +1,13 @@
 <?php
 // A logged-in account is required for learning progress in V6.
-if (session_status() !== PHP_SESSION_ACTIVE) session_start();
+require_once __DIR__ . '/api/lib/security.php';
+vs_hide_errors(); vs_page_headers();
+ini_set('session.use_strict_mode', '1');
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || strtolower($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https' || stripos($_SERVER['HTTP_CF_VISITOR'] ?? '', 'https') !== false;
+    session_set_cookie_params(['lifetime' => 60 * 60 * 24 * 30, 'path' => '/', 'secure' => $https, 'httponly' => true, 'samesite' => 'Lax']);
+    session_start();
+}
 if (empty($_SESSION['user_id'])) { header('Location: index.php#login', true, 302); exit; }
 $embedded = isset($_GET['embedded']) && $_GET['embedded'] === '1';
 function asset_v($p) { return htmlspecialchars($p, ENT_QUOTES) . '?v=' . @filemtime(__DIR__ . '/' . $p); } ?>
@@ -8,17 +15,15 @@ function asset_v($p) { return htmlspecialchars($p, ENT_QUOTES) . '?v=' . @filemt
 <body class="<?= $embedded ? 'embedded-learn' : '' ?>">
 <?php if (!$embedded): ?><header class="top"><a class="back" href="index.php">← VashaSetu</a><strong>ভাষাসেতু · Learn together</strong><span>★</span></header><?php endif; ?>
 <main class="wrap">
- <section class="hero">
-  <small>YOU CHOOSE THE LANGUAGE PATH</small>
-  <h1>Learn any supported language from another</h1>
-  <p>Choose what you speak and what you want to learn. Progress is saved independently for every language pair.</p>
-  <div class="coursePicker">
-   <div><label for="sourceLang">I speak / My teaching language</label><select id="sourceLang" aria-label="Language I speak"><option value="">Loading…</option></select></div>
+ <section class="hero pairHero">
+  <div class="pairStatement"><span class="chosenCourse" id="chosenCourse" aria-live="polite"></span><button type="button" class="changePair" id="changePair" aria-expanded="false">Change</button></div>
+  <div class="coursePicker pairLine" id="pairPicker" hidden>
+   <select id="sourceLang" aria-label="Language I speak" title="I speak"><option value="">Loading…</option></select>
+   <span class="arrow" aria-hidden="true">→</span>
+   <select id="targetLang" aria-label="Language I want to learn" title="I want to learn"><option value="">Loading…</option></select>
    <button type="button" class="swap" id="swapLang" aria-label="Swap the source and learning languages" title="Swap languages">⇄</button>
-   <div><label for="targetLang">I want to learn</label><select id="targetLang" aria-label="Language I want to learn"><option value="">Loading…</option></select></div>
   </div>
-  <div class="chosenCourse" id="chosenCourse" aria-live="polite"></div>
-  <div class="notice" id="courseNotice">Verified courses, research previews and data availability will appear here.</div>
+  <div class="notice" id="courseNotice" hidden></div>
  </section>
  <section id="unitsView"><h2>Your learning path</h2><p class="minor">Sounds → letters → phonetics → words → sentences → conversations. A stage opens as verified lessons become available. Research-only flashcards do not award progress.</p><div class="unitList" id="unitList" aria-live="polite">Loading courses…</div></section>
  <section id="exerciseView" hidden><button type="button" class="plain" id="goBack">← Back to learning path</button><div class="smallrow"><span id="exerciseTitle">Lesson</span><span id="counter"></span></div><div class="progressTrack"><div id="progressBar"></div></div>

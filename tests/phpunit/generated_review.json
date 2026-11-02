@@ -1,0 +1,33 @@
+{
+  "generator": "Claude (AI assistant), 2 Nov 2026 - Qodo needs its IDE plugin and an account; Diffblue Cover supports only Java",
+  "functions": ["vs_split_sentences", "vs_punctuate"],
+  "method": "The generator proposed 25 edge-case inputs and, like Qodo and Diffblue, took each expected value from the current code's output. Each expected value was then checked by hand against correct Bangla/English punctuation.",
+  "cases": [
+    {"id": "G-01", "input": "Dr. Rahim came.", "generated_expected": "[\"Dr. \", \"Rahim came.\"]", "verdict": "Wrong - a title is not a sentence end; it made the app write 'ডঃ। Rahim এলো।'", "final_expected": "[\"Dr. Rahim came.\"]", "action": "Defect D30 fixed"},
+    {"id": "G-02", "input": "Mr. Karim is here. He eats.", "generated_expected": "[\"Mr. \", \"Karim is here. \", \"He eats.\"]", "verdict": "Wrong - same bug", "final_expected": "[\"Mr. Karim is here. \", \"He eats.\"]", "action": "Defect D30 fixed"},
+    {"id": "G-03", "input": "১. প্রথম ২. দ্বিতীয়", "generated_expected": "[\"১. \", \"প্রথম ২. \", \"দ্বিতীয়\"]", "verdict": "Questionable - a list number was cut from its item", "final_expected": "[\"১. প্রথম ২. দ্বিতীয়\"]", "action": "Expected value changed to the rule after the D30 fix"},
+    {"id": "G-04", "input": "আমি ভাত খাবো... তুমি?", "generated_expected": "2 parts", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-05", "input": "What?! Really?", "generated_expected": "2 parts", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-06", "input": "আমি\\n\\nতুমি", "generated_expected": "2 parts", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-07", "input": "।।।", "generated_expected": "1 part", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-08", "input": "a.b.c", "generated_expected": "1 part", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-09", "input": "\"আমি ভাত খাবো\"", "generated_expected": "\"আঁই ভাত খাইয়ুম\"", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-10", "input": "(আমি) ভাত খাবো", "generated_expected": "(আঁই) ভাত খাইয়ুম", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-11", "input": "আমি ভাত খাবো...", "generated_expected": "আঁই ভাত খাইয়ুম...", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-12", "input": "আমি ভাত খাবো?!", "generated_expected": "আঁই ভাত খাইয়ুম?!", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-13", "input": "আমি — ভাত খাবো", "generated_expected": "আঁই — ভাত খাইয়ুম", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-14", "input": "আমি ভাত খাবো + space", "generated_expected": "trailing space kept", "verdict": "Correct (sentences are joined with it)", "final_expected": "same", "action": "Kept"},
+    {"id": "G-15", "input": "আমি ভাত খাবো + line break", "generated_expected": "line break kept", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-16", "input": "আমি, তুমি, সে", "generated_expected": "আঁই, তুঁই, হিতে", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-17", "input": "আমি,তুমি", "generated_expected": "আঁই,তুঁই", "verdict": "Correct (follows the input)", "final_expected": "same", "action": "Kept"},
+    {"id": "G-18", "input": "১০০ টাকা!", "generated_expected": "১০০ টিয়া!", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-19", "input": "আমি ভাত খাবো। / data আঁই ভাত খাইয়ুম।।", "generated_expected": "one ।", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-20", "input": "আমি ভাত খাবো। / data । আঁই ভাত খাইয়ুম", "generated_expected": "আঁই ভাত খাইয়ুম।", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-21", "input": "ভালো! / empty translation", "generated_expected": "''", "verdict": "Correct (no stray !)", "final_expected": "same", "action": "Kept"},
+    {"id": "G-22", "input": "'' / আঁই", "generated_expected": "আঁই", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-23", "input": "আমি   ভাত", "generated_expected": "আঁই ভাত", "verdict": "Correct", "final_expected": "same", "action": "Kept"},
+    {"id": "G-24", "input": "আমি ভাত খাবো / data আঁই, ভাত খাইয়ুম", "generated_expected": "আঁই ভাত খাইয়ুম", "verdict": "Correct (punctuation follows the user's input)", "final_expected": "same", "action": "Kept"},
+    {"id": "G-25", "input": "Rahim-er boi / রহিমের বই", "generated_expected": "রহিমের বই", "verdict": "Correct", "final_expected": "same", "action": "Kept"}
+  ],
+  "summary": {"generated": 25, "correct": 22, "wrong": 2, "questionable": 1, "defects_found": ["D30"]}
+}

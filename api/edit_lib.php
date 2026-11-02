@@ -37,10 +37,12 @@ function vs_log_edits(array $rows): void {
                 fclose($w);
             }
         }
-        $new = !is_file($f);
         if (!($h = @fopen($f, 'a'))) continue;
-        if ($new) fputcsv($h, $head);
+        flock($h, LOCK_EX);                       // two edits at the same moment must not mix their lines
+        clearstatcache(true, $f);
+        if (filesize($f) === 0) fputcsv($h, $head);
         foreach ($rows as $r) fputcsv($h, $r);
+        fflush($h); flock($h, LOCK_UN);
         fclose($h);
     }
 }

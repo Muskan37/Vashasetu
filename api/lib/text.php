@@ -5,8 +5,14 @@
 // casual Roman typing ("tumi kemon acho") against Bangla words.
 // ============================================================
 
+/** Join vowel signs typed in two parts (ে + া = ো, ে + ৗ = ৌ), as some phone keyboards and old converters do.
+ *  Unicode treats both spellings as the same letter (NFC), so the app must too. Works without the intl extension. */
+function bn_compose(string $s): string {
+    return strtr($s, ["\u{09C7}\u{09BE}" => "\u{09CB}", "\u{09C7}\u{09D7}" => "\u{09CC}"]);
+}
+
 function bn_normalize(string $s): string {
-    $s = str_replace(["\u{200D}", "\u{200C}"], '', $s);
+    $s = bn_compose(str_replace(["\u{200D}", "\u{200C}"], '', $s));
     // decompose precomposed nukta letters so everybody types the same thing
     $s = strtr($s, ["\u{09DC}" => "\u{09A1}\u{09BC}", "\u{09DD}" => "\u{09A2}\u{09BC}", "\u{09DF}" => "\u{09AF}\u{09BC}"]);
     $s = preg_replace('/[?!,.;:।"\'()\[\]‘’“”—\-]+/u', ' ', $s);

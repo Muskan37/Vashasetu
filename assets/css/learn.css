@@ -23,3 +23,24 @@ body.embedded-learn{background:#fbf6ec;min-width:0;overflow-x:hidden}
 .embedded-learn .answers{grid-template-columns:1fr 1fr}
 .embedded-learn .answer{min-width:0;font-size:20px}
 .embedded-learn footer{font-size:11px}
+
+/* One-line language pair: [I speak] → [I want to learn] ⇄ */
+.hero.pairHero, .embedded-learn .hero.pairHero{padding:10px 12px;margin-bottom:14px;border-radius:16px}
+.coursePicker.pairLine, .embedded-learn .coursePicker.pairLine{display:flex;align-items:center;gap:6px;margin:0;grid-template-columns:none}
+.pairLine select{flex:1 1 0;min-width:0;max-width:none;width:auto;min-height:40px;padding:8px 2px 8px 6px;font-size:13px;border-radius:10px}
+.pairLine{gap:4px}
+.pairLine .arrow{font-weight:800;color:#0f5c56;font-size:18px;flex:0 0 auto}
+.pairLine .swap, .embedded-learn .pairLine .swap{flex:0 0 auto;height:40px;width:40px;min-width:40px;font-size:18px;border-radius:10px;justify-self:auto}
+.hero.pairHero, .embedded-learn .hero.pairHero{padding:8px}
+.pairLine select{font-size:12.5px;padding:8px 0 8px 5px}
+.pairLine .swap, .embedded-learn .pairLine .swap{height:36px;width:34px;min-width:34px;font-size:16px}
+.pairLine .arrow{font-size:15px}
+
+/* Learning path shows the pair as a statement; the dropdowns open only on "Change" */
+.pairStatement{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pairStatement .chosenCourse{margin:0;font-size:17px;font-weight:800;color:#0f5c56;min-width:0}
+.changePair{flex:0 0 auto;border:1px solid #9bcabb;background:#fff;color:#0f5c56;border-radius:10px;padding:7px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.pairStatement + .pairLine{margin-top:8px}
+.coursePicker[hidden]{display:none!important}
+/* stronger text colours (WCAG AA contrast 4.5:1 for small text) */
+.unit small,.embedded-learn .unit small{color:#4f625b}footer{color:#4f625b}.minor{color:#4c645d}.notice{color:#3f5650}.stagePending{color:#6e5838}

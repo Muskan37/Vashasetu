@@ -1,0 +1,3 @@
+vendor/
+tests/results/coverage-raw/
+database/tts_cache/

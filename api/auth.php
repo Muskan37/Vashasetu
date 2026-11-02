@@ -34,11 +34,17 @@ if ($action === 'register' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['error' => 'Invalid email address']);
         exit;
     }
-    if (strlen($password) < 6) {
+    if (strlen($email) > 150) {          // the users.email column holds 150 characters; longer ones used to fail with a 500
         http_response_code(400);
-        echo json_encode(['error' => 'Password must be at least 6 characters']);
+        echo json_encode(['error' => 'Email address is too long (at most 150 characters)']);
         exit;
     }
+    if (!is_string($password) || ($pp = vs_password_problem($password, $email)) !== null) {
+        http_response_code(400);
+        echo json_encode(['error' => $pp ?? 'Invalid password']);
+        exit;
+    }
+    vs_require_rate($pdo, 'register', 10, 3600, 'Too many new accounts from your connection. Please try again later.');
 
     try {
         $check = $pdo->prepare("SELECT id FROM users WHERE email = ?");

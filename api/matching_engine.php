@@ -7,6 +7,7 @@
 // Dictionary data lives in MySQL (see setup.php); no external API is used.
 // ============================================================
 require_once __DIR__ . '/lib/text.php';
+require_once __DIR__ . '/lib/en_grammar.php';
 
 // Word-by-word translation only (like a statistical translator). Set true to also allow exact stored-sentence lookups.
 const USE_SENTENCE_MEMORY = false;
@@ -700,6 +701,13 @@ function translate_core(PDO $pdo, string $text, string $src = 'auto', string $tg
     if ($srcVar === 'english') {
         $words = array_values(array_filter(preg_split('/[^A-Za-z\']+/', expand_contractions($text))));
         $n = count($words); $stdParts = []; $usedPhrase = false; $i = 0; $pending = [];
+        // Whole sentence first: English grammar rules (word order, tense and person in the verb), unless it is a known phrase.
+        $gram = (!isset(CORE_PHRASES[strtolower(implode(' ', $words))]) && $n >= 2) ? en_bn_grammar($pdo, $words) : null;
+        if ($gram !== null) {
+            foreach ($words as $k => $ew) $breakdown[] = ['src' => $ew, 'std' => $gram['box'][$k] ?? '', 'matched' => true, 'kind' => 'grammar'];
+            $stdParts[] = $gram['text']; $i = $n;
+            $notes[] = 'English sentence translated with grammar rules (Bangla word order, tense and person in the verb). Please check anything important.';
+        }
         $flush = function () use (&$pending, &$stdParts, &$breakdown, $pdo, &$notes) {
             if (!$pending) return;
             foreach (english_to_bangla($pdo, $pending) as $r) { $breakdown[] = ['src' => $r['src'], 'std' => $r['std'], 'matched' => $r['matched'], 'kind' => 'english']; $stdParts[] = $r['std']; }
@@ -721,7 +729,7 @@ function translate_core(PDO $pdo, string $text, string $src = 'auto', string $tg
         $flush();
         $stdText = implode(' ', $stdParts);
         if ($usedPhrase) { $memory = $usedPhrase && count($breakdown) === $n && !array_filter($breakdown, fn($b) => $b['kind'] !== 'phrase'); $notes[] = 'Matched a common English phrase.'; }
-        if (!$usedPhrase || array_filter($breakdown, fn($b) => $b['kind'] === 'english')) $notes[] = 'English input is translated word-by-word from a dictionary (no sentence grammar).';
+        if ($gram === null && (!$usedPhrase || array_filter($breakdown, fn($b) => $b['kind'] === 'english'))) $notes[] = 'English input is translated word-by-word from a dictionary (no sentence grammar).';
     } else {
         $tokens = bn_tokens($banglaText);
         $norm = implode(' ', $tokens);
@@ -825,6 +833,8 @@ function translate_core(PDO $pdo, string $text, string $src = 'auto', string $tg
 // Keeps punctuation and line breaks: translates each clause on its own and puts the original marks back.
 function translate_full(PDO $pdo, string $text, string $src = 'auto', string $tgt = 'standard'): array {
     $text = trim($text);
+    // the dot of a title (Mr. Dr.) is not a sentence end: drop it so "Mr. Karim" stays one sentence
+    $text = preg_replace('/\b(Mr|Mrs|Ms|Dr|Prof|St|Jr|Sr|vs|No)\.(?=\s)/i', '$1', $text);
     $parts = preg_split('/((?:[।?!]+|[,;:.](?=\s|$)|\n+)[ \t]*)/u', $text, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
     $isMark = fn($x) => preg_match('/^(?:[।?!]+|[,;:.]|\n+)[ \t]*$/u', $x) === 1;
     $chunks = array_values(array_filter($parts, fn($x) => !$isMark($x) && preg_match('/[\p{L}\p{N}]/u', $x)));

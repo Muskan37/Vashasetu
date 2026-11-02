@@ -1,0 +1,52 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        ports: ["3306:3306"]
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: pdo_mysql, mbstring, intl
+          tools: phpunit:9.6
+          coverage: pcov
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Lint PHP
+        run: for f in $(find . -name "*.php"); do php -l "$f" || exit 1; done
+      - name: Check JavaScript syntax
+        run: for f in assets/js/*.js sw.js; do node --check "$f" || exit 1; done
+      - name: Check data scripts compile
+        run: python3 -m py_compile tools/*.py tests/*.py
+      - name: Unit tests and code checks
+        run: php tests/unit_tests.php && python3 tests/code_scan.py
+      - name: Load the database
+        run: php setup.php --reset
+      - name: Start the app
+        run: php -S 127.0.0.1:8000 >/tmp/php.log 2>&1 &
+      - name: PHPUnit (unit, data, integration and HTTP tests, with coverage)
+        run: sleep 2 && BASE=http://127.0.0.1:8000 phpunit --coverage-text --coverage-clover tests/results/clover.xml --log-junit tests/results/phpunit-junit.xml
+      - name: API tests
+        run: sleep 2 && BASE=http://127.0.0.1:8000 python3 tests/api_tests.py
+      - name: System tests (functional, validation, security, performance)
+        run: pip install requests && SERVER=php-builtin BASE=http://127.0.0.1:8000 python3 tests/system_tests.py
+      - name: Browser tests (Playwright + Chromium)
+        run: pip install playwright && python3 -m playwright install --with-deps chromium && BASE=http://127.0.0.1:8000 python3 tests/ui_tests.py
+      - name: Keep test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: tests/results/

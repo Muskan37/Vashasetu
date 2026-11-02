@@ -25,6 +25,7 @@ if (REQUIRE_LOGIN) {
     }
 }
 if (EDIT_PASSCODE !== '' && ($in['passcode'] ?? '') !== EDIT_PASSCODE) { http_response_code(403); echo json_encode(['error'=>'Wrong passcode']); exit; }
+vs_require_rate(get_db(), 'edit', 60, 600, 'Too many dictionary edits from your connection. Please wait a few minutes.');   // anti-flooding
 if (!in_array($lang, array_merge(DIALECTS, array_keys(VS_NATIVE_LANGUAGES)), true)) { http_response_code(400); echo json_encode(['error'=>'Unsupported language']); exit; }
 if ($word === '' || mb_strlen($word) > 100 || ($action === 'save' && ($mean === '' || mb_strlen($mean) > 100))) { http_response_code(400); echo json_encode(['error'=>'Word and meaning are required']); exit; }
 try {

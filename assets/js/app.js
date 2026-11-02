@@ -227,7 +227,7 @@ function onHome() {
 
 function buildMap() {
   const { w, h } = BD_VIEW;
-  let s = `<svg class="map-svg" viewBox="0 0 ${w} ${h}" role="img" aria-label="Map of Bangladesh. Tap a region to hear its dialect.">
+  let s = `<svg class="map-svg" viewBox="0 0 ${w} ${h}" role="group" aria-label="Map of Bangladesh. Tap a region to hear its dialect.">
     <defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2F2F7"/><stop offset="1" stop-color="#B9DCEB"/></linearGradient></defs>
     <rect width="${w}" height="${h}" fill="url(#sea)"/>
     <path d="${BD_NEIGHBORS}" fill="#F1EADA" stroke="#DDD1B6" stroke-width=".8" fill-rule="evenodd"/>
@@ -610,57 +610,90 @@ function openWordForm(lang, word, meaning, phrase) {
       ${word ? '<button class="btn btn-line btn-sm" data-act="deleteWordForm">Delete</button>' : ''}
     </div></div>`);
 }
-function stopMic() { if (recognizer) { try { recognizer.stop(); } catch (e) { /* ignore */ } } }
+let userStopped = false, micSession = null;
+const IS_ANDROID = /Android/i.test(navigator.userAgent);
+// Stop: end listening now, but give the phone a moment to send the last words before cutting the microphone.
+function stopMic() {
+  userStopped = true;
+  setListening(false);
+  const r = recognizer;
+  if (!r) { micSession = null; return; }
+  try { r.stop(); } catch (e) { /* ignore */ }
+  setTimeout(() => { if (recognizer === r) { try { r.abort(); } catch (e) { /* ignore */ } recognizer = null; micSession = null; setListening(false); } }, 1800);
+}
 function toggleMic() {
-  const input = $('#dialect-input');
-  if (recognizer) { try { recognizer.stop(); } catch (e) { /* ignore */ } return; }
+  if (recognizer || micSession) { stopMic(); return; }
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) { toast('Voice input needs Chrome or Edge. You can type or scan an image instead.', 3600); return; }
   if (!window.isSecureContext) { toast('Voice needs a secure page: open the app from localhost or https://', 3800); return; }
-
+  userStopped = false;
+  const input = $('#dialect-input');
+  micSession = { before: input.value, said: '', got: false, empty: 0 };
+  listenOnce(SR);
+}
+// One listening round. Android phones handle short rounds best (continuous mode repeats or drops words there),
+// so on Android each round ends after a pause and a new one starts until the person taps Stop.
+function listenOnce(SR) {
+  const sess = micSession; if (!sess) return;
   const rec = new SR();
   rec.lang = voiceLang;
   rec.interimResults = true;
-  rec.continuous = true;   // keep listening until the person taps Stop
+  rec.continuous = !IS_ANDROID;
   rec.maxAlternatives = 1;
-  let gotText = false, failed = false, retrying = false;
-  const before = input.value;
+  let heard = '', failed = false, retrying = false;
+  const join = (a, b) => (a && b ? a + ' ' + b : a || b);
+  const show = (t) => setInput(join(sess.before.trim(), t).trim());
 
-  rec.onstart = () => { setListening(true, 'Listening… speak now, then tap Stop'); vib(15); };
+  rec.onstart = () => { setListening(true, 'Listening… speak now, then tap Stop'); if (!sess.said) vib(15); };
   rec.onresult = (e) => {
-    let t = '';
-    for (let i = 0; i < e.results.length; i++) t += e.results[i][0].transcript;
-    setInput(t);
-    if (t.trim()) { gotText = true; $('#listen-label').textContent = 'Heard: ' + t.slice(-40); }
+    let fin = '', tmp = '';
+    for (let i = 0; i < e.results.length; i++) {
+      const tr = e.results[i][0].transcript;
+      if (e.results[i].isFinal) fin += tr; else tmp += tr;
+    }
+    heard = (fin + ' ' + tmp).trim();
+    const all = join(sess.said, heard);
+    show(all);
+    if (all.trim()) { sess.got = true; if (!userStopped) $('#listen-label').textContent = 'Heard: ' + all.slice(-40); }
   };
   rec.onerror = (e) => {
     failed = true;
+    if (userStopped) return;            // the person tapped Stop: no error message
     switch (e.error) {
       case 'not-allowed':
       case 'service-not-allowed': toast('Microphone is blocked. Tap the lock icon by the address bar and allow Microphone.', 4200); break;
-      case 'no-speech': toast('No speech heard. Tap the mic and speak closer to it.'); break;
+      case 'no-speech': if (!sess.got) toast('No speech heard. Tap the mic and speak closer to it.'); break;
       case 'audio-capture': toast('No microphone found on this device.'); break;
       case 'network': toast('Voice recognition needs internet (Chrome sends audio to Google). Check your connection.', 4200); break;
       case 'language-not-supported':
-        if (!voiceRetried) { voiceRetried = true; voiceLang = 'bn-IN'; retrying = true; setTimeout(toggleMic, 150); }
-        else toast('This browser has no Bengali speech recognition. Please type or scan an image.', 3800);
+        if (!voiceRetried) { voiceRetried = true; voiceLang = voiceLang === 'bn-BD' ? 'bn-IN' : 'bn-BD'; retrying = true; }
+        else toast('This browser has no Bengali speech recognition. Please use the microphone on your keyboard (set to Bangla).', 4200);
         break;
       case 'aborted': break;
       default: toast('Voice error: ' + e.error);
     }
   };
   rec.onend = () => {
-    setListening(false);
     recognizer = null;
-    if (gotText) setTimeout(logCurrent, 1200);
-    if (!gotText && !failed && !retrying) {
-      setInput(before);
-      if (!voiceRetried) { voiceRetried = true; voiceLang = voiceLang === 'bn-BD' ? 'bn-IN' : 'bn-BD'; toast('Trying another Bangla voice setting…'); setTimeout(toggleMic, 250); }
+    if (heard) sess.said = join(sess.said, heard);
+    if (micSession !== sess) return;
+    const fatal = failed && !retrying;
+    if (!userStopped && (retrying || (IS_ANDROID && !fatal && sess.empty < 3))) {
+      if (!heard) sess.empty++; else sess.empty = 0;
+      setTimeout(() => { if (micSession === sess && !userStopped) listenOnce(SR); }, 150);   // keep listening until Stop
+      return;
+    }
+    setListening(false);
+    micSession = null;
+    if (sess.got) { setTimeout(logCurrent, 1200); return; }
+    setInput(sess.before);
+    if (!userStopped && !failed) {
+      if (!voiceRetried) { voiceRetried = true; voiceLang = voiceLang === 'bn-BD' ? 'bn-IN' : 'bn-BD'; toast('Trying another Bangla voice setting… tap the mic again.', 3200); }
       else toast('Nothing was heard. Check the microphone permission, or use the microphone on your keyboard instead.', 4200);
     }
   };
   recognizer = rec;
-  try { rec.start(); } catch (err) { recognizer = null; toast('Could not start the microphone. Please try again.'); }
+  try { rec.start(); } catch (err) { recognizer = null; micSession = null; setListening(false); toast('Could not start the microphone. Please try again.'); }
 }
 
 /* ---------- Voice output ---------- */
@@ -672,15 +705,15 @@ let onlineAudio = null;
 function playOnlineVoice(text, btn, lang) {
   // Fallback when the device has no Bengali voice: an online text-to-speech clip (needs internet).
   try { if (onlineAudio) { onlineAudio.pause(); onlineAudio = null; } } catch (e) { /* ignore */ }
-  const clip = text.length > 180 ? text.slice(0, 180) : text;
-  const url = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=' + encodeURIComponent(lang) + '&q=' + encodeURIComponent(clip);
+  // The app's own server makes the sound (api/tts.php) and keeps a copy, so no voice has to be installed on the phone.
+  const url = 'api/tts.php?lang=' + encodeURIComponent(lang) + '&q=' + encodeURIComponent(text.slice(0, 400));
   const a = new Audio(url);
   onlineAudio = a;
   a.onplay = () => btn.classList.add('speaking');
   a.onended = a.onpause = () => btn.classList.remove('speaking');
-  a.onerror = () => { btn.classList.remove('speaking'); toast('Could not play the voice. Check your internet connection, or install a Bengali voice in your device’s Speech settings.', 4200); };
+  a.onerror = () => { btn.classList.remove('speaking'); toast('Could not play the sound right now. Please check the internet connection and try again.', 4200); };
   const pr = a.play();
-  if (pr && pr.catch) pr.catch(() => { btn.classList.remove('speaking'); toast('Could not play the voice. Check your internet connection, or install a Bengali voice in your device’s Speech settings.', 4200); });
+  if (pr && pr.catch) pr.catch(() => { btn.classList.remove('speaking'); toast('Could not play the sound right now. Please check the internet connection and try again.', 4200); });
 }
 function playAudio(el, ev, override) {
   const text = (typeof override === 'string' ? override : $('#result-text').textContent).trim();
@@ -979,7 +1012,7 @@ function loadProfile() {
       <div class="pname">${esc(S.user.name)}</div><div class="pmail">${esc(S.user.email)}</div>
       ${stats}
       <div class="setting"><span>Preferred dialect</span>
-        <select id="profile-dialect">${SUPPORTED.map(toApiName).map((k) => `<option ${k === toApiName(S.user.preferred_dialect) ? 'selected' : ''}>${k}</option>`).join('')}</select></div>
+        <select id="profile-dialect" aria-label="Preferred dialect">${SUPPORTED.map(toApiName).map((k) => `<option ${k === toApiName(S.user.preferred_dialect) ? 'selected' : ''}>${k}</option>`).join('')}</select></div>
       <div class="setting" style="display:block">
         <label class="district-label" for="profile-district">Current district (64 districts)</label>
         <select id="profile-district" class="input" style="width:100%">${districtSelectOptions(S.user.current_district||'')}</select>
@@ -1159,8 +1192,6 @@ const ACTIONS = {
     try { const r = await post('edit_word.php', { language: f.dataset.lang, word: f.dataset.old, meaning: '', phrase: !!f.dataset.p, action: 'delete' }); if (r.error) { toast(r.error, 3600); return; } closeSheet(); toast('Deleted'); loadDict(true); }
     catch (e) { toast('Could not delete'); }
   },
-  stopMic() { stopMic(); },
-  dictMore() { D.page++; loadDict(false); },
   delHistory(el) { deleteHistory(el.dataset.id, el.closest('.hcard')); },
   tryWod() {
     if (!S.wod) return;
@@ -1243,16 +1274,11 @@ async function init() {
   renderLangBar();
   renderGreeting();
   await Promise.all([checkAuth(),loadDistricts()]);
+  // Opened without internet: the account could not be checked. Check again as soon as the connection is back,
+  // so a logged-in person is not treated as a guest until they reload.
+  window.addEventListener('online', () => { checkAuth(); if (!DISTRICTS.length) loadDistricts(); });
   openFromHash();
 
-  // "Install app" button: Chrome offers installation through this event; show our own button for it.
-  let installEvt = null;
-  window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvt = e; const b = $('#install-btn'); if (b) b.hidden = false; });
-  window.addEventListener('appinstalled', () => { const b = $('#install-btn'); if (b) b.hidden = true; toast('App installed ✓'); });
-  ACTIONS.installApp = async () => {
-    if (!installEvt) { toast('Use the browser menu (⋮) → Install app / Add to Home screen', 4200); return; }
-    installEvt.prompt(); await installEvt.userChoice.catch(() => {}); installEvt = null; $('#install-btn').hidden = true;
-  };
   if ('serviceWorker' in navigator) {
     const hadController = !!navigator.serviceWorker.controller;
     navigator.serviceWorker.addEventListener('controllerchange', () => {

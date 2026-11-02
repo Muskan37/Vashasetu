@@ -3,7 +3,7 @@
 require_once __DIR__.'/config.php';
 require_once __DIR__.'/matching_engine.php';
 require_once __DIR__.'/word_evidence.php';
-$word=trim($_GET['word']??'');
+$word=bn_compose(trim((string)($_GET['word']??'')));
 $language=trim($_GET['language']??'Chattogram');
 if (!in_array($language,array_merge(DIALECTS,array_keys(VS_NATIVE_LANGUAGES)),true)) { http_response_code(400); echo json_encode(['error'=>'Choose one supported dictionary language']);exit; }
 if($word===''){http_response_code(400);echo json_encode(['error'=>'word required']);exit;}

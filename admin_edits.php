@@ -7,7 +7,7 @@ require_once __DIR__ . '/api/word_evidence.php';
 require_once __DIR__ . '/api/curated_edit.php';
 require_once __DIR__ . '/api/edit_lib.php';
 if (!vs_is_local_request()) { http_response_code(403); exit('This page only opens on the computer running XAMPP (http://localhost/vashasetu/admin_edits.php).'); }
-header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: text/html; charset=utf-8'); vs_page_headers();
 $dir = __DIR__ . '/database/edits_by_ip';
 $files = is_dir($dir) ? glob($dir . '/*.csv') : [];
 function read_edits(string $f): array { $r = array_map('str_getcsv', file($f, FILE_IGNORE_NEW_LINES)); $h = array_shift($r); return array_map(fn($x) => array_combine($h, array_pad($x, count($h), '')), $r); }

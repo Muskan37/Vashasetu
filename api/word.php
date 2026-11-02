@@ -8,7 +8,7 @@ if ($dialect==='any' || $dialect==='') $dialect='Chattogram';$mode=($_GET['mode'
 $n=(int)($_GET['n']??0);$exclude=(int)($_GET['exclude_id']??0);
 try {
  $db=get_db();
- $q="SELECT id,source_word AS dialect_word,standard_word AS standard_meaning,language AS dialect_type,meaning_status AS review_status,source_dataset FROM word_meanings WHERE source_word<>standard_word AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported')";
+ $q="SELECT id,source_word AS dialect_word,standard_word AS standard_meaning,language AS dialect_type,meaning_status AS review_status,source_dataset FROM word_meanings WHERE source_word<>standard_word AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported','native_speaker_alternative')";
  if ($dialect!=='' && $dialect!=='any') {$st=$db->prepare($q.' AND language=? ORDER BY id');$st->execute([$dialect]);}
  else {http_response_code(400);echo json_encode(['error'=>'A specific language is required']);exit;}
  $rows=$st->fetchAll();

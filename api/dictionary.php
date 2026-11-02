@@ -11,14 +11,14 @@ if (!in_array($dialect, $dictionaryLanguages, true)) {
     echo json_encode(['error' => 'Unsupported dictionary language. Please choose an available language.']);
     exit;
 }
-$q = mb_substr(trim($_GET['q'] ?? ''),0,60);
-$page = max(1, (int) ($_GET['page'] ?? 1));
+$q = mb_substr(bn_compose(trim((string) ($_GET['q'] ?? ''))),0,60);
+$page = min(100000, max(1, (int) ($_GET['page'] ?? 1)));   // a huge page number used to overflow the SQL OFFSET
 $per=30;
 $includeCandidates=true; // show every word; unreviewed ones are only flagged in the tooltip
 try {
     $db=get_db();
-    $where='language=?';$args=[$dialect]; // strictly selected-language records
-    if (!$includeCandidates) $where.=" AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported')";
+    $where='language=?';$args=[$dialect]; // strictly selected-language records; words that differ from Standard come first (verified, then checked, then the rest); words spelled like Standard go last
+    if (!$includeCandidates) $where.=" AND meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported','native_speaker_alternative')";
     if ($q!=='') {
         $normalized=bn_normalize($q);
         $escaped=str_replace(['|','%','_'],['||','|%','|_'],$normalized);
@@ -26,11 +26,11 @@ try {
         $args[]=$escaped.'%';$args[]=$escaped.'%';
     }
     $st=$db->prepare("SELECT COUNT(*) FROM word_meanings WHERE $where");$st->execute($args);$total=(int)$st->fetchColumn();
-    $st=$db->prepare("SELECT source_word,standard_word,meaning_status,source_dataset,evidence_count FROM word_meanings WHERE $where ORDER BY CASE WHEN meaning_status='community_verified' THEN 0 WHEN meaning_status='existing_curated_needs_recheck' THEN 1 ELSE 2 END, evidence_count DESC, source_word LIMIT $per OFFSET ".(($page-1)*$per));
+    $st=$db->prepare("SELECT wm.source_word,wm.standard_word,wm.meaning_status,wm.source_dataset,wm.evidence_count FROM (SELECT * FROM word_meanings WHERE $where) wm LEFT JOIN vocab_freq vf ON vf.variety=wm.language AND vf.word=wm.source_word LEFT JOIN lexicon lx ON lx.dialect=wm.language AND lx.dialect_word=wm.source_word AND lx.standard_word=wm.standard_word ORDER BY (wm.source_word=wm.standard_word), CASE WHEN wm.meaning_status IN ('native_speaker_reported','community_verified') THEN 0 WHEN wm.meaning_status IN ('native_speaker_alternative','corpus_confirmed','publication_reviewed_not_reaudited','existing_curated_needs_recheck') THEN 1 WHEN wm.source_word<>wm.standard_word THEN 2 ELSE 3 END, (wm.source_dataset LIKE '%unreliable%'), (lx.dialect IS NULL), LEAST(COALESCE(vf.cnt,0), 50) * COALESCE(lx.p_std + lx.p_dia, 0.2) DESC, wm.evidence_count DESC, wm.source_word LIMIT $per OFFSET ".(($page-1)*$per));
     $st->execute($args);
     $rows=[];
     foreach ($st->fetchAll() as $r) $rows[]=['dialect_word'=>$r['source_word'],'standard_word'=>$r['standard_word'],'roman'=>bn_romanize($r['source_word']),
-      'count'=>(int)$r['evidence_count'],'verified'=>$r['meaning_status']==='community_verified'?1:0,
+      'count'=>(int)$r['evidence_count'],'verified'=>in_array($r['meaning_status'],['community_verified','native_speaker_reported','native_speaker_alternative'],true)?1:0,
       'conf'=>null,'review_status'=>$r['meaning_status'],'source_dataset'=>$r['source_dataset']];
     // Nothing reviewed yet for this language: show the confident learned pairs, clearly labelled unverified.
     if ($total===0) {
@@ -57,7 +57,7 @@ try {
         }
     }
     $totals=[];
-    $st=$db->query("SELECT language,COUNT(*) n FROM word_meanings WHERE meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported') GROUP BY language");
+    $st=$db->query("SELECT language,COUNT(*) n FROM word_meanings WHERE meaning_status IN ('publication_reviewed_not_reaudited','existing_curated_needs_recheck','community_verified','native_speaker_reported','native_speaker_alternative') GROUP BY language");
     foreach ($st->fetchAll() as $r) $totals[$r['language']]=(int)$r['n'];
     echo json_encode(['success'=>true,'dialect'=>$dialect,'total'=>$total,'page'=>$page,'pages'=>max(1,(int)ceil($total/$per)), 'rows'=>$rows,'dialect_totals'=>$totals,
         'note'=>'Research-reviewed is not independent native-speaker verification. Add include_candidates=1 to inspect unreviewed items.'],JSON_UNESCAPED_UNICODE);

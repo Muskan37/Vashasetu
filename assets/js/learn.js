@@ -13,12 +13,14 @@ const getDone=u=>state.guest?(state.guestDone[pairKey()]?.[u.unit_key]||[]).leng
 const setDone=(u,item)=>{const key=pairKey();state.guestDone[key]??={};let values=new Set(state.guestDone[key][u.unit_key]||[]);values.add(item.item_kind+':'+item.id);state.guestDone[key][u.unit_key]=[...values];try{localStorage.setItem(K,JSON.stringify(state.guestDone))}catch(e){}};
 async function api(data={},post=false){const url='api/learn.php'+(post?'':'?'+new URLSearchParams(data));const r=await fetch(url,post?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}:{cache:'no-store'});const b=await r.json();if(!r.ok||!b.success)throw new Error(b.error||'Request failed');return b;}
 const params=(more={})=>({source:state.src,target:state.tgt,...more});
+// Problems are shown as a line on the page instead of a pop-up box that blocks the phone screen.
+function showMsg(msg){showOnly('unitsView');let n=$('learnMsg');if(!n){n=el('p','notice','');n.id='learnMsg';n.setAttribute('role','status');$('unitList').before(n);}n.textContent=msg;n.scrollIntoView({behavior:'smooth',block:'center'});}
 function showOnly(which){for(const id of ['unitsView','exerciseView','previewView'])$(id).hidden=id!==which;}
 function selectionValid(){return !!(state.src&&state.tgt&&state.src!==state.tgt);}
 async function init(){try{
  const data=await api({action:'languages'});state.languages=data.languages;
  let savedSrc='',savedTgt='';try{savedSrc=safeId(localStorage.getItem('vashasetu-v4-source')||'');savedTgt=safeId(localStorage.getItem('vashasetu-v4-target')||'');}catch(e){}
- for(const id of ['sourceLang','targetLang']){const s=$(id);s.replaceChildren();for(const l of state.languages){let opt=el('option','',l.display_name+' · '+l.language_type.replaceAll('_',' '));opt.value=l.language_id;s.add(opt);}}
+ for(const id of ['sourceLang','targetLang']){const s=$(id);s.replaceChildren();for(const l of state.languages){let opt=el('option','',l.display_name);opt.title=l.language_type.replaceAll('_',' ');opt.value=l.language_id;s.add(opt);}}
  const initialSource=safeId(new URLSearchParams(location.search).get('source')||'');
  state.src=state.languages.some(x=>x.language_id===savedSrc)?savedSrc:(state.languages.some(x=>x.language_id===initialSource)?initialSource:'noakhali-bn');
  state.tgt=state.languages.some(x=>x.language_id===savedTgt)?savedTgt:'standard';
@@ -26,10 +28,11 @@ async function init(){try{
  $('sourceLang').value=state.src;$('targetLang').value=state.tgt;
  $('sourceLang').onchange=async()=>{state.src=$('sourceLang').value;await selectionChanged()};
  $('targetLang').onchange=async()=>{state.tgt=$('targetLang').value;await selectionChanged()};
+ $('changePair').onclick=()=>{const pk=$('pairPicker');pk.hidden=!pk.hidden;$('changePair').textContent=pk.hidden?'Change':'Done';$('changePair').setAttribute('aria-expanded',String(!pk.hidden));};
  $('swapLang').onclick=async()=>{[state.src,state.tgt]=[state.tgt,state.src];$('sourceLang').value=state.src;$('targetLang').value=state.tgt;await selectionChanged()};
  await selectionChanged();
  }catch(e){$('unitList').textContent='Could not load languages: '+e.message+'. Run setup.php.';}}
-async function selectionChanged(){showOnly('unitsView');state.current=null;
+async function selectionChanged(){showOnly('unitsView');const lm=$('learnMsg');if(lm)lm.remove();state.current=null;
  if(!selectionValid()){$('unitList').textContent='Choose two different languages to build your learning path.';$('courseNotice').textContent='Source and target languages must be different.';$('chosenCourse').textContent='';return;}
  try{localStorage.setItem('vashasetu-v4-source',state.src);localStorage.setItem('vashasetu-v4-target',state.tgt);}catch(e){}
  $('chosenCourse').textContent=name(state.src)+' → '+name(state.tgt);
@@ -58,27 +61,37 @@ function renderUnits(){const root=$('unitList');root.replaceChildren();if(!state
  }
  card.append(actions);root.append(card);
  });}
-function supportsAudio(){return 'speechSynthesis' in window;}
-function speakNote(msg){let n=document.getElementById('speakNote');if(!n){n=el('div','emptyState','');n.id='speakNote';const t=$('listenBtn');t.parentNode.insertBefore(n,t.nextSibling);}n.textContent=msg;}
-function speakBangla(text){if(!supportsAudio()){speakNote('This browser cannot play speech. Read the letter and choose the answer.');return;}
+function supportsAudio(){return true;}
+function speakNote(msg){let n=document.getElementById('speakNote');if(!msg){if(n)n.remove();return;}if(!n){n=el('div','emptyState','');n.id='speakNote';const t=$('listenBtn');t.parentNode.insertBefore(n,t.nextSibling);}n.textContent=msg;}
+let lessonAudio=null;
+// Sound made by the app's server (api/tts.php) - works on every phone, no voice needs to be installed.
+function playServerVoice(text){
+ try{if(lessonAudio){lessonAudio.pause();lessonAudio=null;}}catch(e){}
+ const a=new Audio('api/tts.php?lang=bn&q='+encodeURIComponent(text));lessonAudio=a;
+ const fail=()=>speakNote('Could not play the sound right now. Please check the internet connection and try again. The written exercises still work.');
+ a.onplaying=()=>speakNote('');a.onerror=fail;const pr=a.play();if(pr&&pr.catch)pr.catch(fail);
+}
+function speakBangla(text){
  const synth=window.speechSynthesis;
+ if(!synth){playServerVoice(text);return;}
  const go=()=>{const voice=synth.getVoices().find(v=>/^bn([-_]|$)/i.test(v.lang));
-  synth.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=voice?voice.lang:'bn-BD';if(voice)u.voice=voice;u.rate=.8;
+  if(!voice){playServerVoice(text);return;}            // no Bangla voice on this phone: use the server voice
+  synth.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=voice.lang;u.voice=voice;u.rate=.8;
   let started=false;u.onstart=()=>{started=true;speakNote('');};
-  u.onerror=()=>speakNote('This phone has no Bangla voice. Install it: Settings → System → Languages → Text-to-speech output → Google → Install voice data → Bengali. The written exercises still work.');
+  u.onerror=(e)=>{if(e&&(e.error==='canceled'||e.error==='interrupted'))return;if(!started)playServerVoice(text);};
   synth.speak(u);
-  setTimeout(()=>{if(!started&&!voice)speakNote('No Bangla voice found. Install it: Settings → System → Languages → Text-to-speech output → Google → Install voice data → Bengali. The written exercises still work.');},1500);};
+  setTimeout(()=>{if(!started&&!synth.speaking)playServerVoice(text);},1500);};
  // Chrome loads its voice list asynchronously; wait for it once before choosing a voice.
  if(synth.getVoices().length)go();else{let done=false;const run=()=>{if(done)return;done=true;go();};synth.addEventListener('voiceschanged',run,{once:true});setTimeout(run,800);}
 }
-async function openUnit(u){state.current=u;state.step=0;try{const d=await api(params({action:'course_items',unit:u.unit_key}));state.items=d.items;if(!state.items.length)throw Error('No reviewed exercise items for this pair');showOnly('exerciseView');renderQuestion();window.scrollTo({top:0,behavior:'smooth'});}catch(e){alert(e.message);}}
+async function openUnit(u){state.current=u;state.step=0;try{const d=await api(params({action:'course_items',unit:u.unit_key}));state.items=d.items;if(!state.items.length)throw Error('No reviewed exercise items for this pair');showOnly('exerciseView');renderQuestion();window.scrollTo({top:0,behavior:'smooth'});}catch(e){showMsg('This lesson cannot open yet: '+e.message+'.');}}
 function renderQuestion(){const q=state.items[state.step];if(!q){finish();return;}state.answered=false;
  $('exerciseTitle').textContent=state.current.title_en+' · '+name(state.tgt);$('counter').textContent=(state.step+1)+' / '+state.items.length;
  $('progressBar').style.width=(state.step*100/state.items.length)+'%';$('prompt').textContent=q.prompt_native||q.prompt;
  $('soundIpa').textContent=[q.ipa,q.romanization].filter(Boolean).join(' · ');$('symbol').textContent='';
  const audio=$('listenBtn');audio.hidden=true;audio.onclick=null;
  if(q.audio_path&&!q.audio_path.includes('..')&&/^assets\/audio\/[a-zA-Z0-9_\/.\-]+\.(mp3|ogg|wav)$/i.test(q.audio_path)){
-  audio.hidden=false;audio.textContent='🔊 Listen to native recording';audio.onclick=()=>new Audio(q.audio_path).play().catch(()=>alert('Recording unavailable'));
+  audio.hidden=false;audio.textContent='🔊 Listen to native recording';audio.onclick=()=>new Audio(q.audio_path).play().catch(()=>speakNote('Recording unavailable right now.'));
  }else if((state.tgt==='standard'||q.item_kind==='core')&&q.speech_text&&supportsAudio()){
   audio.hidden=false;audio.textContent='🔊 Listen to Bangla';audio.onclick=()=>speakBangla(q.speech_text);
  }
@@ -93,7 +106,7 @@ async function openQuiz(u){state.current=u;state.step=0;
   const pick=rows.slice().sort(()=>Math.random()-.5).slice(0,10);
   state.items=pick.map((r,i)=>{const wrong=rows.filter(x=>mean(x)!==mean(r)).sort(()=>Math.random()-.5).slice(0,3).map(mean);
    return{id:i,local:true,item_kind:'local',prompt:'What does “'+r.target_text+'” mean?',ipa:'',romanization:'',speech_text:'',display_text:r.target_text,correct:mean(r),options:[mean(r),...wrong],gloss_en:'Source: '+(r.source_dataset||'research data')};});
-  showOnly('exerciseView');renderQuestion();}catch(e){alert('Quiz unavailable: '+e.message);}}
+  showOnly('exerciseView');renderQuestion();}catch(e){showMsg('Quiz unavailable: '+e.message+'.');}}
 async function choose(q,btn,value){if(state.answered)return;state.answered=true;
  if(q.local){const ok=value===q.correct;for(const b of $('answers').children){b.disabled=true;if(b.textContent===q.correct)b.classList.add('correct');if(!ok&&b===btn)b.classList.add('wrong');}
   $('symbol').textContent=q.display_text;$('feedback').textContent=(ok?'Correct! ':'Try again. Correct answer: '+q.correct+'. ')+q.gloss_en;$('feedback').style.color=ok?'#21734e':'#b44932';

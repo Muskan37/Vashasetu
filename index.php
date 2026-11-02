@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/api/lib/security.php';
+vs_hide_errors(); vs_page_headers();
 // Adds ?v=<file modified time> so browsers always fetch the newest CSS/JS after you upload changes
 function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . '/' . $p); }
 ?><!DOCTYPE html>
@@ -133,7 +135,6 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
       </header>
 
       <div class="pull">
-        <button class="btn btn-gold btn-block install-btn" id="install-btn" data-act="installApp" hidden>📲 Install the app on this phone</button>
         <div class="card">
           <div class="quick-title">Translate a dialect</div>
           <div class="quick-row">
@@ -338,7 +339,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
         <div class="card">
           <div class="field"><label for="register-name">Full name</label><input class="input" id="register-name" placeholder="Your name" autocomplete="name"></div>
           <div class="field"><label for="register-email">Email</label><input class="input" id="register-email" type="email" placeholder="you@example.com" autocomplete="email"></div>
-          <div class="field"><label for="register-password">Password</label><div class="pw"><input class="input" id="register-password" type="password" placeholder="At least 6 characters" autocomplete="new-password"><button type="button" data-act="togglePw" data-target="register-password" aria-label="Show password"><svg class="ic"><use href="#i-eye"/></svg></button></div></div>
+          <div class="field"><label for="register-password">Password</label><div class="pw"><input class="input" id="register-password" type="password" placeholder="At least 8 characters" autocomplete="new-password"><button type="button" data-act="togglePw" data-target="register-password" aria-label="Show password"><svg class="ic"><use href="#i-eye"/></svg></button></div></div>
           <div class="field"><label for="register-district">Current district (optional)</label>
             <select class="input" id="register-district"><option value="">Loading districts…</option></select>
             <div class="district-hint" id="register-district-hint">Current district does not define the language you speak.</div>

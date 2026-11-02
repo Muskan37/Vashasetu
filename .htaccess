@@ -6,3 +6,15 @@
   Require all granted
 </Files>
 Options -Indexes
+
+# Git and GitHub folders (if the project was cloned straight into htdocs), and the test scripts/results
+RedirectMatch 404 /\.(git|github)(/|$)
+RedirectMatch 404 /tests(/|$)
+RedirectMatch 404 /(composer\.json|composer\.lock|phpunit\.xml|vendor)(/|$)
+# Security headers for every page and file (mod_headers is on in XAMPP; the PHP pages also send them)
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "same-origin"
+  Header unset X-Powered-By
+</IfModule>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Vashasetu PHPUnit suite.  Run from this folder:
+       phpunit                         all suites (the Http suite needs the app running at BASE, default http://127.0.0.1/vashasetu)
+       phpunit testsuite=Unit          only the unit tests (no database, no web server)
+       phpunit coverage-html tests/results/coverage    with a coverage driver (PCOV or Xdebug) -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
+         bootstrap="tests/phpunit/bootstrap.php"
+         colors="true"
+         failOnWarning="true"
+         failOnRisky="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         cacheResult="false"
+         testdox="false">
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/phpunit/Unit</directory>
+        </testsuite>
+        <testsuite name="Data">
+            <directory>tests/phpunit/Data</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/phpunit/Integration</directory>
+        </testsuite>
+        <testsuite name="HttpFlows">
+            <directory>tests/phpunit/Http</directory>
+        </testsuite>
+    </testsuites>
+    <coverage processUncoveredFiles="false">
+        <include>
+            <directory suffix=".php">api</directory>
+            <file>index.php</file>
+            <file>learn.php</file>
+            <file>setup.php</file>
+            <file>admin_edits.php</file>
+        </include>
+    </coverage>
+    <php>
+        <ini name="memory_limit" value="1024M"/>
+        <ini name="display_errors" value="1"/>
+        <env name="BASE" value="http://127.0.0.1/vashasetu" force="false"/>
+    </php>
+</phpunit>

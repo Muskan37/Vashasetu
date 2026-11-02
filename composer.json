@@ -1,0 +1,16 @@
+{
+    "name": "muskan37/vashasetu",
+    "description": "Vashasetu - regional Bangla dialect translator and learning app (tests only use Composer)",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:unit": "phpunit --testsuite Unit,Data"
+    }
+}

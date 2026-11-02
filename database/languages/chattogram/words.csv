@@ -1,244 +1,306 @@
 language,source_word,standard_word,meaning_status,source_dataset,evidence_count,hash
-Chattogram,অঁন,অগ্রহায়ণ,needs_native_review,ONUBAD,1,eb285625bae0e14652b1f71c19fe998f59b93185f333ba523e3df82ad0714024
-Chattogram,অঅর,শ্বশুর,needs_native_review,Chatgaiyya,1,ec96cd6cbe4297be64d8f941ccefb726c5abacba8aaa3670a772661508b308f6
-Chattogram,অঅরি,শাশুড়ী,needs_native_review,Chatgaiyya,1,074794d86fa39934b2377af69bba4c646c87a1d0b351b12e1d9e62d6c24c17f1
-Chattogram,অই,হয়ে,needs_native_review,Chatgaiyya,1,4b95c1b300deaa46d0f818edcf45e3ebe1ef08e1620e1fa0cfdb907c003e2d70
-Chattogram,অইত,হতে,needs_native_review,ONUBAD,1,df9e6be7b48d7ed57976eb8d66e857d8d9aae17bc5229b034592989c0f9c1a3d
-Chattogram,অইত্যু,হত,needs_native_review,ONUBAD,1,7bfa302fad4af51c5ec8e799cac98a568a054766d1e47a9692b193bf90e67289
-Chattogram,অইন,আগুন,needs_native_review,ONUBAD,1,1871b173d21c9902321138817db94fcf7e91954651ad1400abb856683a4361ab
-Chattogram,অইব্যু,হবে,needs_native_review,Chatgaiyya,1,04a19cc6602765e4256a85a8fcd56a1e19499bc3e47ef2530ea1d9fc187968be
-Chattogram,অইল,হল,needs_native_review,Chatgaiyya,1,159878376367a0fa28c4ee0c8a01229a11bc6137ec6359011dac70b7e784332f
-Chattogram,অইলদে,হচ্ছে,needs_native_review,ONUBAD,1,6ce3f748713036f0ff886240cc707d08e551691673eb66f4fd13b3f08d1cef4d
-Chattogram,অইলাম,হলাম,needs_native_review,Chatgaiyya,1,d69938ea469de9f5a0b184c485f1ebc417e57e161107e463d2adf32b5d669b3d
-Chattogram,অক্কল,সকল,needs_native_review,ONUBAD,1,4cb189223e63ec14a050144908e7ee3f2689fdf92c94ed427c26ada1f36b6c00
+Chattogram,হাইয়্যুম,খাবো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1756e7b1f28149a65977732416a5561eb9c7ca319ec19169e90a54222187c836
+Chattogram,হাইয়্যুম,খাব,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ccd885fa383c1acdf04ec7276cdcaaabbc41bb6d8e3a82fc0518d8990506734a
+Chattogram,আঁই,আমি,native_speaker_reported,Native speaker reviewed list (Nov 2026),2,668040381193d1627db4eebcaf417ecebde1bf3c9c7a1230c555743e6fc19e3b
+Chattogram,হডে,কোথায়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,06bca3acb8cfaafbcd634e184604e8794a6e775371f337bd0c15b4d985f74a10
+Chattogram,ক্যাঁন,কেমন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,0fe47af888b38ff21ce5504db30870162142c557b4ccd595bfa4c9a8025ba125
+Chattogram,তোঁয়ার,তোমার,native_speaker_reported,Native speaker reviewed list (Nov 2026),2,a56290f67b536025f6c6ce9771b9b5249cc4442706f7d2140135b9e2069d8afe
+Chattogram,হন্ডে,কোথায়,native_speaker_alternative,Native speaker reviewed list (Nov 2026),2,5122d5d70315ed6392f5eeccaa4cfd5a20dabed5e265eba44c248dfe8023ba2f
+Chattogram,আইচ্ছা,প্রতিজ্ঞা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,086f4d8232f6469ca22e0d58236e9d8effc7cb6f2d8a67ac00fdab1149d2e3c2
+Chattogram,অঁইয়ে,হয়েছে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,3178e92bc3553b3c85ec69f822a6b2bd79ae256a710871c5d448f98416642147
+Chattogram,অঁন,অগ্রহায়ণ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,eb285625bae0e14652b1f71c19fe998f59b93185f333ba523e3df82ad0714024
+Chattogram,অঁয়,হয়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f2107bc99910da65ebbba09fc664fd182693171d0eaa2955323465ca251efa89
+Chattogram,অঁসহাই,অসহায়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,db927976a8cefed5745cc2bcf37d9830f4e0e29e6c6c58ce02cdcb3c91ab136a
+Chattogram,ঔড়,শ্বশুর,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1cdd03838c657d12b3b0bdf6dc0a607cf3ba849e974fad2bde071d63048bdfa5
+Chattogram,ঔড়ি,শাশুড়ী,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,c7328e45f9a6e78be046fa99e7b3c46e1053c3743a43a42bb666d0345a4b4070
+Chattogram,ওইয়্যে,হয়ে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,0ce140abc562c1bc7a3db72d679281aa65c5bc30f7711fbe710791c8606a26b8
+Chattogram,অইত,হতে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,df9e6be7b48d7ed57976eb8d66e857d8d9aae17bc5229b034592989c0f9c1a3d
+Chattogram,অইত্যু,হত,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,7bfa302fad4af51c5ec8e799cac98a568a054766d1e47a9692b193bf90e67289
+Chattogram,অইন,আগুন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1871b173d21c9902321138817db94fcf7e91954651ad1400abb856683a4361ab
+Chattogram,অইব্যু,হবে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,04a19cc6602765e4256a85a8fcd56a1e19499bc3e47ef2530ea1d9fc187968be
+Chattogram,অইল,হল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,159878376367a0fa28c4ee0c8a01229a11bc6137ec6359011dac70b7e784332f
+Chattogram,অইলদে,হচ্ছে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,6ce3f748713036f0ff886240cc707d08e551691673eb66f4fd13b3f08d1cef4d
+Chattogram,অইলাম,হলাম,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d69938ea469de9f5a0b184c485f1ebc417e57e161107e463d2adf32b5d669b3d
+Chattogram,অক্কল,সকল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4cb189223e63ec14a050144908e7ee3f2689fdf92c94ed427c26ada1f36b6c00
+Chattogram,বেয়াগগুন,সবাই,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b63f52722fc931c391e2141d896030f79dd67165173473a8ecc338a0562aac6c
+Chattogram,অক্কলরে,সবাইকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d00fa2bc90214fb36311e8c811635125d01a4f7a9d302f24a0393f55420225c2
+Chattogram,বেয়াগগুনরে,সবাইকে,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,dc8cb43164d3cb41c31c58291b3bf707a261b420d9c8ba077a03ff3a62d1b807
+Chattogram,অজম,হজম,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,9478c0d03f25e63cdf0f731ddcdfd538864c077e6c50eb4e4c82f16e608644b9
+Chattogram,অঞ্জক,উপাদান,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,7ac1bc2c1d9a6f68f33388c0003d72c8d3e9fb55e71ef916f1d36d08cfb9c1d4
+Chattogram,অটঁ,অশ্বত্থ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e6bb60d002eb9874860d9ccc4faa9c55b94ef3f2e6d0bc1ccd297a9620dae010
+Chattogram,অত্তর,সাক্ষাৎ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,fee7ff197795060f907f0735ee4e01bf6138ebe6e47bd136f5556f2035c46fc1
+Chattogram,অদঁক্ক,অদক্ষ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,8ee7aaf444a0cf1776b3d52ccbafcaaa4edf0705a8fe1041d73c8ad7ce03066e
+Chattogram,অন,হওয়া,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,8fd8552e123160a862751c1257acede3e120a8d77d084270256a9e5846024652
+Chattogram,অনর,আপনার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f3815d5febccb5c096ed084cbff814a3d86338122417b3265cd3346a57b779c0
+Chattogram,অনরগনে,অহেতুক,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,946a3fec540a9ac0e55919feedab486cf23aec601f4ba0e9841b021a005d2a74
+Chattogram,অনরা,আপনারা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,bddb86a5eebc6eff522b9fdd7ba000be586be945515a2a24cee4a80fca32b1a3
+Chattogram,অনির্বানর,অনির্বানের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,260fbb53601ff536e2a8a3105eee8d0b696929f1e39362366820805bbc660c44
+Chattogram,অনুষ্ঠানত,অনুষ্ঠানে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,c0a6a1b55bc92de8f13e76d57eb30dc0006eb06f7121a8785d1d8e07067b73a3
+Chattogram,অনে,আপনি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,5a9e0d9cb2d1a0996302bea546b1839e6457ecba1f9fb3787046537dd20ff063
+Chattogram,অনের,আপনার,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,37f233258d99a2629ae8cbdcdfed97d45676ea2aef101aeedbb5acc2d5fa19d6
+Chattogram,অন্যমিক্কে,অন্যদিকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,5b176a8017bf2d600473ff01923fd8b40178bfff55d521fc24f2a830d6a03ab7
+Chattogram,অন্যর,অন্যের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,a556ac0cde55eab0475d607e249e2c395428ae995d714ba1a26da837c486c7d1
+Chattogram,অপিস,অফিস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ba9d6f31a541813f1f0b4883ef38740cf959228609bfc04f9587332a477d434d
+Chattogram,অপিসত,অফিসে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b405fc3f2733d757b35acb3d1d9dd54a1026ae5d47265b976e01d260beaa9187
+Chattogram,অপেক্ষাত,অপেক্ষায়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e37b314a8374b086fbd8eacfd7fb1b22d279614ee028bdc6076cc21f5837b6ce
+Chattogram,অফমান,অপমান,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1203d5733ea9ec65f8538fad4ece137ff54ddd763774e4c8efabf71406906324
+Chattogram,অফারেশন,অপারেশন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,745580043c15a4e5ce8ac96ba6c729f95b49fcbf3d453494c4dc56465e890091
+Chattogram,অবঁইদ,অবৈধ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,136931b7e6778e62b185e92f4a8ba87d3abb2f52aaf9342ce9329b984cc47694
+Chattogram,অবসথঁন,অবস্থান,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,85154c7b8cbb2a0e83ceda03ea726fe62c9510beb72a24586001a9d5b273d75b
+Chattogram,অবস্থাত,অবস্থায়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1d32fd530c6144ff8d602df293dc5a8c0a7c884e00c0b339df09135e75043124
+Chattogram,অবাপ,ওবাবা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,20ab20f3c3d956696f1a137997bdd1e52b8cdf8ec5110a1acbbf23fd9d12b17b
+Chattogram,অবিনয়,অভিনয়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,da178f9477df9fccc7dd903c8896dc6edbdc0ee5600984bbf72f90ff7f7c299a
+Chattogram,অব্যাস,অভ্যাস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4f31c5ba3789241e2323cb1ba717464a58465255996473debce96ac166e98bee
+Chattogram,অভিযোগর,অভিযোগের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,5df111bb4d8de0e9c2f6b22911d0445a82c11ba5628d1df5bcaf60afbfc09eb4
+Chattogram,অয়,হয়,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,7ffe7131a51c29c8ce8ec5d1a3cd81aee9a0a009a8f3e4e983c7f22baf53c8e5
+Chattogram,অয়াত,হায়াত,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d846cb599a9b5a5529089726d8d40c36644edbc11711705796b523c0fc4acff1
+Chattogram,অযাবিন,চঞ্চল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d014ebe03147fe04cc24ce63a88831b35594ba19387a9aba2464b8f8b310cacf
+Chattogram,অরান,ক্লান্ত,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,c7fbbfb252bd5956f0e689794aee34b59b6dd45b527fc0b448eec7a2807b192a
+Chattogram,অরি,কুমড়ো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,de6b72dee6cf6c6d76bc18ed3a47e81dd0d947ae83a9c1c746697c6923507603
+Chattogram,অরিণ,হরিণ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1c3d6cb83974066832c630091f48aaa62d6d0fe02404d3abb0f449cd474d38d0
+Chattogram,অরিণের,হরিণের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,9332a92b2abca93265aef1eca3db71d4a48b131f863fe3b06a94d0c83c828688
+Chattogram,অরির,কুমড়োর,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,13b3d51acc0cafdfa75c8bc2dd135312523a24623876b9ac0037c23a5497becc
+Chattogram,অর্হনীতি,অর্থনীতি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,542b58f77bac55f45f83019b73b1eb0439b3c2537a756b9d06f079dc811d8496
+Chattogram,অলইদ,হলুদ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,10750d52389a107c98f5c2c90b621e4a3253522e584073f8731f4e660635f55c
+Chattogram,অসুখ,অসুস্থ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d17cee7d42bb4423a55a2f5d2b7255b99754b06c795b6873b8d8f7ed147088fb
+Chattogram,অসুস্ত,অসুস্থ,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,3a8fb8ef936036533b57fea7d6cd0d6276021bb3a9e08d4082ff7f4318354155
+Chattogram,অ়ঞ্জক,উপাদান,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,5f20ce5954e076f434cc2e701ebb5e11b2db6ef3e934cd1b43892b30932d748f
+Chattogram,অ়রকত্,অঙ্গভঙ্গি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1a3abbdf1f27ac50c00eeb24bb1bc6388dd01199cf7055e5e57d0daaa05ec075
+Chattogram,অ়লরে,হারিয়ে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,3aa95b8cdcdc45ba32a1fff6740c7087c4cd1f759ae527c820fcff770b94683f
+Chattogram,অ়াজাইয়্যুন,হারিয়েছেন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,cb99313a6e9c3d674a974384c46f167075eecb77b9b9affe121a723d48646ab5
+Chattogram,অ়াজি,যেতে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,bcc7eba7751d8acd30046d97180a29aadfd3722c7c3844bc97afc5a54c486cbe
+Chattogram,অ্যাঁই,আমি,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,67b47fee4a3ec2e89ee7aa3938c3408d6e45d0bb29541cf53d929459abce2f34
+Chattogram,অ্যাঁর,আমার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,25630d4ac029b95077d1d5a9ded974e1eeee1f3c6b0e5170b755adc158f9b83f
+Chattogram,অ্যাঁরা,আমরা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f23075ba3f828c4f8bfeef884b1d7ebdeb7b245f7d3720e5f4f070566b14346a
+Chattogram,অ্যাঁরার,আমাদের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f03d2feec7e937de06611425a6c6790f5ad5cecb9a8bb546acb12f2a89bd0330
+Chattogram,অ্যাঁরারে,আমাদেরকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,06c1f8824d88c94646fbce254ad91ee7747d7719d0fae4efb9a9f42b80b25e6d
+Chattogram,অ্যাঁরে,আমাকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1005867c2e2a26fb62c069ed4d34a6cd7e7240f4762261cd1ac3b9bf3a22313b
+Chattogram,অ্যাই,আসি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,5ac9a88393dcaf456eee1dffb9fcb1810c7395f72b8a653cd177fa667214579d
+Chattogram,অ্যাইয়ে,আসে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,6fc4862202f8c435f50f964722370622eff936867c1b498b6a6ae3631b188c0a
+Chattogram,আঁইডা,এঁটো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ce32afef78628095929159ef12f43ab26a288374fe0fe965428d21a8f371dc74
+Chattogram,আঁইয়ে,উপস্থিত,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4c5a290a8993982e51fad34daeee8396ccb8d8686f0237107a002216b47c43cf
+Chattogram,আঁইশতে,হাসতে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,2369c7bb38281cee4692cce90c2680719222c857882cef8560bbe3ad5f2a441b
+Chattogram,আঁকাশ,আকাশ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,56061aaa7298eb9ceb364bbb1d90213c51a0eda165618d182918c35545aef0e1
+Chattogram,আঁচার,আচার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,cfc7f15c646abbf8fd43d05be93a1740803089d1532fddb69bd29d2b1e97d7f7
+Chattogram,আঁজাআঁজি,কোলাকুলি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,19e1c4d8e6fa03f92431aa2efc66a3fbff0cc99b5bcc5816ece365e09272c8de
+Chattogram,আঁটকি,আটকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,5412828d73a16a4c4b339a321fc141c4520c7213bbdde4f8c05fbac6ab2080b0
+Chattogram,আঁট্টা,মই,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,5148020d1f5e8088b9b8824c63ac2ce0a83469fe58cc528eccb0fcad43f3b4e0
+Chattogram,আঁঠু,হাঁটু,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,a760e2177e3ccd5d871269c6ce66b0d17d44cd089fdf06af7fd5dec309d77ccb
+Chattogram,আঁডু,হাঁটু,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,e599595eb7eecae848f4e8d922467cc269eab665f28c74b28cbbb0b70bafecc2
+Chattogram,আঁত,হাত,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,6dbbacb1628ffb1e67d0a6dedaca66260085240bbe379a62e604f79d5c306422
+Chattogram,আঁতত,হাতে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,34e145156cf76c8c13398abf0a967bc0260ff79ed1cf248304e76e04ac6e6262
+Chattogram,আঁতর,হাতের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,0ebfc3ebaa144b8846329b61b2ed3e7bf46166d0d50039928acbedbcb18fb510
+Chattogram,আঁতরগান,হাতেরটা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f553a53f2aba5aace92de373601c093e0d1fa7c67ef44702537c96cafbfe2702
+Chattogram,আঁধায়,অন্ধকার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e174539f7936d837571b9d8d5690a6620bc4683026ab1d9795953ee7bb27d569
+Chattogram,আঁধারত,অন্ধকারে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,53a55cd3ab0444835f6d208fdcf5381d41bcf2e36dde5a4f549974cfbe6b64ba
+Chattogram,আঁন্নেঁরা,আপনরা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,38f604110621fb1ad89513236d3eca8118ed2648625b856cf16e9dbbd7c19fbf
+Chattogram,আঁবার,আবার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,255c77aa25cb1f658d986af247bf2954cce158645bfaf6854f8a2a9eab20713b
+Chattogram,আঁম,আম,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,a0560c183b514747480c1859d432181077998b627b04d70c6089c320a9771f06
+Chattogram,আঁর,আমার,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,bad40944b6c9f64adb8fd941cf0fbced1999fa6784c27073b212cf0d91ac6645
+Chattogram,আঁররে,আমাকে,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,98d1437207884c98e6df2796263c48443b8bda684e01c52179ff58eb44c76d23
+Chattogram,আঁরা,আমরা,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,50754b47797810344d358604d2b6ba99f8cfacd49ad9e4d1ad57d2892ad393a1
+Chattogram,আঁরাআঁড়ি,আড়াআড়ি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,29ac4f0e3c4fe3513c5d50c71711c2b69fdbfc02604c420168da1b3c4ca97183
+Chattogram,আঁরার,আমাদের,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,ae199ff696cf6650106e0a35230acdd64fca1be15a90b15cfba3a8ce088ec228
+Chattogram,আঁলচনা,আলোচনা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,303e8a5d1f2e9a6995511d4d9516a73cf39e926235a5f4048d8b07173b2f0279
+Chattogram,আঁলাদা,স্বতন্ত্র,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,55786e726073954afa64efe0cb1eba7dbcc5afd07f5bd9dc2923439926da6387
+Chattogram,আঁশ,হাঁস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ee09828f3a647c85346c13f01dc96ee7b2ea95892beca105335921e539f8fff3
+Chattogram,আঁস,হাঁস,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,59052d9a22b4f804ce06fa9827ced7de8d356c8c8aec8b0c65d1e01e281d7773
+Chattogram,আঁসুর,সাঁতার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ed21ba9607188498a6d3ba23b40c5936dcdde7b8ac613d3e4a41321ff2dab285
+Chattogram,আঁস্মান,আসমান,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,96dde0140751a8bc801f92652473c86efdb4b822cc4dbc798d95973dd7adc2f4
+Chattogram,আই,আমি,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,e95171fc0e9aa1e9c3f18ed13a2fe887354668a9a1124da844be1ce2b5f32621
+Chattogram,আইঁখ,আখ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b53f3864bf06c3f23bf38e5dcd4e6b26a3ff58a3ae7fb19791fa660256b21a4b
+Chattogram,আইঁস্যে,এসেছিল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,71858354bdcee6bf7561f07fb7a7155f8ce995e9470d89230f596b3c0b894ede
+Chattogram,আইও,আসুন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,0497d8f469506ac5102aca3155ffb3373e6c32e71d0791d7ed45f2bd07584305
+Chattogram,আইওন,আসো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,3da746fc27262dc7da107d40f3b9284f5be36b8bb0794f640ffd28af44c47ea5
+Chattogram,আইচ্চুস,এসেছিস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,6fcef033d77a9e137b8c83a085eb0e3647c9be7bc9f0914367ad814781eeade6
+Chattogram,আইচ্ছা,আচ্ছা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b1d27c23542f2fb2138c056195915aa30a84b4c3fe5f8659db0040340c047eab
+Chattogram,আইচ্ছি,এসেছি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,31c8c5b018adefe9b0e422882d58521d20e70776978c716661a829aee705111e
+Chattogram,আইচ্ছিল,এসেছিল,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,f7d6f24cdf4a8d49690f2325ae84dbbf304dfe290f5cc4443fff68c554f020f5
+Chattogram,আইজ,আজ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b09103a46405cea86e45e69014e3c5f40bf617fee4b41231585ffc7f8bd01f78
+Chattogram,আইজকাল,আজকাল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,edd78869131cc0b8c991a8d9d646611bfb22f791a3913f89d672135043b95c9a
+Chattogram,আইজ্ঞে,আগে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ab6c134a268f192a193cd77e8dadf0536f64f02de9a2b88c42b4b204b32035f2
+Chattogram,আইত,আসতে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f874c9d75c2173a9b5d2d03e5906cb4a30270fca4954371de756d058889523d5
+Chattogram,আইবে,আসবে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,be8402cdba6da8fd55205d61d912b75dbf2d8d91c257e7d7f7d815d32a01e2f1
+Chattogram,আইব্যু,আসছে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,0830253886749fcab78f46863199f979a44b30b4a5a4a98df3c79e4898346385
+Chattogram,আইয়ন,আসা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b7b7307079987b0d31772bbf74f7caef654c8dd0bc9ad02256481fc17871d5c8
+Chattogram,আইয়ী,আসে,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,d99565781352cd5d2e3279a28bb3a401a9f76f5be4e149b177f79e7075795588
+Chattogram,আইয়্যির,আসছে,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,eda00413db4ffeb68ae0e772145c3c20ca893b4ae8e0b039f390df90b3214ea6
+Chattogram,আইয়্যু,আসো,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,2ebf02c92506077ec435c7d4282f05df1fb3d3578ea08bd6a7255a3b70767d19
+Chattogram,আইয়্যুক,আসুক,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e522786bf3f7b929cf1a589ece9eb6833bbf9c701bedae305edce624ab821c79
+Chattogram,আইয়্যুন,আসুন,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,9e8dfaca3f7dd8c3851755dbe9a769017c64462f0d184acc4e1127dd1e3cd32f
+Chattogram,আইয়্যো,এসো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f75078e4c28e5b36b6b5e8617be6b65da742ea1684263b7167e16616ebf5a1ba
+Chattogram,আইর,আসছি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ebaa949c5788f9fb191632db45561c03fc26e4a7d749b6e00a52ac3036101f9b
+Chattogram,আইলাম,এলাম,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,668e8cabc2ba9b80b0cd456266b5e48fd986d82d6f481cff148f37d4306620b2
+Chattogram,আইলে,আসলে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,94f6eb9e988d7387726c4819c1c97c109562e131f5587123e1678cc89e403451
+Chattogram,আইশ্যু,এসেছো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d65fec2131a445ea9bb79707a4ce66b3a6d8a8982191c6b6b72abb06e48bc93a
+Chattogram,আইশ্যুন,এসেছেন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,2f576875f57fc7560a9d0bdc0842e846a006b48fb38fb5353b1003635b448de1
+Chattogram,আইশ্যে,এসেছে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,64d759e67b0b3c3261944b94966b620ea2434f196bd4cc664e4bee45c1175dce
+Chattogram,আইশ্যো,আসছ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,98374718ef975da117f1f9d14ce1daf6ba5469145920f985c7bc4a34d58610eb
+Chattogram,আইসসুন,এসেছেন,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,cd9ebcff39335c0d0bbe439a37793c2b77aae849897b98b2ec9efdfe230077ca
+Chattogram,আইসসুম,আসবো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e3231ad0a1f96909dd7ba83c134811713713867f64155bbe40e003112e9e8a95
+Chattogram,আইসসে,এসেছে,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,6e014ded27a79e494884d2ddd521f1765108123d148b99988eacdfe281da259c
+Chattogram,আইসি,এলাম,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,e1ec2ea789ef54f137829043a10e05da1eb7b7d20b24cf1cdc03bea0f9e4e4e0
+Chattogram,আইসুম,আসবো,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,71aab748ea3c8dcc6981e217c617ec5aeb3f2954939c5a74cfd883afd40e5f23
+Chattogram,আইসে,এসেছিল,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,fecca9ef8862c605fd780816a69561bd15b7bde39b625ef94d5461674bab02d4
+Chattogram,আইস্যু,এসো,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,3aec127d756ee8b15c43617d05ede667a6ee1d6a6be95c7ddc3e50c9206a679c
+Chattogram,আইস্সুম,আসব,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e3018a8b0f3e61411edf1b3325454441108119533c27270e5fef8551eafe2cf9
+Chattogram,আইস্সো,এসেছ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,8f5a9776fa63fb87ed3f6d79ec84fa2c65796a313370d1ce91266ac753fb4641
+Chattogram,আউন্দা,ঝুল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,80f344a2db351c16093c95b01e949a9fde4a569d00db4acec36606b03a14cd33
+Chattogram,আক্করে,সম্পন্ন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ecffa7745b3a0043727d099c46ecf1e65731d08a62b941c73342295d4079746c
+Chattogram,আগাত,আগায়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4ba86a865722bbf6f7956732546874d7c4dd15247c2a3b988a2dc90b87f0fc8e
+Chattogram,আগি,পায়খানা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,2e01e54e5ecf774d5a59fa00a1f3a5cf781083ee0f69ab97a9a24e920ec40a6d
+Chattogram,আগুর,আগের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,41c551a618a45f3ef4f079fb906ad6911bd37646a618ee0129e845b2e8a5f337
+Chattogram,আচা,সত্য,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,06261124ff7cad61dbe62a720dff042782781fa25adf9bb3f6dba33fbbe3c24a
+Chattogram,আছ,আছো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,a15d23a8aa957713128af5e7c427535f40450eb5e64cda7cd83f02c274f9bd8f
+Chattogram,আছস,আছিস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e3a8ced94ad8634dddce9ab7ecc5ca88d247a27655e81198b626acba9a88ca61
+Chattogram,আছিলাম,ছিলাম,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,22611e404105d71049fd3568ffefaeb840b24bcff18bf7858e1de1fd5b60bd3e
+Chattogram,আছিলো,ছিলো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4c63a1a749438643591d02987ccd26d007f53f1c30c586668778c40e4fc1bcfc
+Chattogram,আছিস,আছস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4a47f0da815220ab6357e840a20306faa95208f34bdbaa0c526bb497fa625ccf
+Chattogram,আছোন,আছেন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,c0928e8837d681f06988bde8fa3d93586dc3e7c6e9fb3dab101dcda2ae641290
+Chattogram,আজল,বোকা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,c0c15e2a2d33e8f61b38b88e1da63ece0fdd5602ea41dc4978ee0bbefa65c6cc
+Chattogram,আজিয়া,আজকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,8f12fc9dd9e5584874bdf2c5ab8b895512e1773a4ea029df1d5ceab31eb0c4f5
+Chattogram,আজিয়ে,আজকে,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,338bce86be5cfbab806247da2c5df55436e1e0fd9ac12c0588bedfa81243b456
+Chattogram,আজিয়েত,আজকে,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,20e40c2f667537e3c999e6745f2db9ed9c5c47188b2cb9e9035c03ac2547d47f
+Chattogram,আজিয়ের,আজকের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,20b157052230fb0e78a0942d5df8d782d95d3ecca3df576a022d693b04c22cfe
+Chattogram,আজুইন্না,সন্ধ্যা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,222d66c6d39a4bd426a3c2358ea2e3966df9e3c99cdbf400028e9dfeea3fd46d
+Chattogram,আজুইন্নে,সন্ধ্যায়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b6bd1ddf266ece841c256d9cf3d65fc44b2537b65902f9a1e4a0972f269190ef
+Chattogram,আজ্জু,আশা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,163f3169e6425c90c8c3ad96cc8fad39b27f53e60e1161d8ea75bf62bbd6d6c6
+Chattogram,আজ্জুব,প্রত্যাশা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,aaba450faf12959944297ce0b9db714a1e593c81753f9a6da07c289af3d81b41
+Chattogram,আডা,হাঁটা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,02894e0e852205b93f200778e71ac467e18c6cbe868ddaba5dcfbcadb6a18079
+Chattogram,আডি,হেঁটে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,a744b5f89686eeab9da246e33a35d3ed800346d3964dca8e02cad8d551f1b689
+Chattogram,আডিবার,হাঁটার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1997c85322684133ee899349e2d7e4ed360530fa10784508d5abb0b71e044d6c
+Chattogram,আডে,হাঁটে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,abd83fd574db0c93fb68b44e93d30fbaff76e5c6a644fe44d23bb3980e97216a
+Chattogram,আত,হাত,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,9573386a551846d3e90a0e47f80414adb39210c16daa1f86e25034896f297237
+Chattogram,আতাই,সৎ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,86f421bb02db523e6392397092b578f57a42f0ec824342f2bdc796f2624f38e2
+Chattogram,আতি,হাতি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d768168e157e53ba2821de9135603352951f9a00d4da855ca5cf129c4e32d86a
+Chattogram,আতিক্কে,হঠাৎ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,2e7e309f514b32e526bc4626a21e91c7cf3a84de5a598615441da8452901d9ba
+Chattogram,আত্তে,খারাপ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,3d3b50b5bec15bfe746b9aae22ef7b2d86c271402f58b0967d0f285aad304b20
+Chattogram,আদ্ধান,অর্ধেক,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,a7beb38551b539b5603148ece0a9d8394206651fbca40b8d24ccdeb7601b1aa6
+Chattogram,আনকুর,আঙ্গুর,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,49af4f0b3d684d102bb9a4cab320740f4c51319c4262a4c7b44c7060fde17c76
+Chattogram,আনন্দর,আনন্দের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f48624203db77c097cd4e9cc846c047f4a9f07d191788337a2e0166e9f2b72d3
+Chattogram,আনবি,আনিবি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,0a88f63acbeac134cadf63314e38c1f3b53a439221cd3a3858794db2d002f8cd
+Chattogram,আনা,আয়না,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b1fa77ed175fc952e5b5d9649926e03cd4dd5430bdd4883a900f845145125665
+Chattogram,আনি,এনে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,c7f3eea78d00be7bb4a8982d9009cc9da5c0604e7b4993606178b0b0b7681188
+Chattogram,আনিবেন,আনবেন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,5dac878a306d19cdcf27aa7b0d0d2c35db74c06044450e811737b04942ed175c
+Chattogram,আনুনা,লবণহীন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,c31305a05121bbf65f509aaba1bad8290c76a13e93912b3eb5cb07c6827e282c
+Chattogram,আনোন,আনতে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f8d059c14a76190cdb6f49c468eb0b28bf28ee491a2ecef82becb85991cd9720
+Chattogram,আন্ধা,অন্ধ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,82aaa45a3db43c7f4fff7c29ef90748a699373cd26301c9c9c5b031330c68e39
+Chattogram,আন্ধার,অন্ধকার,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,20607b6d53dc49a0918b573defd4f4fd8730b6542a868c8ba0b2a93da1769f07
+Chattogram,অনেরে,আপনাকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,5fca5d880aa3588470b61f4c725734082ee6124294c77a31089d14aa792faf73
+Chattogram,আপসোস,আফসোস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d0cfe554682e7ef640b3a3b60d433ea892c9af85aa56a69f584c50845cb0a4d2
+Chattogram,আফ,সাপ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,0fe9c7ac5fff57d5c0ecfc0f1322c318c90521ffb4a9d5cb9b5df89c8a09086a
+Chattogram,আফন,আপন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,44102b62c751fe5dfce81b7d201b5a10fcaa058cc52450ff47df3c2cb01fd9f9
+Chattogram,আফশ,আপোস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b11b63cabb147ce778175c393c3939c3c41679912681cc768bb82c55abff9460
+Chattogram,আফা,আপু,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d819da379d7a4f6fb0dde38ed56bfb544f5c4a77cfb725b5014692621505e7eb
+Chattogram,আফেল,আপেল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d5f397f4c2a6f28a4a9b2eaaa1e841392a89881f72e7145f68009e60ecd81b82
+Chattogram,আফোয়াইদ্দা,অসুস্বাদু,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,5804e730d29cee357ffa6a19bdcb47c4027e5a661d89652961e3cd96fc71871d
+Chattogram,আবাছ,আওয়াজ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,aba0118fd46b925a1a50db57a7b28cb82e5240391af905ddf943cee317647dfe
+Chattogram,আবাজ,আওয়াজ,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,04b3f58206dc07d0d27a09db13c77ee6ad0fa08500bde0beb9c52d7a86d032cd
+Chattogram,আবাস,আওয়াজ,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,4fa35bac4b9ea77a0fcd41749bba5cbb40794f5de5846c7ccc453495ca6affcb
+Chattogram,আবি,আসবি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f9b770245faaa75b2290be9781ed7ad64dc1b493e4e8a72f5b13dc226c30f408
+Chattogram,আবিশকার,আবিষ্কার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,56b48bb3b13cd3dd5622afad9aaadbbcc1062f0702ab7a75298d8eea4ba09f2d
+Chattogram,আম,আমটি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,87de25d2587e803acb0e13c4076651f95987dada4e3ab741840e4a4acc9b3a5f
+Chattogram,আমত্তা,আবার,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,7c5a133cef6ab93bfd32913c086d633997a43c8acc8eedc68b2499a5443e495c
+Chattogram,আমিশখন,সারাক্ষণ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,96f5b8dbbe288e136d3db83a520594dae6714fd4b4711dc5347ba2f3660d1200
+Chattogram,আমিশখনর,সারাক্ষণের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,43e67be5de2a580f5d886a154ed6234e976411909cb0416b8d47fb4a6b3f9ede
+Chattogram,আমু,আসবো,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,6eab26e95a06c73884937ded65226053694f8c93d848e762f5d5f8945ef0da94
+Chattogram,আমেরিকাত,আমেরিকায়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,10eaa02c324b2a0d6757ea3c976c3c1b7968850515fc3f3e4eeea8496c14a677
+Chattogram,আম্মারে,আম্মাকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e4fbe74c39750093dd447734de7416ff49ef248fede0292895beede45ca7c977
+Chattogram,আযন,হারানো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,3e494e9f4ee5386725ef0821cab0f2afe3a0eabf764813312aa50f5ffa7ee691
+Chattogram,আয়ু,আস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,a41c73085b1562c2d9147fdfb499c9e9e9f34ebbf1dccdd9c16cfdfb130ebd5a
+Chattogram,আয়োজনত,আয়োজনে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,8c1716129e8e2029dadf79d0aebe4608f94db40b29b371b8291317beb88b1eae
+Chattogram,আরত,আরোত,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,792d8d1cfec820a256017f26713dd7b7ee4aac324fef602d4d12defd722ebff4
+Chattogram,আরা,করাত,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,bf43417b32583a1bae6afe570f355557f8f03fae6e6b43d706f3844d5184acf4
+Chattogram,আরার,আমাদের,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,fb2ff0a9578a1b3d3ab32f003206c8ca98bb39909ea70e411533160575f2485a
+Chattogram,আরি,হেরে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,c1e40c5bc73ff571f7d1b4bd18f90694e3d9cb3ecd703c69af2f1f435d557e6f
+Chattogram,আরে,আমাকে,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,a91676c202309816ca8b96859a2a877399987986541c4bbd31a5e9b5d6bcf4a0
+Chattogram,আরেক্কান,আরেকটা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,8ddc9ece2c57d133992bcd580c6428ac82d12474b2289c2df222233c84f0ec49
+Chattogram,আরেক্কানা,আরেকটু,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,97439f313117f45391527ea46fef4890d0e454345cb7dffb7d769262f6e704a1
+Chattogram,আলঁইদ্দা,আলাদা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,3a3db33f94583b7aa3bd1c658668a1a49cda257c6a5ac7c11e0ee77c112e2343
+Chattogram,আলতি,আমলকী,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ba46c295cf796af26b71f798b4fae5c4f38dc1eac99278d9591a15203a71c10a
+Chattogram,আলপিনর,আলপিনের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b2a3d420e6eff314a60f63ddf0057ac8391071ea83c127229fc0028736440ac8
+Chattogram,আলমিরা,আলমারি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,13d4a5bd085c6fa6542f3664da16379de8d817d4fd07eb2ae6081e0345a2fb67
+Chattogram,আলসিয়া,আলসে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,9841ae88362e5531487cd3891b858767f6b9e229b12236ea63d5500e6ff2150c
+Chattogram,আলা,আলো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ed887a3c33d9551561d119c02b2382c5f9002c76f96ecc6ccbd78aa8bdbf2ba7
+Chattogram,আল্লা,আল্লাহ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d782535e9cbbed8377ce56a615c571adcdddd22937787ae1322b659307d77e47
+Chattogram,আশাত,আশায়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e16eaac166892c3098d137c5670c59af3dd95e520b2823a6c1662164b12d5d73
+Chattogram,আশার,আষাঢ়,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4fa8c3cba899a51bd4b4d03a216674a9b9245c460ec4cf659226236cf47b433c
+Chattogram,আশি,হাসি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,3eaf00d9143e7cdb9dceb76f9032a9903c856356b85eca45d51d4b1275a7eaa8
+Chattogram,আশিন,আশ্বিন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,11e2408ca00a6ae43ca10ce0c7df413a75b97026fe824a02c55c4b56cfd27330
+Chattogram,আশ্ট,আট,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,bb5db11dadca02713094f3be23d92b311b9e2bb9168c9a423b767191141e2729
+Chattogram,আষাড়,আষাঢ়,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,26a49fdbc3c24215e50fc4d96cf19dc3415735e40510a1aa4fa7c8b405db5916
+Chattogram,আসচাইজ্জ,আশ্চর্য,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,2b65a81670c87f66dcc6a713d77bf15e922810b940eda7dd2dc6586ad1c054d3
+Chattogram,আসম্বিত,হঠাৎ,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,152a475b6aea340c3fcdc2215fdd4a5398c350fb2b538248bc438d3f0949945f
+Chattogram,আসসিলাম,ছিলাম,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,5b1f0d91de009f05a8d0d4566c2dc3cb9fd9789f401a5aa916335a27be0c7cf0
+Chattogram,আস়া,সত্যি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,58e717a8ddb7f21be644329edf3b1d6830ef44b3eb5f68ef51362b4b1a8906ab
+Chattogram,আস়ে,আছে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,350f9d305d01d444ff82f4226a5d1cb69eda349a83475868183501d992cd7552
+Chattogram,আসে,হাসে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,555e5cbf4b5811aea786d9b8ab83e097f1d032a56b610052980fd398694d5737
+Chattogram,আস্পাতাল,হাসপাতাল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ccc211b26118b82c10f57b18f8ab6bbc7c4e4d43d66e6929f98a5fda7db7bf23
+Chattogram,আহল,আক্কেল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1a088612e7519254982ba2761cfc3673f9690cada56e9fcde41e287496c56be6
+Chattogram,আহো,চলো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d5a628eeaf81dd259812aeba9534ef34fe7e86ae169d252eb454f22805e63e45
+Chattogram,আ৴ইর,আসছি,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,9ef6169390be17a08c2815d4eb4cd70b91cb13862fb53b826e64afc51f65f65d
+Chattogram,ইঁয়াল্লাই,ঐজন্য,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ec22d24fd0747aaafd91eb31443a02314ed9618a8d16f0c1153a00bf61901b56
+Chattogram,ইক্কে,ওদিকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,23293c705b1550c33df6149782114cb1d413cd118fe3f0dc8b00c19b12e3cb94
+Chattogram,ইচা,চিংড়ি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,cc8b55fb129b930935e3fe8e390e9b6dde075f7dc499c737e99cecd62020afc2
+Chattogram,ইচে,চিংড়ি,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,ab1d17ee63ca66cfe37e8b15052d7daff411f98e3b40e1cfff62a6146908b5ab
+Chattogram,ইজারা,হিজড়া,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,b6f10591be82021b53f5656450f021073d1a145f20e7fa7e12f6e123e4e8e3b9
+Chattogram,ইঞ্জিনিয়ার,প্রকৌশলী,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f65b025cce86eb129ac9b902b84c7b237ae0e21bb763417597633be7c32829a1
+Chattogram,ইতার,তার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,198c68add1e01f2e91bf43fa7a19ecbc069e73b5014ce24d6ee38c708c5427a8
+Chattogram,ইতারা,তারা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,706ebaa31c622c705fecb60ba3e760b438e970fc36eb80379e6b3da24e3e8519
+Chattogram,ইতারার,তাদের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d70c04eefa3f3d8cd12baa37fa395af71e0d83fd6a2267bf9603ffab9b01cff9
+Chattogram,ইতারারে,তাদেরকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,09e1fbc3714eb12fcebf8b6662065568428d4d62ef3b17a381353488b66d4cbb
+Chattogram,ইতারে,তাকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,90262f9f6adea16f886abf85add74392223abdb4d5e36f3175ba303c9cb2a41d
+Chattogram,ইতি,সে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,986cfad55604d1f08ec9d37df8f8b9d610cbad28956fae8518dbb27f0058712e
+Chattogram,ইতিহাঁস,ইতিহাস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,f735efbc0cb841e817e3e2345d4d05c9f473cd139d8ee37734328c62b04cb47a
+Chattogram,ইতেরে,তাকে,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,3ed8bad907f5e8b05a1c97742d5f107208a439c79166491fd336831d9bb01ab6
+Chattogram,ইতেল্লা,ঐজন্য,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,c191eb0123d82f3a9a08354b8ce8517cc2d73f79330c0485537dabae351668f1
+Chattogram,ইত্তিরি,এক্ষুনি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,a9dbfd85f3bdadb6b2da0ac40fbc567ca35a5d5a1f69b329fbcfd7c53c1340b3
+Chattogram,ইনজিন,ইঞ্জিন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ac6ffc818d548b68a99987589e8a0eeae34fd3c9ee8c928cb8d10a9fb9e337e8
+Chattogram,ইনজিনিয়ার,ইঞ্জিনিয়ার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e8626d39e551c019d079d0b8d1c498b401d666aa69f3b38b9dd405fbe7aecdd7
+Chattogram,ইনটারনশিপ,ইন্টার্নশিপ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4b266d02985977ff2d525f2d754c6a4bafed1a6a5ce5d760c0a3fda554ee9503
+Chattogram,ইনটারনেট,ইন্টারনেট,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,677dbf516c0704df8ab2d09e2ca9129d82595ba0771f9ab6189433d7edc568fc
+Chattogram,ইনটারন্যাশনাল,আন্তর্জাতিক,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,6b68bf7bd67749ecc0b0791acd830bb4b5abdefded76b84f4ec274553a2c5df9
+Chattogram,ইনসাফ,বিচার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,258bbd26fb28ee262f7621f13d9fe2bc59dcbf758697cf573be9512eae70be81
+Chattogram,ইবের,এটির,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,9e46e935a629748b8742a8a6cda455591dab4d60f5f8d56802f40002b6606d7f
+Chattogram,ইবেরে,এটিকে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,dba86488f54858e2abf09eff5d55a68059a0bff2289e639e688c82c4b876a608
+Chattogram,ইযন,সিদ্ধ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,36e2aa4c417cb3202760a9ff858ff15428411c1e3749c33bf902e8dfff2e1085
+Chattogram,ইয়ান,সেটি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,7a18ea89b53c9caae26677ec986f8ddc4249736cc5657f0d17d17579dd45b742
+Chattogram,ইয়ারবাদেঅ,তবুও,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,62a1af59e7d944e00a84bd9c063000fd0a422552bda4dde0ca61919eefbbeef2
+Chattogram,ইয়াল,শিয়াল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,5489ae8b0341102b8e6b56334a4a5535b28f085c92bae5c57360e28d767c6c8b
+Chattogram,ইয়ুত,এখানেই,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,01502f2cffe2b8ea384774c758f8c1be616b795e0043607a81e1539dba8c0a0d
+Chattogram,ইয়েন,এখানে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,af07e8700dc0359ccfcd610cd86a298aac5919817e3ecd8c09d2b215d16c4e63
+Chattogram,ইয়েল,শিয়াল,native_speaker_alternative,Native speaker reviewed list (Nov 2026),1,7d37486f37e9404a0c8e3b3d1695e569a0ccb5329d393d9328cd9131c358d737
+Chattogram,ইল্লে,তেমন,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4662128495861d6edd8ff2c2cff60236a1d2f4a901533859ee492fd7e46f6d3e
+Chattogram,ইশকুল,স্কুল,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,3a4b02e57c0e873b5e8c17c2a2440fbc410ff0d460da62433c2b86f8991d38fb
+Chattogram,ইশটুডেন্ট,শিক্ষার্থী,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,8f838b8f2881eff0c729a0250acb86b81fdccedc2d98d118157774c88046b83a
+Chattogram,ইস্তের,ইফতার,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,eefe946758750a30400f5c8174fd8c610e733551e9eefd393f57c9204fe1d10b
+Chattogram,ইস্তেরি,ইফতারি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,96f036c479bad002e04d24e0c54f75bbcbf2fa3dc3563b52279ec088127b9449
+Chattogram,ঈদুর,ঈদের,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,2a13daa701c9f824e666eac0a2a8d5a44c9a55ba63a3df8f6ae3e248f948f2cd
+Chattogram,ঈশ্শর,ঈশ্বর,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ff949e73d7fdadbdb762b7e0b2676cb73f04ec7e8d4e890790be97674ea1678f
+Chattogram,উ,একটি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,12549dc0194bfd3f3c60e544c24fbb77ff5fca02226733766fc3d7b61691fd57
+Chattogram,উঁনি,শুটকি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,c02cc31e75b8ec3c1b606d8b65f1769caaf986de5b60e4bf332e8518868e5606
+Chattogram,উঅধারি,উন্নতি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4808ab7fa4e03b051db9e3706251324c40fe38165a2a9072f3cd31ef8124b1dc
+Chattogram,উইদ্দে,খালি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,c032dba527e8e5af39371f2b358f759d01a4a961e8878a313651be2e82a9f82a
+Chattogram,উইরঅ,চড়াও,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,129ef934efc13af2175d630315147c102175ec6b84521662d02f9dfb454b20f4
+Chattogram,উচ্চাঁ,উৎসাহ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,4a54d883f3741564a2ea2bfee26511a1c4c9a68d839a80a867642f4e942a17d8
+Chattogram,উচ্ছ,উৎস,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,a85adf8bad6c601c49f665bed6e4c8f7b4ab97a33ca8296f800046c4a2baf477
+Chattogram,উচ্ছব,উৎসব,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,574bf01d44732a7576ea86ffa6c4243963971937525c702a75b72e81e5cff1e5
+Chattogram,উজু,সোজা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,980ea08819b378b155bf95846731fb295196c5df7662f0aef4e7b28c6c7d3ac0
+Chattogram,উজুর,হুজুর,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,8745df0e5fb7976ff69b06702ff31542d5f289d025ff220d2910c7e4710e6ffa
+Chattogram,উজ্ঞো,একটা,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1e4e31abf234f3d1fbc3c567d8824cfd157f7f7219b8a409080d84f40893cc2d
+Chattogram,উঠামু,উঠাবো,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,aee8c315e0f8c9637a8a7b008758adf9257d44fd3623e4cff9775fd124555071
+Chattogram,উঠিয়েরে,উঠেই,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,d617d70a9d884499da06d545ad67c17e99faf8544317d33379456f690c4817ce
+Chattogram,উড,উঠ,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,1c85336b0482686b98443120adb4d53761b468f99c445e36c199a8f53d6e6883
+Chattogram,উডন,উঠতে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ad064c08eef82549e3b09b51a3fb2b266b27bc44c5b42af9505a8e74249b7e8f
+Chattogram,উড়ি,উড়ে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,90b95af6c7ae381d814e24e4968ed5c5ef2fc47da49c53966c9e3f3e50e44a4d
+Chattogram,উডি,উঠি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,61ad2a8a504a7e76affa4cf5823fab1f077763b6aaa4ee4ac3f49313c854aedb
+Chattogram,উডিবি,উঠবি,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e5fcbb1003a255b59de7ad7acc1dba5c231f997fb38400b665637bcfbb0d6c69
+Chattogram,উডিব্যু,উঠবে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,e4a8bff51351506606f07b48483fbf3803e03cd1a6a3b9c47f78dabc57f73645
+Chattogram,উডিয়ে,উঠিয়ে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,3dfce226169d929064c8c459b747dc5acb80564b0cf6506f1f155a837dedc8b6
+Chattogram,উডে,ওঠে,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ba56d54e3d57f54324c613e2bcbc761f512bddd553604b7b6ebb993d1016d639
+Chattogram,উডোন,উঠান,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,ee510c01fb2af43837c5d13b229df4aa83678d2c74db11a10fb7eb11ab88cb2c
+Chattogram,উতর,উত্তর,native_speaker_reported,Native speaker reviewed list (Nov 2026),1,408e75cd37079119c45c7f271316cc4939ee8fc29363966b19be481084e4600f
 Chattogram,অক্কলরে,গুলোকে/সবাইকে,needs_native_review,Chatgaiyya,1,803ce6b1b37e040b6533215a86558888168c56632a7cb168cea53cc538e4eb9e
-Chattogram,অজম,হজম,needs_native_review,Chatgaiyya,1,9478c0d03f25e63cdf0f731ddcdfd538864c077e6c50eb4e4c82f16e608644b9
-Chattogram,অঞ্জক,উপাদান,needs_native_review,ONUBAD,1,7ac1bc2c1d9a6f68f33388c0003d72c8d3e9fb55e71ef916f1d36d08cfb9c1d4
-Chattogram,অটঁ,অশ্বত্থ,needs_native_review,Chatgaiyya,1,e6bb60d002eb9874860d9ccc4faa9c55b94ef3f2e6d0bc1ccd297a9620dae010
-Chattogram,অত্তর,সাক্ষাৎ,needs_native_review,ONUBAD,1,fee7ff197795060f907f0735ee4e01bf6138ebe6e47bd136f5556f2035c46fc1
-Chattogram,অন,হওয়া,needs_native_review,Chatgaiyya,1,8fd8552e123160a862751c1257acede3e120a8d77d084270256a9e5846024652
-Chattogram,অনর,আপনার,needs_native_review,ONUBAD,1,f3815d5febccb5c096ed084cbff814a3d86338122417b3265cd3346a57b779c0
-Chattogram,অনরগনে,অহেতুক,needs_native_review,ONUBAD,1,946a3fec540a9ac0e55919feedab486cf23aec601f4ba0e9841b021a005d2a74
-Chattogram,অনরা,আপনারা,needs_native_review,ONUBAD,1,bddb86a5eebc6eff522b9fdd7ba000be586be945515a2a24cee4a80fca32b1a3
-Chattogram,অনির্বানর,অনির্বানের,needs_native_review,Chatgaiyya,1,260fbb53601ff536e2a8a3105eee8d0b696929f1e39362366820805bbc660c44
-Chattogram,অনুষ্ঠানত,অনুষ্ঠানে,needs_native_review,Chatgaiyya,1,c0a6a1b55bc92de8f13e76d57eb30dc0006eb06f7121a8785d1d8e07067b73a3
-Chattogram,অনে,আপনি,needs_native_review,ONUBAD,1,5a9e0d9cb2d1a0996302bea546b1839e6457ecba1f9fb3787046537dd20ff063
-Chattogram,অনের,আপনার,needs_native_review,Chatgaiyya,1,37f233258d99a2629ae8cbdcdfed97d45676ea2aef101aeedbb5acc2d5fa19d6
-Chattogram,অন্যমিক্কে,অন্যদিকে,needs_native_review,Chatgaiyya,1,5b176a8017bf2d600473ff01923fd8b40178bfff55d521fc24f2a830d6a03ab7
-Chattogram,অন্যর,অন্যের,needs_native_review,Chatgaiyya,1,a556ac0cde55eab0475d607e249e2c395428ae995d714ba1a26da837c486c7d1
-Chattogram,অপিস,অফিস,needs_native_review,Chatgaiyya,1,ba9d6f31a541813f1f0b4883ef38740cf959228609bfc04f9587332a477d434d
-Chattogram,অপিসত,অফিসে,needs_native_review,Chatgaiyya,1,b405fc3f2733d757b35acb3d1d9dd54a1026ae5d47265b976e01d260beaa9187
-Chattogram,অপেক্ষাত,অপেক্ষায়,needs_native_review,Chatgaiyya,1,e37b314a8374b086fbd8eacfd7fb1b22d279614ee028bdc6076cc21f5837b6ce
-Chattogram,অফমান,অপমান,needs_native_review,Chatgaiyya,1,1203d5733ea9ec65f8538fad4ece137ff54ddd763774e4c8efabf71406906324
-Chattogram,অবস্থাত,অবস্থায়,needs_native_review,Chatgaiyya,1,1d32fd530c6144ff8d602df293dc5a8c0a7c884e00c0b339df09135e75043124
-Chattogram,অবাপ,ওবাবা,needs_native_review,Chatgaiyya,1,20ab20f3c3d956696f1a137997bdd1e52b8cdf8ec5110a1acbbf23fd9d12b17b
-Chattogram,অবিনয়,অভিনয়,needs_native_review,Chatgaiyya,1,da178f9477df9fccc7dd903c8896dc6edbdc0ee5600984bbf72f90ff7f7c299a
-Chattogram,অব্যাস,অভ্যাস,needs_native_review,Chatgaiyya,1,4f31c5ba3789241e2323cb1ba717464a58465255996473debce96ac166e98bee
-Chattogram,অভিযোগর,অভিযোগের,needs_native_review,Chatgaiyya,1,5df111bb4d8de0e9c2f6b22911d0445a82c11ba5628d1df5bcaf60afbfc09eb4
-Chattogram,অয়,হয়,needs_native_review,Chatgaiyya,1,7ffe7131a51c29c8ce8ec5d1a3cd81aee9a0a009a8f3e4e983c7f22baf53c8e5
-Chattogram,অয়াত,হায়াত,needs_native_review,Chatgaiyya,1,d846cb599a9b5a5529089726d8d40c36644edbc11711705796b523c0fc4acff1
-Chattogram,অযাবিন,চঞ্চল,needs_native_review,ONUBAD,1,d014ebe03147fe04cc24ce63a88831b35594ba19387a9aba2464b8f8b310cacf
-Chattogram,অরান,ক্লান্ত,needs_native_review,ONUBAD,1,c7fbbfb252bd5956f0e689794aee34b59b6dd45b527fc0b448eec7a2807b192a
-Chattogram,অরি,কুমড়ো,needs_native_review,Chatgaiyya,1,de6b72dee6cf6c6d76bc18ed3a47e81dd0d947ae83a9c1c746697c6923507603
-Chattogram,অরিণ,হরিণ,needs_native_review,Chatgaiyya,1,1c3d6cb83974066832c630091f48aaa62d6d0fe02404d3abb0f449cd474d38d0
-Chattogram,অরিণের,হরিণের,needs_native_review,Chatgaiyya,1,9332a92b2abca93265aef1eca3db71d4a48b131f863fe3b06a94d0c83c828688
-Chattogram,অরির,কুমড়োর,needs_native_review,Chatgaiyya,1,13b3d51acc0cafdfa75c8bc2dd135312523a24623876b9ac0037c23a5497becc
-Chattogram,অলইদ,হলুদ,needs_native_review,ONUBAD,1,10750d52389a107c98f5c2c90b621e4a3253522e584073f8731f4e660635f55c
-Chattogram,অসুখ,অসুস্থ,needs_native_review,ONUBAD,1,d17cee7d42bb4423a55a2f5d2b7255b99754b06c795b6873b8d8f7ed147088fb
-Chattogram,অসুস্ত,অসুস্থ,needs_native_review,Chatgaiyya,1,3a8fb8ef936036533b57fea7d6cd0d6276021bb3a9e08d4082ff7f4318354155
-Chattogram,অ়ঞ্জক,উপাদান,needs_native_review,ONUBAD,1,5f20ce5954e076f434cc2e701ebb5e11b2db6ef3e934cd1b43892b30932d748f
-Chattogram,অ়রকত্,অঙ্গভঙ্গি,needs_native_review,ONUBAD,1,1a3abbdf1f27ac50c00eeb24bb1bc6388dd01199cf7055e5e57d0daaa05ec075
-Chattogram,অ়লরে,হারিয়ে,needs_native_review,ONUBAD,1,3aa95b8cdcdc45ba32a1fff6740c7087c4cd1f759ae527c820fcff770b94683f
-Chattogram,অ়াজাইয়্যুন,হারিয়েছেন,needs_native_review,ONUBAD,1,cb99313a6e9c3d674a974384c46f167075eecb77b9b9affe121a723d48646ab5
-Chattogram,অ়াজি,যেতে,needs_native_review,ONUBAD,1,bcc7eba7751d8acd30046d97180a29aadfd3722c7c3844bc97afc5a54c486cbe
-Chattogram,অ্যাঁই,আমি,needs_native_review,Chatgaiyya,1,67b47fee4a3ec2e89ee7aa3938c3408d6e45d0bb29541cf53d929459abce2f34
-Chattogram,অ্যাঁর,আমার,needs_native_review,Chatgaiyya,1,25630d4ac029b95077d1d5a9ded974e1eeee1f3c6b0e5170b755adc158f9b83f
-Chattogram,অ্যাঁরা,আমরা,needs_native_review,Chatgaiyya,1,f23075ba3f828c4f8bfeef884b1d7ebdeb7b245f7d3720e5f4f070566b14346a
-Chattogram,অ্যাঁরার,আমাদের,needs_native_review,Chatgaiyya,1,f03d2feec7e937de06611425a6c6790f5ad5cecb9a8bb546acb12f2a89bd0330
-Chattogram,অ্যাঁরারে,আমাদেরকে,needs_native_review,Chatgaiyya,1,06c1f8824d88c94646fbce254ad91ee7747d7719d0fae4efb9a9f42b80b25e6d
-Chattogram,অ্যাঁরে,আমাকে,needs_native_review,Chatgaiyya,1,1005867c2e2a26fb62c069ed4d34a6cd7e7240f4762261cd1ac3b9bf3a22313b
-Chattogram,অ্যাই,আসি,needs_native_review,ONUBAD,1,5ac9a88393dcaf456eee1dffb9fcb1810c7395f72b8a653cd177fa667214579d
-Chattogram,অ্যাইয়ে,আসে,needs_native_review,ONUBAD,1,6fc4862202f8c435f50f964722370622eff936867c1b498b6a6ae3631b188c0a
-Chattogram,আঁই,আমি,existing_curated_needs_recheck,Existing app curated.csv | ONUBAD,2,668040381193d1627db4eebcaf417ecebde1bf3c9c7a1230c555743e6fc19e3b
-Chattogram,আঁইডা,এঁটো,needs_native_review,ONUBAD,1,ce32afef78628095929159ef12f43ab26a288374fe0fe965428d21a8f371dc74
-Chattogram,আঁইশতে,হাসতে,needs_native_review,Chatgaiyya,1,2369c7bb38281cee4692cce90c2680719222c857882cef8560bbe3ad5f2a441b
-Chattogram,আঁজাআঁজি,কোলাকুলি,needs_native_review,ONUBAD,1,19e1c4d8e6fa03f92431aa2efc66a3fbff0cc99b5bcc5816ece365e09272c8de
-Chattogram,আঁট্টা,মই,needs_native_review,ONUBAD,1,5148020d1f5e8088b9b8824c63ac2ce0a83469fe58cc528eccb0fcad43f3b4e0
-Chattogram,আঁডু,হাঁটু,needs_native_review,ONUBAD,1,e599595eb7eecae848f4e8d922467cc269eab665f28c74b28cbbb0b70bafecc2
-Chattogram,আঁত,হাত,needs_native_review,ONUBAD,1,6dbbacb1628ffb1e67d0a6dedaca66260085240bbe379a62e604f79d5c306422
-Chattogram,আঁতত,হাতে,needs_native_review,Chatgaiyya,1,34e145156cf76c8c13398abf0a967bc0260ff79ed1cf248304e76e04ac6e6262
-Chattogram,আঁতর,হাতের,needs_native_review,Chatgaiyya,1,0ebfc3ebaa144b8846329b61b2ed3e7bf46166d0d50039928acbedbcb18fb510
-Chattogram,আঁতরগান,হাতেরটা,needs_native_review,ONUBAD,1,f553a53f2aba5aace92de373601c093e0d1fa7c67ef44702537c96cafbfe2702
-Chattogram,আঁধারত,অন্ধকারে,needs_native_review,Kothon,1,53a55cd3ab0444835f6d208fdcf5381d41bcf2e36dde5a4f549974cfbe6b64ba
-Chattogram,আঁর,আমার,existing_curated_needs_recheck,Existing app curated.csv,1,bad40944b6c9f64adb8fd941cf0fbced1999fa6784c27073b212cf0d91ac6645
-Chattogram,আঁরার,আমাদের,needs_native_review,ONUBAD,1,ae199ff696cf6650106e0a35230acdd64fca1be15a90b15cfba3a8ce088ec228
-Chattogram,আঁশ,হাঁস,needs_native_review,ONUBAD,1,ee09828f3a647c85346c13f01dc96ee7b2ea95892beca105335921e539f8fff3
-Chattogram,আঁসুর,সাঁতার,needs_native_review,ONUBAD,1,ed21ba9607188498a6d3ba23b40c5936dcdde7b8ac613d3e4a41321ff2dab285
-Chattogram,আই,আমি,needs_native_review,Existing app curated.csv,1,e95171fc0e9aa1e9c3f18ed13a2fe887354668a9a1124da844be1ce2b5f32621
-Chattogram,আইও,আসুন,needs_native_review,ONUBAD,1,0497d8f469506ac5102aca3155ffb3373e6c32e71d0791d7ed45f2bd07584305
-Chattogram,আইচ্চুস,এসেছিস,needs_native_review,ONUBAD,1,6fcef033d77a9e137b8c83a085eb0e3647c9be7bc9f0914367ad814781eeade6
-Chattogram,আইচ্ছা,আচ্ছা,needs_native_review,ONUBAD,1,b1d27c23542f2fb2138c056195915aa30a84b4c3fe5f8659db0040340c047eab
-Chattogram,আইচ্ছি,এসেছি,needs_native_review,Chatgaiyya,1,31c8c5b018adefe9b0e422882d58521d20e70776978c716661a829aee705111e
-Chattogram,আইচ্ছিল,এসেছিল,needs_native_review,Chatgaiyya,1,f7d6f24cdf4a8d49690f2325ae84dbbf304dfe290f5cc4443fff68c554f020f5
-Chattogram,আইজকাল,আজকাল,needs_native_review,Chatgaiyya,1,edd78869131cc0b8c991a8d9d646611bfb22f791a3913f89d672135043b95c9a
-Chattogram,আইত,আসতে,needs_native_review,Chatgaiyya,1,f874c9d75c2173a9b5d2d03e5906cb4a30270fca4954371de756d058889523d5
-Chattogram,আইবে,আসবে,needs_native_review,Chatgaiyya,1,be8402cdba6da8fd55205d61d912b75dbf2d8d91c257e7d7f7d815d32a01e2f1
-Chattogram,আইব্যু,আসছে,needs_native_review,Chatgaiyya,1,0830253886749fcab78f46863199f979a44b30b4a5a4a98df3c79e4898346385
-Chattogram,আইয়ন,আসা,needs_native_review,ONUBAD,1,b7b7307079987b0d31772bbf74f7caef654c8dd0bc9ad02256481fc17871d5c8
-Chattogram,আইয়ী,আসে,needs_native_review,Kothon,1,d99565781352cd5d2e3279a28bb3a401a9f76f5be4e149b177f79e7075795588
-Chattogram,আইয়্যির,আসছে,needs_native_review,ONUBAD,1,eda00413db4ffeb68ae0e772145c3c20ca893b4ae8e0b039f390df90b3214ea6
-Chattogram,আইয়্যু,আসো,needs_native_review,Chatgaiyya,1,2ebf02c92506077ec435c7d4282f05df1fb3d3578ea08bd6a7255a3b70767d19
-Chattogram,আইয়্যুক,আসুক,needs_native_review,Chatgaiyya,1,e522786bf3f7b929cf1a589ece9eb6833bbf9c701bedae305edce624ab821c79
-Chattogram,আইয়্যুন,আসুন,needs_native_review,Chatgaiyya,1,9e8dfaca3f7dd8c3851755dbe9a769017c64462f0d184acc4e1127dd1e3cd32f
-Chattogram,আইয়্যো,এসো,needs_native_review,ONUBAD,1,f75078e4c28e5b36b6b5e8617be6b65da742ea1684263b7167e16616ebf5a1ba
-Chattogram,আইর,আসছি,needs_native_review,Chatgaiyya,1,ebaa949c5788f9fb191632db45561c03fc26e4a7d749b6e00a52ac3036101f9b
-Chattogram,আইলাম,এলাম,needs_native_review,Chatgaiyya,1,668e8cabc2ba9b80b0cd456266b5e48fd986d82d6f481cff148f37d4306620b2
-Chattogram,আইলে,আসলে,needs_native_review,Chatgaiyya,1,94f6eb9e988d7387726c4819c1c97c109562e131f5587123e1678cc89e403451
-Chattogram,আইশ্যু,এসেছো,needs_native_review,ONUBAD,1,d65fec2131a445ea9bb79707a4ce66b3a6d8a8982191c6b6b72abb06e48bc93a
-Chattogram,আইশ্যুন,এসেছেন,needs_native_review,ONUBAD,1,2f576875f57fc7560a9d0bdc0842e846a006b48fb38fb5353b1003635b448de1
-Chattogram,আইশ্যে,এসেছে,needs_native_review,ONUBAD,1,64d759e67b0b3c3261944b94966b620ea2434f196bd4cc664e4bee45c1175dce
-Chattogram,আইশ্যো,আসছ,needs_native_review,ONUBAD,1,98374718ef975da117f1f9d14ce1daf6ba5469145920f985c7bc4a34d58610eb
-Chattogram,আইসসুন,এসেছেন,needs_native_review,Chatgaiyya,1,cd9ebcff39335c0d0bbe439a37793c2b77aae849897b98b2ec9efdfe230077ca
-Chattogram,আইসসুম,আসবো,needs_native_review,ONUBAD,1,e3231ad0a1f96909dd7ba83c134811713713867f64155bbe40e003112e9e8a95
-Chattogram,আইসসে,এসেছে,needs_native_review,Chatgaiyya,1,6e014ded27a79e494884d2ddd521f1765108123d148b99988eacdfe281da259c
-Chattogram,আইসি,এলাম,needs_native_review,ONUBAD,1,e1ec2ea789ef54f137829043a10e05da1eb7b7d20b24cf1cdc03bea0f9e4e4e0
-Chattogram,আইসুম,আসবো,needs_native_review,Chatgaiyya,1,71aab748ea3c8dcc6981e217c617ec5aeb3f2954939c5a74cfd883afd40e5f23
-Chattogram,আইসে,এসেছিল,needs_native_review,ONUBAD,1,fecca9ef8862c605fd780816a69561bd15b7bde39b625ef94d5461674bab02d4
-Chattogram,আইস্যু,এসো,needs_native_review,ONUBAD,1,3aec127d756ee8b15c43617d05ede667a6ee1d6a6be95c7ddc3e50c9206a679c
-Chattogram,আইস্সুম,আসব,needs_native_review,ONUBAD,1,e3018a8b0f3e61411edf1b3325454441108119533c27270e5fef8551eafe2cf9
-Chattogram,আইস্সো,এসেছ,needs_native_review,ONUBAD,1,8f5a9776fa63fb87ed3f6d79ec84fa2c65796a313370d1ce91266ac753fb4641
-Chattogram,আউন্দা,ঝুল,needs_native_review,ONUBAD,1,80f344a2db351c16093c95b01e949a9fde4a569d00db4acec36606b03a14cd33
-Chattogram,আগাত,আগায়,needs_native_review,Chatgaiyya,1,4ba86a865722bbf6f7956732546874d7c4dd15247c2a3b988a2dc90b87f0fc8e
-Chattogram,আগি,পায়খানা,needs_native_review,Chatgaiyya,1,2e01e54e5ecf774d5a59fa00a1f3a5cf781083ee0f69ab97a9a24e920ec40a6d
-Chattogram,আগুর,আগের,needs_native_review,Chatgaiyya,1,41c551a618a45f3ef4f079fb906ad6911bd37646a618ee0129e845b2e8a5f337
-Chattogram,আচা,সত্য,needs_native_review,ONUBAD,1,06261124ff7cad61dbe62a720dff042782781fa25adf9bb3f6dba33fbbe3c24a
-Chattogram,আছ,আছো,needs_native_review,ONUBAD,1,a15d23a8aa957713128af5e7c427535f40450eb5e64cda7cd83f02c274f9bd8f
-Chattogram,আছস,আছিস,needs_native_review,ONUBAD,1,e3a8ced94ad8634dddce9ab7ecc5ca88d247a27655e81198b626acba9a88ca61
-Chattogram,আছিলাম,ছিলাম,needs_native_review,ONUBAD,1,22611e404105d71049fd3568ffefaeb840b24bcff18bf7858e1de1fd5b60bd3e
-Chattogram,আছিলো,ছিলো,needs_native_review,ONUBAD,1,4c63a1a749438643591d02987ccd26d007f53f1c30c586668778c40e4fc1bcfc
-Chattogram,আছিস,আছস,needs_native_review,Chatgaiyya,1,4a47f0da815220ab6357e840a20306faa95208f34bdbaa0c526bb497fa625ccf
-Chattogram,আছোন,আছেন,needs_native_review,Chatgaiyya,1,c0928e8837d681f06988bde8fa3d93586dc3e7c6e9fb3dab101dcda2ae641290
-Chattogram,আজল,বোকা,needs_native_review,ONUBAD,1,c0c15e2a2d33e8f61b38b88e1da63ece0fdd5602ea41dc4978ee0bbefa65c6cc
-Chattogram,আজি,আজকে,needs_native_review,ONUBAD,1,9f08a021997d4b83761b3b661cfd8c1891c33be52373ee55912d7e35595a91ba
-Chattogram,আজিয়ে,আজকে,needs_native_review,ONUBAD,1,338bce86be5cfbab806247da2c5df55436e1e0fd9ac12c0588bedfa81243b456
-Chattogram,আজিয়েত,আজকে,needs_native_review,Chatgaiyya,1,20e40c2f667537e3c999e6745f2db9ed9c5c47188b2cb9e9035c03ac2547d47f
-Chattogram,আজিয়ের,আজকের,needs_native_review,Chatgaiyya,1,20b157052230fb0e78a0942d5df8d782d95d3ecca3df576a022d693b04c22cfe
-Chattogram,আজুইন্না,সন্ধ্যা,needs_native_review,ONUBAD,1,222d66c6d39a4bd426a3c2358ea2e3966df9e3c99cdbf400028e9dfeea3fd46d
-Chattogram,আজুইন্নে,সন্ধ্যায়,needs_native_review,Chatgaiyya,1,b6bd1ddf266ece841c256d9cf3d65fc44b2537b65902f9a1e4a0972f269190ef
-Chattogram,আজ্জু,আশা,needs_native_review,ONUBAD,1,163f3169e6425c90c8c3ad96cc8fad39b27f53e60e1161d8ea75bf62bbd6d6c6
-Chattogram,আজ্জুব,প্রত্যাশা,needs_native_review,ONUBAD,1,aaba450faf12959944297ce0b9db714a1e593c81753f9a6da07c289af3d81b41
-Chattogram,আডা,হাঁটা,needs_native_review,Chatgaiyya,1,02894e0e852205b93f200778e71ac467e18c6cbe868ddaba5dcfbcadb6a18079
-Chattogram,আডি,হেঁটে,needs_native_review,Chatgaiyya,1,a744b5f89686eeab9da246e33a35d3ed800346d3964dca8e02cad8d551f1b689
-Chattogram,আডিবার,হাঁটার,needs_native_review,Chatgaiyya,1,1997c85322684133ee899349e2d7e4ed360530fa10784508d5abb0b71e044d6c
-Chattogram,আডে,হাঁটে,needs_native_review,Chatgaiyya,1,abd83fd574db0c93fb68b44e93d30fbaff76e5c6a644fe44d23bb3980e97216a
-Chattogram,আত,হাত,needs_native_review,ONUBAD,1,9573386a551846d3e90a0e47f80414adb39210c16daa1f86e25034896f297237
-Chattogram,আতাই,সৎ,needs_native_review,ONUBAD,1,86f421bb02db523e6392397092b578f57a42f0ec824342f2bdc796f2624f38e2
-Chattogram,আতি,হাতি,needs_native_review,ONUBAD,1,d768168e157e53ba2821de9135603352951f9a00d4da855ca5cf129c4e32d86a
-Chattogram,আতিক্কে,হঠাৎ,needs_native_review,Chatgaiyya,1,2e7e309f514b32e526bc4626a21e91c7cf3a84de5a598615441da8452901d9ba
-Chattogram,আদ্ধান,অর্ধেক,needs_native_review,Chatgaiyya,1,a7beb38551b539b5603148ece0a9d8394206651fbca40b8d24ccdeb7601b1aa6
-Chattogram,আনকুর,আঙ্গুর,needs_native_review,ONUBAD,1,49af4f0b3d684d102bb9a4cab320740f4c51319c4262a4c7b44c7060fde17c76
-Chattogram,আনন্দর,আনন্দের,needs_native_review,Chatgaiyya,1,f48624203db77c097cd4e9cc846c047f4a9f07d191788337a2e0166e9f2b72d3
-Chattogram,আনবি,আনিবি,needs_native_review,Chatgaiyya,1,0a88f63acbeac134cadf63314e38c1f3b53a439221cd3a3858794db2d002f8cd
-Chattogram,আনা,আয়না,needs_native_review,ONUBAD,1,b1fa77ed175fc952e5b5d9649926e03cd4dd5430bdd4883a900f845145125665
-Chattogram,আনি,এনে,needs_native_review,Chatgaiyya,1,c7f3eea78d00be7bb4a8982d9009cc9da5c0604e7b4993606178b0b0b7681188
-Chattogram,আনিবেন,আনবেন,needs_native_review,Chatgaiyya,1,5dac878a306d19cdcf27aa7b0d0d2c35db74c06044450e811737b04942ed175c
-Chattogram,আনুনা,লবণহীন,needs_native_review,ONUBAD,1,c31305a05121bbf65f509aaba1bad8290c76a13e93912b3eb5cb07c6827e282c
-Chattogram,আনোন,আনতে,needs_native_review,Chatgaiyya,1,f8d059c14a76190cdb6f49c468eb0b28bf28ee491a2ecef82becb85991cd9720
-Chattogram,আন্ধা,অন্ধ,needs_native_review,Chatgaiyya,1,82aaa45a3db43c7f4fff7c29ef90748a699373cd26301c9c9c5b031330c68e39
-Chattogram,আন্ধার,অন্ধকার,needs_native_review,ONUBAD,1,20607b6d53dc49a0918b573defd4f4fd8730b6542a868c8ba0b2a93da1769f07
-Chattogram,আপনাকে,অনেরে,needs_native_review,Chatgaiyya,1,b2392fccb003c15157a54de8337e3b93d36444dcd2de4b28e9e278aace395a9e
-Chattogram,আপসোস,আফসোস,needs_native_review,Chatgaiyya,1,d0cfe554682e7ef640b3a3b60d433ea892c9af85aa56a69f584c50845cb0a4d2
-Chattogram,আফ,সাপ,needs_native_review,ONUBAD,1,0fe9c7ac5fff57d5c0ecfc0f1322c318c90521ffb4a9d5cb9b5df89c8a09086a
-Chattogram,আফন,আপন,needs_native_review,ONUBAD,1,44102b62c751fe5dfce81b7d201b5a10fcaa058cc52450ff47df3c2cb01fd9f9
-Chattogram,আফশ,আপোস,needs_native_review,Chatgaiyya,1,b11b63cabb147ce778175c393c3939c3c41679912681cc768bb82c55abff9460
-Chattogram,আফা,আপু,needs_native_review,Chatgaiyya,1,d819da379d7a4f6fb0dde38ed56bfb544f5c4a77cfb725b5014692621505e7eb
-Chattogram,আফেল,আপেল,needs_native_review,ONUBAD,1,d5f397f4c2a6f28a4a9b2eaaa1e841392a89881f72e7145f68009e60ecd81b82
-Chattogram,আফোয়াইদ্দা,অসুস্বাদু,needs_native_review,ONUBAD,1,5804e730d29cee357ffa6a19bdcb47c4027e5a661d89652961e3cd96fc71871d
-Chattogram,আবাছ,আওয়াজ,needs_native_review,Chatgaiyya,1,aba0118fd46b925a1a50db57a7b28cb82e5240391af905ddf943cee317647dfe
-Chattogram,আবাজ,আওয়াজ,needs_native_review,Chatgaiyya,1,04b3f58206dc07d0d27a09db13c77ee6ad0fa08500bde0beb9c52d7a86d032cd
-Chattogram,আবাস,আওয়াজ,needs_native_review,ONUBAD,1,4fa35bac4b9ea77a0fcd41749bba5cbb40794f5de5846c7ccc453495ca6affcb
-Chattogram,আবি,আসবি,needs_native_review,Chatgaiyya,1,f9b770245faaa75b2290be9781ed7ad64dc1b493e4e8a72f5b13dc226c30f408
-Chattogram,আম,আমটি,needs_native_review,ONUBAD,1,87de25d2587e803acb0e13c4076651f95987dada4e3ab741840e4a4acc9b3a5f
-Chattogram,আমত্তা,আবার,needs_native_review,ONUBAD,1,7c5a133cef6ab93bfd32913c086d633997a43c8acc8eedc68b2499a5443e495c
-Chattogram,আমিশখন,সারাক্ষণ,needs_native_review,Chatgaiyya,1,96f5b8dbbe288e136d3db83a520594dae6714fd4b4711dc5347ba2f3660d1200
-Chattogram,আমিশখনর,সারাক্ষণের,needs_native_review,Chatgaiyya,1,43e67be5de2a580f5d886a154ed6234e976411909cb0416b8d47fb4a6b3f9ede
-Chattogram,আমু,আসবো,existing_curated_needs_recheck,Existing app curated.csv,1,6eab26e95a06c73884937ded65226053694f8c93d848e762f5d5f8945ef0da94
-Chattogram,আমেরিকাত,আমেরিকায়,needs_native_review,Chatgaiyya,1,10eaa02c324b2a0d6757ea3c976c3c1b7968850515fc3f3e4eeea8496c14a677
-Chattogram,আম্মারে,আম্মাকে,needs_native_review,ONUBAD,1,e4fbe74c39750093dd447734de7416ff49ef248fede0292895beede45ca7c977
-Chattogram,আযন,হারানো,needs_native_review,ONUBAD,1,3e494e9f4ee5386725ef0821cab0f2afe3a0eabf764813312aa50f5ffa7ee691
-Chattogram,আয়ু,আস,needs_native_review,ONUBAD,1,a41c73085b1562c2d9147fdfb499c9e9e9f34ebbf1dccdd9c16cfdfb130ebd5a
-Chattogram,আয়োজনত,আয়োজনে,needs_native_review,Chatgaiyya,1,8c1716129e8e2029dadf79d0aebe4608f94db40b29b371b8291317beb88b1eae
-Chattogram,আরত,আরোত,needs_native_review,Chatgaiyya,1,792d8d1cfec820a256017f26713dd7b7ee4aac324fef602d4d12defd722ebff4
-Chattogram,আরা,করাত,needs_native_review,ONUBAD,1,bf43417b32583a1bae6afe570f355557f8f03fae6e6b43d706f3844d5184acf4
-Chattogram,আরার,আমাদের,needs_native_review,ONUBAD,1,fb2ff0a9578a1b3d3ab32f003206c8ca98bb39909ea70e411533160575f2485a
-Chattogram,আরি,হেরে,needs_native_review,ONUBAD,1,c1e40c5bc73ff571f7d1b4bd18f90694e3d9cb3ecd703c69af2f1f435d557e6f
-Chattogram,আরে,আমাকে,needs_native_review,ONUBAD,1,a91676c202309816ca8b96859a2a877399987986541c4bbd31a5e9b5d6bcf4a0
-Chattogram,আরেক্কান,আরেকটা,needs_native_review,Chatgaiyya,1,8ddc9ece2c57d133992bcd580c6428ac82d12474b2289c2df222233c84f0ec49
-Chattogram,আরেক্কানা,আরেকটু,needs_native_review,ONUBAD,1,97439f313117f45391527ea46fef4890d0e454345cb7dffb7d769262f6e704a1
-Chattogram,আলতি,আমলকী,needs_native_review,Chatgaiyya,1,ba46c295cf796af26b71f798b4fae5c4f38dc1eac99278d9591a15203a71c10a
-Chattogram,আলপিনর,আলপিনের,needs_native_review,Chatgaiyya,1,b2a3d420e6eff314a60f63ddf0057ac8391071ea83c127229fc0028736440ac8
-Chattogram,আলমিরা,আলমারি,needs_native_review,ONUBAD,1,13d4a5bd085c6fa6542f3664da16379de8d817d4fd07eb2ae6081e0345a2fb67
-Chattogram,আলসিয়া,আলসে,needs_native_review,ONUBAD,1,9841ae88362e5531487cd3891b858767f6b9e229b12236ea63d5500e6ff2150c
-Chattogram,আশাত,আশায়,needs_native_review,Chatgaiyya,1,e16eaac166892c3098d137c5670c59af3dd95e520b2823a6c1662164b12d5d73
-Chattogram,আশার,আষাঢ়,needs_native_review,ONUBAD,1,4fa8c3cba899a51bd4b4d03a216674a9b9245c460ec4cf659226236cf47b433c
-Chattogram,আশি,হাসি,needs_native_review,ONUBAD,1,3eaf00d9143e7cdb9dceb76f9032a9903c856356b85eca45d51d4b1275a7eaa8
-Chattogram,আশিন,আশ্বিন,needs_native_review,ONUBAD,1,11e2408ca00a6ae43ca10ce0c7df413a75b97026fe824a02c55c4b56cfd27330
-Chattogram,আশ্ট,আট,needs_native_review,ONUBAD,1,bb5db11dadca02713094f3be23d92b311b9e2bb9168c9a423b767191141e2729
-Chattogram,আসচাইজ্জ,আশ্চর্য,needs_native_review,Chatgaiyya,1,2b65a81670c87f66dcc6a713d77bf15e922810b940eda7dd2dc6586ad1c054d3
-Chattogram,আসম্বিত,হঠাৎ,needs_native_review,ONUBAD,1,152a475b6aea340c3fcdc2215fdd4a5398c350fb2b538248bc438d3f0949945f
-Chattogram,আসসিলাম,ছিলাম,needs_native_review,Chatgaiyya,1,5b1f0d91de009f05a8d0d4566c2dc3cb9fd9789f401a5aa916335a27be0c7cf0
-Chattogram,আস়া,সত্যি,needs_native_review,ONUBAD,1,58e717a8ddb7f21be644329edf3b1d6830ef44b3eb5f68ef51362b4b1a8906ab
-Chattogram,আস়ে,আছে,needs_native_review,ONUBAD,1,350f9d305d01d444ff82f4226a5d1cb69eda349a83475868183501d992cd7552
-Chattogram,আসে,হাসে,needs_native_review,ONUBAD,1,555e5cbf4b5811aea786d9b8ab83e097f1d032a56b610052980fd398694d5737
-Chattogram,আহল,আক্কেল,needs_native_review,ONUBAD,1,1a088612e7519254982ba2761cfc3673f9690cada56e9fcde41e287496c56be6
-Chattogram,আহো,চলো,needs_native_review,ONUBAD,1,d5a628eeaf81dd259812aeba9534ef34fe7e86ae169d252eb454f22805e63e45
-Chattogram,আ৴ইর,আসছি,needs_native_review,ONUBAD,1,9ef6169390be17a08c2815d4eb4cd70b91cb13862fb53b826e64afc51f65f65d
-Chattogram,ইক্কে,ওদিকে,needs_native_review,ONUBAD,1,23293c705b1550c33df6149782114cb1d413cd118fe3f0dc8b00c19b12e3cb94
-Chattogram,ইচা,চিংড়ি,needs_native_review,ONUBAD,1,cc8b55fb129b930935e3fe8e390e9b6dde075f7dc499c737e99cecd62020afc2
-Chattogram,ইচে,চিংড়ি,needs_native_review,ONUBAD,1,ab1d17ee63ca66cfe37e8b15052d7daff411f98e3b40e1cfff62a6146908b5ab
-Chattogram,ইজারা,হিজড়া,needs_native_review,Chatgaiyya,1,b6f10591be82021b53f5656450f021073d1a145f20e7fa7e12f6e123e4e8e3b9
-Chattogram,ইতার,তার,needs_native_review,Chatgaiyya,1,198c68add1e01f2e91bf43fa7a19ecbc069e73b5014ce24d6ee38c708c5427a8
-Chattogram,ইতারা,তারা,needs_native_review,ONUBAD,1,706ebaa31c622c705fecb60ba3e760b438e970fc36eb80379e6b3da24e3e8519
-Chattogram,ইতারার,তাদের,needs_native_review,ONUBAD,1,d70c04eefa3f3d8cd12baa37fa395af71e0d83fd6a2267bf9603ffab9b01cff9
-Chattogram,ইতারারে,তাদেরকে,needs_native_review,ONUBAD,1,09e1fbc3714eb12fcebf8b6662065568428d4d62ef3b17a381353488b66d4cbb
-Chattogram,ইতারে,তাকে,needs_native_review,Chatgaiyya,1,90262f9f6adea16f886abf85add74392223abdb4d5e36f3175ba303c9cb2a41d
-Chattogram,ইতি,সে,needs_native_review,ONUBAD,1,986cfad55604d1f08ec9d37df8f8b9d610cbad28956fae8518dbb27f0058712e
-Chattogram,ইতেরে,তাকে,needs_native_review,ONUBAD,1,3ed8bad907f5e8b05a1c97742d5f107208a439c79166491fd336831d9bb01ab6
-Chattogram,ইতেল্লা,ঐজন্য,needs_native_review,ONUBAD,1,c191eb0123d82f3a9a08354b8ce8517cc2d73f79330c0485537dabae351668f1
-Chattogram,ইত্তিরি,এক্ষুনি,needs_native_review,ONUBAD,1,a9dbfd85f3bdadb6b2da0ac40fbc567ca35a5d5a1f69b329fbcfd7c53c1340b3
-Chattogram,ইনসাফ,বিচার,needs_native_review,ONUBAD,1,258bbd26fb28ee262f7621f13d9fe2bc59dcbf758697cf573be9512eae70be81
-Chattogram,ইবের,এটির,needs_native_review,ONUBAD,1,9e46e935a629748b8742a8a6cda455591dab4d60f5f8d56802f40002b6606d7f
-Chattogram,ইবেরে,এটিকে,needs_native_review,Chatgaiyya,1,dba86488f54858e2abf09eff5d55a68059a0bff2289e639e688c82c4b876a608
-Chattogram,ইযন,সিদ্ধ,needs_native_review,ONUBAD,1,36e2aa4c417cb3202760a9ff858ff15428411c1e3749c33bf902e8dfff2e1085
-Chattogram,ইয়ান,সেটি,needs_native_review,Chatgaiyya,1,7a18ea89b53c9caae26677ec986f8ddc4249736cc5657f0d17d17579dd45b742
-Chattogram,ইয়ারবাদেঅ,তবুও,needs_native_review,ONUBAD,1,62a1af59e7d944e00a84bd9c063000fd0a422552bda4dde0ca61919eefbbeef2
-Chattogram,ইয়াল,শিয়াল,needs_native_review,ONUBAD,1,5489ae8b0341102b8e6b56334a4a5535b28f085c92bae5c57360e28d767c6c8b
-Chattogram,ইয়ুত,এখানেই,needs_native_review,ONUBAD,1,01502f2cffe2b8ea384774c758f8c1be616b795e0043607a81e1539dba8c0a0d
-Chattogram,ইয়েন,এখানে,needs_native_review,Chatgaiyya,1,af07e8700dc0359ccfcd610cd86a298aac5919817e3ecd8c09d2b215d16c4e63
-Chattogram,ইয়েল,শিয়াল,needs_native_review,ONUBAD,1,7d37486f37e9404a0c8e3b3d1695e569a0ccb5329d393d9328cd9131c358d737
-Chattogram,ইল্লে,তেমন,needs_native_review,Chatgaiyya,1,4662128495861d6edd8ff2c2cff60236a1d2f4a901533859ee492fd7e46f6d3e
-Chattogram,ইস্তের,ইফতার,needs_native_review,ONUBAD,1,eefe946758750a30400f5c8174fd8c610e733551e9eefd393f57c9204fe1d10b
-Chattogram,ইস্তেরি,ইফতারি,needs_native_review,ONUBAD,1,96f036c479bad002e04d24e0c54f75bbcbf2fa3dc3563b52279ec088127b9449
-Chattogram,ঈদুর,ঈদের,needs_native_review,Chatgaiyya,1,2a13daa701c9f824e666eac0a2a8d5a44c9a55ba63a3df8f6ae3e248f948f2cd
-Chattogram,উ,একটি,needs_native_review,ONUBAD,1,12549dc0194bfd3f3c60e544c24fbb77ff5fca02226733766fc3d7b61691fd57
-Chattogram,উঁনি,শুটকি,needs_native_review,Chatgaiyya,1,c02cc31e75b8ec3c1b606d8b65f1769caaf986de5b60e4bf332e8518868e5606
-Chattogram,উঅধারি,উন্নতি,needs_native_review,ONUBAD,1,4808ab7fa4e03b051db9e3706251324c40fe38165a2a9072f3cd31ef8124b1dc
-Chattogram,উইদ্দে,খালি,needs_native_review,ONUBAD,1,c032dba527e8e5af39371f2b358f759d01a4a961e8878a313651be2e82a9f82a
-Chattogram,উজু,সোজা,needs_native_review,ONUBAD,1,980ea08819b378b155bf95846731fb295196c5df7662f0aef4e7b28c6c7d3ac0
-Chattogram,উজুর,হুজুর,needs_native_review,Chatgaiyya,1,8745df0e5fb7976ff69b06702ff31542d5f289d025ff220d2910c7e4710e6ffa
-Chattogram,উজ্ঞো,একটা,needs_native_review,Chatgaiyya,1,1e4e31abf234f3d1fbc3c567d8824cfd157f7f7219b8a409080d84f40893cc2d
-Chattogram,উঠামু,উঠাবো,needs_native_review,Chatgaiyya,1,aee8c315e0f8c9637a8a7b008758adf9257d44fd3623e4cff9775fd124555071
-Chattogram,উঠিয়েরে,উঠেই,needs_native_review,ONUBAD,1,d617d70a9d884499da06d545ad67c17e99faf8544317d33379456f690c4817ce
-Chattogram,উড,উঠ,needs_native_review,Chatgaiyya,1,1c85336b0482686b98443120adb4d53761b468f99c445e36c199a8f53d6e6883
-Chattogram,উডন,উঠতে,needs_native_review,Chatgaiyya,1,ad064c08eef82549e3b09b51a3fb2b266b27bc44c5b42af9505a8e74249b7e8f
-Chattogram,উড়ি,উড়ে,needs_native_review,Chatgaiyya,1,90b95af6c7ae381d814e24e4968ed5c5ef2fc47da49c53966c9e3f3e50e44a4d
-Chattogram,উডি,উঠি,needs_native_review,Chatgaiyya,1,61ad2a8a504a7e76affa4cf5823fab1f077763b6aaa4ee4ac3f49313c854aedb
-Chattogram,উডিবি,উঠবি,needs_native_review,ONUBAD,1,e5fcbb1003a255b59de7ad7acc1dba5c231f997fb38400b665637bcfbb0d6c69
-Chattogram,উডিব্যু,উঠবে,needs_native_review,ONUBAD,1,e4a8bff51351506606f07b48483fbf3803e03cd1a6a3b9c47f78dabc57f73645
-Chattogram,উডিয়ে,উঠিয়ে,needs_native_review,Chatgaiyya,1,3dfce226169d929064c8c459b747dc5acb80564b0cf6506f1f155a837dedc8b6
-Chattogram,উডে,ওঠে,needs_native_review,Chatgaiyya,1,ba56d54e3d57f54324c613e2bcbc761f512bddd553604b7b6ebb993d1016d639
-Chattogram,উডোন,উঠান,needs_native_review,Chatgaiyya,1,ee510c01fb2af43837c5d13b229df4aa83678d2c74db11a10fb7eb11ab88cb2c
-Chattogram,উতর,উত্তর,needs_native_review,ONUBAD,1,408e75cd37079119c45c7f271316cc4939ee8fc29363966b19be481084e4600f
 Chattogram,উথি,উঠে,needs_native_review,ONUBAD,1,bc8fa7ab249a1c12f908dad4892b0640506655142b2ba333d97137fba3c2a8fe
 Chattogram,উদার,ধার,needs_native_review,ONUBAD,1,9be794390c5a20870f87b42495c15b4e7cdfa1bd0b1f934e1c2263c9cd77b650
 Chattogram,উদো,শুধু,needs_native_review,ONUBAD,1,b845985e62ef5766e2294b31aa0a7ffc030f37c706744484fd755e64e96b95c0
@@ -305,7 +367,6 @@ Chattogram,ক,বলো,needs_native_review,Chatgaiyya,1,45d900dc3bad5560e580f1
 Chattogram,কইজ্জুম,করবো,needs_native_review,ONUBAD,1,fedcf05a6c781bc842818028ad2e2064e3232906f6f9417ee3d3473be9d8582a
 Chattogram,কইয়্যরে,বলে,needs_native_review,Chatgaiyya,1,e24dbe8e63559182a839cf93e8f17a04952048776424e3750a0684753f9e19b8
 Chattogram,কচি,হচি,needs_native_review,Chatgaiyya,1,7fbf7035b8081a668d75bbdb208127da525f45bab03305e73ddb184e68c4826e
-Chattogram,কডে,কোথায়,existing_curated_needs_recheck,Existing app curated.csv | ONUBAD,2,745925467b3d063f6d83d6c6a233929432dc7884f1b40bbb6f741184fab9225d
 Chattogram,কডেত্তুন,কোথা,needs_native_review,ONUBAD,1,6f81783a6e15a7291eca02bec20ea423137c720a49196d1733b1099191ca665c
 Chattogram,কন্টাকে,কন্ট্রাক্টে,needs_native_review,Chatgaiyya,1,a7bd2b1771b9471d957fc6b85823ccfe4e644a679453726463129bef637e85a0
 Chattogram,কপোরেশন,কর্পোরেশন,needs_native_review,Chatgaiyya,1,7977f1c9e009ebbab91948a77facbab3f64e7a635c8d32b7c3b6c44876e5968c
@@ -347,7 +408,6 @@ Chattogram,কুরোর,মুরগির,needs_native_review,Chatgaiyya,1,a
 Chattogram,কূলর,কূলের,needs_native_review,Chatgaiyya,1,42f3913c3d788f0967ce3827d7c28ccdf43b892c3ee913b4601fdfe0ab5f7a6d
 Chattogram,কেডা,কে,needs_native_review,Chatgaiyya,1,7efcd4545f14c4919c59850528e1501cef524f4f73817a0a4d0c53290c8e81f0
 Chattogram,কেথা,কাথা,needs_native_review,ONUBAD,1,95d03bb9fead8d4cfebc0e5caf83d0461b3964eb859f1eda5d187780fd18ef90
-Chattogram,কেন,কেমন,existing_curated_needs_recheck,Existing app curated.csv | ONUBAD,2,762e6066f85c4442d9dab92d5580ea9aa07c37b68368918d5c0e280a43c87bde
 Chattogram,কেনে,কিভাবে,needs_native_review,Chatgaiyya,1,f515eb10cd92e550a4775f93ae881b3e44f00b28e16ca26ea88aa6621255000c
 Chattogram,কেরফেট,ঝামেলা,needs_native_review,ONUBAD,1,65d801ec10ca13031e5a87c114fa43c25e6e770a3d34e70dd3a3bb791b1f5c1a
 Chattogram,কেলা,কলা,needs_native_review,ONUBAD,1,a63f8146d868c02d44a5fbaad613148236cbbed6533ac47194def2cc86388e02
@@ -361,7 +421,6 @@ Chattogram,ক্যানে,কীভাবে,needs_native_review,Kothon,1,9e
 Chattogram,খস,কাগজ,needs_native_review,ONUBAD,1,34fb11aab7ae896cfe93af3abc7ae738bf387a81b9c1da263e713b7f92811886
 Chattogram,খাইত,খেতে,needs_native_review,ONUBAD,1,5e32ac102055c93a5a6a13bd58236979d732094449af79e6e37aa908b68f7416
 Chattogram,খাইবার,খাওয়ার,needs_native_review,ONUBAD,1,6b3dc48939eedc515c1fbebfe40c6425e21463f2b7b21ff0307d829a16b45a98
-Chattogram,খাইয়ুম,খাব,needs_native_review,ONUBAD,1,fddc2a8d3c8a0f452712cef85aed56edc26b1585176cf5e1f71eaec315015ea4
 Chattogram,খাইয়্যে,খেয়েছে,needs_native_review,Chatgaiyya,1,e47ebdafc9a28ba5e2c8f7bca332d43fc8d1dac707f2fc1ac3c523da5b73cced
 Chattogram,খাজুর,খেজুর,needs_native_review,Chatgaiyya,1,91b442dc8ce1352ef1881b31603a054fe0a502d82360e8c05a9802de005bffd2
 Chattogram,খাট্টাবাইয়্যুন,টমেটো,needs_native_review,Chatgaiyya,1,4b35227850211e01cae3b5230f5d338267c8a0c47f97257ecafd5bfa2aa8968f
@@ -723,7 +782,6 @@ Chattogram,তেতই,তেঁতুল,needs_native_review,ONUBAD,1,b9ff746c
 Chattogram,তেলতেইল্লে,তৈলাক্ত,needs_native_review,Chatgaiyya,1,12f9f6336d34779a245c256f97f99ac31a39cf4eb2b9667d62b607d4466e346b
 Chattogram,তোঁয়াইতে,খুঁজতে,needs_native_review,Chatgaiyya,1,7f3463fe39a82be98bcf393db249f3ca0fad302d48834d8173427e87213dbdfb
 Chattogram,তোঁয়াইন,খুঁজে,needs_native_review,Chatgaiyya,1,8df2333e52b5925e42abd4a729f134167a6a35b26dec2f829ea968833c81a386
-Chattogram,তোঁয়ার,তোমার,existing_curated_needs_recheck,Existing app curated.csv | ONUBAD,2,a56290f67b536025f6c6ce9771b9b5249cc4442706f7d2140135b9e2069d8afe
 Chattogram,তোঁয়ারার,তোমাদের,needs_native_review,Chatgaiyya,1,f9fae1dfb22437822157eb94363a30b8144a3bb412626c7a7d1819c8ac0ff4ab
 Chattogram,তোঁয়ারে,তোমাকে,needs_native_review,ONUBAD,1,4a2c7b990c8ede4e22fa481e11958b2e4ff7cf25b3199a65056f82a8689f29db
 Chattogram,তোঁয়ারো,আপনাদের,needs_native_review,ONUBAD,1,3c81d8f57ffb3dd17f2fefff18b242033370de44ecfee28c68205435fb388e3c
@@ -1619,7 +1677,6 @@ Chattogram,হক্সোবাযার,কক্সবাজার,needs_nati
 Chattogram,হচম,কসম,needs_native_review,ONUBAD,1,88a8a1c21812a9f537cd15ce5c603274d0990e669b693bd983388f44a71ed4e4
 Chattogram,হচ্চফ,কচ্ছপ,needs_native_review,Chatgaiyya,1,533752a0e3959c1b839c25305d96b468a42a541bdadf706a08c2c9710a7a5809
 Chattogram,হজনের,কয়জনের,needs_native_review,Chatgaiyya,1,4be765ba6331e551d4cea1ab0882643a33fa6c806509ea0f5b17060e5c39fa0a
-Chattogram,হডে,কোথায়,needs_native_review,Chatgaiyya,1,06bca3acb8cfaafbcd634e184604e8794a6e775371f337bd0c15b4d985f74a10
 Chattogram,হতল,হত্যা,needs_native_review,ONUBAD,1,a75bda69ab7b1ebad8e9bce33ef9bf627762cc1be42d07c5b487e0efa431ec71
 Chattogram,হতা,কথা,needs_native_review,ONUBAD,1,afff601ee1d426501f9452e6e758da8448a63398c5ec3be6d165eb74a527b616
 Chattogram,হতুর,কবুতর,needs_native_review,ONUBAD,1,f951418ab2d467abfb629d8bacb86a5a5b69d4ed0bbb9d17c641172972785105
@@ -1634,7 +1691,6 @@ Chattogram,হনঅত্তে,কখনো,needs_native_review,Chatgaiyya,1,f
 Chattogram,হনিক্কা,কেউ,needs_native_review,ONUBAD,1,5bf8f141a88b76c39ea294c2beb7d4b15dd2c2e59f4df69444c004ce199b7f3c
 Chattogram,হনোব্বগতে,কিছুতেই,needs_native_review,ONUBAD,1,84b155469c767b4944b75e92d9c4e260cfb7c1ee816abe7495391d3c245c8116
 Chattogram,হন্ডিয়ার,ইন্ডিয়ার,needs_native_review,Chatgaiyya,1,95955f42cc630b4f809046268e1ca3daf81070bc8b83b69136aec4a06297bc66
-Chattogram,হন্ডে,কোথায়,existing_curated_needs_recheck,Existing app curated.csv | ONUBAD,2,5122d5d70315ed6392f5eeccaa4cfd5a20dabed5e265eba44c248dfe8023ba2f
 Chattogram,হপাল,কপাল,needs_native_review,Chatgaiyya,1,e31a36892154d1c86c47cc191bf9d7a02c8ada19a03e448d7ad0ab40a8bed1f4
 Chattogram,হপালত,কপালে,needs_native_review,Chatgaiyya,1,ac81f2658b473761353cd924340e6173572db87cf772ca0a9a2e68ba08f17c82
 Chattogram,হপ্পর,খপ্পর,needs_native_review,Chatgaiyya,1,ecac541c74a26b0f7d6f4407fc3a20118b82b249282b9c70bcda9b882cfe6f22
@@ -1773,59 +1829,6 @@ Chattogram,হোশবু,সুগন্ধ,needs_native_review,ONUBAD,1,442fb
 Chattogram,হ৴জ,কাগজ,needs_native_review,ONUBAD,1,cd07f86795a53a7ab350bfcd9476d6339a081901c291b6061bb150221a442a21
 Chattogram,ৱাদঅ,ভাদ্র,needs_native_review,ONUBAD,1,4c8bab8d7c295c5058d9e653fd9b7ff8c05b087b4ddaa0970bcca7453a41ce74
 Chattogram,ৱারম্বত্তি,প্রাপ্তবয়স্ক,needs_native_review,ONUBAD,1,332ff0d94f2ea87ac4c5356a85847f66a79a03aa8b04a9e315c6f05e5bd35af1
-Chattogram,অঁইছ্যা,প্রতিজ্ঞা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,9401d01b266223820f23f712a2bad65c5cfc112ce5ab8f0ece07bbfeb1506ca9
-Chattogram,অঁইয়ে,হয়েছে,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,3178e92bc3553b3c85ec69f822a6b2bd79ae256a710871c5d448f98416642147
-Chattogram,অঁয়,হয়,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,f2107bc99910da65ebbba09fc664fd182693171d0eaa2955323465ca251efa89
-Chattogram,অঁসহাই,অসহায়,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,db927976a8cefed5745cc2bcf37d9830f4e0e29e6c6c58ce02cdcb3c91ab136a
-Chattogram,অদঁক্ক,অদক্ষ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,8ee7aaf444a0cf1776b3d52ccbafcaaa4edf0705a8fe1041d73c8ad7ce03066e
-Chattogram,অফারেশন,অপারেশন,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,745580043c15a4e5ce8ac96ba6c729f95b49fcbf3d453494c4dc56465e890091
-Chattogram,অবঁইদ,অবৈধ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,136931b7e6778e62b185e92f4a8ba87d3abb2f52aaf9342ce9329b984cc47694
-Chattogram,অবসথঁন,অবস্থান,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,85154c7b8cbb2a0e83ceda03ea726fe62c9510beb72a24586001a9d5b273d75b
-Chattogram,অর্হনীতি,অর্থনীতি,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,542b58f77bac55f45f83019b73b1eb0439b3c2537a756b9d06f079dc811d8496
-Chattogram,আঁইয়ে,উপস্থিত,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,4c5a290a8993982e51fad34daeee8396ccb8d8686f0237107a002216b47c43cf
-Chattogram,আঁকাশ,আকাশ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,56061aaa7298eb9ceb364bbb1d90213c51a0eda165618d182918c35545aef0e1
-Chattogram,আঁচার,আচার,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,cfc7f15c646abbf8fd43d05be93a1740803089d1532fddb69bd29d2b1e97d7f7
-Chattogram,আঁটকি,আটকে,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,5412828d73a16a4c4b339a321fc141c4520c7213bbdde4f8c05fbac6ab2080b0
-Chattogram,আঁঠু,হাঁটু,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,a760e2177e3ccd5d871269c6ce66b0d17d44cd089fdf06af7fd5dec309d77ccb
-Chattogram,আঁধায়,অন্ধকার,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,e174539f7936d837571b9d8d5690a6620bc4683026ab1d9795953ee7bb27d569
-Chattogram,আঁন্নেঁরা,আপনরা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,38f604110621fb1ad89513236d3eca8118ed2648625b856cf16e9dbbd7c19fbf
-Chattogram,আঁবার,আবার,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,255c77aa25cb1f658d986af247bf2954cce158645bfaf6854f8a2a9eab20713b
-Chattogram,আঁম,আম,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,a0560c183b514747480c1859d432181077998b627b04d70c6089c320a9771f06
-Chattogram,আঁররে,আমাকে,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,98d1437207884c98e6df2796263c48443b8bda684e01c52179ff58eb44c76d23
-Chattogram,আঁরা,আমরা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,50754b47797810344d358604d2b6ba99f8cfacd49ad9e4d1ad57d2892ad393a1
-Chattogram,আঁরাআঁড়ি,আড়াআড়ি,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,29ac4f0e3c4fe3513c5d50c71711c2b69fdbfc02604c420168da1b3c4ca97183
-Chattogram,আঁলচনা,আলোচনা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,303e8a5d1f2e9a6995511d4d9516a73cf39e926235a5f4048d8b07173b2f0279
-Chattogram,আঁলাদা,স্বতন্ত্র,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,55786e726073954afa64efe0cb1eba7dbcc5afd07f5bd9dc2923439926da6387
-Chattogram,আঁস,হাঁস,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,59052d9a22b4f804ce06fa9827ced7de8d356c8c8aec8b0c65d1e01e281d7773
-Chattogram,আঁস্মান,আসমান,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,96dde0140751a8bc801f92652473c86efdb4b822cc4dbc798d95973dd7adc2f4
-Chattogram,আইঁখ,আখ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,b53f3864bf06c3f23bf38e5dcd4e6b26a3ff58a3ae7fb19791fa660256b21a4b
-Chattogram,আইঁস্যে,এসেছিল,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,71858354bdcee6bf7561f07fb7a7155f8ce995e9470d89230f596b3c0b894ede
-Chattogram,আইওন,আসো,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,3da746fc27262dc7da107d40f3b9284f5be36b8bb0794f640ffd28af44c47ea5
-Chattogram,আইজ,আজ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,b09103a46405cea86e45e69014e3c5f40bf617fee4b41231585ffc7f8bd01f78
-Chattogram,আইজ্ঞে,আগে,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,ab6c134a268f192a193cd77e8dadf0536f64f02de9a2b88c42b4b204b32035f2
-Chattogram,আক্করে,সম্পন্ন,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,ecffa7745b3a0043727d099c46ecf1e65731d08a62b941c73342295d4079746c
-Chattogram,আত্তে,খারাপ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,3d3b50b5bec15bfe746b9aae22ef7b2d86c271402f58b0967d0f285aad304b20
-Chattogram,আবিশকার,আবিষ্কার,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,56b48bb3b13cd3dd5622afad9aaadbbcc1062f0702ab7a75298d8eea4ba09f2d
-Chattogram,আলঁইদ্দা,আলাদা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,3a3db33f94583b7aa3bd1c658668a1a49cda257c6a5ac7c11e0ee77c112e2343
-Chattogram,আলা,আলো,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,ed887a3c33d9551561d119c02b2382c5f9002c76f96ecc6ccbd78aa8bdbf2ba7
-Chattogram,আল্লা,আল্লাহ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,d782535e9cbbed8377ce56a615c571adcdddd22937787ae1322b659307d77e47
-Chattogram,আষাড়,আষাঢ়,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,26a49fdbc3c24215e50fc4d96cf19dc3415735e40510a1aa4fa7c8b405db5916
-Chattogram,আস্পাতাল,হাসপাতাল,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,ccc211b26118b82c10f57b18f8ab6bbc7c4e4d43d66e6929f98a5fda7db7bf23
-Chattogram,ইঁয়াল্লাই,ঐজন্য,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,ec22d24fd0747aaafd91eb31443a02314ed9618a8d16f0c1153a00bf61901b56
-Chattogram,ইঞ্জিনিয়ার,প্রকৌশলী,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,f65b025cce86eb129ac9b902b84c7b237ae0e21bb763417597633be7c32829a1
-Chattogram,ইতিহাঁস,ইতিহাস,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,f735efbc0cb841e817e3e2345d4d05c9f473cd139d8ee37734328c62b04cb47a
-Chattogram,ইনজিন,ইঞ্জিন,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,ac6ffc818d548b68a99987589e8a0eeae34fd3c9ee8c928cb8d10a9fb9e337e8
-Chattogram,ইনজিনিয়ার,ইঞ্জিনিয়ার,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,e8626d39e551c019d079d0b8d1c498b401d666aa69f3b38b9dd405fbe7aecdd7
-Chattogram,ইনটারনশিপ,ইন্টার্নশিপ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,4b266d02985977ff2d525f2d754c6a4bafed1a6a5ce5d760c0a3fda554ee9503
-Chattogram,ইনটারনেট,ইন্টারনেট,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,677dbf516c0704df8ab2d09e2ca9129d82595ba0771f9ab6189433d7edc568fc
-Chattogram,ইনটারন্যাশনাল,আন্তর্জাতিক,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,6b68bf7bd67749ecc0b0791acd830bb4b5abdefded76b84f4ec274553a2c5df9
-Chattogram,ইশকুল,স্কুল,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,3a4b02e57c0e873b5e8c17c2a2440fbc410ff0d460da62433c2b86f8991d38fb
-Chattogram,ইশটুডেন্ট,শিক্ষার্থী,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,8f838b8f2881eff0c729a0250acb86b81fdccedc2d98d118157774c88046b83a
-Chattogram,ঈশ্শর,ঈশ্বর,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,ff949e73d7fdadbdb762b7e0b2676cb73f04ec7e8d4e890790be97674ea1678f
-Chattogram,উইরঅ,চড়াও,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,129ef934efc13af2175d630315147c102175ec6b84521662d02f9dfb454b20f4
-Chattogram,উচ্চাঁ,উৎসাহ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,4a54d883f3741564a2ea2bfee26511a1c4c9a68d839a80a867642f4e942a17d8
-Chattogram,উচ্ছ,উৎস,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,a85adf8bad6c601c49f665bed6e4c8f7b4ab97a33ca8296f800046c4a2baf477
-Chattogram,উচ্ছব,উৎসব,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,574bf01d44732a7576ea86ffa6c4243963971937525c702a75b72e81e5cff1e5
 Chattogram,উতরন,উত্তরণ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,4ab0a94290270651418ff621cbf2a21cca9ea555c169b64144b083232f3628d8
 Chattogram,উদাঁহরঁন,উদাহরণ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,c7d3afee3a9a9935e6be83dc60194845a4bccaabc429e3008e88d97d7fd8636f
 Chattogram,উদ্দগ,উদ্যোগ,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,54686d5f7d597856aff4f35ce0bac368006e87c424d663e812d55d9cc5e89598
@@ -2142,7 +2145,7 @@ Chattogram,ফাঁর,পাহাড়,needs_native_review,BD-Dialect Words 
 Chattogram,ফাঁসওয়াড,পাসওয়ার্ড,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,345fbb8963d0d1d55f5b7e16b212f0b0501a4a1d47cea9cc7a3a6a7188421a7b
 Chattogram,ফাঁসফড,পাসপোর্ট,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,3f5aa3397887022958f92c2668b6a742757db9f9af8e1164b189e8ab9a30339d
 Chattogram,ফারম,ফার্ম,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,3ccceb3b6aa2c40de93bc4349a963959adb77a9365697c85080357dddfa518f5
-Chattogram,ফাাঁইক্ক্যা,পাঁকা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,231ead763e338495bd490e58e303a5488a21179f404154dcb54df2362d52f0d6
+Chattogram,ফাঁইক্ক্যা,পাঁকা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,9815791a9e185bc04cb9926ce3c4e9e5187c8238d43fd897cf5c326bdb10d40e
 Chattogram,ফুঁকুর,পুকুর,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,e2a17147b432b2ef1c60ae00527a1f9063697943ebf1e2da1351afea2b301d43
 Chattogram,ফুঁয়া,ছেলে,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,ded9b151dce71eb021dbab909a1e3ac292edb3dbee0ae53bbdfd783d01655e57
 Chattogram,ফুঁরি,মেয়ে,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,003ea9326cba1e0ca320bd4a3a3970d4b093763d2c5c348966281dd6d1521e6f
@@ -2359,15 +2362,13 @@ Chattogram,হাঁলকা,হালকা,needs_native_review,BD-Dialect Wor
 Chattogram,হাজর,হাজার,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,35de53e05d71a77f8f01acaf0ec037056d2c05861690890fd47ace17e7fb1e46
 Chattogram,হাডওয়্যার,হার্ডওয়্যার,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,761be840cd5c855a11abd341876fa31d476457ea465e52186e776cc2325fc174
 Chattogram,হাস্ত্য,স্বাস্থ্য,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,a8c51393927bdae239c79dfe281a8846a4f0715ed40110358eb1dda2119ce582
-Chattogram,হাাঁছন,হাসা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,f228f4d722622fff3ecefcc3e2ec62e3d4dc6d3fec94bcf3ab866c23b3bb9c12
-Chattogram,হাাঁজির,সবজি,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,34087986e4b7d6a4f5c6f14953f04964c277ca642763bdfb0b01ccdcbd4c4326
+Chattogram,হাঁছন,হাসা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,71b303ddc7ce0f15639faaa7c5b1d87070b32fe52d14f4b59a24b91a3c306f8a
+Chattogram,হাঁজির,সবজি,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,068d05a9a22bad2c2b29e40fa628d8b0a09500ef6e309d40d7d161f1d1ff4add
 Chattogram,হিঁয়র,তার,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,f1d0eaeacc812af622865633cec9055282fcbcfcef5f63def1293aadc8499412
 Chattogram,হেঁতেরার,তাদের,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,ce593e2dcf5260fdc12027e96e2a90bf670281d4416fdd12caf3a2800aa1754a
 Chattogram,হেতারা,তারা,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,a82c23ff71ac77c42b876b9164a51e34f3d5eaff0c317eb3cab7c58d2fcc3a9e
 Chattogram,হোটল,হোটেল,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,9983af3d38e7e89f9a464350ec5fb44f019a9079011a33c0fbd2d421721d1737
 Chattogram,হোনদর,সুন্দর,needs_native_review,BD-Dialect Words (pairs by meaning; unreliable),1,52f49e3838c5cc508e5bf015794603b1439794fc0010cf912d4c790a482be2bf
-Chattogram,খাইয়ুম,খাবো,native_speaker_reported,Reported by app owner (native check),1,2a56c0d7dceab838987c56bad558ce96879eb6ef0cad10fdc8a1175f3f3195d4
-Chattogram,খাইয়ুম,খাব,native_speaker_reported,Reported by app owner (native check),1,87c34e9772c7da8c874f7c8a1f664d221cf23bb3e6924714b7b627c021fb3f2c
 Chattogram,হেতে,সে,corpus_confirmed,Chittagong list (checked),1,03d06b83dd703e87e8535986fd1986a9c78767e36f2d34c6186138c56d4b864a
 Chattogram,পোয়া,ছেলে,corpus_confirmed,Chittagong list (checked),1,ac01a7c67cb5ef3740d48b56ffe4f597c62a5ecd5b633555d424ef60baa056bc
 Chattogram,মাইয়াপোয়া,মেয়ে,needs_native_review,Chittagong list (checked),1,85671c594fcba4048f4b0fc3f9c351984b9741c9a3c2ded78af141bd6a86613d

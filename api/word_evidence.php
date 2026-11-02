@@ -159,6 +159,7 @@ function vs_scoped_translate(PDO $pdo, string $text, string $src, string $tgt, b
         } elseif ($bnTok && in_array($src, DIALECTS, true) && in_array($tgt, DIALECTS, true)) {
             // Dialect -> Standard Bangla -> dialect, word by word. Only these two varieties' data is used.
             $first = dialect_to_standard($pdo, $src, $bnTok, null);
+            if ($src === 'Noakhali') $first = vs_noakhali_negative_future($first, true);   // খাইতান ন -> খাবো না before the second step
             $stdTok = array_column($first, 'std');
             $second = $stdTok ? standard_to_dialect($pdo, $tgt, $stdTok) : [];
             if (count($first) === count($second)) {
@@ -173,9 +174,12 @@ function vs_scoped_translate(PDO $pdo, string $text, string $src, string $tgt, b
                 $path[] = 'standard'; $path[] = $tgt;
             }
         }
-        if ($approxRows !== null && $out !== '' && ($src === 'Noakhali' || $tgt === 'Noakhali')) {
-            $approxRows = vs_noakhali_negative_future($approxRows, $src === 'Noakhali');
-            $out = implode(' ', array_column($approxRows, $src === 'Noakhali' ? 'std' : 'tgt'));
+        // Noakhali "will not" rule. Dialect -> dialect from Noakhali already applied it before the second step;
+        // there the output is the TARGET dialect's words (column tgt), not the Standard Bangla bridge.
+        if ($approxRows !== null && $out !== '' && (($src === 'Noakhali' && $tgt === 'standard') || $tgt === 'Noakhali')) {
+            $toStd = $src === 'Noakhali' && $tgt === 'standard';
+            $approxRows = vs_noakhali_negative_future($approxRows, $toStd);
+            $out = implode(' ', array_column($approxRows, $toStd ? 'std' : 'tgt'));
         }
         if ($approxRows !== null && $out !== '') {
             $quality = 'approximate_word_by_word';
@@ -306,14 +310,14 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
         $counts = script_stats($text);
         if ($counts['latin'] > 0 && $counts['bangla'] === 0) {
             $manualBanglish = detect_text($pdo,$text,'banglish');
-            $text = $manualBanglish['bangla_text'];
+            $text = vs_bn_fullstops(vs_punctuate($text, $manualBanglish['bangla_text']));
         }
     }
     if ($explicit && $src === 'standard') {
         $counts = script_stats($text);
         if ($counts['latin'] > 0 && $counts['bangla'] === 0) {
             $manualBanglish = detect_text($pdo,$text,'banglish');
-            $text = $manualBanglish['bangla_text'];
+            $text = vs_bn_fullstops(vs_punctuate($text, $manualBanglish['bangla_text']));
         }
     }
     if (!$explicit) {
@@ -332,19 +336,11 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
               'word_meanings'=>[],'breakdown'=>[]];
         }
         $src=$autoDet['source'];
-        $text=$autoDet['text'];
+        $text=($autoDet['det']['script'] ?? '') === 'banglish' ? vs_bn_fullstops(vs_punctuate($text, $autoDet['text'])) : $autoDet['text'];
     }
     $fromVar = in_array($src,DIALECTS,true) || isset(VS_NATIVE_LANGUAGES[$src]);
     $toVar = in_array($tgt,DIALECTS,true) || isset(VS_NATIVE_LANGUAGES[$tgt]);
-    if ($fromVar || $toVar) {
-        $r = vs_scoped_translate($pdo,$text,$src,$tgt,$allowApproximate);
-    } else {
-        $r = translate_full($pdo,$text,$src,$tgt);
-        $r['translation_quality'] = $r['from_memory'] ? 'phrase_or_dictionary' : 'dictionary_word_level_unverified';
-        $r['sentence_source'] = null;
-        $r['dataset_scope'] = 'standard';
-        $r['datasets_used'] = array_values(array_unique([$src,'standard',$tgt]));
-    }
+    $r = vs_translate_by_sentence($pdo, $text, $src, $tgt, $allowApproximate, $fromVar || $toVar);
     if (!$explicit) {
         $r['detected']['was_auto'] = true;
         $r['detected']['script'] = $autoDet['det']['script'];
@@ -367,6 +363,18 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
         $r['notes'][] = 'Roman-script input transliterated for the explicitly chosen Bangla regional variety; review the spelling.';
     }
     $r['word_meanings']=vs_word_evidence($pdo,$text,$r['source'],$tgt);
+    // English sentence read with grammar rules: each English word box shows what it became in this sentence (will + eat -> খাবো)
+    $eb = $r['en_breakdown'] ?? ($r['breakdown'] ?? []);
+    if ($r['source'] === 'english' && $eb && array_filter($eb, static fn($b) => ($b['kind'] ?? '') === 'grammar') && count($eb) === count($r['word_meanings'])) {
+        foreach ($r['word_meanings'] as $k => &$wm) {
+            $m = trim((string) ($eb[$k]['std'] ?? ''));
+            if ($m === '' || $m === '–') { $m = '(grammar word)'; }
+            $wm['standard_meaning'] = $m; $wm['display_meaning'] = $m; $wm['known'] = true; $wm['status'] = 'dictionary_reference';
+            $wm['dataset'] = 'English grammar rules + dictionary';
+        }
+        unset($wm);
+    }
+    unset($r['en_breakdown']);
     $r['breakdown']=array_map(static function($w) {return ['src'=>$w['word'],'std'=>$w['standard_meaning']??'',
           'tgt'=>$w['target_word']??null,'matched'=>$w['known'],'kind'=>$w['status'],'conf'=>null,
           'source_dataset'=>$w['dataset']];},$r['word_meanings']);
@@ -406,6 +414,151 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
     return $r;
 }
 
+/** Translate one sentence (or the whole text when it has a single sentence) with the right engine. */
+function vs_translate_one(PDO $pdo, string $text, string $src, string $tgt, bool $approx, bool $scoped): array {
+    if ($src === 'english' && $tgt !== 'standard' && $tgt !== 'english') {
+        // English -> a dialect or language: first English -> Standard Bangla (with grammar), then Standard Bangla -> the chosen one
+        $first = vs_translate_one($pdo, $text, 'english', 'standard', $approx, false);
+        $std = trim((string) ($first['translated_text'] ?? ''));
+        $r = $std !== '' ? vs_scoped_translate($pdo, $std, 'standard', $tgt, $approx) : $first;
+        $r['source'] = 'english'; $r['original_text'] = $text; $r['bridge_standard'] = $std;
+        $r['datasets_used'] = ['english', 'standard', $tgt];
+        $r['notes'] = array_values(array_unique(array_merge($first['notes'] ?? [], $r['notes'] ?? [], $std !== '' ? ['Translated English → Standard Bangla (' . $std . ') → ' . (VARIETY_LABEL[$tgt] ?? $tgt) . '.'] : [])));
+        $r['en_breakdown'] = $first['breakdown'] ?? [];
+        unset($r['approx_rows']);
+        return $r;
+    }
+    if ($scoped) return vs_scoped_translate($pdo, $text, $src, $tgt, $approx);
+    $r = translate_full($pdo, $text, $src, $tgt);
+    $r['translation_quality'] = $r['from_memory'] ? 'phrase_or_dictionary' : 'dictionary_word_level_unverified';
+    $r['sentence_source'] = null;
+    $r['dataset_scope'] = 'standard';
+    $r['datasets_used'] = array_values(array_unique([$src, 'standard', $tgt]));
+    return $r;
+}
+
+/** Split text into sentences, keeping each sentence's own end mark (। ? ! . or a line break) and the space after it. */
+/** Banglish typed with Roman full stops, now in Bangla letters: a sentence-ending "." becomes the Bangla দাঁড়ি (।).
+ *  "..." and decimal numbers (2.5) are left alone. */
+function vs_bn_fullstops(string $s): string {
+    return preg_replace('/(?<![.\d])\.(?![.\d])(?=\s|$)/u', '।', $s);
+}
+
+function vs_split_sentences(string $text): array {
+    preg_match_all('/[^।?!\n]+?(?:[।?!]+|\.(?=\s|$)|(?=\n)|$)\s*|[।?!\n]+\s*/u', $text, $m);
+    $out = array_values(array_filter($m[0], static fn($x) => $x !== ''));
+    // A full stop after a title (Mr. Dr.) or a list number (১. 2.) does not end the sentence: join it to the next part.
+    $joined = [];
+    foreach ($out as $part) {
+        $k = count($joined) - 1;
+        if ($k >= 0 && preg_match('/(?:^|\s)(?:mr|mrs|ms|dr|prof|st|jr|sr|vs|no|e\.g|i\.e|[\d০-৯]{1,3})\.\s*$/iu', $joined[$k])) $joined[$k] .= $part;
+        else $joined[] = $part;
+    }
+    return $joined ?: [$text];
+}
+
+/** Put the input's punctuation back into a translation. When the translation has one word for each input word
+ *  (word-by-word results), every mark goes back next to its own word; otherwise only the sentence's opening
+ *  and closing marks are kept (an exact sentence translation can change the word order). */
+function vs_punctuate(string $chunk, string $out): string {
+    $tail = preg_match('/\s+$/u', $chunk, $m) ? (strpos($m[0], "\n") !== false ? "\n" : ' ') : '';
+    $out = trim($out);
+    if ($out === '') return '';
+    $raw = preg_split('/\s+/u', trim($chunk), -1, PREG_SPLIT_NO_EMPTY);
+    $pieces = [];                           // [lead, number of words, trail]
+    foreach ($raw as $t) {
+        preg_match('/^([\p{P}\p{S}]*)(.*?)([\p{P}\p{S}]*)$/us', $t, $q);
+        $n = count(bn_tokens($q[2]));
+        if ($n === 0) {                     // a mark on its own, e.g. " - " or " — "
+            if ($pieces) $pieces[count($pieces) - 1][2] .= ' ' . $t; else $pieces[] = [$t . ' ', 0, '', ''];
+            continue;
+        }
+        $pieces[] = [$q[1], $n, $q[3], $q[2]];
+    }
+    // words of the translation without any marks of their own (some sentences in the data carry a ।)
+    $words = array_values(array_filter(array_map(static fn($w) => preg_replace('/^[\p{P}\p{S}]+|[\p{P}\p{S}]+$/u', '', $w),
+        preg_split('/\s+/u', $out, -1, PREG_SPLIT_NO_EMPTY)), static fn($w) => $w !== ''));
+    $need = array_sum(array_column($pieces, 1));
+    if ($pieces && $need === count($words)) {
+        $res = []; $i = 0;
+        foreach ($pieces as [$lead, $n, $trail, $core]) {
+            $part = array_slice($words, $i, $n);
+            if ($n > 1) {                   // a word joined by a mark, e.g. ইন্দো-আর্য: keep the mark between the parts
+                $seps = preg_split('/[^\p{P}\p{S}]+/u', $core, -1, PREG_SPLIT_NO_EMPTY);
+                $join = '';
+                foreach ($part as $k => $w) $join .= ($k > 0 ? ($seps[$k - 1] ?? ' ') : '') . $w;
+                $res[] = $lead . $join . $trail;
+            } else $res[] = $lead . implode(' ', $part) . $trail;
+            $i += $n;
+        }
+        return implode(' ', array_filter($res, static fn($x) => $x !== '')) . $tail;
+    }
+    $lead = $pieces[0][0] ?? '';
+    $end = $pieces ? $pieces[count($pieces) - 1][2] : '';
+    $out = preg_replace('/[\p{P}\p{S}]+$/u', '', $out);
+    if ($lead !== '') $out = preg_replace('/^[\p{P}\p{S}]+/u', '', $out);
+    return $lead . $out . $end . $tail;
+}
+
+/** Translate sentence by sentence so each one can match exactly, and keep the punctuation. */
+function vs_translate_by_sentence(PDO $pdo, string $text, string $src, string $tgt, bool $approx, bool $scoped): array {
+    $chunks = vs_split_sentences($text);
+    if (count($chunks) > 25) $chunks = [$text];
+    $results = []; $outs = []; $rows = []; $done = 0; $failed = [];
+    foreach ($chunks as $n => $chunk) {
+        $tok = bn_tokens($chunk);
+        if (!$tok && $src !== 'english') { $outs[] = trim($chunk) . (preg_match('/\n\s*$/u', $chunk) ? "\n" : ' '); continue; }
+        $r = vs_translate_one($pdo, trim($chunk), $src, $tgt, $approx, $scoped);
+        $results[] = $r;
+        $t = trim((string)($r['translated_text'] ?? ''));
+        if ($t !== '' && $src === 'english') {
+            // English word order differs from Bangla, so only the sentence's end mark is kept (a full stop becomes ।)
+            $end = preg_match('/([.?!]+)\s*$/u', $chunk, $em) ? $em[1] : '';
+            $t = preg_replace('/[.?!।]+$/u', '', $t);
+            $outs[] = $t . ($end === '' ? '' : (strpos($end, '.') !== false && $tgt !== 'english' ? '।' : $end)) . (preg_match('/\n\s*$/u', $chunk) ? "\n" : ' ');
+            $done++;
+        }
+        elseif ($t !== '') { $outs[] = vs_punctuate($chunk, $t); $done++; }
+        else { $outs[] = vs_punctuate($chunk, implode(' ', $tok)); $failed[] = $n + 1; }
+        $ar = $r['approx_rows'] ?? null;
+        if (is_array($ar) && count($ar) === count($tok)) { foreach ($ar as $x) $rows[] = $x; }
+        else foreach ($tok as $w) $rows[] = ['src' => $w, 'std' => $w, 'tgt' => $w, 'matched' => false];
+    }
+    if (!$results) return vs_translate_one($pdo, $text, $src, $tgt, $approx, $scoped);
+    if (count($results) === 1 && $done === 1) {          // one sentence: same result as before, now with punctuation
+        $r = $results[0];
+        $r['translated_text'] = trim(implode('', $outs));
+        if (($r['romanization'] ?? null) !== null) $r['romanization'] = bn_romanize($r['translated_text']);
+        $r['original_text'] = $text;
+        return $r;
+    }
+    $r = $results[0];
+    $r['original_text'] = $text;
+    if ($done === 0) {                                   // nothing could be translated: keep the old behaviour (no output)
+        $r['translated_text'] = '';
+        return $r;
+    }
+    $r['translated_text'] = trim(preg_replace('/[ \t]+/u', ' ', implode('', $outs)));
+    $notes = [];
+    foreach ($results as $x) foreach (($x['notes'] ?? []) as $nt) $notes[$nt] = true;
+    $notes = array_keys($notes);
+    if ($failed) $notes[] = 'Sentence ' . implode(', ', $failed) . ' could not be translated and is shown unchanged.';
+    $r['notes'] = $notes;
+    // overall quality = the weakest sentence
+    $order = ['native_speaker_sentence', 'research_sentence_candidate_not_reaudited', 'phrase_or_dictionary', 'approximate_isolated_word_gloss',
+              'approximate_word_by_word', 'dictionary_word_level_unverified', 'identity', 'unavailable'];
+    $worst = -1;
+    foreach ($results as $x) { $k = array_search($x['translation_quality'] ?? 'unavailable', $order, true); $worst = max($worst, $k === false ? count($order) - 1 : $k); }
+    $r['translation_quality'] = $failed ? 'approximate_word_by_word' : $order[$worst];
+    $r['from_memory'] = $r['matched'] = !$failed && array_reduce($results, static fn($c, $x) => $c && !empty($x['from_memory']), true);
+    $r['datasets_used'] = array_values(array_unique(array_merge(...array_map(static fn($x) => $x['datasets_used'] ?? [], $results))));
+    $src_ = array_values(array_unique(array_filter(array_map(static fn($x) => $x['sentence_source'] ?? null, $results))));
+    $r['sentence_source'] = $src_ ? implode(', ', $src_) : null;
+    if (($r['romanization'] ?? null) !== null || $tgt === 'standard') $r['romanization'] = bn_romanize($r['translated_text']);
+    $r['approx_rows'] = $scoped ? $rows : ($r['approx_rows'] ?? null);
+    return $r;
+}
+
 /**
  * Noakhali "will not": the verb takes -ইতান and না becomes ন, after it (native speaker: আমি ভাত খাবো না = আইঁ ভাত খাইতান ন).
  *   খাবো না -> খাইতান ন   যাবো না -> যাইতান ন   করবো না -> কইরতান ন   দেখবো না -> দেইখতান ন
@@ -430,7 +583,10 @@ function vs_noakhali_negative_future(array $rows, bool $toStandard): array {
             $stem = $m[1];
             // prefer the dialect's own verb root (Noakhali কমু -> ক, করমু -> কর) over the Standard one
             $t = $rows[$i]['tgt'] ?? '';
-            if (preg_match('/^(.+)মু$/u', $t, $q) || preg_match('/^(.+?)(?:ইয়ুম|য়ুম|উম)$/u', $t, $q)) $stem = $q[1];
+            if (preg_match('/^(.+)মু$/u', $t, $q) || preg_match('/^(.+?)(?:িয়ুম|ইয়ুম|য়ুম|উম)$/u', $t, $q)) $stem = $q[1];
+            $C = '[\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?';
+            if (preg_match('/^' . $C . '(?:ই|েই)' . $C . '$/u', $stem)) { $form = $stem . 'তান'; }   // the dialect root already has the -ই- (কইর, দেইখ)
+            else
             if (preg_match('/^([\x{0995}-\x{09B9}\x{09DC}\x{09DD}\x{09DF}]\x{09BC}?)$/u', $stem)) { $form = $stem . 'ইতান'; }                     // ক -> কইতান
             else
             if (preg_match('/^.+[াই]$/u', $stem)) $form = preg_replace('/ই$/u', '', $stem) . 'ইতান';                             // খা -> খাইতান
