@@ -44,3 +44,5 @@ body.embedded-learn{background:#fbf6ec;min-width:0;overflow-x:hidden}
 .coursePicker[hidden]{display:none!important}
 /* stronger text colours (WCAG AA contrast 4.5:1 for small text) */
 .unit small,.embedded-learn .unit small{color:#4f625b}footer{color:#4f625b}.minor{color:#4c645d}.notice{color:#3f5650}.stagePending{color:#6e5838}
+
+.nativeHint{font-size:1.5rem;font-weight:700;color:#0f5c56;margin:.2rem 0 .4rem}

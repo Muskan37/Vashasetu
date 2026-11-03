@@ -482,11 +482,15 @@ function renderResult(data) {
   $('#result-roman').textContent = data.romanization && data.target !== 'english' ? data.romanization : '';
   const words = data.word_meanings || [];
   $('#result-pairs').innerHTML = words.map((w, i) => {
-    const meaning = data.target !== 'standard' && data.source === 'standard' ? w.target_word : w.standard_meaning;
+    // into a dialect: show the dialect word (for dialect → dialect too, not the Standard word used in between)
+    const toDialect = !['standard', 'english'].includes(data.target);
+    const meaning = toDialect && (data.source === 'standard' || w.target_word) ? w.target_word : w.standard_meaning;
     const has = meaning != null && meaning !== '';
     const label = has ? esc(meaning) : 'No meaning found';
     const status = w.status || 'not_verified';
-    const suffix = (w.english_hint && data.target !== 'english') ? `<span class="via">${esc(w.english_hint)}</span>` : '';
+    const viaStd = toDialect && data.source !== 'standard' && w.standard_meaning && w.standard_meaning !== meaning ? `= ${w.standard_meaning}` : '';
+    const via = [viaStd, data.target !== 'english' ? (w.english_hint || '') : ''].filter(Boolean).join(' · ');
+    const suffix = via ? `<span class="via">${esc(via)}</span>` : '';
     const tip = (w.dataset || 'No independently validated word-level evidence');
     return `<div class="pair ${has ? '' : 'miss'}" style="--i:${i}" data-act="wordEvidence" data-idx="${i}" role="button" tabindex="0" title="${esc(tip)}">
       <small>${esc(w.word)}</small><b>${label}</b>${suffix}
@@ -880,6 +884,8 @@ async function handleImage(inputEl) {
    ============================================================ */
 const bridgeIllustration = () => `<svg viewBox="0 0 140 90" aria-hidden="true"><rect x="18" y="46" width="104" height="7" rx="3.5" fill="#F2A93B"/><g stroke="#F2A93B" stroke-width="5" stroke-linecap="round"><line x1="34" y1="46" x2="34" y2="66"/><line x1="52" y1="46" x2="52" y2="66"/><line x1="70" y1="46" x2="70" y2="66"/><line x1="88" y1="46" x2="88" y2="66"/><line x1="106" y1="46" x2="106" y2="66"/></g><rect x="14" y="24" width="9" height="52" rx="4.5" fill="#BFE3D4"/><rect x="117" y="24" width="9" height="52" rx="4.5" fill="#BFE3D4"/><circle cx="18.5" cy="17" r="12" fill="#2F6FE0" stroke="#fff" stroke-width="3"/><circle cx="121.5" cy="17" r="12" fill="#E2556B" stroke="#fff" stroke-width="3"/></svg>`;
 
+/** The word shown on the right of the bridge: the target-language word, or the Standard Bangla word. */
+function pairShown(b) { return S.to === 'standard' ? b.std : (b.tgt != null && b.tgt !== '' ? b.tgt : b.std); }
 function renderBridge() {
   const box = $('#bridge-card'), rows = S.breakdown;
   if (!rows.length) {

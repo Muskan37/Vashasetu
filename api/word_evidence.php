@@ -406,6 +406,26 @@ function vs_translate_with_evidence(PDO $pdo, string $text, string $src, string 
         $wm['display_meaning'] = $m; $wm['known'] = true; $wm['status'] = $nativeSentence ? 'native_speaker_reported' : 'learned';
     }
     unset($wm);
+    // Dialect to dialect (e.g. Noakhali → Chattogram): the boxes and the bridge must show the TARGET dialect word,
+    // not the Standard Bangla word used in between. Same number of words: take them from the translated sentence
+    // in order (Bangla varieties keep the word order); otherwise translate each Standard word on its own.
+    if ($src !== 'standard' && $tgt !== 'standard' && $tgt !== 'english' && $src !== 'english' && !empty($r['word_meanings'])) {
+        $outTok = array_values(array_filter(array_map(static fn($t) => preg_replace('/^[\s?!,.;:।"\'()\[\]‘’“”—-]+|[\s?!,.;:।"\'()\[\]‘’“”—-]+$/u', '', $t),
+            preg_split('/\s+/u', trim((string) ($r['translated_text'] ?? '')))), static fn($t) => $t !== ''));
+        $same = count($outTok) === count($r['word_meanings']);
+        foreach ($r['word_meanings'] as $i => &$wm) {
+            $std = trim((string) ($wm['standard_meaning'] ?? ''));
+            if ($same) $t = $outTok[$i];
+            elseif ($std !== '' && !empty($wm['known'])) {
+                $one = vs_translate_with_evidence($pdo, $std, 'standard', $tgt, $allowApproximate);
+                $t = trim((string) ($one['translated_text'] ?? ''));
+            } else $t = '';
+            if ($t === '') continue;
+            $wm['target_word'] = $t; $wm['display_meaning'] = $t;
+            if (isset($r['breakdown'][$i])) $r['breakdown'][$i]['tgt'] = $t;
+        }
+        unset($wm);
+    }
     unset($r['approx_rows']);
     $r['matched_words']=count(array_filter($r['word_meanings'],static fn($w)=>$w['known']));
     $r['approximate_allowed']=$allowApproximate;

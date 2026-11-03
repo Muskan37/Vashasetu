@@ -89,7 +89,9 @@ function unit_items(PDO $pdo,array $input): void {
         $st=$pdo->prepare('SELECT i.id,i.item_order,i.exercise_type,i.prompt,i.ipa,i.romanization,i.options_json,i.gloss_en,i.speech_bn,loc.prompt_native,loc.hint_native FROM learning_items i LEFT JOIN learning_localizations loc ON loc.language_id=? AND loc.unit_key=i.unit_key AND loc.item_order=i.item_order AND loc.review_status=? WHERE i.unit_key=? AND i.review_status=? ORDER BY i.item_order');
         $st->execute([$src,'community_verified',$unit,'starter_content_needs_educator_review']);
         $items=$st->fetchAll();
-        foreach($items as &$r){$r['options']=json_decode($r['options_json'],true)?:[];unset($r['options_json']);$r['item_kind']='core';$r['speech_text']=$r['speech_bn'];$r['audio_path']=null;}
+        foreach($items as &$r){$r['options']=json_decode($r['options_json'],true)?:[];unset($r['options_json']);$r['item_kind']='core';$r['speech_text']=$r['speech_bn'];$r['audio_path']=null;
+            // the learner's own word for the answer, when a native speaker confirmed it (shown above the question)
+            $r['native_hint']=$r['exercise_type']==='word_choice'&&$src!=='standard'?native_hint($pdo,$src,(string)$r['speech_bn']):null;$r['unit_key']=$unit;}
         respond(['success'=>true,'items'=>$items,'source'=>$src,'target'=>$tgt,'quality'=>'Standard Bangla starter exercises; educator review pending.']);
     }
     $st=$pdo->prepare('SELECT id,item_order,exercise_type,prompt_native AS prompt, target_text, ipa, romanization,options_json,gloss_native AS gloss_en,audio_path,stage FROM pair_course_items WHERE source_language=? AND target_language=? AND unit_key=? AND review_status=? ORDER BY item_order');
@@ -193,7 +195,43 @@ function sample_preview(PDO $pdo,array $input):void{
     respond(['success'=>true,'samples'=>$samples,'verified'=>false,'source'=>$src,'target'=>$tgt,
       'warning'=>'Research candidates have NOT been checked by VashaSetu native-speaker educators. Do not treat these flashcards as verified translations or pronunciation lessons. When the source-language equivalent is unavailable, Standard Bangla is shown as a reference. No third dialect data is used.']);
 }
+/** Instruction text of the learning page in the learner's own language (the "I speak" language).
+ *  Bangla varieties: Standard Bangla. Other languages: their own reviewed text from database/learn_ui.csv,
+ *  and pictures/symbols for every line nobody has translated yet (never English). */
+const LANG_BN = ['barishal-bn'=>'বরিশাল','bawm'=>'বম','chakma'=>'চাকমা','chattogram-bn'=>'চট্টগ্রাম','dhaka-bn'=>'ঢাকা','garo'=>'গারো (আচিক)',
+    'khasi'=>'খাসি','khulna-bn'=>'খুলনা','khumi'=>'খুমি','kishoreganj-bn'=>'কিশোরগঞ্জ','marma'=>'মারমা','meitei'=>'মণিপুরি (মৈতৈ)','mro'=>'ম্রো',
+    'mymensingh-bn'=>'ময়মনসিংহ','narail-bn'=>'নড়াইল','narsingdi-bn'=>'নরসিংদী','noakhali-bn'=>'নোয়াখালী','rajshahi-bn'=>'রাজশাহী','rakhine'=>'রাখাইন',
+    'rangpur-bn'=>'রংপুর','sadri'=>'সাদরি','santali'=>'সাঁওতালি','standard'=>'প্রমিত বাংলা','sylheti'=>'সিলেটি','tanchangya'=>'তঞ্চঙ্গ্যা',
+    'tangail-bn'=>'টাঙ্গাইল','tripura'=>'ত্রিপুরা (ককবরক)'];
+function ui_strings(PDO $pdo, string $lang): array {
+    $q = $pdo->prepare('SELECT language_type FROM language_catalog WHERE language_id=?'); $q->execute([$lang]);
+    $type = (string) $q->fetchColumn();
+    $bangla = in_array($type, ['standard_bangla', 'regional_bangla', 'regional_or_separate_language'], true);
+    $out = []; $own = 0;
+    $f = __DIR__ . '/../database/learn_ui.csv';
+    if (is_file($f) && ($h = fopen($f, 'r'))) {
+        $head = fgetcsv($h); $col = array_search($lang, $head, true);
+        while (($r = fgetcsv($h)) !== false) {
+            if (count($r) < 4) continue;
+            $mine = ($col !== false && isset($r[$col])) ? trim($r[$col]) : '';
+            if ($mine !== '') $own++;
+            $out[$r[0]] = $mine !== '' ? $mine : ($bangla ? $r[2] : $r[3]);
+        }
+        fclose($h);
+    }
+    return ['mode' => $bangla ? 'bn' : 'icons', 'own_lines' => $own, 'strings' => $out, 'names' => LANG_BN];
+}
+/** A word of the learner's own language for a Standard Bangla answer, only from native-speaker reviewed lists. */
+function native_hint(PDO $pdo, string $lang, string $std): ?string {
+    static $key = [];
+    if (!isset($key[$lang])) { $q = $pdo->prepare('SELECT COALESCE(NULLIF(existing_app_key,\'\'),language_id) FROM language_catalog WHERE language_id=?'); $q->execute([$lang]); $key[$lang] = (string) $q->fetchColumn(); }
+    $q = $pdo->prepare("SELECT source_word FROM word_meanings WHERE language=? AND standard_word=? AND meaning_status IN ('native_speaker_reported','native_speaker_alternative') ORDER BY meaning_status='native_speaker_alternative', id LIMIT 1");
+    $q->execute([$key[$lang], $std]);
+    $w = $q->fetchColumn();
+    return ($w === false || $w === $std) ? null : (string) $w;
+}
 try{
+    if($method==='GET' && $action==='ui'){ respond(['success'=>true] + ui_strings($pdo, safe_id($input['lang'] ?? 'standard'))); }
     if($method==='GET' && $action==='languages'){
         respond(['success'=>true,'languages'=>$pdo->query('SELECT language_id,display_name,language_type,scripts,app_status FROM language_catalog ORDER BY language_type,display_name')->fetchAll()]);
     }

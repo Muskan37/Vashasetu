@@ -296,7 +296,7 @@ function asset($p) { return htmlspecialchars($p) . '?v=' . @filemtime(__DIR__ . 
   <!-- ===================== LEARN INSIDE APP ===================== -->
   <section class="screen" id="screen-learn">
     <div class="learn-in-app-head">
-      <div><b>📚 Learn languages</b><small>Learn any supported language · আপনার পছন্দ</small></div>
+      <div><b>📚 ভাষা শিখি</b><small>আপনার ভাষা থেকে শিখুন</small></div>
       <button class="learn-account" data-go="profile" aria-label="Account and district preferences"><svg class="ic"><use href="#i-user"/></svg></button>
     </div>
     <iframe id="learn-frame" title="VashaSetu language learning course" loading="lazy" src="about:blank" allow="autoplay" referrerpolicy="same-origin"></iframe>
