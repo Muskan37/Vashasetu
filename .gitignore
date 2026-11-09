@@ -1,3 +1,6 @@
 vendor/
 tests/results/coverage-raw/
 database/tts_cache/
+database/user_edits.csv
+database/edits_by_ip/
+database/*.lock
