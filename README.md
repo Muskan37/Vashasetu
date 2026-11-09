@@ -57,6 +57,8 @@ After updating the app, remove it from the phone's home screen and add it again 
 * **Most word meanings are learned automatically and are NOT checked by native speakers.** The dictionary shows them so it is complete, but some are wrong. Chattogram forms for common verbs especially need review.
 * Only `database/curated.csv` and words marked "native speaker reported" are trusted.
 * **The whole Noakhali word list (537 words, `database/languages/noakhali/words.csv`) was reviewed by a native speaker on 1 Nov 2026**; 17 words were corrected. Where one Standard word has several Noakhali spellings (আমি: আইঁ / আঁই / আই), the first is used in translations and the others are kept as approved alternatives.
+* **The Barishal word list (`database/languages/barishal/words.csv`) was reviewed by a native speaker in Nov 2026.** 654 pairs are marked "native speaker reported"; 76 pairs whose meaning looked doubtful are kept as "needs native review" until the reviewer confirms them.
+* **The Garo word list (`database/languages/garo/words.csv`) was written and reviewed by a native speaker** (115 words, Nov 2026). For indigenous languages only these reviewed words are used; a word not in the list is left unchanged.
 * MELD (Chakma, Marma, Garo) is research data in Bengali-script transliteration; it has not been independently re-audited. Check its licence on the Mendeley page before publishing.
 * Word lists for Chakma/Marma/Garo are generated from sentence pairs and may contain mistakes; fix them with ✎.
 * Sounds, letters and phonetics lessons exist only for Standard Bangla. There is no audio for minority languages yet.

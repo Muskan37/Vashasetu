@@ -25,11 +25,16 @@ function vs_exact_parallel(PDO $pdo, string $language, string $needle, bool $rev
     return ['text' => array_key_first($possible), 'status'=>$best['review_status'], 'source'=>$best['source_dataset']];
 }
 
+/** Words of an indigenous language written in Bangla letters: ' and • are part of the word (চা'আ, হি•গুব্বা). */
+function vs_native_tokens(string $s): array {
+    $s = bn_native_normalize($s);
+    return $s === '' ? [] : preg_split('/\s+/u', $s);
+}
 /** Per-occurrence meanings, even for phrases whose grammar reorganizes words. */
 function vs_word_evidence(PDO $pdo, string $original, string $language, string $target): array {
     $words = $language === 'english'
         ? (preg_split('/[^A-Za-z\x{2019}\x{0027}]+/u', trim($original), -1, PREG_SPLIT_NO_EMPTY) ?: [])
-        : bn_tokens($original);
+        : (isset(VS_NATIVE_LANGUAGES[$language]) ? vs_native_tokens($original) : bn_tokens($original));
     $words = array_slice($words, 0, 160);
     $read = $pdo->prepare('SELECT standard_word, meaning_status, source_dataset FROM word_meanings WHERE language = ? AND source_word = ? LIMIT 20');
     $reverse = $pdo->prepare('SELECT source_word, meaning_status, source_dataset FROM word_meanings WHERE language = ? AND standard_word = ? LIMIT 20');
@@ -52,7 +57,15 @@ function vs_word_evidence(PDO $pdo, string $original, string $language, string $
                     else $evidence=$forms[0];
                 }
             } elseif ($target === 'standard') { $evidence=$word;$status='standard_bangla_identity'; }
-            else { $status='not_verified'; }
+            else {
+                // indigenous language: only words a native speaker reviewed (e.g. the Garo list); the main form wins
+                $reverse->execute([$target,$word]);
+                $rows=array_values(array_filter($reverse->fetchAll(), static fn($r) => in_array($r['meaning_status'], ['native_speaker_reported','native_speaker_alternative'], true)));
+                usort($rows, static fn($a, $b) => ($a['meaning_status'] === 'native_speaker_alternative') <=> ($b['meaning_status'] === 'native_speaker_alternative'));
+                $main=array_unique(array_column(array_filter($rows, static fn($r) => $r['meaning_status'] === 'native_speaker_reported'), 'source_word'));
+                if ($rows && count($main) <= 1) { $evidence=$rows[0]['source_word']; $status=$rows[0]['meaning_status']; $dataset=$rows[0]['source_dataset']; }
+                else $status='not_verified';
+            }
         } elseif ($language === 'english') {
             $eng=english_to_bangla($pdo,[mb_strtolower($word)])[0];
             if (!empty($eng['matched'])) {
@@ -133,11 +146,18 @@ function vs_scoped_translate(PDO $pdo, string $text, string $src, string $tgt, b
         $dictionary = vs_word_evidence($pdo,$text,$src,$tgt);
         if (count($dictionary)>0) {
             $outwords = []; $all = true;
+            $native = isset(VS_NATIVE_LANGUAGES[$src]) || isset(VS_NATIVE_LANGUAGES[$tgt]);
+            $missing = []; $found = 0;
             foreach ($dictionary as $w) {
                 $m = $src === 'standard' ? $w['target_word'] : $w['standard_meaning'];
-                if (!$m || $w['status'] === 'unreviewed_candidate') { $all = false; break; }
-                $outwords[] = $m;
+                if (!$m || $w['status'] === 'unreviewed_candidate') {
+                    if (!$native) { $all = false; break; }
+                    $missing[] = $w['word']; $outwords[] = $w['word']; continue;
+                }
+                $outwords[] = $m; $found++;
             }
+            if ($native && $found === 0) $all = false;
+            if ($all && $missing) $notes[] = 'Not in the native-speaker reviewed ' . (VS_NATIVE_LANGUAGES[$src] ?? VS_NATIVE_LANGUAGES[$tgt]) . ' word list yet, so they are left as they are: ' . implode(', ', $missing) . '.';
             if ($all) {
                 $out=implode(' ',$outwords); $quality='approximate_isolated_word_gloss';
                 $notes[]='Unreliable word-for-word gloss, not a grammatical sentence translation. Contains only the selected language single-word records.';

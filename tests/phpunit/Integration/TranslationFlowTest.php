@@ -57,8 +57,8 @@ final class TranslationFlowTest extends TestCase
 
     public static function reviewedLists(): array
     {
-        // native-speaker reviews of 1-2 Nov 2026: whole Noakhali and Garo lists, first 300 Chattogram words
-        return ['Noakhali' => ['Noakhali', 537, 6], 'Chattogram (first 300)' => ['Chattogram', 301, 43], 'Garo' => ['garo', 83, 5]];
+        // native-speaker reviews of Nov 2026: whole Noakhali, Barishal and Garo lists, first 300 Chattogram words
+        return ['Noakhali' => ['Noakhali', 537, 6], 'Chattogram (first 300)' => ['Chattogram', 301, 43], 'Barishal' => ['Barishal', 654, 48], 'Garo' => ['garo', 115, 5]];
     }
 
     /** @dataProvider reviewedLists */

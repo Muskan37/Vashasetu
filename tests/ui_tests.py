@@ -113,6 +113,23 @@ with sync_playwright() as pw:
     safe('UI-04', 'Translator', 'Translate a typed sentence', 'Type + Translate', 'Result shown', t)
 
     def t():
+        # D35: the Bridge screen stayed empty (a helper function was missing)
+        page.click('[data-act="openBridge"]'); page.wait_for_timeout(1500)
+        right = page.locator('#bridge-card .bpill.r').all_inner_texts(); shot = snap(page, '04b_bridge')
+        page.evaluate("goTo('translate')"); page.wait_for_timeout(500)
+        case('UI-41', 'Translator', 'The Bridge screen shows each word joined to its translation', 'Translate আমি ভাত খাবো → See the bridge', '3 pairs, right side আঁই ভাত খাইয়ুম', ' '.join(right) or 'empty', [nfc(x) for x in right] == [nfc(x) for x in ['আঁই', 'ভাত', 'খাইয়ুম']], shot)
+    safe('UI-41', 'Translator', 'Bridge shows the word pairs', 'See the bridge', 'pairs', t)
+
+    def t():
+        # D36: from one dialect to another the word boxes showed the Standard Bangla word in between
+        pick('from', 'Noakhali'); pick('to', 'Chattogram')
+        page.fill('#dialect-input', 'আঁই ভাত খামু'); page.click('#translate-btn'); page.wait_for_timeout(1800)
+        big = page.locator('#result-pairs .pair b').all_inner_texts(); shot = snap(page, '04c_dialect_to_dialect')
+        pick('from', 'standard')
+        case('UI-42', 'Translator', 'Dialect to dialect: the word boxes show the target dialect word', 'Noakhali আঁই ভাত খামু → Chattogram', 'Boxes আঁই, ভাত, খাইয়ুম (not খাবো)', ', '.join(big), nfc('খাইয়ুম') in [nfc(x) for x in big] and 'খাবো' not in big, shot)
+    safe('UI-42', 'Translator', 'Dialect-to-dialect word boxes', 'Noakhali → Chattogram', 'target word', t)
+
+    def t():
         page.click('[data-act="clearText"]') if page.locator('#clear-btn.show').count() else None
         page.fill('#dialect-input', ''); page.type('#dialect-input', 'তুমি কোথায় যাবে', delay=20)
         t0 = time.time(); page.wait_for_function("document.querySelector('#result-text').textContent.includes('কডে') || document.querySelector('#result-text').textContent.includes('হন্ডে') || document.querySelector('#result-text').textContent.length>0 && !document.querySelector('#result-text').textContent.includes('খাইয়ুম')", timeout=6000)
@@ -402,6 +419,20 @@ with sync_playwright() as pw:
         fr.locator('#targetLang').select_option('chattogram-bn'); page.wait_for_timeout(800); fr.locator('#changePair').click()
         case('UI-38', 'Learning', 'When a quiz has too little data, a message is shown on the page (no pop-up box)', 'Standard Bangla → Mro → Start quiz', 'Message line, no alert() pop-up', f'message "{msg[:70]}", pop-ups={len(dialogs) - n0}', bool(msg) and len(dialogs) == n0, shot)
     safe('UI-38', 'Learning', 'Inline message', 'Mro quiz', 'message', t)
+
+    def t():
+        # D37: the learning page was in English for every learner; a Mro speaker must see no English
+        fr = page.frame_locator('#learn-frame')
+        if fr.locator('#pairPicker').is_hidden(): fr.locator('#changePair').click()
+        fr.locator('#sourceLang').select_option('mro'); page.wait_for_timeout(800); fr.locator('#targetLang').select_option('standard'); page.wait_for_timeout(1800)
+        fr.locator('.stageBtn').nth(0).click(); page.wait_for_timeout(1500)
+        txt = fr.locator('body').inner_text(); shot = snap(page, '23_learn_mro')
+        eng = [w for w in re.findall(r'[A-Za-z]{3,}', txt) if w not in ('VashaSetu',)]
+        fr.locator('#goBack').click(); page.wait_for_timeout(600)
+        if fr.locator('#pairPicker').is_hidden(): fr.locator('#changePair').click()
+        fr.locator('#sourceLang').select_option('standard'); page.wait_for_timeout(600); fr.locator('#targetLang').select_option('chattogram-bn'); page.wait_for_timeout(800); fr.locator('#changePair').click()
+        case('UI-43', 'Learning', 'Instructions follow the learner\'s language: a Mro speaker sees pictures and symbols, no English', 'Learn: Mro → Standard Bangla → open the first lesson', 'No English words on the page', ', '.join(eng[:5]) or 'no English', not eng, shot)
+    safe('UI-43', 'Learning', 'Learn page in the learner language', 'Mro learner', 'no English', t)
 
     case('UI-36', 'Start & navigation', 'No JavaScript errors during the whole test run', 'Console during all tests', 'No errors', errors[:3] or 'none', not [e for e in errors if 'ERR_INTERNET_DISCONNECTED' not in e and 'Failed to load resource' not in e])
     browser.close()

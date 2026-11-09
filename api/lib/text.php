@@ -20,6 +20,16 @@ function bn_normalize(string $s): string {
     return trim($s);
 }
 
+/** Like bn_normalize(), but for indigenous languages written in Bangla letters: the apostrophe and the
+ *  raised dot are letters there (Garo চা'আ = খাওয়া, হি•গুব্বা = এটি), so they are kept. ’ is stored as '. */
+function bn_native_normalize(string $s): string {
+    $s = bn_compose(str_replace(["\u{200D}", "\u{200C}"], '', $s));
+    $s = strtr($s, ["\u{09DC}" => "\u{09A1}\u{09BC}", "\u{09DD}" => "\u{09A2}\u{09BC}", "\u{09DF}" => "\u{09AF}\u{09BC}", '’' => "'", '‘' => "'"]);
+    $s = preg_replace('/[?!,.;:।"()\[\]“”—\-]+/u', ' ', $s);
+    $s = preg_replace("/(^|\s)'+|'+(\s|$)/u", '$1$2', $s);      // quote marks around a word, not inside it
+    return trim(preg_replace('/\s+/u', ' ', $s));
+}
+
 function bn_tokens(string $s): array {
     $s = bn_normalize($s);
     return $s === '' ? [] : preg_split('/\s+/u', $s);

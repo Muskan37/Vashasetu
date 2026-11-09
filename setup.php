@@ -190,8 +190,10 @@ load($root, 'learning_localizations', fn() => [['language_id','unit_key','item_o
 load($root, 'parallel_sentences', fn() => [['pair_hash','language','source_text','source_key','standard_bangla','standard_key','source_dataset','review_status','eligible_exact','split_name','script','source_count'], (function () {
     foreach (language_csv_rows('sentences') as $r) yield [$r['pair_hash'],$r['language'],$r['source_text'],bn_normalize($r['source_key']),$r['standard_bangla'],bn_normalize($r['standard_key']),$r['source_dataset'],$r['review_status'],$r['eligible_exact'],$r['split'],$r['script'],$r['source_count']];
 })()], ($reset || $refreshParallel));
+// indigenous languages keep ' and • inside their words (see bn_native_normalize)
+const NATIVE_SCRIPT_KEEP = ['chakma','marma','garo','tripura','sadri','santali','khasi','mro','tanchangya','bawm','khumi','meitei','rakhine'];
 load($root, 'word_meanings', fn() => [['pair_hash','language','source_word','standard_word','meaning_status','source_dataset','evidence_count'], (function () {
-    foreach (language_csv_rows('words') as $r) yield [$r['hash'],$r['language'],bn_normalize($r['source_word']),bn_normalize($r['standard_word']),$r['meaning_status'],$r['source_dataset'],$r['evidence_count']];
+    foreach (language_csv_rows('words') as $r) yield [$r['hash'],$r['language'],in_array($r['language'], NATIVE_SCRIPT_KEEP, true) ? bn_native_normalize($r['source_word']) : bn_normalize($r['source_word']),bn_normalize($r['standard_word']),$r['meaning_status'],$r['source_dataset'],$r['evidence_count']];
 })()], ($reset || $refreshWords));
 
 // Re-apply dictionary edits made inside the app.
