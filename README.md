@@ -4,7 +4,7 @@ Course project: Software Engineering (CSE 355), UITS.
 Team: Sadia Akter Liza, Shobnom Sultana Muskan.
 Stack: PHP 8 + MySQL (XAMPP) with a vanilla-JS installable web app (PWA).
 
-This README describes the **current full build**. Older notes are in `docs/`; the change history is `docs/CHANGELOG_V6.md`.
+This README describes the **current full build**. All project documents (proposal to final report and slides) are in `docs/project_documents/`; the change history is `docs/CHANGELOG_V6.md`.
 
 ---
 
@@ -71,7 +71,7 @@ After updating the app, remove it from the phone's home screen and add it again 
 | `assets/` | JavaScript, CSS, images |
 | `database/` | CSV data loaded by `setup.php`; `languages/<name>/` holds each language's own data |
 | `tools/` | Python helpers that built the data (not needed to run the app) |
-| `docs/` | Older READMEs and the change log |
+| `docs/` | Project documents (`project_documents/`: proposal, system modeling, UI design, test report, final report, presentation), change log and dataset isolation notes |
 
 ## 7. Troubleshooting
 | Problem | Fix |
